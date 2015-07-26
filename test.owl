@@ -1,0 +1,46 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:NSP="http://jena.zju.edu.cn/property#"
+    xmlns:NSC="http://jena.zju.edu.cn/class#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#" > 
+  <rdf:Description rdf:about="http://jena.zju.edu.cn/class#Person">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://jena.zju.edu.cn/class#FacultyMember">
+    <rdfs:subClassOf rdf:resource="http://jena.zju.edu.cn/class#Person"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://jena.zju.edu.cn/instance#ComputerAndScienceCollege">
+    <rdf:type rdf:resource="http://jena.zju.edu.cn/class#College"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://jena.zju.edu.cn/class#Organisation">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://jena.zju.edu.cn/class#College">
+    <rdfs:subClassOf rdf:resource="http://jena.zju.edu.cn/class#University"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://jena.zju.edu.cn/class#Professor">
+    <rdfs:subClassOf rdf:resource="http://jena.zju.edu.cn/class#FacultyMember"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://jena.zju.edu.cn/class#University">
+    <rdfs:subClassOf rdf:resource="http://jena.zju.edu.cn/class#Organisation"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://jena.zju.edu.cn/property#hasAffiliation">
+    <rdfs:range rdf:resource="http://jena.zju.edu.cn/class#Organisation"/>
+    <rdfs:domain rdf:resource="http://jena.zju.edu.cn/class#Person"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://jena.zju.edu.cn/instance#LYP">
+    <NSP:name>林炀平</NSP:name>
+    <NSP:hasAffiliation rdf:resource="http://jena.zju.edu.cn/instance#ComputerAndScienceCollege"/>
+    <rdf:type rdf:resource="http://jena.zju.edu.cn/class#Professor"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://jena.zju.edu.cn/property#name">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </rdf:Description>
+</rdf:RDF>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap>
+	<typeAlias alias="oclass" type="com.culture.model.OClass" />
+
+	<!-- 根据id获得概念-->
+	<select id="getByClassId" parameterClass="String"
+		resultClass="oclass">
+		select * from oclass where cid = #cid# 
+	</select>
+
+	<!-- 根据name获得概念-->
+	<select id="getByClassName" parameterClass="String"
+		resultClass="oclass">
+		select * from oclass where cname = #cname# 
+	</select>
+
+
+	<!-- 根据概念列表 -->
+	<select id="getOclassList" parameterClass="oclass"
+		resultClass="oclass">
+		select * from oclass where del = #del# 
+		<dynamic prepend=""> 
+			 <isNotNull property="cfid" prepend="and">
+			 	cfid = #cid# 
+			 </isNotNull>
+		</dynamic>
+		order by time desc
+	</select>
+	
+	<!-- 添加概念 -->
+	<insert id="addClass" parameterClass="oclass">
+		insert into oclass values(#cfid#,#cname#,#time#,#del#)
+		<selectKey resultClass="String" keyProperty="cid">  
+  		 	 SELECT @@IDENTITY as id  
+ 		 </selectKey> 
+	</insert>
+
+	<!--删除概念 -->
+	<update id="delClass" parameterClass="oclass">
+		update oclass set del=#del# where cid=#cid#
+	</update>
+	
+	<!--更新概念 -->
+	<update id="updateClass" parameterClass="oclass">
+		update oclass set cname=#cname#,cfid=#cfid# where cid=#cid#
+	</update>
+	
+
+</sqlMap>  

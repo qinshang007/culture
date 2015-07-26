@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap>
+	<typeAlias alias="culturalBean" type="com.culture.model.CulturalBean" />
+	
+	<!-- 返回文物详情-->
+	<select id="getCultural" parameterClass="String" 
+		 resultClass="culturalBean">
+		select * from culture where identifier = #culId#
+	</select>
+
+	<!-- 返回文物列表 -->
+	<select id="getCulturalList" 
+		resultClass="culturalBean">
+		select identifier,title,shape,mainpic from culture where del = #del# order by crtime desc
+	</select>
+	
+	<!-- 添加文物 -->
+	<insert id="addCultural" parameterClass="culturalBean">
+		insert into culture (classification,title,used_title,c_level,creation_date,creation_time,place_of_origin,creator,measurement,excavation_date,excavation_place,current_location,exhibition_history,location,shape,pattern,color,structure,decoration,scene,c_usage,symbolic_meaning,aesthetic_desc,social_history_info,material,technique,history_info,folklore,relation,identifier,source,rights,complete,manager,type,crtime,mainpic) 
+		values(#classification#,#title#,#used_title#,#c_level#,#creation_date#,#creation_time#,#place_of_origin#,#creator#,#measurement#,#excavation_date#,#excavation_place#,#current_location#,#exhibition_history#,#location#,#shape#,#pattern#,#color#,#structure#,#decoration#,#scene#,#c_usage#,#symbolic_meaning#,#aesthetic_desc#,#social_history_info#,#material#,#technique#,#history_info#,#folklore#,#relation#,#identifier#,#source#,#rights#,#complete#,#manager#,#type#,#crtime#,#mainpic#) 
+		<selectKey resultClass="String" keyProperty="identifier">  
+  		 	 SELECT @@IDENTITY as id  
+ 		 </selectKey> 
+	</insert>
+
+	<!--删除文物 -->
+	<update id="delCultural" parameterClass="String">
+		delete from collect where identifier = #identifier#
+	</update>
+	
+	<!--更新文物 -->
+	<update id="updateCultural" parameterClass="culturalBean">
+		update culture set classification=#classification#,title=#title#,used_title=#used_title#,c_level=#c_level#,creation_date=#creation_date#,creation_time=#creation_time#,place_of_origin=#place_of_origin#,creator=#creator#,measurement=#measurement#,excavation_date=#excavation_date#,excavation_place=#excavation_place#,current_location=#current_location#,exhibition_history=#exhibition_history#,location=#location#,shape=#shape#,pattern=#pattern#,color=#color#,structure=#structure#,decoration=#decoration#,scene=#scene#,c_usage=#c_usage#,symbolic_meaning=#symbolic_meaning#,aesthetic_desc=#aesthetic_desc#,social_history_info=#social_history_info#,material=#material#,technique=#technique#,history_info=#history_info#,folklore=#folklore#,relation=#relation#,source=#source#,rights=#rights#,complete=#complete#,manager=#manager#,type=#type#,mainpic=#mainpic# where identifier=#identifier#
+	</update>
+	
+
+</sqlMap>  

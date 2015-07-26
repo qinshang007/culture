@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap>
+	<typeAlias alias="oproperty" type="com.culture.model.OProperty" />
+
+	<!-- 根据id获得属性-->
+	<select id="getByPropertyId" parameterClass="String"
+		resultClass="oproperty">
+		select * from oproperty where pid = #pid# 
+	</select>
+
+	<!-- 根据属性列表 -->
+	<select id="getPropertyList" parameterClass="int"
+		resultClass="oproperty">
+		select * from oproperty where del = #del# order by time desc
+	</select>
+	
+	<!-- 添加属性 -->
+	<insert id="addProperty" parameterClass="oproperty">
+		insert into oproperty values(#pid#,#pfid#,#pname#,#ptype#,#isgeneral#,#time#,#del#)
+		<selectKey resultClass="String" keyProperty="pid">  
+  		 	 SELECT @@IDENTITY as id  
+ 		 </selectKey> 
+	</insert>
+
+	<!--删除属性 -->
+	<update id="delProperty" parameterClass="oproperty">
+		update oproperty set del=#del# where pid=#pid#
+	</update>
+	
+		<!--更新概念 -->
+	<update id="updateProperty" parameterClass="oproperty">
+		update oproperty set pname=#pname#,pfid=#pfid#,ptype=#ptype#,isgeneral=#isgeneral# where pid=#pid#
+	</update>
+	
+
+</sqlMap>  

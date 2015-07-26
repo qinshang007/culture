@@ -1,0 +1,27 @@
+package com.culture.dao;
+
+import java.util.List;
+
+import com.culture.model.OClass;
+
+public interface OClassDao {
+	
+	/*返回概念列表*/
+	public List<OClass> getClassList(OClass oclass);		
+	
+	/*根据id返回某个概念*/
+	public OClass getClassById(String id);		
+	
+	/*根据name返回某个概念*/
+	public OClass getClassByName(String cname);			
+	
+	/*添加概念*/
+	public boolean addClass(OClass oclass);
+	
+	/*删除概念*/
+	public boolean delClass(String id);
+	
+	/*更新概念*/
+	public boolean updateClass(OClass oclass);
+	
+}
