@@ -39,14 +39,14 @@ public class OPropertyDaoImpl extends BaseDao implements OPropertyDao{
 
 	public boolean addProperty(OProperty OProperty) {
 		// TODO Auto-generated method stub
-		String object = null;
+		int object = 0;
 		boolean flag = false;
 		try {
-			object =(String) getSqlMapClientTemplate().insert("addProperty",OProperty);
+			object =(Integer) getSqlMapClientTemplate().insert("addProperty",OProperty);
 		}catch (Exception e) {
 			logger.error("添加属性信息出错！" +  ",errMsg=" + e.getMessage());
 		}
-		if (object != null) {
+		if (object != 0) {
 			flag = true;
 		}
 		return flag;

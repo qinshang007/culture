@@ -55,19 +55,16 @@ public class ClassController extends BaseController{
 			OntModel model = omodelFactory.getModel();
 			//获取概念名字
 			String cname = request.getParameter("cname");
-			//生成概念id
-			String cid = CodeGenerator.createUUID();
 			//获取父概念名字
 			String cfname = request.getParameter("cfname");
 			//获取父概念id
 			String cfid = request.getParameter("cfid");
 			
 			OntClass children = model.createClass(OModelFactory.NSC+cname);
-			children.setLabel(cname, "zh");
 			
 			//父概念不为空且不等于无
 			if(!StringUtils.isEmpty(cfname)&&!cfname.equals("无")){
-				OntClass parent = model.getOntClass(OModelFactory.NSC+cfid);//取出父概念
+				OntClass parent = model.getOntClass(OModelFactory.NSC+cfname);//取出父概念
 				parent.addSubClass(children);//
 			}
 			
@@ -82,8 +79,7 @@ public class ClassController extends BaseController{
 			//保存到数据库
 			OClass c = new OClass();
 			c.setCname(cname);
-			c.setCid(cid);
-			c.setCfid(cfid);
+			c.setCfid(Integer.valueOf(cfid));
 			ocService.addClass(c);
 			
 			outputJsonResponse(response, true, "uploadSuccess");
@@ -114,8 +110,7 @@ public class ClassController extends BaseController{
 			String cfid = request.getParameter("cfid");
 			
 			//更改概念label
-			OntClass children = model.getOntClass(OModelFactory.NSC+cid);
-			children.setLabel(cname, "zh");
+			OntClass children = model.getOntClass(OModelFactory.NSC+cname);
 			
 			//父概念不为空且不等于无
 			if(!StringUtils.isEmpty(cfname)&&!cfname.equals("无")){
@@ -124,7 +119,7 @@ public class ClassController extends BaseController{
 				if(old_parent!=null)
 					old_parent.removeSubClass(children);
 				//取得新的父概念
-				OntClass parent = model.getOntClass(OModelFactory.NSC+cfid);
+				OntClass parent = model.getOntClass(OModelFactory.NSC+cfname);
 				parent.addSubClass(children);//
 			}
 			
@@ -139,8 +134,8 @@ public class ClassController extends BaseController{
 			//更新到数据库
 			OClass c = new OClass();
 			c.setCname(cname);
-			c.setCid(cid);
-			c.setCfid(cfid);
+			c.setCid(Integer.valueOf(cid));
+			c.setCfid(Integer.valueOf(cfid));
 			ocService.updateClass(c);
 			
 			outputJsonResponse(response, true, "updateSuccess");
@@ -163,7 +158,9 @@ public class ClassController extends BaseController{
 	public ModelAndView addClass(HttpServletRequest request, HttpServletResponse response) throws Exception{
 		try{
 			//获取父概念id
-			String cfid = request.getParameter("cfid");
+			int cfid = 0;
+			if(request.getParameter("cfid")!=null)
+				cfid = Integer.parseInt(request.getParameter("cfid"));
 			//获取父概念名字
 			String cfname = request.getParameter("cfname");
 			//获取概念列表
@@ -171,7 +168,7 @@ public class ClassController extends BaseController{
 			oclass.setDel(0);
 			List<OClass> oclist = ocService.getClassList(oclass);
 			for(int i=0;i<oclist.size();i++){
-				if(oclist.get(i).getCid().equals(cfid)){
+				if(oclist.get(i).getCid() == cfid){
 					cfname = oclist.get(i).getCname();
 					oclist.remove(i);
 					break;
@@ -233,10 +230,10 @@ public class ClassController extends BaseController{
 			oclass.setDel(0);
 			List<OClass> oclist = ocService.getClassList(oclass);
 			//获取父概念
-			String cfid = oc.getCfid();
+			int cfid = oc.getCfid();
 			String cfname = "无";
 			for(int i=0;i<oclist.size();i++){
-				if(oclist.get(i).getCid().equals(cfid)){
+				if(oclist.get(i).getCid() == cfid){
 					cfname = oclist.get(i).getCname();
 					oclist.remove(i);
 					break;

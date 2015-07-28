@@ -15,14 +15,14 @@ public class CulturalDaoImpl extends BaseDao implements CulturalDao{
 	
 	public boolean addCultural(CulturalBean cb) {
 		// TODO Auto-generated method stub
-		String object = null;
+		int object = 0;
 		boolean flag = false;
 		try {
-			object =(String) getSqlMapClientTemplate().insert("addCultural",cb);
+			object =(Integer) getSqlMapClientTemplate().insert("addCultural",cb);
 		}catch (Exception e) {
 			logger.error("添加文物出错！" +  ",errMsg=" + e.getMessage());
 		}
-		if (object != null) {
+		if (object != 0) {
 			flag = true;
 		}
 		return flag;
@@ -70,6 +70,17 @@ public class CulturalDaoImpl extends BaseDao implements CulturalDao{
 		}
 		return flag;
 
+	}
+
+	public CulturalBean getCulturalById(String culId) {
+		// TODO Auto-generated method stub
+		CulturalBean cb = null;
+		try{
+			cb = (CulturalBean)getSqlMapClientTemplate().queryForObject("getCulturalById", culId);
+		}catch (Exception e) {
+			logger.error("获取文物详情出错！" +  ",errMsg=" + e.getMessage());
+		}
+		return cb;
 	}
 
 }

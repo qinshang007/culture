@@ -69,12 +69,10 @@ public class PropertyController extends BaseController{
 			int ptype = Integer.valueOf(request.getParameter("ptype"));
 			//获取属性名字
 			String pname = request.getParameter("pname");
-			//生成属性id
-			String pid = CodeGenerator.createUUID();
 			//获取父属性名字
 			String pfname = request.getParameter("pfname");
 			//获取父属性id
-			String pfid = request.getParameter("pfid");
+			int pfid = Integer.parseInt(request.getParameter("pfid"));
 			//获取定义域
 			String domain = request.getParameter("domain");
 			//获取值域
@@ -83,8 +81,9 @@ public class PropertyController extends BaseController{
 			int isgeneral = Integer.valueOf(request.getParameter("isgeneral"));
 			
 			OntProperty children = null;
+			//为属性添加值域
 			if(ptype==1){
-				 children = model.createObjectProperty(OModelFactory.NSP+pid);
+				 children = model.createObjectProperty(OModelFactory.NSP+pname);
 				 
 				//将值域值转化为数组
 				String[] rangeArray = range.split(",");
@@ -96,7 +95,7 @@ public class PropertyController extends BaseController{
 				}
 				 
 			}else if(ptype==2){
-				 children = model.createDatatypeProperty(OModelFactory.NSP+pid);
+				 children = model.createDatatypeProperty(OModelFactory.NSP+pname);
 				 
 				 //添加值域
 				 int index = Integer.valueOf(range);
@@ -104,11 +103,10 @@ public class PropertyController extends BaseController{
 				 Resource s = resource[index];
 				 children.addRange(s);
 			}
-			children.setLabel(pname, "zh");
 			
 			//父属性不为空且不等于无
 			if(!StringUtils.isEmpty(pfname)&&!pfname.equals("无")){
-				OntProperty parent = model.getOntProperty(OModelFactory.NSP+pfid);//取出父概念
+				OntProperty parent = model.getOntProperty(OModelFactory.NSP+pfname);//取出父概念
 				parent.addSubProperty(children);
 			}
 			
@@ -132,7 +130,6 @@ public class PropertyController extends BaseController{
 			}
 			//保存到数据库
 			OProperty op = new OProperty();
-			op.setPid(pid);
 			op.setPname(pname);
 			op.setPtype(ptype);
 			op.setPfid(pfid);
@@ -162,11 +159,11 @@ public class PropertyController extends BaseController{
 			//获取属性名字
 			String pname = request.getParameter("pname");
 			//生成属性id
-			String pid = request.getParameter("pid");
+			int pid = Integer.parseInt(request.getParameter("pid"));
 			//获取父属性名字
 			String pfname = request.getParameter("pfname");
 			//获取父属性id
-			String pfid = request.getParameter("pfid");
+			int pfid = Integer.parseInt(request.getParameter("pfid"));
 			//获取定义域
 			String domain = request.getParameter("domain");
 			//获取值域
@@ -240,12 +237,9 @@ public class PropertyController extends BaseController{
 				if(old_parent!=null)
 					old_parent.removeSubProperty(children);
 				//取得新的父概念
-				OntProperty parent = model.getOntProperty(OModelFactory.NSP+pfid);
+				OntProperty parent = model.getOntProperty(OModelFactory.NSP+pfname);
 				parent.addSubProperty(children);//
 			}
-
-			//修改属性名字
-			children.setLabel(pname, "zh");
 
 			//write XML FILE
 			File file = new File(omodelFactory.getOwlFile());
@@ -363,7 +357,7 @@ public class PropertyController extends BaseController{
 	}
 
 	/**
-	 * 属性列表界面
+	 * 属性详情界面
 	 * @param request
 	 * @param response
 	 * @return
@@ -384,19 +378,19 @@ public class PropertyController extends BaseController{
 			//获取属性列表
 			List<OProperty> oplist = opService.getPropertyList();
 			//获取父属性id
-			String pfid = op.getPfid();
+			int pfid = op.getPfid();
 			//获取父属性名字
 			String pfname = "无";
 			for(int i=0;i<oplist.size();i++){
-				if(oplist.get(i).getPid().equals(pfid)){
+				if(oplist.get(i).getPid() == pfid){
 					pfname = oplist.get(i).getPname();
 					oplist.remove(i);
 					break;
 				}
 			}
 			//取得属性的映射
-			Map<String,Integer> dmap = new HashMap<String,Integer>();
-			Map<String,Integer> rmap = new HashMap<String,Integer>();
+			Map<Integer,Integer> dmap = new HashMap<Integer,Integer>();
+			Map<Integer,Integer> rmap = new HashMap<Integer,Integer>();
 			for(int i=0; i<domainList.size();i++){
 				dmap.put(domainList.get(i).getCid(), i);
 				rmap.put(rangeList.get(i).getCid(), i);

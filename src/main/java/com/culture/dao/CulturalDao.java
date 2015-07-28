@@ -15,5 +15,7 @@ public interface CulturalDao {
 	public List<CulturalBean> getCulturalList();
 	//删除文物
 	public boolean delCultural(String cbid);
+	//返回文物详情
+	public CulturalBean getCulturalById(String culId);
 	
 }

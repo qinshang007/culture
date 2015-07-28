@@ -4,7 +4,7 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<title>添加实例</title>
+	<title>修改实例</title>
 	<meta content="width=device-width, initial-scale=1.0" name="viewport" />
 	<meta content="" name="description" />
 	<meta content="" name="author" />
@@ -52,7 +52,7 @@
 				<div class="row-fluid">
 					<div class="span12">
 						<h3 class="page-title">
-							添加实例
+							修改实例
 						</h3>
 						<ul class="breadcrumb">
 							<li>
@@ -64,7 +64,7 @@
 								<a href="#">本体管理</a>
 								<span class="icon-angle-right"></span>
 							</li>
-							<li><a href="/culture/doctor/dtAdd.do">添加实例</a></li>
+							<li><a href="/culture/doctor/dtAdd.do">修改实例</a></li>
 						</ul>
 					</div>
 				</div>
@@ -73,9 +73,12 @@
 						<!-- BEGIN SAMPLE FORM PORTLET-->   
 						<div class="portlet-body form">
 							<!-- BEGIN FORM-->
-							<form id="instanceForm" action="/culture/instance/save.do" class="form-horizontal" method="post" enctype="multipart/form-data" target="hidden_frame">
+							<form id="instanceForm" action="/culture/instance/edit.do" class="form-horizontal" method="post" enctype="multipart/form-data" target="hidden_frame">
 								<input type="hidden" id="type" name="type" value="${type}" />
 								<input type="hidden" id="classification" name="classification" value="${classification}" />
+								<input type="hidden" id="identifier" name="identifier" value="${cb.identifier}" />
+								<input type="hidden" id="mainpic" name="mainpic" value="${cb.mainpic}" />
+								<input type="hidden" id="oldTitle" name="mainpic" value="${cb.title}" />
 								<div class="portlet box blue">
 									<div class="portlet-title">
 										<div class="caption"><i class="icon-cogs"></i>基本信息</div>
@@ -84,35 +87,33 @@
 		 								<div class="control-group">
 											<label class="control-label">名称</label>
 											<div class="controls">
-												<input id="title" type="text" class="span6 m-wrap" name="title" />
+												<input id="title" type="text" class="span6 m-wrap" name="title" value="${cb.title}"/>
 												<span class="help-inline">必填</span>
 											</div>
 										</div>
 		 								<div class="control-group">
 											<label class="control-label">其他名称</label>
 											<div class="controls">
-												<input id="used_title" type="text" class="span6 m-wrap" name="used_title" />
+												<input id="used_title" type="text" class="span6 m-wrap" name="used_title" value="${cb.used_title}"/>
 											</div>
 										</div>
 										<div class="control-group">
 											<label class="control-label">主图</label>
 											<div class="controls">
 												<div class="fileupload fileupload-new" data-provides="fileupload">
-													<div class="input-append">
-														<div class="uneditable-input">
-															<i class="icon-file fileupload-exists"></i> 
-															<span class="fileupload-preview"></span>
-														</div>
-														<span class="btn btn-file">
-														<span class="fileupload-new">选择图片</span>
-														<span class="fileupload-exists">更换</span>
-														<input id="mainpicId" name="mainpicFile" type="file" class="default" />
-														</span>
-														<a href="#" class="btn fileupload-exists" data-dismiss="fileupload">删除</a>
+													<div class="fileupload-new thumbnail" style="width: 200px; height: 150px;">
+														<img src="/crelicBase/upload${cb.mainpic}" alt="" />
+													</div>
+													<div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 200px; max-height: 150px; line-height: 20px;"></div>
+													<div>
+														<span class="btn btn-file"><span class="fileupload-new">更改主图</span>
+														<span class="fileupload-exists">Change</span>
+														<input id="mainpicId" name="mainpicfile" type="file" class="default" /></span>
+														<a href="#" class="btn fileupload-exists" data-dismiss="fileupload">Remove</a>
 													</div>
 												</div>
 											</div>
-										</div>
+										</div>								
 										<div class="control-group">
 											<label class="control-label">级别</label>
 											<div class="controls">										
@@ -138,55 +139,55 @@
 										<div class="control-group">
 											<label class="control-label">创作时期</label>
 											<div class="controls">										
-												<input id="creation_time" type="text" class="span6 m-wrap" name="creation_time" />
+												<input id="creation_time" type="text" class="span6 m-wrap" name="creation_time" value="${cb.creation_time }" />
 											</div>
 										</div>
 										<div class="control-group">
 											<label class="control-label">创作者</label>
 											<div class="controls">										
-												<input id="creator" type="text" class="span6 m-wrap" name="creator" />
+												<input id="creator" type="text" class="span6 m-wrap" name="creator" value="${cb.creator}" />
 											</div>
 										</div>
 										<div id="placeOfOriginDiv" class="control-group">
 											<label class="control-label">产地</label>
 											<div class="controls">										
-												<input id="place_of_originr" type="text" class="span6 m-wrap" name="place_of_origin" />
+												<input id="place_of_originr" type="text" class="span6 m-wrap" name="place_of_origin" value="${cb.place_of_origin}" />
 											</div>
 										</div>
 										<div class="control-group">
 											<label class="control-label">度量</label>
 											<div class="controls">										
-												<input id="measurement" type="text" class="span6 m-wrap" name="measurement" />
+												<input id="measurement" type="text" class="span6 m-wrap" name="measurement" value="${cb.measurement}"/>
 											</div>
 										</div>
 										<div id="locationDiv" class="control-group">
 											<label class="control-label">地域环境</label>
 											<div class="controls">										
-												<input id="location" type="text" class="span6 m-wrap" name="location" />
+												<input id="location" type="text" class="span6 m-wrap" name="location" value="${cb.location}"/>
 											</div>
 										</div>
 										<div id="excavationDateDiv" class="control-group">
 											<label class="control-label">出土时间</label>
 											<div class="controls">										
-												<input id="excavation_date" type="text" class="span6 m-wrap" name="excavation_date" />
+												<input id="excavation_date" type="text" class="span6 m-wrap" name="excavation_date" value="${cb.excavation_date }"/>
 											</div>
 										</div>
 										<div id="excavationPlaceDiv" class="control-group">
 											<label class="control-label">出土地点</label>
 											<div class="controls">										
-												<input id="excavation_place" type="text" class="span6 m-wrap" name="excavation_place" />
+												<input id="excavation_place" type="text" class="span6 m-wrap" name="excavation_place" value="${cb.excavation_place }" />
 											</div>
 										</div>
 										<div id="currentLocationDiv" class="control-group">
 											<label class="control-label">现藏地点</label>
 											<div class="controls">										
-												<input id="current_location" type="text" class="span6 m-wrap" name="current_location" />
+												<input id="current_location" type="text" class="span6 m-wrap" name="current_location" value="${cb.current_location }"  />
 											</div>
 										</div>
 										<div id="exhibitonHistoryDiv" class="control-group">
 											<label class="control-label">展览历史</label>
 											<div class="controls">										
-												<input id="exhibition_history" type="text" class="span6 m-wrap" name="exhibition_history" />
+												<input id="exhibition_history" type="text" class="span6 m-wrap" name="exhibition_history" value="${cb.exhibition_history }"/>
 											</div>
 										</div>
 									</div>
@@ -199,31 +200,31 @@
 										<div id="shapeDiv" class="control-group">
 											<label class="control-label">器形</label>
 											<div class="controls">										
-												<textarea class="span6 m-wrap" rows="3" name="shape"></textarea>
+												<textarea class="span6 m-wrap" rows="3" name="shape">${cb.shape}</textarea>
 											</div>
 										</div>
 										<div id="patternDiv" class="control-group">
 											<label class="control-label">纹饰</label>
 											<div class="controls">										
-												<textarea class="span6 m-wrap" rows="3" name="pattern"></textarea>
+												<textarea class="span6 m-wrap" rows="3" name="pattern">${cb.pattern}</textarea>
 											</div>
 										</div>
 										<div id="structureDiv" class="control-group">
 											<label class="control-label">结构</label>
 											<div class="controls">										
-												<textarea class="span6 m-wrap" rows="3" name="structure"></textarea>
+												<textarea class="span6 m-wrap" rows="3" name="structure">${cb.structure}</textarea>
 											</div>
 										</div>
 										<div id="decorationDiv" class="control-group">
 											<label class="control-label">装饰</label>
 											<div class="controls">										
-												<textarea class="span6 m-wrap" rows="3" name="decoration"></textarea>
+												<textarea class="span6 m-wrap" rows="3" name="decoration">${cb.decoration}</textarea>
 											</div>
 										</div>
 										<div class="control-group">
 											<label class="control-label">色彩</label>
 											<div class="controls">										
-												<textarea class="span6 m-wrap" rows="3" name="color"></textarea>
+												<textarea class="span6 m-wrap" rows="3" name="color">${cb.color}</textarea>
 											</div>
 										</div>
 									</div>
@@ -236,25 +237,25 @@
 										<div id="sceneDiv" class="control-group">
 											<label class="control-label">使用情境</label>
 											<div class="controls">										
-												<input id="scene" type="text" class="span6 m-wrap" name="scene" />
+												<input id="scene" type="text" class="span6 m-wrap" name="scene" value="${cb.scene }" />
 											</div>
 										</div>
 										<div id="c_usageDiv" class="control-group">
 											<label class="control-label">使用方式</label>
 											<div class="controls">										
-												<input id="c_usage" type="text" class="span6 m-wrap" name="c_usage" />
+												<input id="c_usage" type="text" class="span6 m-wrap" name="c_usage" value="${cb.c_usage }" />
 											</div>
 										</div>
 										<div class="control-group">
 											<label class="control-label">象征意义</label>
 											<div class="controls">										
-												<textarea class="span6 m-wrap" rows="3" name="symbolic_meaning"></textarea>
+												<textarea class="span6 m-wrap" rows="3" name="symbolic_meaning">${cb.symbolic_meaning}</textarea>
 											</div>
 										</div>
 										<div class="control-group">
 											<label class="control-label">审美</label>
 											<div class="controls">										
-												<textarea class="span6 m-wrap" rows="3" name="aesthetic_desc"></textarea>
+												<textarea class="span6 m-wrap" rows="3" name="aesthetic_desc">${cb.aesthetic_desc}</textarea>
 											</div>
 										</div>
 									</div>
@@ -267,13 +268,13 @@
 										<div class="control-group">
 											<label class="control-label">材质</label>
 											<div class="controls">										
-												<input id="scene" type="text" class="span6 m-wrap" name="material" />
+												<input id="scene" type="text" class="span6 m-wrap" name="material" value="${cb.material}" />
 											</div>
 										</div>
 										<div class="control-group">
 											<label class="control-label">工艺</label>
 											<div class="controls">										
-												<textarea class="span6 m-wrap" rows="3" name="technique"></textarea>
+												<textarea class="span6 m-wrap" rows="3" name="technique">${technique}</textarea>
 											</div>
 										</div>
 									</div>
@@ -286,19 +287,19 @@
 										<div id="historyInfoDiv" class="control-group">
 											<label class="control-label">历史信息</label>
 											<div class="controls">										
-												<input id="scene" type="text" class="span6 m-wrap" name="history_info" />
+												<input id="scene" type="text" class="span6 m-wrap" name="history_info" value="${cb.history_info }"/>
 											</div>
 										</div>
 										<div id="folkloreDiv" class="control-group">
 											<label class="control-label">民间典故</label>
 											<div class="controls">										
-												<textarea class="span6 m-wrap" rows="3" name="folklore"></textarea>
+												<textarea class="span6 m-wrap" rows="3" name="folklore">${cb.folklore}</textarea>
 											</div>
 										</div>
 										<div id="socialHistoryInfoDiv" class="control-group">
 											<label class="control-label">社会历史信息</label>
 											<div class="controls">	
-												<textarea class="span6 m-wrap" rows="3" name="social_history_info"></textarea>									
+												<textarea class="span6 m-wrap" rows="3" name="social_history_info">${cb.social_history_info }</textarea>									
 											</div>
 										</div>
 									</div>
@@ -311,13 +312,13 @@
 										<div class="control-group">
 											<label class="control-label">关联</label>
 											<div class="controls">										
-												<input id="relation" type="text" class="span6 m-wrap" name="relation" />
+												<input id="relation" type="text" class="span6 m-wrap" name="relation" value="${cb.relation }"/>
 											</div>
 										</div>
 										<div class="control-group">
 											<label class="control-label">资料来源</label>
 											<div class="controls">										
-												<textarea class="span6 m-wrap" rows="3" name="source"></textarea>
+												<textarea class="span6 m-wrap" rows="3" name="source">${cb.source}</textarea>
 											</div>
 										</div>
 										<div class="control-group">
@@ -383,6 +384,9 @@
 		   // initiate layout and plugins
 		   App.init();
 		   var rule={type:{required:true},classification:{required:true}};
+		   $("#c_level option[value='${cb.c_level}']").attr("selected",true);
+		   $("#creation_date option[value='${cb.creation_date}']").attr("selected",true);
+		   $("#rights option[value='${cb.rights}']").attr("selected",true);
 		   FormValidation.init($('#instanceForm'),rule,creatSubmitForm('instanceForm'),failedForm);
 		   init();
 		});

@@ -68,7 +68,7 @@
 							<a href="/culture/instance/chooseClass.do">添加实例</a>
 						</li>
 						<li >
-							<a href="/culture/news/list.do?newstype=3&subtype=2">实例列表</a>
+							<a href="/culture/instance/instanceList.do">实例列表</a>
 						</li>
 					</ul>
 				</li>

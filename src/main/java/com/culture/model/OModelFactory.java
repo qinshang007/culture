@@ -44,13 +44,13 @@ public class OModelFactory {
 	//得到本体模型
 	public OntModel getModel() {
 		OntModel model = ModelFactory.createOntologyModel();
+		model.setNsPrefix("NSC", NSC);
+		model.setNsPrefix("NSP", NSP);
 		File owl = new File(owlFile);
 		//如果本体文件存在的话，将本体文件读入模型
 		if(owl.exists())
 		 try {
 			model.read(new FileInputStream(owlFile),"");
-			model.setNsPrefix("NSC", NSC);
-			model.setNsPrefix("NSP", NSP);
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -62,19 +62,18 @@ public class OModelFactory {
 	//得到实例模型
 	public OntModel getInstanceModel() {
 		OntModel model = ModelFactory.createOntologyModel();
+		model.setNsPrefix("NSC", NSC);
+		model.setNsPrefix("NSP", NSP);
+		model.setNsPrefix("NSI", NSI);
 		File owl = new File(instanceFile);
 		//如果本体文件存在的话，将本体文件读入模型
 		if(owl.exists())
 		 try {
 			model.read(new FileInputStream(instanceFile),"");
-			model.setNsPrefix("NSC", NSC);
-			model.setNsPrefix("NSP", NSP);
-			model.setNsPrefix("NSI", NSI);
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
 		return model;
 	}
 

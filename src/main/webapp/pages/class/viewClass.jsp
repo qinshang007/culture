@@ -82,7 +82,7 @@
 								<div class="control-group">
 									<label class="control-label">名称</label>
 									<div class="controls">
-										<input id="cname" type="text" class="span6 m-wrap" name="cname" value="${oc.cname}"/>
+										<input id="cname" type="text" class="span6 m-wrap" name="cname" value="${oc.cname}" readonly/>
 										<span class="help-inline">必填</span>
 									</div>
 								</div>

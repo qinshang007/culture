@@ -21,17 +21,17 @@
 		resultClass="oclass">
 		select * from oclass where del = #del# 
 		<dynamic prepend=""> 
-			 <isNotNull property="cfid" prepend="and">
+			 <isNotEqual property="cid"  compareValue="0" prepend="and">
 			 	cfid = #cid# 
-			 </isNotNull>
+			 </isNotEqual>
 		</dynamic>
 		order by time desc
 	</select>
 	
 	<!-- 添加概念 -->
 	<insert id="addClass" parameterClass="oclass">
-		insert into oclass values(#cfid#,#cname#,#time#,#del#)
-		<selectKey resultClass="String" keyProperty="cid">  
+		insert into oclass (cfid,cname,time,del) values(#cfid#,#cname#,#time#,#del#)
+		<selectKey resultClass="int" keyProperty="cid">  
   		 	 SELECT @@IDENTITY as id  
  		 </selectKey> 
 	</insert>

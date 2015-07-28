@@ -83,7 +83,7 @@
 									<div class="controls">
 										<select id="type" class="span6 chosen" data-placeholder="选择概念" tabindex="1" name="type" onchange="getData()">
 											<c:forEach  items="${oclist}"  var="item"  varStatus="status">
-												<option value="${item.cid}">${item.cname}</option>
+												<option value="${item.cname}">${item.cname}</option>
 											</c:forEach>
 										</select>
 										<span class="help-inline">必填</span>
@@ -94,7 +94,7 @@
 									<div class="controls">
 										<select id="classification" class="span6 chosen classification-select" data-placeholder="选择概念" tabindex="1" name="classification">
 											<c:forEach  items="${childlist}"  var="item"  varStatus="status">
-												<option value="${item.cid}">${item.cname}</option>
+												<option value="${item.cname}">${item.cname}</option>
 											</c:forEach>
 										</select>
 										<span class="help-inline">必填</span>
@@ -170,7 +170,7 @@
 	                //清空数组  
 	                classification.length = 0;  
 	                for(var i=0;i<data.length;i++){  
-	                     var xValue=data[i].cid;    
+	                     var xValue=data[i].cname;    
 	                     var xText=data[i].cname;    
 	                     var option=new Option(xText,xValue);    
 	                     classification.add(option);   

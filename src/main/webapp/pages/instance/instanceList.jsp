@@ -80,52 +80,20 @@
 										<th>编号</th>
 										<th>内容</th>
 										<th>查看</th>
+										<th>修改</th>
 										<th>删除</th>
 									</tr>
 								</thead>
 								<tbody>
-								<tr class="">
-									<td>1</td>
-									<td>青花釉里红镂雕盖罐</td>
-									<td><a  href="/culture/class/viewClass.do?cid=${item.cid}">View</a></td>
-									<td><a  href="javascript:deleteClass('${item.cid}')">Delete</a></td>
-								</tr>
-								<tr class="">
-									<td>2</td>
-									<td>长柄银手炉</td>
-									<td><a  href="/culture/class/viewClass.do?cid=${item.cid}">View</a></td>
-									<td><a  href="javascript:deleteClass('${item.cid}')">Delete</a></td>
-								</tr>
-								<tr class="">
-									<td>3</td>
-									<td>粉彩窑工制瓷图瓶</td>
-									<td><a  href="/culture/class/viewClass.do?cid=${item.cid}">View</a></td>
-									<td><a  href="javascript:deleteClass('${item.cid}')">Delete</a></td>
-								</tr>
-								<tr class="">
-									<td>4</td>
-									<td>八瓣团花纹蓝琉璃盘</td>
-									<td><a  href="/culture/class/viewClass.do?cid=${item.cid}">View</a></td>
-									<td><a  href="javascript:deleteClass('${item.cid}')">Delete</a></td>
-								</tr>
-								<tr class="">
-									<td>5</td>
-									<td>兽叔盨</td>
-									<td><a  href="/culture/class/viewClass.do?cid=${item.cid}">View</a></td>
-									<td><a  href="javascript:deleteClass('${item.cid}')">Delete</a></td>
-								</tr>
-								<tr class="">
-									<td>6</td>
-									<td>中山王铁足铜鼎</td>
-									<td><a  href="/culture/class/viewClass.do?cid=${item.cid}">View</a></td>
-									<td><a  href="javascript:deleteClass('${item.cid}')">Delete</a></td>
-								</tr>
-								<tr class="">
-									<td>7</td>
-									<td>系链银火筋</td>
-									<td><a  href="/culture/class/viewClass.do?cid=${item.cid}">View</a></td>
-									<td><a  href="javascript:deleteClass('${item.cid}')">Delete</a></td>
-								</tr>
+								<c:forEach  items="${cbList}"  var="item"  varStatus="status">
+									<tr class="">
+										<td>${status.index+1 }</td>
+										<td>${item.title}</td>
+										<td><a  href="http://localhost:8080/crelic/home/display.do?culId=${item.identifier}" target="_blank">View</a></td>
+										<td><a  href="/culture/instance/editInstance.do?culId=${item.identifier}" target="_blank">修改</a></td>
+										<td><a  href="javascript:deleteInstance('${item.identifier}','${item.title}')">Delete</a></td>
+									</tr>
+								</c:forEach>
 								</tbody>
 							</table>
 						</div>
@@ -180,15 +148,15 @@
 		   TableEditable.init();
 		});
 		
-	  	function deleteClass(id){
+	  	function deleteInstance(culId,title){
             if (!confirm("确信要删除吗？")) return;
-            var url="/culture/class/delClass.do";
-            $.post(url,{cid:id},function(data){
-            	postDelClass(data);
+            var url="/culture/instance/del.do";
+            $.post(url,{culId:culId,title:title},function(data){
+            	postDelInstance(data);
             });
         }
 
-        function postDelClass(transport){
+        function postDelInstance(transport){
             var jresp = new JsonRespUtils(transport);
             if (jresp.isSuccessfully()){
          		location.reload();

@@ -31,4 +31,9 @@ public class CulturalServiceImpl extends BaseService implements CulturalService{
 		return getCulturalDao().delCultural(cbid);
 	}
 
+	public CulturalBean getCulturalById(String culId) {
+		// TODO Auto-generated method stub
+		return getCulturalDao().getCulturalById(culId);
+	}
+
 }

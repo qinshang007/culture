@@ -5,9 +5,9 @@ import java.util.List;
 
 public class OProperty {
 
-	private String pid;					//属性id
+	private int pid;					//属性id
 	
-	private String pfid;				//父属性id
+	private int pfid;					//父属性id
 	
 	private String pname;				//属性名字
 	
@@ -27,19 +27,19 @@ public class OProperty {
 	
 	private int del;					//属性是否被删除，0：正常，1：删除
 
-	public String getPid() {
+	public int getPid() {
 		return pid;
 	}
 
-	public void setPid(String pid) {
+	public void setPid(int pid) {
 		this.pid = pid;
 	}
 
-	public String getPfid() {
+	public int getPfid() {
 		return pfid;
 	}
 
-	public void setPfid(String pfid) {
+	public void setPfid(int pfid) {
 		this.pfid = pfid;
 	}
 

@@ -54,11 +54,6 @@ public class InstanceController extends BaseController{
 	@RequestMapping("/save.do")
 	public void saveInstance(HttpServletRequest request, HttpServletResponse response,CulturalBean cb) throws Exception{
 		try{
-			//取得朝代的id
-			String creation_date = cb.getCreation_date();
-			//根据朝代id获取朝代名字
-			creation_date = ocService.getNameById(creation_date);
-			cb.setCreation_date(creation_date);
 			//获取主图
 			String path = CommonConst.EW_FILE_PATH;
 			List<UploadFile> list = upload(request,response, path);
@@ -75,19 +70,72 @@ public class InstanceController extends BaseController{
 			//保存文物
 			cb.setComplete(0);
 			cb.setManager("lyp");
-//			clService.addCultural(cb);
-			//获取文物类别id
-			String classificationId = request.getParameter("classificationId");
+			//将实例保存到数据库
+			clService.addCultural(cb);
 			//将实例写入本体文件
-			instService.addInstance(request, cb, classificationId);
+			instService.addInstance(request, cb);
 			outputJsonResponse(response, true,"uploadSuccess");
 		}catch (RuntimeException e) {
 			logger.error("保存实例出错！" +  ",errMsg=" + e.getMessage());
 			outputJsonResponse(response, false, e.getMessage());
 		}
+	}
 	
+	/**
+	 * 保存实例
+	 * @param request
+	 * @param response
+	 * @throws Exception
+	 */
+	@RequestMapping("/edit.do")
+	public void editInstance(HttpServletRequest request, HttpServletResponse response,CulturalBean cb) throws Exception{
+		try{
+			//获取主图
+			String path = CommonConst.EW_FILE_PATH;
+			List<UploadFile> list = upload(request,response, path);
+			if(list.size()!=0){
+				String mainpic = list.get(0).getFileSrc();
+				cb.setMainpic(mainpic);
+			}
+			//保存文物
+			cb.setComplete(0);
+			cb.setManager("lyp");
+			//将实例保存到数据库
+			clService.updateCultural(cb);
+			//获取实例旧的名称
+			String oldTitle = request.getParameter("oldTitle");
+			//更新本体文件
+			instService.editInstance(request, cb, oldTitle);
+			outputJsonResponse(response, true,"updateSuccess");
+		}catch (RuntimeException e) {
+			logger.error("保存实例出错！" +  ",errMsg=" + e.getMessage());
+			outputJsonResponse(response, false, e.getMessage());
+		}
+
 	}
 
+	/**
+	 * 删除实例
+	 * @param request
+	 * @param response
+	 * @throws Exception
+	 */
+	@RequestMapping("/del.do")
+	public void delInstance(HttpServletRequest request, HttpServletResponse response) throws Exception{
+		try{
+			String culId = request.getParameter("culId");
+			String title = request.getParameter("title");
+			//更新数据库
+			clService.delCultural(culId);
+			//更新本体文件
+			instService.delInstance(title);
+			outputJsonResponse(response, true,"deleteSuccess");
+		}catch (RuntimeException e) {
+			logger.error("删除实例出错！" +  ",errMsg=" + e.getMessage());
+			outputJsonResponse(response, false, e.getMessage());
+		}
+	}
+	
 	/**
 	 * 获取二级概念数据
 	 * @param request
@@ -119,21 +167,15 @@ public class InstanceController extends BaseController{
 		try{
 			//获取一级概念，器物，织物，建筑，壁画
 			String type = request.getParameter("type");
-			OClass oc = ocService.getClassById(type);
-			String typename = oc.getCname();
 			//获取二级概念，也就是细的类别，如瓷器，陶器等
 			String classification = request.getParameter("classification");
-			OClass childoc = ocService.getClassById(classification);
-			String classificationname = childoc.getCname();
 			//获取创作朝代列表
 			OClass oclass = ocService.getClassByName("朝代");
 			List<OClass> creationDateList = ocService.getClassList(oclass);
 			//将参数存到map里头
 			Map map = new HashMap();
 			map.put("type", type);
-			map.put("typename", typename);
 			map.put("classification", classification);
-			map.put("classificationname", classificationname);
 			map.put("creationDateList", creationDateList);
 			return new ModelAndView("instance/addInstance").addAllObjects(map);
 		}catch (RuntimeException e) {
@@ -152,17 +194,14 @@ public class InstanceController extends BaseController{
 	@RequestMapping("/chooseClass.do")
 	public ModelAndView chooseClass(HttpServletRequest request, HttpServletResponse response) throws Exception{
 		try{
-			//查询数据库获取文物概念id
-			OClass oc = ocService.getClassByName("文物");
-			String cid = oc.getCid();
 			//获取文物概念的子概念
-			List<OClass> oclist = ocService.getSubClasses(cid, true);
+			List<OClass> oclist = ocService.getSubClasses("文物", true);
 			List<OClass> childlist = new ArrayList<OClass>();
 			if(oclist.size()!=0){
 				//取出第一个父节点
 				OClass parent = oclist.get(0);
-				String pcid = parent.getCid();
-				childlist = ocService.getSubClasses(pcid, true);
+				String pcname = parent.getCname();
+				childlist = ocService.getSubClasses(pcname, true);
 			}
 			Map map = new HashMap();
 			map.put("oclist", oclist);
@@ -176,4 +215,51 @@ public class InstanceController extends BaseController{
 		}
 	}
 	
+	/**
+	 * 返回实例列表
+	 * @param request
+	 * @param response
+	 * @throws Exception
+	 */
+	@RequestMapping("/instanceList.do")
+	public ModelAndView getInstanceList(HttpServletRequest request, HttpServletResponse response) throws Exception{
+		try{
+			List<CulturalBean> cbList = clService.getCulturalList();
+			return new ModelAndView("instance/instanceList").addObject("cbList",cbList);
+		}catch (RuntimeException e) {
+			logger.error("返回实例列表出错！" +  ",errMsg=" + e.getMessage());
+			outputJsonResponse(response, false, e.getMessage());
+			return null;
+		}
+	}
+	
+	/**
+	 * 修改实例
+	 * @param request
+	 * @param response
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping("/editInstance.do")
+	public ModelAndView editInstance(HttpServletRequest request, HttpServletResponse response) throws Exception{
+		try{
+			String culId = request.getParameter("culId");
+			CulturalBean cb = clService.getCulturalById(culId);
+			String type = cb.getType();
+			String classification = cb.getClassification();
+			//获取创作朝代列表
+			OClass oclass = ocService.getClassByName("朝代");
+			List<OClass> creationDateList = ocService.getClassList(oclass);
+			Map map = new HashMap();
+			map.put("cb", cb);
+			map.put("type", type);
+			map.put("classification", classification);
+			map.put("creationDateList", creationDateList);
+			return new ModelAndView("instance/editInstance").addAllObjects(map);
+		}catch (RuntimeException e) {
+			logger.error("修改实例出错！" +  ",errMsg=" + e.getMessage());
+			outputJsonResponse(response, false, e.getMessage());
+			return null;
+		}
+	}	
 }

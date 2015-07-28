@@ -6,6 +6,7 @@ import java.util.List;
 
 public class CulturalBean 
 {
+	private int id;							//id
 	private String classification;			//类型
 	private String title;					//名称
 	private String used_title;				//其他名称
@@ -45,7 +46,7 @@ public class CulturalBean
 	private String source;					//资料来源
 	private String rights;					//作品授权
 	
-	private int complete;				//是否编辑完成 ，1：未完成  2：完成
+	private int complete;					//是否编辑完成 ，1：未完成  2：完成
 	private String manager;					//录入者
 	private String type;					//大类，qiwu,zhiwu,jianzhu,bihua
 	private Timestamp crtime;				//创建时间
@@ -55,6 +56,13 @@ public class CulturalBean
 	private List<UploadFile> ewPicture;		//二维图片
 	private List<UploadFile> swPicture;		//三维图片
 	private List<UploadFile> video;			//视频
+	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	public String getClassification() {
 		return classification;
 	}

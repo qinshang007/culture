@@ -51,25 +51,23 @@ public class OPropertyServiceImpl extends BaseService implements OPropertyServic
 	}
 
 	/**
-	 * 根据概念id，获取所有与该概念关联的属性
+	 * 根据概念名字，获取所有与该概念关联的属性
 	 */
-	public List<OProperty> getPropertys(String cid) {
+	public List<OProperty> getPropertys(String cname) {
 		// TODO Auto-generated method stub
 		List<OProperty> oplist = new ArrayList<OProperty>();
 		try{
 			OntModel model = omodelFactory.getModel();
 			//获取概念
-			OntClass ontc = model.getOntClass(OModelFactory.NSC+cid);
+			OntClass ontc = model.getOntClass(OModelFactory.NSC+cname);
 			//获取概念的属性
 			ExtendedIterator<OntProperty> iter = ontc.listDeclaredProperties();
 			while(iter.hasNext()){
 				OntProperty ontp = iter.next();
-				String ontp_uri = ontp.toString();
-				String ontp_id = ontp_uri.substring(ontp_uri.indexOf('#')+1);
+				String ontp_name = ontp.getLocalName();
 				OProperty op = new OProperty();
 				List<OClass> rangeList = new ArrayList<OClass>();
-				op.setPname(ontp.getLabel("zh"));
-				op.setPid(ontp_id);
+				op.setPname(ontp_name);
 				//如果该属性是对象属性
 				if(ontp.isObjectProperty()){
 					op.setPtype(1);
@@ -83,11 +81,9 @@ public class OPropertyServiceImpl extends BaseService implements OPropertyServic
 							ExtendedIterator<OntClass> ontciter = rsc.listSubClasses(false);
 							while(ontciter.hasNext()){
 								OntClass suboc = ontciter.next();	//取出这个子概念
-								String uri = suboc.toString();
-								String id = uri.substring(uri.indexOf('#')+1);
+								String ocname = suboc.getLocalName();
 								OClass oc = new OClass();
-								oc.setCid(id);
-								oc.setCname(suboc.getLabel("zh"));
+								oc.setCname(ocname);
 								rangeList.add(oc);
 							}
 						}
@@ -96,10 +92,7 @@ public class OPropertyServiceImpl extends BaseService implements OPropertyServic
 				}else if(ontp.isDatatypeProperty()){//如果该属性是数据属性
 					op.setPtype(2);
 					OntResource rs = ontp.getRange();
-					OClass oc = new OClass();
-					String uri = rs.toString();
-					String id = uri.substring(uri.indexOf('#')+1);
-					oc.setCid(id);
+					op.setRange(rs.getLocalName());
 				}
 				oplist.add(op);
 			}

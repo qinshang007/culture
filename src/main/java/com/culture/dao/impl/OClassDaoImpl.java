@@ -51,14 +51,14 @@ public class OClassDaoImpl extends BaseDao implements OClassDao{
 	
 	public boolean addClass(OClass oclass) {
 		// TODO Auto-generated method stub
-		String object = null;
+		int object = 0;
 		boolean flag = false;
 		try {
-			object =(String) getSqlMapClientTemplate().insert("addClass",oclass);
+			object =(Integer) getSqlMapClientTemplate().insert("addClass",oclass);
 		}catch (Exception e) {
 			logger.error("添加概念信息出错！" +  ",errMsg=" + e.getMessage());
 		}
-		if (object != null) {
+		if (object != 0) {
 			flag = true;
 		}
 		return flag;

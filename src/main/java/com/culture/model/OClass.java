@@ -4,9 +4,9 @@ import java.sql.Timestamp;
 
 public class OClass {
 	
-	private String cid;					//¸ÅÄîid
+	private int cid;					//¸ÅÄîid
 	
-	private String cfid;				//¸¸¸ÅÄîid
+	private int cfid;				//¸¸¸ÅÄîid
 	
 	private String cname;				//¸ÅÄîÃû×Ö
 	
@@ -16,19 +16,19 @@ public class OClass {
 	
 	private int del;					//¸ÅÄîÊÇ·ñ±»É¾³ı£¬0£ºÕı³££¬1£ºÉ¾³ı
 
-	public String getCid() {
+	public int getCid() {
 		return cid;
 	}
 
-	public void setCid(String cid) {
+	public void setCid(int cid) {
 		this.cid = cid;
 	}
 
-	public String getCfid() {
+	public int getCfid() {
 		return cfid;
 	}
 
-	public void setCfid(String cfid) {
+	public void setCfid(int cfid) {
 		this.cfid = cfid;
 	}
 

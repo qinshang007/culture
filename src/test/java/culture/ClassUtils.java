@@ -20,7 +20,8 @@ public class ClassUtils {
 		//create model
 		OntModel model = ModelFactory.createOntologyModel(OntModelSpec.OWL_MEM);
 		//create class
-		OntClass  paper = model.createClass(NS+"Paper");
+		OntClass  paper = model.createClass(NS+"ндуб");
+		System.out.println(paper.getLocalName());
 		OntClass bestPaper = model.createClass(NS+"BestPaper");
 		paper.addSubClass(bestPaper);
 
@@ -60,7 +61,7 @@ public class ClassUtils {
 	
 	public static void main(String[] args){
 		ClassUtils cu  = new ClassUtils();
-		cu.listClass();
+		cu.cerateClass();
 	}
 	
 }

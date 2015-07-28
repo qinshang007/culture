@@ -17,8 +17,8 @@
 	
 	<!-- 添加属性 -->
 	<insert id="addProperty" parameterClass="oproperty">
-		insert into oproperty values(#pid#,#pfid#,#pname#,#ptype#,#isgeneral#,#time#,#del#)
-		<selectKey resultClass="String" keyProperty="pid">  
+		insert into oproperty (pfid,pname,ptype,isgeneral,time,del) values(#pfid#,#pname#,#ptype#,#isgeneral#,#time#,#del#)
+		<selectKey resultClass="int" keyProperty="pid">  
   		 	 SELECT @@IDENTITY as id  
  		 </selectKey> 
 	</insert>

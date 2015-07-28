@@ -4,7 +4,7 @@
 	<typeAlias alias="culturalBean" type="com.culture.model.CulturalBean" />
 	
 	<!-- 返回文物详情-->
-	<select id="getCultural" parameterClass="String" 
+	<select id="getCulturalById" parameterClass="String" 
 		 resultClass="culturalBean">
 		select * from culture where identifier = #culId#
 	</select>
@@ -12,21 +12,21 @@
 	<!-- 返回文物列表 -->
 	<select id="getCulturalList" 
 		resultClass="culturalBean">
-		select identifier,title,shape,mainpic from culture where del = #del# order by crtime desc
+		select identifier,title,shape,mainpic from culture order by crtime desc
 	</select>
 	
 	<!-- 添加文物 -->
 	<insert id="addCultural" parameterClass="culturalBean">
 		insert into culture (classification,title,used_title,c_level,creation_date,creation_time,place_of_origin,creator,measurement,excavation_date,excavation_place,current_location,exhibition_history,location,shape,pattern,color,structure,decoration,scene,c_usage,symbolic_meaning,aesthetic_desc,social_history_info,material,technique,history_info,folklore,relation,identifier,source,rights,complete,manager,type,crtime,mainpic) 
 		values(#classification#,#title#,#used_title#,#c_level#,#creation_date#,#creation_time#,#place_of_origin#,#creator#,#measurement#,#excavation_date#,#excavation_place#,#current_location#,#exhibition_history#,#location#,#shape#,#pattern#,#color#,#structure#,#decoration#,#scene#,#c_usage#,#symbolic_meaning#,#aesthetic_desc#,#social_history_info#,#material#,#technique#,#history_info#,#folklore#,#relation#,#identifier#,#source#,#rights#,#complete#,#manager#,#type#,#crtime#,#mainpic#) 
-		<selectKey resultClass="String" keyProperty="identifier">  
+		<selectKey resultClass="int" keyProperty="id">  
   		 	 SELECT @@IDENTITY as id  
  		 </selectKey> 
 	</insert>
 
 	<!--删除文物 -->
 	<update id="delCultural" parameterClass="String">
-		delete from collect where identifier = #identifier#
+		delete from culture where identifier = #identifier#
 	</update>
 	
 	<!--更新文物 -->

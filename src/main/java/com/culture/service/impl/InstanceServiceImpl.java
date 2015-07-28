@@ -73,20 +73,20 @@ public class InstanceServiceImpl implements InstanceService{
 	/**
 	 * 将文物实例写入到本体文件中
 	 */
-	public void addInstance(HttpServletRequest request,CulturalBean cb,String classificationId) {
+	public void addInstance(HttpServletRequest request,CulturalBean cb) {
 		// TODO Auto-generated method stub
 		try{
+			//取得文物的类别
+			String classification = cb.getClassification();
 			//取得本体概念模型
 			OntModel model = omodelFactory.getModel();
 			//查询本体文件，获得文物概念
-			OntClass ontc = model.getOntClass(OModelFactory.NSC+classificationId);
-			//创建实例
-			String identifier = cb.getIdentifier();
+			OntClass ontc = model.getOntClass(OModelFactory.NSC+classification);
 			//取得本体实例模型
 			OntModel instanceModel = omodelFactory.getInstanceModel();
-			Individual cul = instanceModel.createIndividual(OModelFactory.NSI+identifier,ontc);
+			Individual cul = instanceModel.createIndividual(OModelFactory.NSI+cb.getTitle(),ontc);
 			//获取文物概念的属性列表
-			List<OProperty> opList = opService.getPropertys(classificationId);
+			List<OProperty> opList = opService.getPropertys(classification);
 			//为文物概念的每个属性赋值
 			for(int i=0;i<opList.size();i++){
 				OProperty op = opList.get(i);
@@ -94,7 +94,7 @@ public class InstanceServiceImpl implements InstanceService{
 				if(op.getPtype()==1){
 					String opname = op.getPname();
 					String opvalue = request.getParameter(propertyMap.get(opname));
-					OntProperty ontp = model.getObjectProperty(OModelFactory.NSP+op.getPid());
+					OntProperty ontp = model.getObjectProperty(OModelFactory.NSP+opname);
 					//获取属性的值，为一个概念
 					OntClass value = model.getOntClass(OModelFactory.NSC+opvalue);
 					cul.addProperty(ontp, value);
@@ -102,11 +102,11 @@ public class InstanceServiceImpl implements InstanceService{
 					String opname = op.getPname();
 					String opvalue = "";
 					if(opname.equals("标识符")){
-						opvalue = identifier;
+						opvalue = cb.getIdentifier();
 					}else{
 						opvalue = request.getParameter(propertyMap.get(opname));
 					}
-					OntProperty ontp = model.getDatatypeProperty(OModelFactory.NSP+op.getPid());
+					OntProperty ontp = model.getDatatypeProperty(OModelFactory.NSP+opname);
 					cul.addProperty(ontp,opvalue);
 				}
 			}
@@ -121,6 +121,55 @@ public class InstanceServiceImpl implements InstanceService{
 
 		}catch(Exception e){
 			logger.error("将文物实例写入到本体文件出错："+e.getMessage());
+		}
+	}
+
+
+	/**
+	 * 更新本体实例
+	 */
+	public void editInstance(HttpServletRequest request, CulturalBean cb,String oldTitle) {
+		// TODO Auto-generated method stub
+		try{
+			//取得本体实例模型
+			OntModel instanceModel = omodelFactory.getInstanceModel();
+			//取得旧的本体实例
+			Individual oldCul = instanceModel.getIndividual(OModelFactory.NSI+oldTitle);
+			//删除旧的实例
+			if(oldCul != null)
+				oldCul.remove();
+			//生成新的实例
+			addInstance(request,cb);
+		}catch(Exception e){
+			logger.error("修改本体实例文件出错："+e.getMessage());
+		}
+	}
+
+
+	/**
+	 * 删除本体实例
+	 */
+	public void delInstance(String title) {
+		// TODO Auto-generated method stub
+		try{
+			//取得本体实例模型
+			OntModel instanceModel = omodelFactory.getInstanceModel();
+			//取得旧的本体实例
+			Individual oldCul = instanceModel.getIndividual(OModelFactory.NSI+title);
+			//删除旧的实例
+			if(oldCul != null)
+				oldCul.remove();
+			//更新owl文件
+			File file = new File(omodelFactory.getInstanceFile());
+			try{
+				OutputStream out = new FileOutputStream(file);
+				instanceModel.write(out);
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+
+		}catch(Exception e){
+			logger.error("删除本体实例文件出错："+e.getMessage());
 		}
 	}
 }

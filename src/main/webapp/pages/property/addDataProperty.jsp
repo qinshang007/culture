@@ -109,7 +109,7 @@
 									<div class="controls">
 										<select id="domain" data-placeholder="请选择概念" class="chosen span6" multiple="multiple" tabindex="6">
 											<c:forEach  items="${oclist}"  var="item"  varStatus="status">
-												<option value="${item.cid}">${item.cname}</option>
+												<option value="${item.cname}">${item.cname}</option>
 											</c:forEach>
 										</select>
 									</div>

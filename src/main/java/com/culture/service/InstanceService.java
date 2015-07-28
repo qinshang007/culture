@@ -6,6 +6,10 @@ import com.culture.model.CulturalBean;
 
 public interface InstanceService {
 	
-	public void addInstance(HttpServletRequest request,CulturalBean cb,String classifcationId);
+	public void addInstance(HttpServletRequest request,CulturalBean cb);
+	
+	public void delInstance(String title);
+	
+	public void editInstance(HttpServletRequest request,CulturalBean cb,String oldTitle);
 	
 }

@@ -58,22 +58,20 @@ public class OClassServiceImpl extends BaseService implements OClassService{
 	 * 如果direct为true，则返回概念的直系子概念
 	 * 如果direct为false,则返回概念的所有子概念
 	 */
-	public List<OClass> getSubClasses(String cid, boolean direct) {
+	public List<OClass> getSubClasses(String cname, boolean direct) {
 		// TODO Auto-generated method stub
 		List<OClass> oclist = new ArrayList<OClass>();
 		try{
 			OntModel model = omodelFactory.getModel();
 			//查询本体文件，获得文物概念
-			OntClass ontc = model.getOntClass(OModelFactory.NSC+cid);
+			OntClass ontc = model.getOntClass(OModelFactory.NSC+cname);
 			//获取文物概念的所有子概念
 			ExtendedIterator<OntClass> iter = ontc.listSubClasses(direct);
 			while(iter.hasNext()){
 				OntClass children = iter.next();
-				String uri = children.toString();
-				String id = uri.substring(uri.indexOf('#')+1);
+				String ocname = children.getLocalName();
 				OClass temp = new OClass();
-				temp.setCname(children.getLabel("zh"));
-				temp.setCid(id);
+				temp.setCname(ocname);
 				oclist.add(temp);
 			}
 		}catch(Exception e){

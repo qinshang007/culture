@@ -41,15 +41,22 @@ public class CreateInstance {
 		DatatypeProperty name = model.createDatatypeProperty(NSP+"name");
 		name.hasDomain(person);
 		name.hasRange(XSD.xstring);
-		//create instances
+		//create instances1
 		Individual lyp = professor.createIndividual(NSI+"LYP");
 		Individual computer_and_science_college = college.createIndividual(NSI+"ComputerAndScienceCollege"); 
 		lyp.addProperty(hasAffiliation, computer_and_science_college);
 		lyp.addProperty(name, "林炀平");
+		//create instances2
+		Individual lpf = professor.createIndividual(NSI+"LPF");
+		lpf.addProperty(hasAffiliation, computer_and_science_college);
+		lpf.addProperty(name, "李鹏飞");		
 		//set namespace prefix
 		model.setNsPrefix("NSC", NSC);
 		model.setNsPrefix("NSP", NSP);
 		//write XML
+		model.write(System.out);
+		//delete lfp instance
+		lpf.remove();
 		model.write(System.out);
 		//write XML file
 		File file = new File("test.owl");
