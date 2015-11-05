@@ -7,19 +7,25 @@ import com.culture.model.OProperty;
 
 public interface OPropertyDao {
 	
-	/*·µ»ØÊôĞÔÁĞ±í*/
+	/*è¿”å›å±æ€§åˆ—è¡¨*/
 	public List<OProperty> getPropertyList();		
 	
-	/*¸ù¾İid·µ»ØÄ³¸öÊôĞÔ*/
-	public OProperty getPropertyById(String id);			
+	/*æ ¹æ®idè¿”å›æŸä¸ªå±æ€§*/
+	public OProperty getPropertyById(int id);		
 	
-	/*Ìí¼ÓÊôĞÔ*/
+	/*æ ¹æ®åå­—è¿”å›æŸä¸ªå±æ€§*/
+	public OProperty getPropertyByName(String pname);
+	
+	/*æ·»åŠ å±æ€§*/
 	public boolean addProperty(OProperty oproperty);
 	
-	/*É¾³ıÊôĞÔ*/
-	public boolean delProperty(String id);
+	/*åˆ é™¤å±æ€§*/
+	public boolean delProperty(int pid);
 	
-	/*¸ü¸ÄÊôĞÔ*/
+	/*å‡çº§å±æ€§*/
+	public boolean upgradeProperty(int pid);
+	
+	/*æ›´æ”¹å±æ€§*/
 	public boolean updateProperty(OProperty oproperty);
 	
 }

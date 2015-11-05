@@ -4,9 +4,15 @@
 	<typeAlias alias="oproperty" type="com.culture.model.OProperty" />
 
 	<!-- 根据id获得属性-->
-	<select id="getByPropertyId" parameterClass="String"
+	<select id="getByPropertyId" parameterClass="int"
 		resultClass="oproperty">
-		select * from oproperty where pid = #pid# 
+		select a.*,b.pname as pfname from oproperty as a left join oproperty as b on a.pfid = b.pid where a.pid = #pid# 
+	</select>
+
+	<!-- 根据名字获得属性-->
+	<select id="getPropertyByName" parameterClass="String"
+		resultClass="oproperty">
+		select * from oproperty where pname = #pname# 
 	</select>
 
 	<!-- 根据属性列表 -->
@@ -17,20 +23,25 @@
 	
 	<!-- 添加属性 -->
 	<insert id="addProperty" parameterClass="oproperty">
-		insert into oproperty (pfid,pname,ptype,isgeneral,time,del) values(#pfid#,#pname#,#ptype#,#isgeneral#,#time#,#del#)
+		insert into oproperty (pfid,pname,ptype,isgeneral,pdomain,prange,username) values (#pfid#,#pname#,#ptype#,#isgeneral#,#pdomain#,#prange#,#username#)
 		<selectKey resultClass="int" keyProperty="pid">  
   		 	 SELECT @@IDENTITY as id  
  		 </selectKey> 
 	</insert>
 
 	<!--删除属性 -->
-	<update id="delProperty" parameterClass="oproperty">
-		update oproperty set del=#del# where pid=#pid#
+	<update id="delProperty" parameterClass="int">
+		delete from oproperty where pid=#pid#
 	</update>
 	
-		<!--更新概念 -->
+	<!-- 升级属性 -->
+	<update id="upgradeProperty" parameterClass="int">
+		update oproperty set pfid=0 where pfid=#pid#
+	</update>
+	
+	<!--更新概念 -->
 	<update id="updateProperty" parameterClass="oproperty">
-		update oproperty set pname=#pname#,pfid=#pfid#,ptype=#ptype#,isgeneral=#isgeneral# where pid=#pid#
+		update oproperty set pname=#pname#,pfid=#pfid#,ptype=#ptype#,isgeneral=#isgeneral#,pdomain=#pdomain#,prange=#prange# where pid=#pid#
 	</update>
 	
 

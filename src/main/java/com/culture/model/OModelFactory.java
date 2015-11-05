@@ -7,23 +7,31 @@ import java.io.FileNotFoundException;
 import com.hp.hpl.jena.ontology.OntModel;
 import com.hp.hpl.jena.ontology.OntModelSpec;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
+import com.hp.hpl.jena.rdf.model.Resource;
+import com.hp.hpl.jena.vocabulary.XSD;
 
 public class OModelFactory {
 	
-	//owlÎÄ¼şÂ·¾¶
+	//owlæ–‡ä»¶è·¯å¾„
 	private String owlFile;
 	
-	//ÊµÀıÎÄ¼şÂ·¾¶
+	//å®ä¾‹æ–‡ä»¶è·¯å¾„
 	private String instanceFile;
 	
-	//ÀàÃüÃû¿Õ¼ä
+	//è§„åˆ™æ–‡ä»¶è·¯å¾„
+	private String ruleFile;
+	
+	//ç±»å‘½åç©ºé—´
 	public static final String NSC = "http://culture.zju.edu.cn/class#";
 	
-	//ÊôĞÔÃüÃû¿Õ¼ä
+	//å±æ€§å‘½åç©ºé—´
 	public static final String NSP = "http://culture.zju.edu.cn/property#";
 	
-	//ÊµÀıÃüÃû¿Õ¼ä
+	//å®ä¾‹å‘½åç©ºé—´
 	public static final String NSI = "http://culture.zju.edu.cn/instance#";
+	
+	//æ•°æ®ç±»å‹
+	public static Resource[] resource = new Resource[]{XSD.xstring,XSD.xint,XSD.xfloat,XSD.date};
 	
 	public String getOwlFile() {
 		return owlFile;
@@ -40,14 +48,22 @@ public class OModelFactory {
 	public void setInstanceFile(String instanceFile) {
 		this.instanceFile = instanceFile;
 	}
+	
+	public String getRuleFile() {
+		return ruleFile;
+	}
 
-	//µÃµ½±¾ÌåÄ£ĞÍ
+	public void setRuleFile(String ruleFile) {
+		this.ruleFile = ruleFile;
+	}
+
+	//å¾—åˆ°æœ¬ä½“æ¨¡å‹
 	public OntModel getModel() {
 		OntModel model = ModelFactory.createOntologyModel();
 		model.setNsPrefix("NSC", NSC);
 		model.setNsPrefix("NSP", NSP);
 		File owl = new File(owlFile);
-		//Èç¹û±¾ÌåÎÄ¼ş´æÔÚµÄ»°£¬½«±¾ÌåÎÄ¼ş¶ÁÈëÄ£ĞÍ
+		//å¦‚æœæœ¬ä½“æ–‡ä»¶å­˜åœ¨çš„è¯ï¼Œå°†æœ¬ä½“æ–‡ä»¶è¯»å…¥æ¨¡å‹
 		if(owl.exists())
 		 try {
 			model.read(new FileInputStream(owlFile),"");
@@ -59,14 +75,14 @@ public class OModelFactory {
 		return model;
 	}
 
-	//µÃµ½ÊµÀıÄ£ĞÍ
+	//å¾—åˆ°å®ä¾‹æ¨¡å‹
 	public OntModel getInstanceModel() {
 		OntModel model = ModelFactory.createOntologyModel();
 		model.setNsPrefix("NSC", NSC);
 		model.setNsPrefix("NSP", NSP);
 		model.setNsPrefix("NSI", NSI);
 		File owl = new File(instanceFile);
-		//Èç¹û±¾ÌåÎÄ¼ş´æÔÚµÄ»°£¬½«±¾ÌåÎÄ¼ş¶ÁÈëÄ£ĞÍ
+		//å¦‚æœæœ¬ä½“æ–‡ä»¶å­˜åœ¨çš„è¯ï¼Œå°†æœ¬ä½“æ–‡ä»¶è¯»å…¥æ¨¡å‹
 		if(owl.exists())
 		 try {
 			model.read(new FileInputStream(instanceFile),"");

@@ -7,7 +7,7 @@ import org.springframework.util.Assert;
 
 public class CodeGenerator {
 	/**
-	 * ÊıÓ¢×Ö·û´®
+	 * æ•°è‹±å­—ç¬¦ä¸²
 	 */
 	private static String ALPHANUMERIC_STR;
 	static {
@@ -17,7 +17,7 @@ public class CodeGenerator {
 	}
 
 	/**
-	 * Éú³É32¸ö×Ö·û³¤¶ÈµÄUUID±àÂë´®£¬ËùÓĞµÄ×ÖÄ¸×ª»»Îª´óĞ´µÄ¸ñÊ½¡£
+	 * ç”Ÿæˆ32ä¸ªå­—ç¬¦é•¿åº¦çš„UUIDç¼–ç ä¸²ï¼Œæ‰€æœ‰çš„å­—æ¯è½¬æ¢ä¸ºå¤§å†™çš„æ ¼å¼ã€‚
 	 */
 	public static String createUUID() {
 		UUID uuid = UUID.randomUUID();
@@ -25,28 +25,28 @@ public class CodeGenerator {
 	}
 
 	/**
-	 * »ñÈ¡srcStrµÄSHA-1±àÂë£¨Ê®Áù½øÖÆ±íÊ¾£©
+	 * è·å–srcStrçš„SHA-1ç¼–ç ï¼ˆåå…­è¿›åˆ¶è¡¨ç¤ºï¼‰
 	 */
 	public static String getSHADigest(String srcStr) {
 		return getDigest(srcStr, "SHA-1");
 	}
 
 	/**
-	 * »ñÈ¡srcStrµÄMD5±àÂë£¨Ê®Áù½øÖÆ±íÊ¾£©
+	 * è·å–srcStrçš„MD5ç¼–ç ï¼ˆåå…­è¿›åˆ¶è¡¨ç¤ºï¼‰
 	 */
 	public static String getMD5Digest(String srcStr) {
 		return getDigest(srcStr, "MD5");
 	}
 
 	/**
-	 * ²úÉú6Î»Ó¢ÊıËæ»úÊı,Çø·Ö´óĞ¡Ğ´
+	 * äº§ç”Ÿ6ä½è‹±æ•°éšæœºæ•°,åŒºåˆ†å¤§å°å†™
 	 */
 	public static String getUpdateKey() {
 		return getRandomStr(6);
 	}
 
 	/**
-	 * ²úÉúÒ»¸öËæ»úÓ¢Êı×Ö·û´®£¬Çø·Ö´óĞ¡Ğ´
+	 * äº§ç”Ÿä¸€ä¸ªéšæœºè‹±æ•°å­—ç¬¦ä¸²ï¼ŒåŒºåˆ†å¤§å°å†™
 	 */
 	public static String getRandomStr(int length) {
 		int srcStrLen = ALPHANUMERIC_STR.length();
@@ -60,7 +60,7 @@ public class CodeGenerator {
 		return sb.toString();
 	}
     /*
-     * µÃµ½ÏûÏ¢ÕªÒª
+     * å¾—åˆ°æ¶ˆæ¯æ‘˜è¦
      */
 	private static String getDigest(String srcStr, String alg) {
 		Assert.notNull(srcStr);
@@ -76,7 +76,7 @@ public class CodeGenerator {
 	}
 
 	/**
-	 * ¶ş½øÖÆ×ªÊ®Áù½øÖÆ×Ö·û´®
+	 * äºŒè¿›åˆ¶è½¬åå…­è¿›åˆ¶å­—ç¬¦ä¸²
 	 */
 	private static String byte2hex(byte[] b) {
 		StringBuffer hs = new StringBuffer();

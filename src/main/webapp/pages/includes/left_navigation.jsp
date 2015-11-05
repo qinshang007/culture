@@ -50,10 +50,13 @@
 					</a>
 					<ul class="sub-menu">
 						<li >
-							<a href="/culture/news/list.do?newstype=3&subtype=1">添加规则</a>
+							<a href="/culture/rule/addRule.do?type=1">添加一元规则</a>
 						</li>
 						<li >
-							<a href="/culture/news/list.do?newstype=3&subtype=2">规则列表</a>
+							<a href="/culture/rule/addRule.do?type=2">添加二元规则</a>
+						</li>
+						<li >
+							<a href="/culture/rule/ruleList.do">规则列表</a>
 						</li>
 					</ul>
 				</li>

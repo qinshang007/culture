@@ -5,7 +5,7 @@
 			<div class="container-fluid">
 				<!-- BEGIN LOGO -->
 				<a class="brand" href="/pet/reservation/rsList.do">
-					<img src="/pet/media/image/logo.png" alt="logo" />
+					<img src="/culture/media/image/logo.png" alt="logo" />
 				</a>
 				<!-- END LOGO -->
 			</div>

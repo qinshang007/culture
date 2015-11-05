@@ -82,7 +82,7 @@
 									<label class="control-label">名称</label>
 									<div class="controls">
 										<input id="cname" type="text" class="span6 m-wrap" name="cname" />
-										<span class="help-inline">必填</span>
+										<span id="cnameSpan" class="help-inline">必填</span>
 									</div>
 								</div>
 								<div class="control-group">
@@ -90,11 +90,11 @@
 									<div class="controls">
 										<select id="cfid" class="span6 chosen" data-placeholder="选择父概念" tabindex="1" name="cfid">
 											<c:choose>
-												<c:when test="${not empty cfid}">
-													<option value="${cfid}"><c:if test="${not empty cfname}">${cfname}</c:if></option>
+												<c:when test="${cfid == 0}">
+													<option value="0">无</option>
 												</c:when>
 												<c:otherwise>
-													<option value="0">无</option>
+													<option value="${cfid}"><c:if test="${not empty cfname}">${cfname}</c:if></option>							
 												</c:otherwise>
 											</c:choose>
 											<c:forEach  items="${oclist}"  var="item"  varStatus="status">
@@ -152,13 +152,42 @@
 	<script src="/culture/media/js/app.js"></script>
 	<!-- END PAGE LEVEL SCRIPTS -->
 	<script>
+	
+		var check = true;	//验证概念名字是否重复
+		
 		jQuery(document).ready(function() {       
 		   // initiate layout and plugins
 		   App.init();
 		});
 		
+		//验证概念名字是否存在
+		$(function () {//加载事件
+            var cnameInput = $("#cname");//id为用户名文本框id
+            //光标离开事件
+            cnameInput.blur(function(){//function为匿名函数
+                var url="/culture/class/isCnameExist.do";
+                var cname = $("#cname").val();
+                $.post(url,{cname:cname},function(data){
+                    var jresp = new JsonRespUtils(data);
+                    if (jresp.isSuccessfully()){
+                    	$("#cnameSpan").html('概念名字已存在！');
+                    	$("#cnameSpan").css({"color":"red"});
+                 		cnameInput.focus();
+                 		check = false;
+                    }else{
+                    	$("#cnameSpan").html('必填');
+                    	check = true;
+                    }
+                });
+           });
+ 		});
+		
 		
 		function submit(){
+			if(!check){
+				alert("概念名字已存在！");
+				return;
+			}
 			var URL = "/culture/class/save.do";
 			var cname = $("#cname").val();
 			var cfid = $("#cfid").val();

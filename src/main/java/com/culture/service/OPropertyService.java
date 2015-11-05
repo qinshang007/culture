@@ -3,26 +3,39 @@ package com.culture.service;
 import java.util.List;
 
 import com.culture.model.OProperty;
+import com.hp.hpl.jena.ontology.OntProperty;
 
 public interface OPropertyService {
 	
-	/*·µ»ØÊôĞÔÁĞ±í*/
+	/*è¿”å›å±æ€§åˆ—è¡¨*/
 	public List<OProperty> getPropertyList();		
 	
-	/*¸ù¾İid·µ»ØÄ³¸öÊôĞÔ*/
-	public OProperty getPropertyById(String id);			
+	/*æ ¹æ®idè¿”å›æŸä¸ªå±æ€§*/
+	public OProperty getPropertyById(int id);	
 	
-	/*Ìí¼ÓÊôĞÔ*/
+	/*æ ¹æ®å±æ€§åå­—è¿”å›å±æ€§*/
+	public OProperty getPropertyByName(String pname);
+	
+	/*æ·»åŠ å±æ€§*/
 	public boolean addProperty(OProperty OProperty);
 	
-	/*É¾³ıÊôĞÔ*/
-	public boolean delProperty(String id);
+	/*åˆ é™¤å±æ€§*/
+	public boolean delProperty(String pid,String pname);
 	
-	/*¸ü¸ÄÊôĞÔ*/
-	public boolean updateProperty(OProperty oproperty);
+	/*æ›´æ”¹å±æ€§*/
+	public boolean updateProperty(OProperty oproperty,String oldPname);
 	
-	/*¸ù¾İ¸ÅÄîid£¬»ñµÃËùÓĞÓëËüÏà¹ØµÄÊôĞÔ*/
+	/*æ ¹æ®æ¦‚å¿µidï¼Œè·å¾—æ‰€æœ‰ä¸å®ƒç›¸å…³çš„å±æ€§*/
 	public List<OProperty> getPropertys(String cid);
+	
+	/*å°†OntPropertyè½¬æ¢ä¸ºOProeprty*/
+	public OProperty transfer(OntProperty ontp);
+	
+	/*è¿”å›éœ€è¦åˆ¶å®šè§„åˆ™çš„å±æ€§åˆ—è¡¨*/
+	public List<OProperty> getRulePropertys();
+	
+	/*éªŒè¯å±æ€§åå­—æ˜¯å¦å­˜åœ¨*/
+	public boolean isPropertyExist(String pname);
 
 	
 }

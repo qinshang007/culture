@@ -1,0 +1,2853 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:NSP="http://culture.zju.edu.cn/property#"
+    xmlns:NSC="http://culture.zju.edu.cn/class#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#" > 
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#中元古代">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#元古宙"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#兴盛(审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#铁器">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#器物"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#钻">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#器型"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#铜">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#无机质"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#繁茂(审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#光洁(审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#状态稳定，不需修复">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#保存状态"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#盛器">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#功能"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#吉利(审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#美感">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#展览">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#公元前8世纪">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#公元纪年"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#萧条(审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#汹涌澎湃(审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#门坑窑">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#陶瓷窑址"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#情趣">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#平庸(审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#丰满(审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#公元前18世纪">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#公元纪年"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#公元7世纪">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#公元纪年"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#卑鄙(审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#骨角牙">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#有机质"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#质朴(审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#文物">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#富贵（审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#器型">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#糟粕(审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#拉神纪">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#新元古代"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#长治窑">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#陶瓷窑址"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#五彩缤纷(审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#鼎盛(审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#浓郁(审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#杂项（功能）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#功能"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#火树银花(审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#柴窑">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#陶瓷窑址"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#勾挂榫   ">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#榫卯 "/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#烦人(审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#宝丰窑">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#陶瓷窑址"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#神秘（审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#纯洁（审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#始太古代">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#太古宙"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#丰盈(审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#抱肩榫   ">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#榫卯 "/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#璀璨(审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/property#关联">
+    <rdfs:domain rdf:resource="http://culture.zju.edu.cn/class#文物"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#平安（审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#乏味(审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#绘画">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#器物"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#固结纪">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#古元古代"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#滑动结构     ">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#结构 "/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#摆件">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#使用情境"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#公元8世纪">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#公元纪年"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#庄严（审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#石">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#无机质"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#独特(审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#未知来源">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#来源"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/property#历史信息">
+    <rdfs:domain rdf:resource="http://culture.zju.edu.cn/class#文物"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#结构">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#红艳艳(审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#夹头榫   ">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#榫卯 "/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/property#结构">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:range rdf:resource="http://culture.zju.edu.cn/class#结构"/>
+    <rdfs:domain rdf:resource="http://culture.zju.edu.cn/class#建筑"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/property#现藏地点">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://culture.zju.edu.cn/class#文物"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#墓室壁画">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#壁画"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#花口">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#器形"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#拙劣(审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#金银器">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#器物"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#靛青">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#色彩"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#审美客体">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#当阳峪窑">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#陶瓷窑址"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#风行一时(审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#成冰纪">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#新元古代"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#公元16世纪">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#公元纪年"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#莺歌燕舞(审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#精美(审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#齿连接     ">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#连接结构 "/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#泥器">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#器物"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#素雅（审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#第四纪">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#新生代"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#梅花纹">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#纹饰"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#精雕细镂(审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#公元前19世纪">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#公元纪年"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#奔驰(审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#正式名称">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#器物名称"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#美中不足(审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#复合或组合质地">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#材质"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#可以右键另存为   ">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#授权"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#宝石">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#无机质"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#寺观壁画">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#壁画"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#白璧微瑕(审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#泉州窑">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#陶瓷窑址"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#斑斓（审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#繁昌窑">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#陶瓷窑址"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#斧">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#器型"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#寂静(审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class# 浑浊 (审美） ">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#繁缛（审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#纯朴(审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#非出土文物">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#保存状态">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#壁画">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#文物"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#公元前20世纪">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#公元纪年"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#粽角榫   ">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#榫卯 "/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#特殊(审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#轻佻(审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#坛庙建筑">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#功能"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#福寿（审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#南安窑">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#陶瓷窑址"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#飞扬(审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#风采(审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#安静（审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#浦城窑">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#陶瓷窑址"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#铁">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#无机质"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#公元14世纪">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#公元纪年"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#交城窑">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#陶瓷窑址"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#诱人(审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#授权">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#风平浪静(审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#气壮山河(审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#富丽(审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#创作者">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/property#使用方式">
+    <rdfs:domain rdf:resource="http://culture.zju.edu.cn/class#文物"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#生气勃勃(审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#干瘦(审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#表象">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#禁止右键另存为   ">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#授权"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#石炭纪">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#古生代"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#格角榫   ">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#榫卯 "/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#奔跑(审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#织绣">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#器物"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#其他无机质">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#无机质"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/property#材质">
+    <rdfs:domain rdf:resource="http://culture.zju.edu.cn/class#文物"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#锡">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#无机质"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#已修复">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#保存状态"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#公元15世纪">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#公元纪年"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#削">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#器型"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#热闹（审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#砖瓦">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#器物"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#洁白(审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#清净（审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#出众(审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#甲骨简牍">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#器物"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#雨海代">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#冥古宙"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#出色(审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#标致(审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#百花盛开(审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#红通通(审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/property#地域环境">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://culture.zju.edu.cn/class#文物"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#公元9世纪">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#公元纪年"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#花红柳绿(审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#黑灯瞎火(审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#衰亡(审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#心理距离">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#撕裂">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#完残状态"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#肮脏(审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#延展纪">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#中元古代"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#可爱(审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#明亮（审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#公元前7世纪">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#公元纪年"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#污浊(审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#欢快(审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#漳浦窑">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#陶瓷窑址"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#标新立异(审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#淡雅(审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#新生代">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#显生宙"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#太古宙">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#地质年代"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#建筑">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#文物"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#绚烂(审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#静谧(审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#怀仁窑">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#陶瓷窑址"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#织物">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#文物"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#清新(审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#有机复合或组合">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#复合或组合质地"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#明澈(审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#叱咤风云(审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#飘舞(审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#精华(审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#馥郁(审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#器物">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#文物"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#吉庆(审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#货币（功能）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#功能"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#翠绿（审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#郏县窑">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#陶瓷窑址"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#公元13世纪">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#公元纪年"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#金玉满堂">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#象征意义"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#华美(审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#泥">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#无机质"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/property#作品授权">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://culture.zju.edu.cn/class#文物"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#奥陶纪">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#古生代"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#清淡(审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#风格(审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#半榫   ">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#榫卯 "/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#时尚(审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#勃然(审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#各式各样(审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#丑恶(审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#丝织物">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#织物"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#贵重(审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#瑰丽(审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#纹路(审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#风俗(审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#芬芳(审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#完美无缺(审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#文雅(审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#公元前10世纪">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#公元纪年"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#新颖(审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#喜庆（审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#光润(审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#红润(审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#飞舞(审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#碌武窑">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#陶瓷窑址"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#风姿(审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#真实(审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#碧绿">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#色彩"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#色彩">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#霍县窑">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#陶瓷窑址"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#轻灵（审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#德化窑">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#陶瓷窑址"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#铅">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#无机质"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#插肩榫   ">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#榫卯 "/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#赤峰窑">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#陶瓷窑址"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#抽象(审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#白净(审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#绮丽(审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#粗劣(审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#热情(审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#古太古代">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#太古宙"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#砖瓦（材质）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#无机质"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#锄">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#器型"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#200万年至公元前21世纪">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#公元纪年"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#宫廷建筑">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#功能"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/property#审美">
+    <rdfs:domain rdf:resource="http://culture.zju.edu.cn/class#文物"/>
+    <rdfs:range rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#名列前茅(审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#材质">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#锥">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#器型"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#拣选">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#来源"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#优美(审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#风韵(审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#公元5世纪">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#公元纪年"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#审美意象">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#毛">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#织物"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#单一质地">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#材质"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#魁伟(审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#可人(审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class# 乐器">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#功能"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#未定级文物">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#级别"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#各有千秋(审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#古老(审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#乌黑(审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#粗糙(审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#闽清窑">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#陶瓷窑址"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#珍贵文物 ">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#级别"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#公元6世纪">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#公元纪年"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#登封窑">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#陶瓷窑址"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#审美观">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#简朴(审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#竹">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#有机质"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#淳朴(审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#手工工具">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#功能"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#奔腾(审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#陶器">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#器物"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#典雅（审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#暗榫   ">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#榫卯 "/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#无人问津(审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#显生宙">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#地质年代"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#出土文物">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#光亮(审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#无机复合或组合">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#复合或组合质地"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#公元前11世纪">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#公元纪年"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#一级文物 ">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#珍贵文物 "/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#高雅(审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#明净(审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#社会距离">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#瑕不掩瑜(审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#纸">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#有机质"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#黯然（审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#酒器">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#功能"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#一般(审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/property#其他名称">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://culture.zju.edu.cn/class#文物"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#青铜器">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#器物"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#姿势(审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#邓窑">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#陶瓷窑址"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#陶">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#无机质"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#辉煌(审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#饱满(审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#照虎画猫(审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#昂贵（审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#死气沉沉(审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#如意（审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#长短榫   ">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#榫卯 "/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#黝黑(审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#棉">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#织物"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#公元前9世纪">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#公元纪年"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#狭带纪">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#中元古代"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#厦门窑">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#陶瓷窑址"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/property#创作者">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://culture.zju.edu.cn/class#文物"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#充实(审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#玉器">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#器物"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#惨白(审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#朴实(审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#城市建筑">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#功能"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#象征意义">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#草木萧疏(审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#气势磅礴(审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#自然标本">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#器物"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#姿态(审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#威武（审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#茂密(审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#优雅(审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#完残程度">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#鲜艳（审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#丑陋(审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#禁止匿名转载   ">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#授权"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#飞驰(审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#部分损腐，需要修复">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#保存状态"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#白皙(审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#暗淡无光(审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#笨重(审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#灯火辉煌(审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#别具匠心(审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#福州窑">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#陶瓷窑址"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#特别(审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#浑源窑">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#陶瓷窑址"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#蛀损">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#完残状态"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#皮革（材质）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#有机质"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#焦灼(审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#原生代">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#冥古宙"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#威风凛凛(审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#使用情境">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#巧妙(审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#完残状态">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#镬">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#器型"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#公元前12世纪">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#公元纪年"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#白舍窑">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#陶瓷窑址"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#锉">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#器型"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#酷似(审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#无机质">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#单一质地"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#衰落(审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#公元12世纪">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#公元纪年"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#禁止截图   ">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#授权"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#气贯长虹(审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#日暮途穷(审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#白圭之玷(审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#完整（完残状态）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#完残状态"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#革新(审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#锯">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#器型"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/property#展览历史">
+    <rdfs:domain rdf:resource="http://culture.zju.edu.cn/class#文物"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#复旧(审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#光彩夺目(审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#紧张(审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#公元2世纪">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#公元纪年"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#麻">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#织物"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#光明（审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#风尚(审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#农具">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#功能"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#恼人(审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#纹理(审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#浪漫(审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#美丽(审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#千篇一律(审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#清澈(审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#灿烂(审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#茂盛(审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#祥瑞（审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#儒雅(审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#纯正(审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#民俗文物">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#器物"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#宫廷壁画">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#壁画"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/property#创作朝代">
+    <rdfs:domain rdf:resource="http://culture.zju.edu.cn/class#文物"/>
+    <rdfs:range rdf:resource="http://culture.zju.edu.cn/class#朝代"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#诙谐(审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#粗制滥造(审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#端庄(审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#莲花纹">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#纹饰"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#寒武纪">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#古生代"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#漆木竹器">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#器物"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#粗俗(审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#墨守成规(审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#新生纪">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#新生代"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#大同窑">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#陶瓷窑址"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#年代不详">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#愁闷(审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#新太古代">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#太古宙"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#珐琅">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#无机质"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#其他">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#器物"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#中生代">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#显生宙"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#安溪窑">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#陶瓷窑址"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#奇异(审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#礼器">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#功能"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#宜阳窑">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#陶瓷窑址"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/property#出土时间">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://culture.zju.edu.cn/class#文物"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#简陋(审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#斑驳(审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#奇特(审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#衰败(审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#成铁纪">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#古元古代"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#公元10世纪">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#公元纪年"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#侏罗纪">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#中生代"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/property#创作时间">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://culture.zju.edu.cn/class#文物"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#祭祀">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#使用情境"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#皮革">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#织物"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#纹饰">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#简洁(审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#迷人(审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/property#名称">
+    <rdfs:domain rdf:resource="http://culture.zju.edu.cn/class#文物"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#方兴未艾(审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#古元古代">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#元古宙"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#格调(审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#粗鄙(审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#繁华(审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#简单（审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/property#纹饰">
+    <rdfs:domain rdf:resource="http://culture.zju.edu.cn/class#器物"/>
+    <rdfs:domain rdf:resource="http://culture.zju.edu.cn/class#织物"/>
+    <rdfs:domain rdf:resource="http://culture.zju.edu.cn/class#壁画"/>
+    <rdfs:range rdf:resource="http://culture.zju.edu.cn/class#纹饰"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#锌">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#无机质"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#风度(审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#公元前13世纪">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#公元纪年"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#清爽(审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#垂头丧气(审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#公元11世纪">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#公元纪年"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#盖层纪">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#中元古代"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#粉润（审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#公元前3世纪">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#公元纪年"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#棉麻纤维">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#有机质"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#镰">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#器型"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#壬食器">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#功能"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#高雅（审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#适用(审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/property#标识符">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://culture.zju.edu.cn/class#文物"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#交通建筑">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#功能"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#印信">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#器物"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#民居建筑">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#功能"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#清高坚贞（审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#札榫   ">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#榫卯 "/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#冥古宙">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#地质年代"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#喧哗(审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#移交">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#来源"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#产地">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#计量器">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#功能"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#独辟蹊径(审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#套榫   ">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#榫卯 "/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#吉祥（审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#百花争艳(审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#200万年以前">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#公元纪年"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#宝贵(审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#书院建筑">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#功能"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#严重残缺">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#完残程度"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#普通(审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#别出心裁(审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#倒霉(审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#古朴（审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#复古(审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#单纯(审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#精巧(审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#文献文书">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#器物"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#奢华(审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#黯然失色(审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#高明(审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#别称">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#器物名称"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#级别">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#失真(审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#公元前1世纪">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#公元纪年"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#石窟壁画">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#壁画"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#铲">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#器型"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#公元前14世纪">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#公元纪年"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#波澜壮阔(审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#馆堂建筑">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#功能"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#公元20世纪">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#公元纪年"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#公元3世纪">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#公元纪年"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#纯粹(审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#榫卯 ">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#连接结构 "/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#具体(审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#结构 ">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#安详（审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/property#工艺">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://culture.zju.edu.cn/class#文物"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#绚丽（审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#微损">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#完残状态"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#有机质">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#单一质地"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#毛（材质）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#有机质"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#玻璃">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#无机质"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#荒凉(审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#器物名称">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#公元前2世纪">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#公元纪年"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#公元4世纪">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#公元纪年"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#赣州窑">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#陶瓷窑址"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#庄重（审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#繁荣(审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#万紫千红(审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#枯燥(审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#公元21世纪">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#公元纪年"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#二叠纪">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#古生代"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#难看(审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#实用(审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#鱼钩">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#器型"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#杰出(审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#因循守旧(审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#拨交 ">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#来源"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#各具特色(审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#平定窑">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#陶瓷窑址"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#灵巧(审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#其他金属器具">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#器物"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#旧藏  ">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#来源"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#冷漠(审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#百花凋零(审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/property#度量">
+    <rdfs:domain rdf:resource="http://culture.zju.edu.cn/class#文物"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#生动(审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#宏伟壮观（审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#独树一帜(审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#传动结构       ">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#结构 "/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#衙署建筑">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#功能"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#卑劣(审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#复杂(审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#残缺">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#完残程度"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/property#出土地点">
+    <rdfs:domain rdf:resource="http://culture.zju.edu.cn/class#文物"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#雪白(审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#优秀(审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/property#社会历史信息">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://culture.zju.edu.cn/class#文物"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/property#资料来源">
+    <rdfs:domain rdf:resource="http://culture.zju.edu.cn/class#文物"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#草长莺飞(审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#鍤">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#器型"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#充足(审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#素净(审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#新元古代">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#元古宙"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#八面威风(审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#曾用名">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#器物名称"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#欣欣向荣(审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/property#器形">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:range rdf:resource="http://culture.zju.edu.cn/class#器形"/>
+    <rdfs:domain rdf:resource="http://culture.zju.edu.cn/class#器物"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#轻快(审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#白垩纪">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#中生代"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#造山纪">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#古元古代"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#公元前15世纪">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#公元纪年"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#吉祥如意">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#象征意义"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#榫卯">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#结构"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#采集">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#来源"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#少数民族文物">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#器物"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#精致（审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#风气(审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#杂项">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#器物"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#神圣（审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#低廉(审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#魁梧(审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#器形">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#公元前5世纪">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#公元纪年"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#陶瓷窑址">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#产地"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/property#产地">
+    <rdfs:domain rdf:resource="http://culture.zju.edu.cn/class#文物"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#银">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#无机质"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#高尚(审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#木">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#有机质"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#车马器">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#功能"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#缸瓦窑">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#陶瓷窑址"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#志留纪">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#古生代"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#朝气蓬勃(审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#来源">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#有机无机复合或组合">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#复合或组合质地"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#纪念建筑">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#功能"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#残">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#完残状态"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#觿">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#器型"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#芳香(审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#公元18世纪">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#公元纪年"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#红彤彤(审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#零落(审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#淄博官窑">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#陶瓷窑址"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#水利设施">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#功能"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#大醇小疵(审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#百花齐放(审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#古近纪">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#新生代"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#连接结构 ">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#结构 "/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#公元前6世纪">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#公元纪年"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#兵器">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#功能"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#林东窑">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#陶瓷窑址"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#暗淡(审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#公元纪年">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#审美">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/property#级别">
+    <rdfs:domain rdf:resource="http://culture.zju.edu.cn/class#文物"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#原名">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#器物名称"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#文具">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#器物"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#三级文物">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#珍贵文物 "/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#新奇(审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#公元19世纪">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#公元纪年"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#华丽（审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#金（材质）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#无机质"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#完整">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#完残程度"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#其他金属">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#无机质"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#艳丽(审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#丝">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#有机质"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#一般文物">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#级别"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/property#装饰">
+    <rdfs:domain rdf:resource="http://culture.zju.edu.cn/class#文物"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#齿连接">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#结构"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#丰茂(审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#独占鳌头(审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#功能">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#奇妙(审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#审美主体">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#巩县窑">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#陶瓷窑址"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#喧闹(审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#鲁山窑">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#陶瓷窑址"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#时髦(审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#公元前16世纪">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#公元纪年"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#泥盆纪">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#古生代"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#征集收购">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#来源"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#密县窑">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#陶瓷窑址"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#宗教建筑">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#功能"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#埃迪卡拉纪">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#新元古代"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#精雕细刻(审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#各种各样(审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#干瘪(审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#朝代">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#柔和（审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#书法">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#器物"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#犁">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#器型"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#东窑">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#陶瓷窑址"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#同安窑">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#陶瓷窑址"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#公元前4世纪">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#公元纪年"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#介休窑">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#陶瓷窑址"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#现实(审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/property#象征意义">
+    <rdfs:domain rdf:resource="http://culture.zju.edu.cn/class#器物"/>
+    <rdfs:domain rdf:resource="http://culture.zju.edu.cn/class#织物"/>
+    <rdfs:domain rdf:resource="http://culture.zju.edu.cn/class#壁画"/>
+    <rdfs:range rdf:resource="http://culture.zju.edu.cn/class#象征意义"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#平凡(审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#交换">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#来源"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#精妙(审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#其他有机质">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#有机质"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#青瓷窑">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#陶瓷窑址"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#吉州窑">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#陶瓷窑址"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#公元17世纪">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#公元纪年"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#珍贵(审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#奇丽(审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#可恶(审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#繁盛(审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#美好（审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#疾驰(审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#榆次窑">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#陶瓷窑址"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#审美关系">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#古生代">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#显生宙"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#其他名称">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#器物名称"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#崇高(审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#名落孙山(审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#锛">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#器型"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#新安窑">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#陶瓷窑址"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#其他动物有机质">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#有机质"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#漂亮(审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#浓艳(审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#简约(审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#货币">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#器物"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#内乡窑">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#陶瓷窑址"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#考古发掘">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#来源"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#朴素(审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#可以截图   ">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#授权"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#楔钉榫   ">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#榫卯 "/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#五光十色(审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#二级文物 ">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#珍贵文物 "/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#瓷">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#无机质"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#腐蚀损毁严重，急需修复">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#保存状态"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#公元前17世纪">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#公元纪年"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#基本完整">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#完残程度"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#酒神代">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#冥古宙"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#键连接     ">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#连接结构 "/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#瓷器">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#器物"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#逼真(审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#霉损">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#完残状态"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#园林建筑">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#功能"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#高贵(审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#寻常(审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#充沛(审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#挂榫   ">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#榫卯 "/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#可以转载   ">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#授权"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#安阳窑">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#陶瓷窑址"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#风趣(审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#层侵纪">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#古元古代"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#卓越(审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#元古宙">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#地质年代"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#风靡一时(审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#其他植物有机质">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#有机质"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#鹤壁窑">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#陶瓷窑址"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#燕尾榫   ">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#榫卯 "/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#纯净(审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#从容(审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#卷口">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#器形"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#公元1世纪">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#公元纪年"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#隐生代">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#冥古宙"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#奇巧（审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#水器">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#功能"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#春节（审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/property#民间典故">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://culture.zju.edu.cn/class#文物"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/property#使用情境">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:range rdf:resource="http://culture.zju.edu.cn/class#使用情境"/>
+    <rdfs:domain rdf:resource="http://culture.zju.edu.cn/class#织物"/>
+    <rdfs:domain rdf:resource="http://culture.zju.edu.cn/class#器物"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#中太古代">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#太古宙"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#地质年代">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#光彩照人(审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/property#色彩">
+    <rdfs:domain rdf:resource="http://culture.zju.edu.cn/class#器物"/>
+    <rdfs:domain rdf:resource="http://culture.zju.edu.cn/class#织物"/>
+    <rdfs:domain rdf:resource="http://culture.zju.edu.cn/class#壁画"/>
+    <rdfs:range rdf:resource="http://culture.zju.edu.cn/class#色彩"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#兴隆(审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#三叠纪">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#中生代"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#民族风（审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#轻盈(审美）">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#捐献">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#来源"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#新潮(审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#轻巧(审美）">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#审美"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#器型">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#斧">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#器型"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#锛">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#器型"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#斧">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#器型"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#钻">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#器型"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#锯">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#器型"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#锥">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#器型"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#削">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#器型"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#锉">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#器型"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#觿">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#器型"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#铲">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#器型"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#镬">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#器型"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#镰">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#器型"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#锄">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#器型"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#鍤">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#器型"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#犁">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#器型"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://culture.zju.edu.cn/class#鱼钩">
+    <rdfs:subClassOf rdf:resource="http://culture.zju.edu.cn/class#器型"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+
+</rdf:RDF>

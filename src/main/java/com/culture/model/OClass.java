@@ -4,17 +4,17 @@ import java.sql.Timestamp;
 
 public class OClass {
 	
-	private int cid;					//¸ÅÄîid
+	private int cid;					//æ¦‚å¿µid
 	
-	private int cfid;				//¸¸¸ÅÄîid
+	private int cfid;					//çˆ¶æ¦‚å¿µid
 	
-	private String cname;				//¸ÅÄîÃû×Ö
+	private String cname;				//æ¦‚å¿µåå­—
 	
-	private Timestamp time;				//¸ÅÄî´´½¨Ê±¼ä
+	private Timestamp time;				//åˆ›å»ºæ—¶é—´
 	
-	private int selected;				//¸Ã¸ÅÄîÊÇ·ñ±»Ñ¡ÖĞ
+	private int selected;				//æ˜¯å¦è¢«é€‰æ‹©
 	
-	private int del;					//¸ÅÄîÊÇ·ñ±»É¾³ı£¬0£ºÕı³££¬1£ºÉ¾³ı
+	private int del;					//åˆ é™¤æ ‡å¿—ï¼Œ1è¡¨ç¤ºåˆ é™¤ï¼Œ0è¡¨ç¤ºæ­£å¸¸
 
 	public int getCid() {
 		return cid;

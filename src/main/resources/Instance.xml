@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap>
+	<typeAlias alias="instance" type="com.culture.model.Instance" />
+
+	<!-- 根据id获得实例-->
+	<select id="getInstanceById" parameterClass="String"
+		resultClass="instance">
+		select * from instance where identifier = #identifier# 
+	</select>
+
+	<!-- 根据title获得实例-->
+	<select id="getInstanceByTitle" parameterClass="String"
+		resultClass="instance">
+		select * from instance where title = #title# 
+	</select>
+
+	<!-- 添加实例 -->
+	<insert id="addInstance" parameterClass="instance">
+		insert into instance (identifier,title,used_title,creation_date,creator,shape,pattern,color,scene,structure,symbolic_meaning,aesthetic_desc) values(#identifier#,#title#,#used_title#,#creation_date#,#creator#,#shape#,#pattern#,#color#,#scene#,#structure#,#symbolic_meaning#,#aesthetic_desc#)
+		<selectKey resultClass="int" keyProperty="id">  
+  		 	 SELECT @@IDENTITY as id  
+ 		 </selectKey> 
+	</insert>
+
+	<!--删除实例 -->
+	<update id="delInstance" parameterClass="String">
+		delete from instance where identifier=#indentifier#
+	</update>
+	
+	<!--更新实例 -->
+	<update id="updateInstance" parameterClass="instance">
+		update instance set title=#title#,used_title=#used_title#,creation_date=#creation_date#,creator=#creator#,shape=#shape#,pattern=#pattern#,color=#color#,scene=#scene#,structure=#structure#,symbolic_meaning=#symbolic_meaning#,aesthetic_desc=#aesthetic_desc# where identifier=#identifier#
+	</update>
+	
+
+</sqlMap>  

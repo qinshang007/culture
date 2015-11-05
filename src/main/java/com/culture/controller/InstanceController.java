@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.culture.model.CulturalBean;
+import com.culture.model.Instance;
 import com.culture.model.OClass;
 import com.culture.model.OModelFactory;
 import com.culture.model.UploadFile;
@@ -46,13 +47,13 @@ public class InstanceController extends BaseController{
 	private static final Logger logger = Logger.getLogger(InstanceController.class);  
 	
 	/**
-	 * 保存实例
+	 * 保存实例到数据库
 	 * @param request
 	 * @param response
 	 * @throws Exception
 	 */
-	@RequestMapping("/save.do")
-	public void saveInstance(HttpServletRequest request, HttpServletResponse response,CulturalBean cb) throws Exception{
+	@RequestMapping("/saveCultural.do")
+	public void saveCultural(HttpServletRequest request, HttpServletResponse response,CulturalBean cb) throws Exception{
 		try{
 			//获取主图
 			String path = CommonConst.EW_FILE_PATH;
@@ -68,13 +69,14 @@ public class InstanceController extends BaseController{
 			String identifier = CodeGenerator.createUUID();
 			cb.setIdentifier(identifier);
 			//保存文物
-			cb.setComplete(0);
-			cb.setManager("lyp");
+			cb.setIsCheck(0);
+			cb.setManager("lyp"); 
 			//将实例保存到数据库
-			clService.addCultural(cb);
-			//将实例写入本体文件
-			instService.addInstance(request, cb);
-			outputJsonResponse(response, true,"uploadSuccess");
+			boolean result = clService.addCultural(cb);
+			if(result)
+				outputJsonResponse(response, true,cb.getIdentifier());
+			else
+				outputJsonResponse(response, false,"保存失败！");
 		}catch (RuntimeException e) {
 			logger.error("保存实例出错！" +  ",errMsg=" + e.getMessage());
 			outputJsonResponse(response, false, e.getMessage());
@@ -82,13 +84,47 @@ public class InstanceController extends BaseController{
 	}
 	
 	/**
-	 * 保存实例
+	 * 保存实例到本体文件
 	 * @param request
 	 * @param response
 	 * @throws Exception
 	 */
-	@RequestMapping("/edit.do")
-	public void editInstance(HttpServletRequest request, HttpServletResponse response,CulturalBean cb) throws Exception{
+	@RequestMapping("/saveInstance.do")
+	public void saveInstance(HttpServletRequest request, HttpServletResponse response,Instance cb) throws Exception{
+		try{
+			Map<String,String> valueMap = new HashMap<String,String>();
+			valueMap.put("名称", cb.getTitle());
+			valueMap.put("其他名称", cb.getUsed_title());
+			valueMap.put("创作朝代", cb.getCreation_date());
+			valueMap.put("创作者", cb.getCreator());
+			valueMap.put("器形", cb.getShape());
+			valueMap.put("纹饰", cb.getPattern());
+			valueMap.put("色彩", cb.getColor());
+			valueMap.put("结构", cb.getStructure());
+			valueMap.put("使用情境", cb.getScene());
+			valueMap.put("象征意义", cb.getSymbolic_meaning());
+			valueMap.put("审美", cb.getAesthetic_desc());
+			//将实例写入本体文件
+			boolean result = instService.addInstance(valueMap, cb);
+			if(result)
+				outputJsonResponse(response, true,"保存成功！");
+			else
+				outputJsonResponse(response, false,"保存失败！");
+		}catch (RuntimeException e) {
+			logger.error("保存实例出错！" +  ",errMsg=" + e.getMessage());
+			outputJsonResponse(response, false, e.getMessage());
+		}
+	}
+
+	
+	/**
+	 * 更改数据库中的实例
+	 * @param request
+	 * @param response
+	 * @throws Exception
+	 */
+	@RequestMapping("/updateCultural.do")
+	public void updateCultural(HttpServletRequest request, HttpServletResponse response,CulturalBean cb) throws Exception{
 		try{
 			//获取主图
 			String path = CommonConst.EW_FILE_PATH;
@@ -98,20 +134,53 @@ public class InstanceController extends BaseController{
 				cb.setMainpic(mainpic);
 			}
 			//保存文物
-			cb.setComplete(0);
+			cb.setIsCheck(0);
 			cb.setManager("lyp");
 			//将实例保存到数据库
-			clService.updateCultural(cb);
-			//获取实例旧的名称
-			String oldTitle = request.getParameter("oldTitle");
-			//更新本体文件
-			instService.editInstance(request, cb, oldTitle);
-			outputJsonResponse(response, true,"updateSuccess");
+			boolean result = clService.updateCultural(cb);
+			if(result){
+				outputJsonResponse(response, true,"更改成功！");
+			}else{
+				outputJsonResponse(response, false,"更改失败！");
+			}
 		}catch (RuntimeException e) {
-			logger.error("保存实例出错！" +  ",errMsg=" + e.getMessage());
+			logger.error("更新数据库实例出错！" +  ",errMsg=" + e.getMessage());
 			outputJsonResponse(response, false, e.getMessage());
 		}
 
+	}
+	
+	/**
+	 * 更改本体中的实例
+	 * @param request
+	 * @param response
+	 * @throws Exception
+	 */
+	@RequestMapping("/updateInstance.do")
+	public void updateInstance(HttpServletRequest request, HttpServletResponse response,Instance cb) throws Exception{
+		try{
+			Map<String,String> valueMap = new HashMap<String,String>();
+			valueMap.put("名称", cb.getTitle());
+			valueMap.put("其他名称", cb.getUsed_title());
+			valueMap.put("创作朝代", cb.getCreation_date());
+			valueMap.put("创作者", cb.getCreator());
+			valueMap.put("器形", cb.getShape());
+			valueMap.put("纹饰", cb.getPattern());
+			valueMap.put("色彩", cb.getColor());
+			valueMap.put("结构", cb.getStructure());
+			valueMap.put("使用情境", cb.getScene());
+			valueMap.put("象征意义", cb.getSymbolic_meaning());
+			valueMap.put("审美", cb.getAesthetic_desc());
+			//获取实例旧的名称
+			String oldTitle = request.getParameter("oldTitle");
+			valueMap.put("oldTitle", oldTitle);
+			//更新本体文件
+			instService.editInstance(valueMap, cb);
+			outputJsonResponse(response, true,"更新成功！");
+		}catch (RuntimeException e) {
+			logger.error("更新本体实例出错！" +  ",errMsg=" + e.getMessage());
+			outputJsonResponse(response, false, e.getMessage());
+		}
 	}
 
 	/**
@@ -154,15 +223,35 @@ public class InstanceController extends BaseController{
 			outputJsonResponse(response, false, e.getMessage());
 		}
 	}
-	
+
 	/**
-	 * 返回概念的属性
+	 * 获取朝代概念数据
 	 * @param request
 	 * @param response
 	 * @throws Exception
 	 */
-	@RequestMapping("/addInstance.do")
-	public ModelAndView addInstance(HttpServletRequest request, HttpServletResponse response) throws Exception{
+	@RequestMapping("/getDynasty.do")
+	public void getDynasty(HttpServletRequest request, HttpServletResponse response) throws Exception{
+		try{
+			//获取创作朝代列表
+			OClass oclass = ocService.getClassByName("朝代");
+			List<OClass> creationDateList = ocService.getClassList(oclass);
+			outputJsonResponse(response, creationDateList);
+		}catch (RuntimeException e) {
+			logger.error("返回朝代概念数据出错！" +  ",errMsg=" + e.getMessage());
+			outputJsonResponse(response, false, e.getMessage());
+		}
+	}
+
+	
+	/**
+	 * 添加实例页面
+	 * @param request
+	 * @param response
+	 * @throws Exception
+	 */
+	@RequestMapping("/addCultural.do")
+	public ModelAndView addCultural(HttpServletRequest request, HttpServletResponse response) throws Exception{
 		
 		try{
 			//获取一级概念，器物，织物，建筑，壁画
@@ -177,6 +266,59 @@ public class InstanceController extends BaseController{
 			map.put("type", type);
 			map.put("classification", classification);
 			map.put("creationDateList", creationDateList);
+			return new ModelAndView("instance/addCultural").addAllObjects(map);
+		}catch (RuntimeException e) {
+			logger.error("返回属性出错！" +  ",errMsg=" + e.getMessage());
+			outputJsonResponse(response, false, e.getMessage());
+			return null;
+		}
+	}
+
+	/**
+	 * 添加实例页面
+	 * @param request
+	 * @param response
+	 * @throws Exception
+	 */
+	@RequestMapping("/addInstance.do")
+	public ModelAndView addInstance(HttpServletRequest request, HttpServletResponse response,CulturalBean cb) throws Exception{
+		
+		try{
+			//获取创作朝代列表
+			OClass oclass = ocService.getClassByName("朝代");
+			List<OClass> creationDateList = ocService.getClassList(oclass);
+			//获取纹饰列表
+			OClass ptClass = ocService.getClassByName("纹饰");
+			List<OClass> patternList = ocService.getClassList(ptClass);
+			//获取器形列表
+			OClass spClass = ocService.getClassByName("器形");
+			List<OClass> shapeList = ocService.getClassList(spClass);
+			//获取色彩列表
+			OClass clClass = ocService.getClassByName("色彩");
+			List<OClass> colorList = ocService.getClassList(clClass);
+			//获取使用情境列表
+			OClass seClass = ocService.getClassByName("使用情境");
+			List<OClass> sceneList = ocService.getClassList(seClass);
+			//获取象征意义列表
+			OClass meClass = ocService.getClassByName("象征意义");
+			List<OClass> meaningList = ocService.getClassList(meClass);
+			//获取结构列表
+			OClass stClass = ocService.getClassByName("结构");
+			List<OClass> structureList = ocService.getClassList(stClass);
+			//获取审美列表
+			OClass atClass = ocService.getClassByName("审美");
+			List<OClass> aestheticList = ocService.getClassList(atClass);
+			//将参数存到map里头
+			Map map = new HashMap();
+			map.put("creationDateList", creationDateList);
+			map.put("patternList", patternList);
+			map.put("shapeList", shapeList);
+			map.put("colorList", colorList);
+			map.put("sceneList", sceneList);
+			map.put("meaningList", meaningList);
+			map.put("structureList", structureList);
+			map.put("aestheticList", aestheticList);
+			map.put("cb",  cb);
 			return new ModelAndView("instance/addInstance").addAllObjects(map);
 		}catch (RuntimeException e) {
 			logger.error("返回属性出错！" +  ",errMsg=" + e.getMessage());
@@ -185,6 +327,7 @@ public class InstanceController extends BaseController{
 		}
 	}
 
+	
 	/**
 	 * 选择概念
 	 * @param request
@@ -240,8 +383,8 @@ public class InstanceController extends BaseController{
 	 * @return
 	 * @throws Exception
 	 */
-	@RequestMapping("/editInstance.do")
-	public ModelAndView editInstance(HttpServletRequest request, HttpServletResponse response) throws Exception{
+	@RequestMapping("/editCultural.do")
+	public ModelAndView editCultural(HttpServletRequest request, HttpServletResponse response) throws Exception{
 		try{
 			String culId = request.getParameter("culId");
 			CulturalBean cb = clService.getCulturalById(culId);
@@ -255,11 +398,92 @@ public class InstanceController extends BaseController{
 			map.put("type", type);
 			map.put("classification", classification);
 			map.put("creationDateList", creationDateList);
-			return new ModelAndView("instance/editInstance").addAllObjects(map);
+			return new ModelAndView("instance/editCultural").addAllObjects(map);
 		}catch (RuntimeException e) {
 			logger.error("修改实例出错！" +  ",errMsg=" + e.getMessage());
 			outputJsonResponse(response, false, e.getMessage());
 			return null;
 		}
-	}	
+	}
+	
+	/**
+	 * 添加实例页面
+	 * @param request
+	 * @param response
+	 * @throws Exception
+	 */
+	@RequestMapping("/editInstance.do")
+	public ModelAndView editInstance(HttpServletRequest request, HttpServletResponse response,CulturalBean cb) throws Exception{
+		try{
+			//获取instance
+			Instance instacne = instService.getInstanceById(cb.getIdentifier());
+			//获取旧的名称
+			String oldTitle = request.getParameter("oldTitle");
+			//获取创作朝代列表
+			OClass oclass = ocService.getClassByName("朝代");
+			List<OClass> creationDateList = ocService.getClassList(oclass);
+			//获取纹饰列表
+			OClass ptClass = ocService.getClassByName("纹饰");
+			List<OClass> patternList = ocService.getClassList(ptClass);
+			//获取器形列表
+			OClass spClass = ocService.getClassByName("器形");
+			List<OClass> shapeList = ocService.getClassList(spClass);
+			//获取色彩列表
+			OClass clClass = ocService.getClassByName("色彩");
+			List<OClass> colorList = ocService.getClassList(clClass);
+			//获取使用情境列表
+			OClass seClass = ocService.getClassByName("使用情境");
+			List<OClass> sceneList = ocService.getClassList(seClass);
+			//获取象征意义列表
+			OClass meClass = ocService.getClassByName("象征意义");
+			List<OClass> meaningList = ocService.getClassList(meClass);
+			//获取结构列表
+			OClass stClass = ocService.getClassByName("结构");
+			List<OClass> structureList = ocService.getClassList(stClass);
+			//获取审美列表
+			OClass atClass = ocService.getClassByName("审美");
+			List<OClass> aestheticList = ocService.getClassList(atClass);
+			//将参数存到map里头
+			Map map = new HashMap();
+			map.put("creationDateList", creationDateList);
+			map.put("patternList", patternList);
+			map.put("shapeList", shapeList);
+			map.put("colorList", colorList);
+			map.put("sceneList", sceneList);
+			map.put("meaningList", meaningList);
+			map.put("structureList", structureList);
+			map.put("aestheticList", aestheticList);
+			map.put("cb",  cb);
+			map.put("oldTitle", oldTitle);
+			map.put("instance", instacne);
+			return new ModelAndView("instance/editInstance").addAllObjects(map);
+		}catch (RuntimeException e) {
+			logger.error("返回属性出错！" +  ",errMsg=" + e.getMessage());
+			outputJsonResponse(response, false, e.getMessage());
+			return null;
+		}
+	}
+	
+	/**
+	 * 验证文物名字是否存在
+	 * @param request
+	 * @param response
+	 * @throws Exception
+	 */
+	@RequestMapping("/isTitleExist.do")
+	public void isTitleExist(HttpServletRequest request, HttpServletResponse response) throws Exception{
+		try{
+			String title = request.getParameter("title");
+			boolean result = clService.isTitleExist(title);
+			if(result)
+				outputJsonResponse(response, true, "文物名字存在！");
+			else
+				outputJsonResponse(response, false, "文物名字不存在！");
+		}catch (Exception e) {
+			logger.error("验证文物名字是否存在出错：" +  ",errMsg=" + e.getMessage());
+			outputJsonResponse(response, false, e.getMessage());
+		}
+	}
+
+
 }

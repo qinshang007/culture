@@ -18,40 +18,50 @@ import com.hp.hpl.jena.rdf.model.StmtIterator;
 public class DeleteClass {
 	
 	public static void main(String[] args){
-		String NSC = "http://jena.zju.edu.cn/human#";
-		//创建model
+		String NSC = "http://culture.zju.edu.cn/class#";
+		//鍒涘缓model
 		OntModel model = ModelFactory.createOntologyModel(OntModelSpec.OWL_MEM);
-		//owl文件路径
-		String fileSrc = "test.owl";
-		//读取文件
+		//owl鏂囦欢璺緞
+		String fileSrc = "ontology.owl";
+		//璇诲彇鏂囦欢
 		 try {
 			model.read(new FileInputStream(fileSrc),"");
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		//遍历所有的statements
-		StmtIterator iter = model.listStatements();
-		while(iter.hasNext()){
-			Statement stmt = iter.nextStatement();
-			Resource  subject   = stmt.getSubject();     // get the subject
-		    Property  predicate = stmt.getPredicate();   // get the predicate
-		    RDFNode   object    = stmt.getObject();      // get the object
-
-		    System.out.print(subject.toString());
-		    System.out.print(" " + predicate.toString() + " ");
-		    if (object instanceof Resource) {
-		       System.out.print(object.toString());
-		    } else {
-		        // object is a literal
-		        System.out.print(" \"" + object.toString() + "\"");
-		    }
-
-		    System.out.println(" .");
-		}
-		//删除faultyMemebr
-		OntClass faultyMember = model.getOntClass(NSC+"FacultyMember");
-		
+		//閬嶅巻鎵�鏈夌殑statements
+//		StmtIterator iter = model.listStatements();
+//		while(iter.hasNext()){
+//			Statement stmt = iter.nextStatement();
+//			Resource  subject   = stmt.getSubject();     // get the subject
+//		    Property  predicate = stmt.getPredicate();   // get the predicate
+//		    RDFNode   object    = stmt.getObject();      // get the object
+//
+//		    System.out.print(subject.toString());
+//		    System.out.print(" " + predicate.toString() + " ");
+//		    if (object instanceof Resource) {
+//		       System.out.print(object.toString());
+//		    } else {
+//		        // object is a literal
+//		        System.out.print(" \"" + object.toString() + "\"");
+//		    }
+//
+//		    System.out.println(" .");
+//		}
+		//鍒犻櫎faultyMemebr
+		OntClass yugou = model.getOntClass(NSC+"楸奸挬");
+//		if(yugou.hasSuperClass()){
+//			OntClass parentClass = yugou.getSuperClass();
+//			parentClass.removeSubClass(yugou);
+//		}else if(yugou.hasSubClass()){
+//			while(yugou.hasSubClass()){
+//				OntClass childClass = yugou.getSubClass();
+//				yugou.removeSubClass(childClass);
+//			}
+//		}
+		yugou.remove();
+		model.write(System.out);
 	}
 
 }

@@ -15,6 +15,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -34,9 +35,9 @@ public class BaseController {
 	protected Log log = LogFactory.getLog(this.getClass());
 	
 	/*
-	 * ¶àÎÄ¼şÉÏ´«
-	 * path:ÉÏ´«·şÎñÆ÷µÄÂ·¾¶£¬ÀıÈçpath = "/upload/project"
-	 * isRelative:true£ºÏà¶ÔÂ·¾¶ false£º¾ø¶ÔÂ·¾¶
+	 * å¤šæ–‡ä»¶ä¸Šä¼ 
+	 * path:ä¸Šä¼ æœåŠ¡å™¨çš„è·¯å¾„ï¼Œä¾‹å¦‚path = "/upload/project"
+	 * isRelative:trueï¼šç›¸å¯¹è·¯å¾„ falseï¼šç»å¯¹è·¯å¾„
 	 * return:List<UploadModel>
 	 */
 	protected List<UploadFile> upload(HttpServletRequest request, HttpServletResponse response, String path) throws Exception {
@@ -55,11 +56,11 @@ public class BaseController {
 					String fullPath = "";
 					String rootPath = CommonConst.UPLOAD_ROOT_PATH;
 					fullPath = rootPath + path;
-					//Èç¹ûÄ¿Â¼²»´æÔÚ´´½¨Ä¿Â¼
+					//å¦‚æœç›®å½•ä¸å­˜åœ¨åˆ›å»ºç›®å½•
 					File dirFile = new File(fullPath);
 					if (!dirFile.exists())
 						dirFile.mkdirs();
-					//´´½¨ÎÄ¼ş
+					//åˆ›å»ºæ–‡ä»¶
 					fullPath += "/" + newFileName;
 					File newFile = new File(fullPath);
 					file.transferTo(newFile);
@@ -97,9 +98,20 @@ public class BaseController {
 		}
 	}
 
+	/**
+	 * è·å–ç”¨æˆ·å§“å
+	 * @param request
+	 * @param response
+	 * @return
+	 */
+	public String getUserName(HttpServletRequest request, HttpServletResponse response){
+		HttpSession hs = request.getSession();
+		String username = (String) hs.getAttribute("userName");
+		return username;
+	}
 
 	/**
-	 *  Êä³öÏìÓ¦
+	 *  è¾“å‡ºå“åº”
 	 */
 	public void outputHtmlResponse(HttpServletResponse response, String str) {
 		try {
@@ -115,7 +127,7 @@ public class BaseController {
 
 	
 	/**
-	 * Êä³öJsonÏìÓ¦£º{"result":true}
+	 * è¾“å‡ºJsonå“åº”ï¼š{"result":true}
 	 */
 	protected void outputJsonResponse(HttpServletResponse response, boolean result) {
 		JSONObject json = new JSONObject();
@@ -125,7 +137,7 @@ public class BaseController {
 	}
 
 	/**
-	 * Êä³öJsonÏìÓ¦£º{"result":true,"msg":"abc"}
+	 * è¾“å‡ºJsonå“åº”ï¼š{"result":true,"msg":"abc"}
 	 */
 	protected void outputJsonResponse(HttpServletResponse response, boolean result, String message) {
 		JSONObject json = new JSONObject();
@@ -136,7 +148,7 @@ public class BaseController {
 	}
 	
 	/**
-	 * Êä³öJsonÏìÓ¦£º{"msg":"abc"}
+	 * è¾“å‡ºJsonå“åº”ï¼š{"msg":"abc"}
 	 */
 	protected void outputJsonResponse(HttpServletResponse response,String message) {
 		this.flushResponse(response, message);
@@ -148,8 +160,8 @@ public class BaseController {
 		json.put("result", result);
 		json.put("message", message);
 		if (obj != null ){
-			JSONArray jsonArray = new JSONArray(obj);   //½«articleÊı¾İ×ªÎªjson¶ÔÏó  
-			String data = jsonArray.toString();         //½«json¶ÔÏó×ªÎª×Ö·û´®  
+			JSONArray jsonArray = new JSONArray(obj);   //å°†articleæ•°æ®è½¬ä¸ºjsonå¯¹è±¡  
+			String data = jsonArray.toString();         //å°†jsonå¯¹è±¡è½¬ä¸ºå­—ç¬¦ä¸²  
 			json.put("data", data);
 		}
 		String content = json.toString();
@@ -200,8 +212,8 @@ public class BaseController {
 	}
 
 	/*
-	 * Êä³öjsonÊı¾İ
-	 * Êä³ö¸ñÊ½Îª£º{result:true,data:[{"name":"name1","id":"id1"},{"name":"name2","id":"id2"}]}
+	 * è¾“å‡ºjsonæ•°æ®
+	 * è¾“å‡ºæ ¼å¼ä¸ºï¼š{result:true,data:[{"name":"name1","id":"id1"},{"name":"name2","id":"id2"}]}
 	 */
 	protected void outputJsonResponse(HttpServletResponse response, boolean result, Collection coll) {
 		JSONObject json = new JSONObject();
@@ -215,8 +227,8 @@ public class BaseController {
 	}
 	
 	/*
-	 * Êä³öjsonÊı¾İ
-	 * Êä³ö¸ñÊ½Îª£º{data:[{"name":"name1","id":"id1"},{"name":"name2","id":"id2"}]}
+	 * è¾“å‡ºjsonæ•°æ®
+	 * è¾“å‡ºæ ¼å¼ä¸ºï¼š{data:[{"name":"name1","id":"id1"},{"name":"name2","id":"id2"}]}
 	 */
 	protected void outputJsonResponse(HttpServletResponse response,Collection coll) {
 		JSONArray jsonArray = null;
@@ -243,20 +255,20 @@ public class BaseController {
 	}
 
 	/**
-	 * ½«java¶ÔÏó×ª»»³Éjson×Ö·û´®
+	 * å°†javaå¯¹è±¡è½¬æ¢æˆjsonå­—ç¬¦ä¸²
 	 *{"name":"name1","id":"id1"}
 	 */
 	public static String toJsonString(Object object) {
 		String res = "";
 		if (object != null ){
-			JSONArray jsonArray = new JSONArray(object);   //½«articleÊı¾İ×ªÎªjson¶ÔÏó  
-			res = jsonArray.toString();         //½«json¶ÔÏó×ªÎª×Ö·û´®  
+			JSONArray jsonArray = new JSONArray(object);   //å°†articleæ•°æ®è½¬ä¸ºjsonå¯¹è±¡  
+			res = jsonArray.toString();         //å°†jsonå¯¹è±¡è½¬ä¸ºå­—ç¬¦ä¸²  
 		}
 		return res;
 	}
 
 	/*
-	 * ½«java¶ÔÏó×ª»¯ÎªjsonÊı×é×Ö·û´®
+	 * å°†javaå¯¹è±¡è½¬åŒ–ä¸ºjsonæ•°ç»„å­—ç¬¦ä¸²
 	 * [{"name":"name1","id":"id1"},{"name":"name2","id":"id2"}]
 	 */
 	public static String toJsonArrayString(Collection<Object> coll) {

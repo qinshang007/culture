@@ -5,27 +5,31 @@ import java.util.List;
 
 public class OProperty {
 
-	private int pid;					//ÊôĞÔid
+	private int pid;					//å±æ€§id
 	
-	private int pfid;					//¸¸ÊôĞÔid
+	private int pfid;					//çˆ¶å±æ€§id
 	
-	private String pname;				//ÊôĞÔÃû×Ö
+	private String pfname;				//çˆ¶å±æ€§åå­—
 	
-	private int ptype;					//ÊôĞÔÀà±ğ£¬1Îª¶ÔÏóÊôĞÔ£¬2ÎªÊı¾İÊôĞÔ
+	private String pname;				//å±æ€§åå­—
 	
-	private Timestamp time;				//ÊôĞÔ´´½¨Ê±¼ä
+	private int ptype;					//å±æ€§ç±»åˆ«ï¼Œ1ä¸ºå¯¹è±¡å±æ€§ï¼Œ2ä¸ºæ•°æ®å±æ€§
 	
-	private List<OClass> domainList;	//¶¨ÒåÓò
+	private Timestamp time;				//å±æ€§åˆ›å»ºæ—¶é—´
 	
-	private List<OClass> rangeList;		//ÖµÓò	
+	private List<OClass> domainList;	//å®šä¹‰åŸŸ
 	
-	private String domain;				//¶¨ÒåÓò×Ö·û´®
+	private List<OClass> rangeList;		//å€¼åŸŸ	
 	
-	private String range;				//ÖµÓò×Ö·û´®
+	private String pdomain;				//å®šä¹‰åŸŸå­—ç¬¦ä¸²
 	
-	private int isgeneral;				//ÊÇ·ñÊÇÍ¨ÓÃÊôĞÔ
+	private String prange;				//å€¼åŸŸå­—ç¬¦ä¸²
 	
-	private int del;					//ÊôĞÔÊÇ·ñ±»É¾³ı£¬0£ºÕı³££¬1£ºÉ¾³ı
+	private int isgeneral;				//æ˜¯å¦æ˜¯é€šç”¨å±æ€§
+	
+	private int del;					//å±æ€§æ˜¯å¦è¢«åˆ é™¤ï¼Œ0ï¼šæ­£å¸¸ï¼Œ1ï¼šåˆ é™¤
+	
+	private String username;			//å½•å…¥äººå‘˜
 
 	public int getPid() {
 		return pid;
@@ -41,6 +45,14 @@ public class OProperty {
 
 	public void setPfid(int pfid) {
 		this.pfid = pfid;
+	}
+
+	public String getPfname() {
+		return pfname;
+	}
+
+	public void setPfname(String pfname) {
+		this.pfname = pfname;
 	}
 
 	public String getPname() {
@@ -91,20 +103,20 @@ public class OProperty {
 		this.ptype = ptype;
 	}
 	
-	public String getDomain() {
-		return domain;
+	public String getPdomain() {
+		return pdomain;
 	}
 
-	public void setDomain(String domain) {
-		this.domain = domain;
+	public void setPdomain(String pdomain) {
+		this.pdomain = pdomain;
 	}
 
-	public String getRange() {
-		return range;
+	public String getPrange() {
+		return prange;
 	}
 
-	public void setRange(String range) {
-		this.range = range;
+	public void setPrange(String prange) {
+		this.prange = prange;
 	}
 
 	public int getIsgeneral() {
@@ -114,5 +126,14 @@ public class OProperty {
 	public void setIsgeneral(int isgeneral) {
 		this.isgeneral = isgeneral;
 	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+	
 
 }

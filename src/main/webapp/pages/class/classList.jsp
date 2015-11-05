@@ -88,8 +88,8 @@
 										<tr class="">
 											<td>${status.index+1 }</td>
 											<td>${item.cname}</td>
-											<td><a  href="/culture/class/viewClass.do?cid=${item.cid}">View</a></td>
-											<td><a  href="javascript:deleteClass('${item.cid}')">Delete</a></td>
+											<td><a  href="/culture/class/viewClass.do?cid=${item.cid}" target="_blank">View</a></td>
+											<td><a  href="javascript:deleteClass('${item.cid}','${item.cname}')">Delete</a></td>
 										</tr>
 									</c:forEach>
 								</tbody>
@@ -146,10 +146,10 @@
 		   TableEditable.init();
 		});
 		
-	  	function deleteClass(id){
+	  	function deleteClass(cid,cname){
             if (!confirm("确信要删除吗？")) return;
             var url="/culture/class/delClass.do";
-            $.post(url,{cid:id},function(data){
+            $.post(url,{cid:cid,cname:cname},function(data){
             	postDelClass(data);
             });
         }

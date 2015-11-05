@@ -79,53 +79,17 @@
 									<tr>
 										<th>编号</th>
 										<th>内容</th>
-										<th>查看</th>
 										<th>删除</th>
 									</tr>
 								</thead>
 								<tbody>
-								<tr class="">
-									<td>1</td>
-									<td>如果文物的纹饰是莲花纹，那么文物的象征意义是高雅的</td>
-									<td><a  href="/culture/class/viewClass.do?cid=${item.cid}">View</a></td>
-									<td><a  href="javascript:deleteClass('${item.cid}')">Delete</a></td>
-								</tr>
-								<tr class="">
-									<td>2</td>
-									<td>如果文物的纹饰是灵芝纹，那么文物的象征意义是福寿吉祥的</td>
-									<td><a  href="/culture/class/viewClass.do?cid=${item.cid}">View</a></td>
-									<td><a  href="javascript:deleteClass('${item.cid}')">Delete</a></td>
-								</tr>
-								<tr class="">
-									<td>3</td>
-									<td>如果文物的纹饰是虎纹，那么文物的象征意义是庄严的</td>
-									<td><a  href="/culture/class/viewClass.do?cid=${item.cid}">View</a></td>
-									<td><a  href="javascript:deleteClass('${item.cid}')">Delete</a></td>
-								</tr>
-								<tr class="">
-									<td>4</td>
-									<td>如果文物的纹饰是狸子纹，那么文物的象征意义是喜庆的</td>
-									<td><a  href="/culture/class/viewClass.do?cid=${item.cid}">View</a></td>
-									<td><a  href="javascript:deleteClass('${item.cid}')">Delete</a></td>
-								</tr>
-								<tr class="">
-									<td>5</td>
-									<td>如果文物的纹饰是兰花纹，那么文物的象征意义是纯洁的</td>
-									<td><a  href="/culture/class/viewClass.do?cid=${item.cid}">View</a></td>
-									<td><a  href="javascript:deleteClass('${item.cid}')">Delete</a></td>
-								</tr>
-								<tr class="">
-									<td>6</td>
-									<td>如果文物的纹饰是蝙蝠纹，那么文物的象征意义是福寿吉祥的</td>
-									<td><a  href="/culture/class/viewClass.do?cid=${item.cid}">View</a></td>
-									<td><a  href="javascript:deleteClass('${item.cid}')">Delete</a></td>
-								</tr>
-								<tr class="">
-									<td>7</td>
-									<td>如果文物的纹饰是龙纹，那么文物的象征意义是祥瑞的</td>
-									<td><a  href="/culture/class/viewClass.do?cid=${item.cid}">View</a></td>
-									<td><a  href="javascript:deleteClass('${item.cid}')">Delete</a></td>
-								</tr>
+								<c:forEach  items="${orList}"  var="item"  varStatus="status">
+									<tr class="">
+										<td>${status.index+1 }</td>
+										<td>${item.rcontent}</td>
+										<td><a  href="javascript:deleteRule('${item.rid}')">Delete</a></td>
+									</tr>
+								</c:forEach>
 								</tbody>
 							</table>
 						</div>
@@ -180,15 +144,15 @@
 		   TableEditable.init();
 		});
 		
-	  	function deleteClass(id){
+	  	function deleteRule(id){
             if (!confirm("确信要删除吗？")) return;
-            var url="/culture/class/delClass.do";
-            $.post(url,{cid:id},function(data){
-            	postDelClass(data);
+            var url="/culture/rule/delRule.do";
+            $.post(url,{rid:id},function(data){
+            	postDelRule(data);
             });
         }
 
-        function postDelClass(transport){
+        function postDelRule(transport){
             var jresp = new JsonRespUtils(transport);
             if (jresp.isSuccessfully()){
          		location.reload();

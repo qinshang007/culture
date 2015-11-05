@@ -82,7 +82,7 @@
 									<label class="control-label">名称</label>
 									<div class="controls">
 										<input id="pname" type="text" class="span6 m-wrap" name="pname" />
-										<span class="help-inline">必填</span>
+										<span id="pnameSpan" class="help-inline">必填</span>
 									</div>
 								</div>
 								<div class="control-group">
@@ -189,19 +189,48 @@
 		   App.init();
 		});
 		
+		var check = true;	//验证概念名字是否重复
+		
+		//验证概念名字是否存在
+		$(function () {//加载事件
+            var pnameInput = $("#pname");//id为用户名文本框id
+            //光标离开事件
+            pnameInput.blur(function(){//function为匿名函数
+                var url="/culture/property/isPnameExist.do";
+                var pname = $("#pname").val();
+                $.post(url,{pname:pname},function(data){
+                    var jresp = new JsonRespUtils(data);
+                    if (jresp.isSuccessfully()){
+                    	$("#pnameSpan").html('属性名字已存在！');
+                    	$("#pnameSpan").css({"color":"red"});
+                 		pnameInput.focus();
+                 		check = false;
+                    }else{
+                    	$("#pnameSpan").html('必填');
+                    	check = true;
+                    }
+                });
+           });
+ 		});
+
+		
 		function submit(){
+			if(!check){
+				alert("属性名字已存在！");
+				return;
+			}
 			var URL = "/culture/property/save.do";
 			var ptype = "2";	//数据属性
 			var pname = $("#pname").val();	//属性名字
 			var pfid = $("#pfid").val();	//父属性id
 			var pfname = $("#pfid option:selected").text();
-			var domain = $("#domain").val();	//定义域
-			var range = $("#range").val();		//值域
+			var pdomain = $("#domain").val();	//定义域
+			var prange = $("#range").val();		//值域
 			var isgeneral = $("#isgeneral").val();//是否通用
 		    $.ajax({
 	        url: URL,
 	    type: 'POST',
-	        data:"ptype="+ptype+"&pname="+pname+"&pfid="+pfid+"&pfname="+pfname+"&domain="+domain+"&range="+range+"&isgeneral="+isgeneral,
+	        data:"ptype="+ptype+"&pname="+pname+"&pfid="+pfid+"&pfname="+pfname+"&pdomain="+pdomain+"&prange="+prange+"&isgeneral="+isgeneral,
 		    success: function(transport)
 		    {
 		    	 var jresp = new JsonRespUtils(transport);

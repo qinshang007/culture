@@ -19,7 +19,7 @@ public class DateUtils {
 	public final static String YYYYMMDDHHMMSS = "yyyyMMddHHmmss";
 	
 	/**
-	 * Ä¬ÈÏ°ÑÈÕÆÚ¸ñÊ½»¯³Éyyyy-mm-dd¸ñÊ½
+	 * é»˜è®¤æŠŠæ—¥æœŸæ ¼å¼åŒ–æˆyyyy-mm-ddæ ¼å¼
 	 */
 	public static String format(Date date) {
 		if (date == null){
@@ -30,7 +30,7 @@ public class DateUtils {
 	}
 
 	/**
-	 * ÈÕÆÚ¸ñÊ½»¯
+	 * æ—¥æœŸæ ¼å¼åŒ–
 	 */
 	public static String format(Date date, String pattern) {
 		if (date == null){
@@ -41,7 +41,7 @@ public class DateUtils {
 	}
 	
 	/**
-	 * °Ñ×Ö·û´®ÈÕÆÚÄ¬ÈÏ×ª»»Îªyyyy-mm-dd¸ñÊ½µÄData¶ÔÏó
+	 * æŠŠå­—ç¬¦ä¸²æ—¥æœŸé»˜è®¤è½¬æ¢ä¸ºyyyy-mm-ddæ ¼å¼çš„Dataå¯¹è±¡
 	 */
 	public static Date format(String strDate) {
 		Date date = null;
@@ -58,7 +58,7 @@ public class DateUtils {
 	}
 
 	/**
-	 * °Ñ×Ö·û´®ÈÕÆÚ×ª»»ÎªfÖ¸¶¨¸ñÊ½µÄData¶ÔÏó
+	 * æŠŠå­—ç¬¦ä¸²æ—¥æœŸè½¬æ¢ä¸ºfæŒ‡å®šæ ¼å¼çš„Dataå¯¹è±¡
 	 */
 	public static Date format(String strDate, String format) {
 		Date date = null;
@@ -75,7 +75,7 @@ public class DateUtils {
 	}
 
 	/**
-	 * ÈÕÆÚ½âÎö£­½«<code>String</code>ÀàĞÍµÄÈÕÆÚ½âÎöÎª<code>Date</code>ĞÍ
+	 * æ—¥æœŸè§£æï¼å°†<code>String</code>ç±»å‹çš„æ—¥æœŸè§£æä¸º<code>Date</code>å‹
 	 */
 	public static Date parse(String strDate, String pattern) throws ParseException {
 		try {
@@ -86,7 +86,7 @@ public class DateUtils {
 	}
 
 	/**
-	 * »ñÈ¡µ±Ç°ÈÕÆÚ
+	 * è·å–å½“å‰æ—¥æœŸ
 	 */
 	public static synchronized Date getCurrDate() {
 		Calendar calendar = Calendar.getInstance();
@@ -94,7 +94,7 @@ public class DateUtils {
 	}
 
 	/**
-	 * »ñÈ¡µ±Ç°ÈÕÆÚ
+	 * è·å–å½“å‰æ—¥æœŸ
 	 */
 	public static String getCurrDateStr() {
 		return format(getCurrDate(), YYYY_MM_DD);
@@ -106,42 +106,42 @@ public class DateUtils {
 	}
 
 	/**
-	 * »ñÈ¡µ±Ç°Ê±¼ä
+	 * è·å–å½“å‰æ—¶é—´
 	 */
 	public static String getCurrTimeStr() {
 		return format(getCurrDate(), HH_MM_SS);
 	}
 
 	/**
-	 * »ñÈ¡µ±Ç°ÍêÕûÊ±¼ä,ÑùÊ½: yyyy£­MM£­dd hh:mm:ss
+	 * è·å–å½“å‰å®Œæ•´æ—¶é—´,æ ·å¼: yyyyï¼MMï¼dd hh:mm:ss
 	 */
 	public static String getCurrDateTimeStr() {
 		return format(getCurrDate(), YYYY_MM_DD_HH_MM_SS);
 	}
 
 	/**
-	 * »ñÈ¡µ±Ç°Äê·İ ÑùÊ½£ºyyyy
+	 * è·å–å½“å‰å¹´ä»½ æ ·å¼ï¼šyyyy
 	 */
 	public static String getYear() {
 		return format(getCurrDate(), YYYY);
 	}
 
 	/**
-	 * »ñÈ¡µ±Ç°ÔÂ·İ£ºMM
+	 * è·å–å½“å‰æœˆä»½ï¼šMM
 	 */
 	public static String getMonth() {
 		return format(getCurrDate(), MM);
 	}
 
 	/**
-	 * »ñÈ¡µ±Ç°ÈÕÆÚÌì
+	 * è·å–å½“å‰æ—¥æœŸå¤©
 	 */
 	public static String getDay() {
 		return format(getCurrDate(), DD);
 	}
 
 	/**
-	 * °´¸ø¶¨ÈÕÆÚÑùÊ½ÅĞ¶Ï¸ø¶¨×Ö·û´®ÊÇ·ñÎªºÏ·¨ÈÕÆÚÊı¾İ
+	 * æŒ‰ç»™å®šæ—¥æœŸæ ·å¼åˆ¤æ–­ç»™å®šå­—ç¬¦ä¸²æ˜¯å¦ä¸ºåˆæ³•æ—¥æœŸæ•°æ®
 	 */
 	public static boolean isDate(String strDate, String pattern) {
 		try {
@@ -153,7 +153,7 @@ public class DateUtils {
 	}
 	
 	/**
-	 * ÅĞ¶Ï¸ø¶¨×Ö·û´®ÊÇ·ñÎªÌØ¶¨¸ñÊ½Äê·İ£¨¸ñÊ½£ºyyyy£©Êı¾İ
+	 * åˆ¤æ–­ç»™å®šå­—ç¬¦ä¸²æ˜¯å¦ä¸ºç‰¹å®šæ ¼å¼å¹´ä»½ï¼ˆæ ¼å¼ï¼šyyyyï¼‰æ•°æ®
 	 */
 	public static boolean isYYYY(String strDate) {
 		try {
@@ -174,7 +174,7 @@ public class DateUtils {
 	}
 
 	/**
-	 * ÅĞ¶Ï¸ø¶¨×Ö·û´®ÊÇ·ñÎªÌØ¶¨¸ñÊ½µÄÄêÔÂÈÕ£¨¸ñÊ½£ºyyyy-MM-dd£©Êı¾İ
+	 * åˆ¤æ–­ç»™å®šå­—ç¬¦ä¸²æ˜¯å¦ä¸ºç‰¹å®šæ ¼å¼çš„å¹´æœˆæ—¥ï¼ˆæ ¼å¼ï¼šyyyy-MM-ddï¼‰æ•°æ®
 	 */
 	public static boolean isYYYY_MM_DD(String strDate) {
 		try {
@@ -186,8 +186,8 @@ public class DateUtils {
 	}
 
 	/**
-	 * ÅĞ¶Ï¸ø¶¨×Ö·û´®ÊÇ·ñÎªÌØ¶¨¸ñÊ½ÄêÔÂÈÕÊ±·ÖÃë£¨¸ñÊ½£ºyyyy-MM-dd HH:mm:ss£©Êı¾İ
-	 * @return true Èç¹ûÊÇ£¬·ñÔò·µ»Øfalse
+	 * åˆ¤æ–­ç»™å®šå­—ç¬¦ä¸²æ˜¯å¦ä¸ºç‰¹å®šæ ¼å¼å¹´æœˆæ—¥æ—¶åˆ†ç§’ï¼ˆæ ¼å¼ï¼šyyyy-MM-dd HH:mm:ssï¼‰æ•°æ®
+	 * @return true å¦‚æœæ˜¯ï¼Œå¦åˆ™è¿”å›false
 	 */
 	public static boolean isYYYY_MM_DD_HH_MM_SS(String strDate) {
 		try {
@@ -199,7 +199,7 @@ public class DateUtils {
 	}
 
 	/**
-	 * ÅĞ¶Ï¸ø¶¨×Ö·û´®ÊÇ·ñÎªÌØ¶¨¸ñÊ½Ê±·ÖÃë£¨¸ñÊ½£ºHH:mm:ss£©Êı¾İ
+	 * åˆ¤æ–­ç»™å®šå­—ç¬¦ä¸²æ˜¯å¦ä¸ºç‰¹å®šæ ¼å¼æ—¶åˆ†ç§’ï¼ˆæ ¼å¼ï¼šHH:mm:ssï¼‰æ•°æ®
 	 */
 	public static boolean isHH_MM_SS(String strDate) {
 		try {
@@ -211,7 +211,7 @@ public class DateUtils {
 	}
 
 	/**
-	 * ÅĞ¶Ï¸ø¶¨×Ö·û´®ÊÇ·ñÎªÌØ¶¨¸ñÊ½Ê±¼ä£¨°üÀ¨£ºÊ±·ÖÃëhh:mm:ss£©Êı¾İ
+	 * åˆ¤æ–­ç»™å®šå­—ç¬¦ä¸²æ˜¯å¦ä¸ºç‰¹å®šæ ¼å¼æ—¶é—´ï¼ˆåŒ…æ‹¬ï¼šæ—¶åˆ†ç§’hh:mm:ssï¼‰æ•°æ®
 	 */
 	public static boolean isTime(String strTime) {
 		try {
@@ -223,7 +223,7 @@ public class DateUtils {
 	}
 
 	/**
-	 * ÅĞ¶Ï¸ø¶¨×Ö·û´®ÊÇ·ñÎªÌØ¶¨¸ñÊ½ÈÕÆÚÊ±¼ä£¨°üÀ¨£ºÄêÔÂÈÕÊ±·ÖÃë yyyy-MM-dd hh:mm:ss£©Êı¾İ
+	 * åˆ¤æ–­ç»™å®šå­—ç¬¦ä¸²æ˜¯å¦ä¸ºç‰¹å®šæ ¼å¼æ—¥æœŸæ—¶é—´ï¼ˆåŒ…æ‹¬ï¼šå¹´æœˆæ—¥æ—¶åˆ†ç§’ yyyy-MM-dd hh:mm:ssï¼‰æ•°æ®
 	 */
 	public static boolean isDateTime(String strDateTime) {
 		try {
@@ -235,17 +235,17 @@ public class DateUtils {
 	}
 
 	/**
-	 * »ñÈ¡Ò»¸ö¼òµ¥µÄÈÕÆÚ¸ñÊ½»¯¶ÔÏó
+	 * è·å–ä¸€ä¸ªç®€å•çš„æ—¥æœŸæ ¼å¼åŒ–å¯¹è±¡
 	 */
 	private static SimpleDateFormat getFormatter(String parttern) {
 		return new SimpleDateFormat(parttern);
 	}
 
 	/**
-	 * »ñÈ¡¸ø¶¨ÈÕÇ°µÄºóintevalDayÌìµÄÈÕÆÚ
-	 * @param refenceDate£º¸ø¶¨ÈÕÆÚ£¨¸ñÊ½Îª£ºyyyy-MM-dd£©
-	 * @param intevalDays£º¼ä¸ôÌìÊı
-	 * @return ¼ÆËãºóµÄÈÕÆÚ
+	 * è·å–ç»™å®šæ—¥å‰çš„åintevalDayå¤©çš„æ—¥æœŸ
+	 * @param refenceDateï¼šç»™å®šæ—¥æœŸï¼ˆæ ¼å¼ä¸ºï¼šyyyy-MM-ddï¼‰
+	 * @param intevalDaysï¼šé—´éš”å¤©æ•°
+	 * @return è®¡ç®—åçš„æ—¥æœŸ
 	 */
 	public static String addDate(String refenceDate, int intevalDays) {
 		try {
@@ -256,10 +256,10 @@ public class DateUtils {
 	}
 
 	/**
-	 * »ñÈ¡¸ø¶¨ÈÕÇ°µÄºóintevalDayÌìµÄÈÕÆÚ
-	 * @param refenceDate£º Date ¸ø¶¨ÈÕÆÚ
-	 * @param intevalDays£ºint ¼ä¸ôÌìÊı
-	 * @return String ¼ÆËãºóµÄÈÕÆÚ
+	 * è·å–ç»™å®šæ—¥å‰çš„åintevalDayå¤©çš„æ—¥æœŸ
+	 * @param refenceDateï¼š Date ç»™å®šæ—¥æœŸ
+	 * @param intevalDaysï¼šint é—´éš”å¤©æ•°
+	 * @return String è®¡ç®—åçš„æ—¥æœŸ
 	 */
 	public static String addDate(Date refenceDate, int intevalDays) {
 		try {
@@ -272,8 +272,8 @@ public class DateUtils {
 		}
 	}
 	/*
-	 * ¼ÆËã¼ä¸ôÊ±¼ä
-	 * Field: Calendar¶¨ÒåµÄ±äÁ¿Öµ£¬ÀıÈç£ºCalendar.MINUTE
+	 * è®¡ç®—é—´éš”æ—¶é—´
+	 * Field: Calendarå®šä¹‰çš„å˜é‡å€¼ï¼Œä¾‹å¦‚ï¼šCalendar.MINUTE
 	 */
 	public static String addDate(Date refenceDate, int Field,int intevalVal) {
 		try {
@@ -313,7 +313,7 @@ public class DateUtils {
 		}
 	}
 	/*
-	 * µÃµ½¹¤×÷ÈÕÊı:³ıÈ¥ĞÇÆÚ6ºÍĞÇÆÚÌì
+	 * å¾—åˆ°å·¥ä½œæ—¥æ•°:é™¤å»æ˜ŸæœŸ6å’Œæ˜ŸæœŸå¤©
 	 */
 	public static long getWorkDays(Date startDate, Date endDate) {
 		try{
@@ -337,16 +337,16 @@ public class DateUtils {
     }
 
 	/**
-	 * Çóµ±Ç°ÈÕÆÚºÍÖ¸¶¨×Ö·û´®ÈÕÆÚµÄÏà²îÌìÊı
+	 * æ±‚å½“å‰æ—¥æœŸå’ŒæŒ‡å®šå­—ç¬¦ä¸²æ—¥æœŸçš„ç›¸å·®å¤©æ•°
 	 */
 	public static long getIntevalDaysToNow(String startDate) {
 		try {
-			// µ±Ç°Ê±¼ä
+			// å½“å‰æ—¶é—´
 			Date currentDate = new Date();
-			// Ö¸¶¨ÈÕÆÚ
+			// æŒ‡å®šæ—¥æœŸ
 			SimpleDateFormat myFormatter = new SimpleDateFormat("yyyy-MM-dd");
 			java.util.Date theDate = myFormatter.parse(startDate);
-			// Á½¸öÊ±¼äÖ®¼äµÄÌìÊı
+			// ä¸¤ä¸ªæ—¶é—´ä¹‹é—´çš„å¤©æ•°
 			long days = (currentDate.getTime() - theDate.getTime())/ (24 * 60 * 60 * 1000);
 			return days;
 		} catch (Exception ee) {
@@ -354,11 +354,11 @@ public class DateUtils {
 		}
 	}
 	/*
-	 * µÃµ½µ±Ç°ÈÕÆÚ
+	 * å¾—åˆ°å½“å‰æ—¥æœŸ
 	 */
 	public static String getCurrentDate(String parttern) {
 		try {
-			Date currentDate = new Date();// µ±Ç°Ê±¼ä
+			Date currentDate = new Date();// å½“å‰æ—¶é—´
 			SimpleDateFormat myFormatter = new SimpleDateFormat(parttern);
 			return myFormatter.format(currentDate);
 		} catch (Exception ee) {
@@ -385,7 +385,7 @@ public class DateUtils {
 	
 	public static void main(String[] args){
 		Calendar calendar = Calendar.getInstance();
-		Date date = new Date();// µ±Ç°Ê±¼ä
+		Date date = new Date();// å½“å‰æ—¶é—´
 		System.out.println(DateUtils.getCurrDateStr(YYYYMMDD));
 	}
 }

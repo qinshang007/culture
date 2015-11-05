@@ -1,5 +1,8 @@
 package com.culture.service.impl;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,9 +41,40 @@ public class OClassServiceImpl extends BaseService implements OClassService{
 		return getOClassDao().addClass(oclass);
 	}
 
-	public boolean delClass(String id) {
+	/**
+	 * åˆ é™¤æ¦‚å¿µ
+	 */
+	public boolean delClass(String cid,String cname) {
 		// TODO Auto-generated method stub
-		return getOClassDao().delClass(id);
+		boolean flag = true;
+		//åˆ é™¤æ•°æ®åº“
+		flag =  getOClassDao().delClass(Integer.valueOf(cid));
+		//æ›´æ–°æ•°æ®åº“
+		flag = getOClassDao().upgradeClass(Integer.valueOf(cid));
+		//åˆ é™¤æœ¬ä½“æ–‡ä»¶
+		if(flag){
+			 OntModel model = omodelFactory.getModel();
+			 OntClass oldClass = model.getOntClass(OModelFactory.NSC+cname);
+			 //å¦‚æœæ¦‚å¿µæœ‰çˆ¶æ¦‚å¿µçš„è¯
+//			 if(oldClass.hasSuperClass()){
+//				 OntClass parent = oldClass.getSuperClass();
+//				 parent.removeSubClass(oldClass);
+//			 }else if(oldClass.hasSubClass()){
+//				 OntClass child = oldClass.getSubClass();
+//				 oldClass.removeSubClass(child);
+//			 }
+			 oldClass.remove();
+			 //write XML FILE
+			 File file = new File(omodelFactory.getOwlFile());
+			 try{
+				 OutputStream out = new FileOutputStream(file);
+				 model.write(out);
+			 }catch(Exception e){
+				 e.printStackTrace();
+				 flag = false;
+			 }
+		}
+		return flag;
 	}
 
 	public boolean updateClass(OClass oclass) {
@@ -54,18 +88,18 @@ public class OClassServiceImpl extends BaseService implements OClassService{
 	}
 
 	/**
-	 * ¸ù¾İ¸ÅÄîid£¬»ñÈ¡¸ÅÄîµÄ×Ó¸ÅÄî
-	 * Èç¹ûdirectÎªtrue£¬Ôò·µ»Ø¸ÅÄîµÄÖ±Ïµ×Ó¸ÅÄî
-	 * Èç¹ûdirectÎªfalse,Ôò·µ»Ø¸ÅÄîµÄËùÓĞ×Ó¸ÅÄî
+	 * æ ¹æ®æ¦‚å¿µidï¼Œè·å–æ¦‚å¿µçš„å­æ¦‚å¿µ
+	 * å¦‚æœdirectä¸ºtrueï¼Œåˆ™è¿”å›æ¦‚å¿µçš„ç›´ç³»å­æ¦‚å¿µ
+	 * å¦‚æœdirectä¸ºfalse,åˆ™è¿”å›æ¦‚å¿µçš„æ‰€æœ‰å­æ¦‚å¿µ
 	 */
 	public List<OClass> getSubClasses(String cname, boolean direct) {
 		// TODO Auto-generated method stub
 		List<OClass> oclist = new ArrayList<OClass>();
 		try{
 			OntModel model = omodelFactory.getModel();
-			//²éÑ¯±¾ÌåÎÄ¼ş£¬»ñµÃÎÄÎï¸ÅÄî
+			//æŸ¥è¯¢æœ¬ä½“æ–‡ä»¶ï¼Œè·å¾—æ–‡ç‰©æ¦‚å¿µ
 			OntClass ontc = model.getOntClass(OModelFactory.NSC+cname);
-			//»ñÈ¡ÎÄÎï¸ÅÄîµÄËùÓĞ×Ó¸ÅÄî
+			//è·å–æ–‡ç‰©æ¦‚å¿µçš„æ‰€æœ‰å­æ¦‚å¿µ
 			ExtendedIterator<OntClass> iter = ontc.listSubClasses(direct);
 			while(iter.hasNext()){
 				OntClass children = iter.next();
@@ -75,7 +109,7 @@ public class OClassServiceImpl extends BaseService implements OClassService{
 				oclist.add(temp);
 			}
 		}catch(Exception e){
-			logger.error("»ñÈ¡ÎÄÎï×Ó¸ÅÄî³ö´í£º"+e.getMessage());
+			logger.error("è·å–æ–‡ç‰©å­æ¦‚å¿µå‡ºé”™ï¼š"+e.getMessage());
 		}
 		return oclist;
 	}
@@ -87,9 +121,25 @@ public class OClassServiceImpl extends BaseService implements OClassService{
 			OClass oc = getOClassDao().getClassById(id);
 			res = oc.getCname();
 		}catch(Exception e){
-			logger.error("¸ù¾İ¸ÅÄîid»ñÈ¡¸ÅÄîÃû×Ö³ö´í£º"+e.getMessage());
+			logger.error("æ ¹æ®æ¦‚å¿µidè·å–æ¦‚å¿µåå­—å‡ºé”™ï¼š"+e.getMessage());
 		}
 		return res;
+	}
+
+	/**
+	 * éªŒè¯æ¦‚å¿µåå­—æ˜¯å¦å­˜åœ¨
+	 */
+	public boolean isClassExist(String cname) {
+		// TODO Auto-generated method stub
+		boolean flag = false;
+		try{
+			OClass oc = getOClassDao().getClassByName(cname);
+			if(oc != null)
+				flag = true;
+		}catch(Exception e){
+			logger.error("éªŒè¯æ¦‚å¿µåå­—æ˜¯å¦å­˜åœ¨å‡ºé”™ï¼š"+e.getMessage());
+		}
+		return flag;
 	}
 
 }

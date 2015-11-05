@@ -21,21 +21,37 @@ public class OPropertyDaoImpl extends BaseDao implements OPropertyDao{
 		try{
 			oclist = getSqlMapClientTemplate().queryForList("getPropertyList",0);
 		}catch (Exception e) {
-			logger.error("»ñÈ¡ÊôĞÔÁĞ±íĞÅÏ¢³ö´í£¡" +  ",errMsg=" + e.getMessage());
+			logger.error("è·å–å±æ€§åˆ—è¡¨ä¿¡æ¯å‡ºé”™ï¼" +  ",errMsg=" + e.getMessage());
 		}
 		return oclist;
 	}
 
-	public OProperty getPropertyById(String id) {
+	public OProperty getPropertyById(int id) {
 		// TODO Auto-generated method stub
 		OProperty oc = null;
 		try{
 			oc = (OProperty)getSqlMapClientTemplate().queryForObject("getByPropertyId",id);
 		}catch (Exception e) {
-			logger.error("¸ù¾İÊôĞÔid»ñÈ¡ÊôĞÔĞÅÏ¢³ö´í£¡" +  ",errMsg=" + e.getMessage());
+			logger.error("æ ¹æ®å±æ€§idè·å–å±æ€§ä¿¡æ¯å‡ºé”™ï¼" +  ",errMsg=" + e.getMessage());
 		}
 		return oc;
 	}
+	
+	/**
+	 * æ ¹æ®å±æ€§åå­—è¿”å›å±æ€§
+	 */
+	public OProperty getPropertyByName(String pname) {
+		// TODO Auto-generated method stub
+		OProperty oc = null;
+		try{
+			oc = (OProperty)getSqlMapClientTemplate().queryForObject("getPropertyByName",pname);
+		}catch (Exception e) {
+			logger.error("æ ¹æ®å±æ€§åå­—è·å–å±æ€§ä¿¡æ¯å‡ºé”™ï¼" +  ",errMsg=" + e.getMessage());
+		}
+		return oc;
+
+	}
+
 
 	public boolean addProperty(OProperty OProperty) {
 		// TODO Auto-generated method stub
@@ -44,7 +60,7 @@ public class OPropertyDaoImpl extends BaseDao implements OPropertyDao{
 		try {
 			object =(Integer) getSqlMapClientTemplate().insert("addProperty",OProperty);
 		}catch (Exception e) {
-			logger.error("Ìí¼ÓÊôĞÔĞÅÏ¢³ö´í£¡" +  ",errMsg=" + e.getMessage());
+			logger.error("æ·»åŠ å±æ€§ä¿¡æ¯å‡ºé”™ï¼" +  ",errMsg=" + e.getMessage());
 		}
 		if (object != 0) {
 			flag = true;
@@ -52,19 +68,38 @@ public class OPropertyDaoImpl extends BaseDao implements OPropertyDao{
 		return flag;
 	}
 
-	public boolean delProperty(String id) {
+	public boolean delProperty(int pid) {
 		// TODO Auto-generated method stub
 		Object object = null;
 		boolean flag = false;
 		try {
-			object =(Integer) getSqlMapClientTemplate().update("delProperty",id);
+			object =(Integer) getSqlMapClientTemplate().delete("delProperty",pid);
 		}catch (Exception e) {
-			logger.error("É¾³ıÊôĞÔĞÅÏ¢³ö´í£¡" +  ",errMsg=" + e.getMessage());
+			logger.error("åˆ é™¤å±æ€§ä¿¡æ¯å‡ºé”™ï¼" +  ",errMsg=" + e.getMessage());
 		}
 		if (object != null) {
 			flag = true;
 		}
 		return flag;
+	}
+
+	/**
+	 * å‡çº§å±æ€§
+	 */
+	public boolean upgradeProperty(int pid) {
+		// TODO Auto-generated method stub
+		Object object = null;
+		boolean flag = false;
+		try {
+			object =(Integer) getSqlMapClientTemplate().update("upgradeProperty",pid);
+		}catch (Exception e) {
+			logger.error("å‡çº§å±æ€§ä¿¡æ¯å‡ºé”™ï¼" +  ",errMsg=" + e.getMessage());
+		}
+		if (object != null) {
+			flag = true;
+		}
+		return flag;
+
 	}
 
 	public boolean updateProperty(OProperty oproperty) {
@@ -74,7 +109,7 @@ public class OPropertyDaoImpl extends BaseDao implements OPropertyDao{
 		try {
 			object =(Integer) getSqlMapClientTemplate().update("updateProperty",oproperty);
 		}catch (Exception e) {
-			logger.error("¸üĞÂÊôĞÔĞÅÏ¢³ö´í£¡" +  ",errMsg=" + e.getMessage());
+			logger.error("æ›´æ–°å±æ€§ä¿¡æ¯å‡ºé”™ï¼" +  ",errMsg=" + e.getMessage());
 		}
 		if (object != null) {
 			flag = true;
@@ -82,5 +117,6 @@ public class OPropertyDaoImpl extends BaseDao implements OPropertyDao{
 		return flag;
 
 	}
+
 
 }

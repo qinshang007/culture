@@ -37,14 +37,20 @@
 	</insert>
 
 	<!--删除概念 -->
-	<update id="delClass" parameterClass="oclass">
-		update oclass set del=#del# where cid=#cid#
+	<update id="delClass" parameterClass="int">
+		delete from oclass where cid=#cid#
+	</update>
+	
+	<!-- 升级概念 -->
+	<update id="upgradeClass" parameterClass="int">
+		update oclass set cfid=0 where cfid=#cid#
 	</update>
 	
 	<!--更新概念 -->
 	<update id="updateClass" parameterClass="oclass">
 		update oclass set cname=#cname#,cfid=#cfid# where cid=#cid#
 	</update>
+	
 	
 
 </sqlMap>  

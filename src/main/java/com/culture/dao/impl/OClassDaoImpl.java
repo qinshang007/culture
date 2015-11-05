@@ -21,7 +21,7 @@ public class OClassDaoImpl extends BaseDao implements OClassDao{
 		try{
 			oclist = getSqlMapClientTemplate().queryForList("getOclassList",oclass);
 		}catch (Exception e) {
-			logger.error("»ñÈ¡¸ÅÄîÁĞ±íĞÅÏ¢³ö´í£¡" +  ",errMsg=" + e.getMessage());
+			logger.error("è·å–æ¦‚å¿µåˆ—è¡¨ä¿¡æ¯å‡ºé”™ï¼" +  ",errMsg=" + e.getMessage());
 		}
 		return oclist;
 	}
@@ -32,7 +32,7 @@ public class OClassDaoImpl extends BaseDao implements OClassDao{
 		try{
 			oc = (OClass)getSqlMapClientTemplate().queryForObject("getByClassId",id);
 		}catch (Exception e) {
-			logger.error("¸ù¾İ¸ÅÄîid»ñÈ¡¸ÅÄîĞÅÏ¢³ö´í£¡" +  ",errMsg=" + e.getMessage());
+			logger.error("æ ¹æ®æ¦‚å¿µidè·å–æ¦‚å¿µä¿¡æ¯å‡ºé”™ï¼" +  ",errMsg=" + e.getMessage());
 		}
 		return oc;
 	}
@@ -43,7 +43,7 @@ public class OClassDaoImpl extends BaseDao implements OClassDao{
 		try{
 			oc = (OClass)getSqlMapClientTemplate().queryForObject("getByClassName",cname);
 		}catch (Exception e) {
-			logger.error("¸ù¾İ¸ÅÄîÃû×Ö»ñÈ¡¸ÅÄîĞÅÏ¢³ö´í£¡" +  ",errMsg=" + e.getMessage());
+			logger.error("æ ¹æ®æ¦‚å¿µåå­—è·å–æ¦‚å¿µä¿¡æ¯å‡ºé”™ï¼" +  ",errMsg=" + e.getMessage());
 		}
 		return oc;
 	}
@@ -56,7 +56,7 @@ public class OClassDaoImpl extends BaseDao implements OClassDao{
 		try {
 			object =(Integer) getSqlMapClientTemplate().insert("addClass",oclass);
 		}catch (Exception e) {
-			logger.error("Ìí¼Ó¸ÅÄîĞÅÏ¢³ö´í£¡" +  ",errMsg=" + e.getMessage());
+			logger.error("æ·»åŠ æ¦‚å¿µä¿¡æ¯å‡ºé”™ï¼" +  ",errMsg=" + e.getMessage());
 		}
 		if (object != 0) {
 			flag = true;
@@ -64,20 +64,40 @@ public class OClassDaoImpl extends BaseDao implements OClassDao{
 		return flag;
 	}
 
-	public boolean delClass(String id) {
+	public boolean delClass(int cid) {
 		// TODO Auto-generated method stub
 		Object object = null;
 		boolean flag = false;
 		try {
-			object =(Integer) getSqlMapClientTemplate().update("delClass",id);
+			object =(Integer) getSqlMapClientTemplate().delete("delClass",cid);
 		}catch (Exception e) {
-			logger.error("É¾³ı¸ÅÄîĞÅÏ¢³ö´í£¡" +  ",errMsg=" + e.getMessage());
+			logger.error("åˆ é™¤æ¦‚å¿µä¿¡æ¯å‡ºé”™ï¼" +  ",errMsg=" + e.getMessage());
 		}
 		if (object != null) {
 			flag = true;
 		}
 		return flag;
 	}
+	
+	/**
+	 * å‡çº§æ¦‚å¿µ
+	 */
+	public boolean upgradeClass(int cid) {
+		// TODO Auto-generated method stub
+		Object object = null;
+		boolean flag = false;
+		try {
+			object =(Integer) getSqlMapClientTemplate().update("upgradeClass",cid);
+		}catch (Exception e) {
+			logger.error("å‡çº§æ¦‚å¿µä¿¡æ¯å‡ºé”™ï¼" +  ",errMsg=" + e.getMessage());
+		}
+		if (object != null) {
+			flag = true;
+		}
+		return flag;
+
+	}
+
 
 	public boolean updateClass(OClass oclass) {
 		// TODO Auto-generated method stub
@@ -86,7 +106,7 @@ public class OClassDaoImpl extends BaseDao implements OClassDao{
 		try {
 			object =(Integer) getSqlMapClientTemplate().update("updateClass",oclass);
 		}catch (Exception e) {
-			logger.error("¸üĞÂ¸ÅÄîĞÅÏ¢³ö´í£¡" +  ",errMsg=" + e.getMessage());
+			logger.error("æ›´æ–°æ¦‚å¿µä¿¡æ¯å‡ºé”™ï¼" +  ",errMsg=" + e.getMessage());
 		}
 		if (object != null) {
 			flag = true;

@@ -1,61 +1,60 @@
 package com.culture.model;
 
 import java.sql.Timestamp;
-import java.util.ArrayList;
 import java.util.List;
 
 public class CulturalBean 
 {
 	private int id;							//id
-	private String classification;			//ÀàĞÍ
-	private String title;					//Ãû³Æ
-	private String used_title;				//ÆäËûÃû³Æ
-	private String c_level;					//¼¶±ğ
-	private String creation_date;			//´´×÷³¯´ú
-	private String creation_time;			//´´×÷Ê±¼ä
-	private String place_of_origin;			//²úµØ
-	private String creator;					//´´×÷Õß
-	private String measurement;				//¶ÈÁ¿
-	private String excavation_date;			//³öÍÁÊ±¼ä
-	private String excavation_place;		//³öÍÁµØµã
-	private String current_location;		//ÏÖ²ØµØµã
-	private String exhibition_history;		//Õ¹ÀÀÀúÊ·
-	private String location;				//µØÓò»·¾³,¸ø½¨ÖşÊ¹ÓÃµÄ
+	private String classification;			//ç±»å‹
+	private String title;					//åç§°
+	private String used_title;				//å…¶ä»–åç§°
+	private String c_level;					//çº§åˆ«
+	private String creation_date;			//åˆ›ä½œæœä»£
+	private String creation_time;			//åˆ›ä½œæ—¶é—´
+	private String place_of_origin;			//äº§åœ°
+	private String creator;					//åˆ›ä½œè€…
+	private String measurement;				//åº¦é‡
+	private String excavation_date;			//å‡ºåœŸæ—¶é—´
+	private String excavation_place;		//å‡ºåœŸåœ°ç‚¹
+	private String current_location;		//ç°è—åœ°ç‚¹
+	private String exhibition_history;		//å±•è§ˆå†å²
+	private String location;				//åœ°åŸŸç¯å¢ƒï¼Œå»ºç­‘ä¸“ç”¨
 	
-	private String shape;					//Æ÷ĞÎ
-	private String pattern;					//ÎÆÊÎ
-	private String color;					//É«²Ê
-	private String structure;				//½á¹¹£¬½¨ÖşÊ¹ÓÃ
-	private String decoration;				//×°ÊÎ£¬½¨ÖşÊ¹ÓÃ
+	private String shape;					//å™¨å½¢
+	private String pattern;					//çº¹é¥°
+	private String color;					//è‰²å½©
+	private String structure;				//ç»“æ„ï¼Œå»ºç­‘ä¸“ç”¨
+	private String decoration;				//è£…é¥°ï¼Œå»ºç­‘ä¸“ç”¨
 
 	
-	private String scene;					//Ê¹ÓÃÇé¾³
-	private String c_usage;					//Ê¹ÓÃ·½Ê½
-	private String symbolic_meaning;		//ÏóÕ÷ÒâÒå
-	private String aesthetic_desc;			//ÉóÃÀ
-	private String social_history_info;		//Éç»áÀúÊ·ĞÅÏ¢£¬½¨ÖşÊ¹ÓÃ
+	private String scene;					//ä½¿ç”¨æƒ…å¢ƒ
+	private String c_usage;					//ä½¿ç”¨æ–¹å¼
+	private String symbolic_meaning;		//è±¡å¾æ„ä¹‰
+	private String aesthetic_desc;			//å®¡ç¾
+	private String social_history_info;		//ç¤¾ä¼šå†å²ä¿¡æ¯ï¼Œå»ºç­‘ä¸“ç”¨
 	
-	private String material;				//²ÄÖÊ
-	private String technique;				//¹¤ÒÕ
+	private String material;				//æè´¨
+	private String technique;				//å·¥è‰º
 	
-	private String history_info;			//ÀúÊ·ĞÅÏ¢
-	private String folklore;				//Ãñ¼äµä¹Ê
+	private String history_info;			//å†å²ä¿¡æ¯
+	private String folklore;				//æ°‘é—´å…¸æ•…
 	
-	private String relation;				//¹ØÁª
-	private String identifier;				//±êÊ¶·û
-	private String source;					//×ÊÁÏÀ´Ô´
-	private String rights;					//×÷Æ·ÊÚÈ¨
+	private String relation;				//å…³è”
+	private String identifier;				//æ ‡è¯†ç¬¦
+	private String source;					//èµ„æ–™æ¥æº
+	private String rights;					//ä½œå“æˆæƒ
 	
-	private int complete;					//ÊÇ·ñ±à¼­Íê³É £¬1£ºÎ´Íê³É  2£ºÍê³É
-	private String manager;					//Â¼ÈëÕß
-	private String type;					//´óÀà£¬qiwu,zhiwu,jianzhu,bihua
-	private Timestamp crtime;				//´´½¨Ê±¼ä
-	private int sernum;						//¼ìË÷´ÎÊı
-	private String mainpic;					//Ö÷Í¼
+	private int isCheck;					//0ï¼šæœªå®¡æ ¸ï¼Œ1:å®¡æ ¸é€šè¿‡ï¼Œ2ï¼šå®¡æ ¸å¤±è´¥
+	private String manager;					//å½•å…¥è€…
+	private String type;					//æ–‡ç‰©å¤§ç±»ï¼Œqiwu,zhiwu,jianzhu,bihua
+	private Timestamp crtime;				//æ–‡ç‰©æ·»åŠ æ—¶é—´yyyy-mm-dd hh:mm:ss
+	private int sernum;						//æ£€ç´¢æ¬¡æ•°
+	private String mainpic;					//ä¸»å›¾
 	
-	private List<UploadFile> ewPicture;		//¶şÎ¬Í¼Æ¬
-	private List<UploadFile> swPicture;		//ÈıÎ¬Í¼Æ¬
-	private List<UploadFile> video;			//ÊÓÆµ
+	private List<UploadFile> ewPicture;		//äºŒç»´å›¾ç‰‡ä¿¡æ¯
+	private List<UploadFile> swPicture;		//ä¸‰ç»´å›¾ç‰‡ä¿¡æ¯
+	private List<UploadFile> video;			//è§†é¢‘ä¿¡æ¯
 	
 	public int getId() {
 		return id;
@@ -255,11 +254,11 @@ public class CulturalBean
 	public void setRights(String rights) {
 		this.rights = rights;
 	}
-	public int getComplete() {
-		return complete;
+	public int getIsCheck() {
+		return isCheck;
 	}
-	public void setComplete(int complete) {
-		this.complete = complete;
+	public void setIsCheck(int isCheck) {
+		this.isCheck = isCheck;
 	}
 	public String getManager() {
 		return manager;

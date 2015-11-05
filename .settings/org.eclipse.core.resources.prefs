@@ -1,5 +1,9 @@
 eclipse.preferences.version=1
+encoding//src/main/java/com/culture/controller/ClassController.java=UTF-8
 encoding//src/main/java/com/culture/controller/InstanceController.java=UTF-8
+encoding//src/main/java/com/culture/dao/CulturalDao.java=UTF-8
+encoding//src/main/java/com/culture/dao/UserDao.java=GBK
 encoding//src/main/java/com/culture/service/impl/InstanceServiceImpl.java=UTF-8
 encoding//src/main/java/com/culture/util/StringUtils.java=UTF-8
-encoding//src/test/java/culture/CreateInstance.java=UTF-8
+encoding//src/main/webapp/media/js/ckeditor.js=UTF-8
+encoding//src/test/java/culture/RuleUtils.java=UTF-8

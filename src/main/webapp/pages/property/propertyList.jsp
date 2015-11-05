@@ -88,8 +88,8 @@
 										<tr class="">
 											<td>${status.index+1 }</td>
 											<td>${item.pname}</td>
-											<td><a  href="/culture/property/viewProperty.do?pid=${item.pid}">View</a></td>
-											<td><a  href="javascript:deleteProperty('${item.pid}')">Delete</a></td>
+											<td><a  href="/culture/property/viewProperty.do?pid=${item.pid}" target="_blank">View</a></td>
+											<td><a  href="javascript:deleteProperty('${item.pid}','${item.pname}')">Delete</a></td>
 										</tr>
 									</c:forEach>
 								</tbody>
@@ -146,15 +146,15 @@
 		   TableEditable.init();
 		});
 		
-	  	function deleteClass(id){
+	  	function deleteProperty(id,name){
             if (!confirm("确信要删除吗？")) return;
-            var url="/culture/class/delClass.do";
-            $.post(url,{cid:id},function(data){
-            	postDelClass(data);
+            var url="/culture/property/delProperty.do";
+            $.post(url,{pid:id,pname:name},function(data){
+            	postDelProperty(data);
             });
         }
 
-        function postDelClass(transport){
+        function postDelProperty(transport){
             var jresp = new JsonRespUtils(transport);
             if (jresp.isSuccessfully()){
          		location.reload();

@@ -1,0 +1,23 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:NSP="http://jena.zju.edu.cn/property#"
+    xmlns:NSC="http://jena.zju.edu.cn/class#"
+    xmlns:NSI="http://jena.zju.edu.cn/instance#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#" > 
+  <rdf:Description rdf:about="http://jena.zju.edu.cn/instance#qw1">
+    <NSP:hasMeaning rdf:resource="http://jena.zju.edu.cn/class#elegance"/>
+    <rdf:type rdf:resource="http://jena.zju.edu.cn/class#qiwu"/>
+    <NSP:title>五彩落花流水图碗</NSP:title>
+    <NSP:hasPattern rdf:resource="http://jena.zju.edu.cn/class#lotus"/>
+    <NSP:scene>摆件</NSP:scene>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://jena.zju.edu.cn/instance#qw2">
+    <NSP:hasMeaning rdf:resource="http://jena.zju.edu.cn/class#rich"/>
+    <rdf:type rdf:resource="http://jena.zju.edu.cn/class#qiwu"/>
+    <NSP:title>五彩竹雀纹壶</NSP:title>
+    <NSP:hasPattern rdf:resource="http://jena.zju.edu.cn/class#peony"/>
+    <NSP:shape>直口圆唇，丰肩圆腹，管口为流，椭圆形曲柄，圈足。盖顶为宝珠形钮。</NSP:shape>
+  </rdf:Description>
+</rdf:RDF>

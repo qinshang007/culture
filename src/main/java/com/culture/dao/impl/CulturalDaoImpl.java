@@ -20,7 +20,7 @@ public class CulturalDaoImpl extends BaseDao implements CulturalDao{
 		try {
 			object =(Integer) getSqlMapClientTemplate().insert("addCultural",cb);
 		}catch (Exception e) {
-			logger.error("Ìí¼ÓÎÄÎï³ö´í£¡" +  ",errMsg=" + e.getMessage());
+			logger.error("æ·»åŠ æ–‡ç‰©å‡ºé”™ï¼" +  ",errMsg=" + e.getMessage());
 		}
 		if (object != 0) {
 			flag = true;
@@ -36,7 +36,7 @@ public class CulturalDaoImpl extends BaseDao implements CulturalDao{
 		try {
 			object =(Integer) getSqlMapClientTemplate().update("updateCultural",cb);
 		}catch (Exception e) {
-			logger.error("¸üĞÂÎÄÎï³ö´í£¡" +  ",errMsg=" + e.getMessage());
+			logger.error("æ›´æ–°æ–‡ç‰©å‡ºé”™ï¼" +  ",errMsg=" + e.getMessage());
 		}
 		if (object != null) {
 			flag = true;
@@ -51,7 +51,7 @@ public class CulturalDaoImpl extends BaseDao implements CulturalDao{
 		try{
 			cblist = getSqlMapClientTemplate().queryForList("getCulturalList");
 		}catch (Exception e) {
-			logger.error("»ñÈ¡ÎÄÎïÁĞ±í³ö´í£¡" +  ",errMsg=" + e.getMessage());
+			logger.error("è·å–æ–‡ç‰©åˆ—è¡¨å‡ºé”™ï¼" +  ",errMsg=" + e.getMessage());
 		}
 		return cblist;
 	}
@@ -63,7 +63,7 @@ public class CulturalDaoImpl extends BaseDao implements CulturalDao{
 		try {
 			object =(Integer) getSqlMapClientTemplate().update("delCultural",identifier);
 		}catch (Exception e) {
-			logger.error("É¾³ıÎÄÎï³ö´í£¡" +  ",errMsg=" + e.getMessage());
+			logger.error("åˆ é™¤æ–‡ç‰©å‡ºé”™ï¼" +  ",errMsg=" + e.getMessage());
 		}
 		if (object != null) {
 			flag = true;
@@ -78,9 +78,24 @@ public class CulturalDaoImpl extends BaseDao implements CulturalDao{
 		try{
 			cb = (CulturalBean)getSqlMapClientTemplate().queryForObject("getCulturalById", culId);
 		}catch (Exception e) {
-			logger.error("»ñÈ¡ÎÄÎïÏêÇé³ö´í£¡" +  ",errMsg=" + e.getMessage());
+			logger.error("è·å–æ–‡ç‰©è¯¦æƒ…å‡ºé”™ï¼" +  ",errMsg=" + e.getMessage());
 		}
 		return cb;
+	}
+
+	/**
+	 * æ ¹æ®æ–‡ç‰©åå­—è¿”å›æ–‡ç‰©
+	 */
+	public CulturalBean getCulturalByName(String title) {
+		// TODO Auto-generated method stub
+		CulturalBean cb = null;
+		try{
+			cb = (CulturalBean)getSqlMapClientTemplate().queryForObject("getCulturalByTitle", title);
+		}catch (Exception e) {
+			logger.error("æ ¹æ®æ–‡ç‰©åå­—è·å–æ–‡ç‰©è¯¦æƒ…å‡ºé”™ï¼" +  ",errMsg=" + e.getMessage());
+		}
+		return cb;
+
 	}
 
 }

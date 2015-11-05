@@ -4,8 +4,11 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.culture.dao.CulturalDao;
+import com.culture.dao.InstanceDao;
 import com.culture.dao.OClassDao;
 import com.culture.dao.OPropertyDao;
+import com.culture.dao.ORuleDao;
+import com.culture.dao.UserDao;
 
 public class BaseService {
 	
@@ -17,6 +20,12 @@ public class BaseService {
 	private OPropertyDao opDao = (OPropertyDao) context.getBean("opDao");
 	
 	private CulturalDao clDao = (CulturalDao) context.getBean("clDao");
+	
+	private ORuleDao orDao = (ORuleDao) context.getBean("orDao");
+	
+	private UserDao userDao = (UserDao)context.getBean("userDao");
+	
+	private InstanceDao instanceDao = (InstanceDao)context.getBean("instanceDao");
 	
 	public  OClassDao getOClassDao(){
 		return ocDao;
@@ -30,4 +39,15 @@ public class BaseService {
 		return clDao;
 	}
 	
+	public ORuleDao getORuleDao(){
+		return orDao;
+	}
+	
+	public UserDao getUserDao(){
+		return userDao;
+	}
+	
+	public InstanceDao getInstanceDao(){
+		return instanceDao;
+	}
 }

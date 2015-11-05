@@ -6,28 +6,31 @@ import com.culture.model.OClass;
 
 public interface OClassService {
 	
-	/*·µ»Ø¸ÅÄîÁĞ±í*/
+	/*è¿”å›æ¦‚å¿µåˆ—è¡¨*/
 	public List<OClass> getClassList(OClass oclass);		
 	
-	/*¸ù¾İid·µ»ØÄ³¸ö¸ÅÄî*/
+	/*æ ¹æ®idè¿”å›æŸä¸ªæ¦‚å¿µ*/
 	public OClass getClassById(String id);	
 	
-	/*¸ù¾İname·µ»ØÄ³¸ö¸ÅÄî*/
+	/*æ ¹æ®nameè¿”å›æŸä¸ªæ¦‚å¿µ*/
 	public OClass getClassByName(String cname);			
 	
-	/*Ìí¼Ó¸ÅÄî*/
+	/*æ·»åŠ æ¦‚å¿µ*/
 	public boolean addClass(OClass oclass);
 	
-	/*É¾³ı¸ÅÄî*/
-	public boolean delClass(String id);
+	/*åˆ é™¤æ¦‚å¿µ*/
+	public boolean delClass(String cid,String cname);
 	
-	/*¸üĞÂ¸ÅÄî*/
+	/*æ›´æ–°æ¦‚å¿µ*/
 	public boolean updateClass(OClass oclass);
 	
-	/*¸ù¾İ¸ÅÄîid£¬µ±directÎªtrueÊ±·µ»ØËüµÄÖ±Ïµ×Ó¸ÅÄî£¬µ±directÎªFalseÊ±£¬·µ»ØËüµÄËùÓĞºó´ú¸ÅÄî*/
+	/*æ ¹æ®æ¦‚å¿µidï¼Œå½“directä¸ºtrueæ—¶è¿”å›å®ƒçš„ç›´ç³»å­æ¦‚å¿µï¼Œå½“directä¸ºFalseæ—¶ï¼Œè¿”å›å®ƒçš„æ‰€æœ‰åä»£æ¦‚å¿µ*/
 	public List<OClass> getSubClasses(String cname,boolean direct);
 	
-	/*¸ù¾İ¸ÅÄîid·µ»Ø¸ÅÄîµÄÃû×Ö*/
+	/*æ ¹æ®æ¦‚å¿µidè¿”å›æ¦‚å¿µçš„åå­—*/
 	public String getNameById(String id);
+	
+	/*éªŒè¯æ¦‚å¿µåå­—æ˜¯å¦å­˜åœ¨*/
+	public boolean isClassExist(String cname);
 
 }

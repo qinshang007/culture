@@ -6,7 +6,7 @@ import org.json.JSONArray;
 public class JsonUtils {
 	
 	/** 
-	 * ´Ójson½âÎö³öjava×Ö·û´®Êı×é
+	 * ä»jsonè§£æå‡ºjavaå­—ç¬¦ä¸²æ•°ç»„
 	 * jsonArrayStr:["1","2","3"]
 	 */
 	public static String[] toStringArray(String jsonArrayStr) {

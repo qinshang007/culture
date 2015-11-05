@@ -10,7 +10,7 @@ public class MathUtils {
 	}
 	
 	/**
-	 * ¸ù¾İÁ½¸ö¾­Î³¶È²â³ö¾àÀë
+	 * æ ¹æ®ä¸¤ä¸ªç»çº¬åº¦æµ‹å‡ºè·ç¦»
 	 * @param lng1
 	 * @param lat1
 	 * @param lng2

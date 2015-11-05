@@ -12,18 +12,18 @@ import com.hp.hpl.jena.rdf.model.ModelFactory;
 public class ReadXml {
 	
 	public static void main(String[] args){
-		//创建model
+		//鍒涘缓model
 		OntModel model = ModelFactory.createOntologyModel(OntModelSpec.OWL_MEM);
-		//owl文件路径
+		//owl鏂囦欢璺緞
 		String fileSrc = "test.owl";
-		//读取文件
+		//璇诲彇鏂囦欢
 		 try {
 			model.read(new FileInputStream(fileSrc),"");
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		//遍历model
+		//閬嶅巻model
 		Iterator<OntClass> i = model.listClasses();
 		while(i.hasNext()){
 			OntClass c = i.next();

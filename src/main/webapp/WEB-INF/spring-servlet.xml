@@ -30,6 +30,7 @@
  <bean id="oModelFactory" class="com.culture.model.OModelFactory">
 	 <property name="owlFile" value="E:/apache-tomcat-7.0.55/webapps/owl/culture.owl" />
 	 <property name="instanceFile" value="E:/apache-tomcat-7.0.55/webapps/owl/instance.owl" />
+	 <property name="ruleFile" value="E:/apache-tomcat-7.0.55/webapps/owl/crelic.rules" />
  </bean>
 
 </beans>

@@ -52,7 +52,7 @@
 				<div class="row-fluid">
 					<div class="span12">
 						<h3 class="page-title">
-							修改实例
+							添加${type}
 						</h3>
 						<ul class="breadcrumb">
 							<li>
@@ -64,7 +64,7 @@
 								<a href="#">本体管理</a>
 								<span class="icon-angle-right"></span>
 							</li>
-							<li><a href="/culture/doctor/dtAdd.do">修改实例</a></li>
+							<li><a href="/culture/doctor/dtAdd.do">修改${type}</a></li>
 						</ul>
 					</div>
 				</div>
@@ -73,15 +73,14 @@
 						<!-- BEGIN SAMPLE FORM PORTLET-->   
 						<div class="portlet-body form">
 							<!-- BEGIN FORM-->
-							<form id="instanceForm" action="/culture/instance/edit.do" class="form-horizontal" method="post" enctype="multipart/form-data" target="hidden_frame">
-								<input type="hidden" id="type" name="type" value="${type}" />
-								<input type="hidden" id="classification" name="classification" value="${classification}" />
+							<form id="instanceForm" action="/culture/instance/updateInstance.do" class="form-horizontal" method="post" enctype="multipart/form-data" target="hidden_frame">
+								<input type="hidden" id="type" name="type" value="${cb.type}" />
+								<input type="hidden" id="classification" name="classification" value="${cb.classification}" />
 								<input type="hidden" id="identifier" name="identifier" value="${cb.identifier}" />
-								<input type="hidden" id="mainpic" name="mainpic" value="${cb.mainpic}" />
-								<input type="hidden" id="oldTitle" name="mainpic" value="${cb.title}" />
+								<input type="hidden" id="oldTitle" name="oldTitle" value="${oldTitle}" />
 								<div class="portlet box blue">
 									<div class="portlet-title">
-										<div class="caption"><i class="icon-cogs"></i>基本信息</div>
+										<div class="caption"><i class="icon-cogs"></i>本体信息</div>
 									</div>
 									<div class="portlet-body">
 		 								<div class="control-group">
@@ -94,42 +93,13 @@
 		 								<div class="control-group">
 											<label class="control-label">其他名称</label>
 											<div class="controls">
-												<input id="used_title" type="text" class="span6 m-wrap" name="used_title" value="${cb.used_title}"/>
-											</div>
-										</div>
-										<div class="control-group">
-											<label class="control-label">主图</label>
-											<div class="controls">
-												<div class="fileupload fileupload-new" data-provides="fileupload">
-													<div class="fileupload-new thumbnail" style="width: 200px; height: 150px;">
-														<img src="/crelicBase/upload${cb.mainpic}" alt="" />
-													</div>
-													<div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 200px; max-height: 150px; line-height: 20px;"></div>
-													<div>
-														<span class="btn btn-file"><span class="fileupload-new">更改主图</span>
-														<span class="fileupload-exists">Change</span>
-														<input id="mainpicId" name="mainpicfile" type="file" class="default" /></span>
-														<a href="#" class="btn fileupload-exists" data-dismiss="fileupload">Remove</a>
-													</div>
-												</div>
-											</div>
-										</div>								
-										<div class="control-group">
-											<label class="control-label">级别</label>
-											<div class="controls">										
-												<select id="c_level" class="span6 chosen classification-select" data-placeholder="请选择级别" tabindex="1" name="c_level">
-													<option value="一级文物">一级文物</option>
-													<option value="二级文物">二级文物</option>
-													<option value="三级文物">三级文物</option>
-													<option value="一般文物">一般文物</option>
-													<option value="未定级文物">未定级文物</option>
-												</select>
+												<input id="used_title" type="text" class="span6 m-wrap" name="used_title" value="${cb.used_title}" />
 											</div>
 										</div>
 										<div class="control-group">
 											<label class="control-label">创作朝代</label>
 											<div class="controls">										
-												<select id="creation_date" class="span6 chosen classification-select" data-placeholder="请选择朝代" tabindex="1" name="creation_date">
+												<select id="creation_date" class="span6 chosen creation_date-select" data-placeholder="请选择朝代" tabindex="1" name="creation_date">
 													<c:forEach  items="${creationDateList}"  var="item"  varStatus="status">
 														<option value="${item.cname}">${item.cname}</option>
 													</c:forEach>
@@ -137,199 +107,78 @@
 											</div>
 										</div>
 										<div class="control-group">
-											<label class="control-label">创作时期</label>
-											<div class="controls">										
-												<input id="creation_time" type="text" class="span6 m-wrap" name="creation_time" value="${cb.creation_time }" />
-											</div>
-										</div>
-										<div class="control-group">
 											<label class="control-label">创作者</label>
 											<div class="controls">										
-												<input id="creator" type="text" class="span6 m-wrap" name="creator" value="${cb.creator}" />
+												<input id="creator" type="text" class="span6 m-wrap" name="creator" value="${cb.creator}"/>
 											</div>
 										</div>
-										<div id="placeOfOriginDiv" class="control-group">
-											<label class="control-label">产地</label>
-											<div class="controls">										
-												<input id="place_of_originr" type="text" class="span6 m-wrap" name="place_of_origin" value="${cb.place_of_origin}" />
-											</div>
-										</div>
-										<div class="control-group">
-											<label class="control-label">度量</label>
-											<div class="controls">										
-												<input id="measurement" type="text" class="span6 m-wrap" name="measurement" value="${cb.measurement}"/>
-											</div>
-										</div>
-										<div id="locationDiv" class="control-group">
-											<label class="control-label">地域环境</label>
-											<div class="controls">										
-												<input id="location" type="text" class="span6 m-wrap" name="location" value="${cb.location}"/>
-											</div>
-										</div>
-										<div id="excavationDateDiv" class="control-group">
-											<label class="control-label">出土时间</label>
-											<div class="controls">										
-												<input id="excavation_date" type="text" class="span6 m-wrap" name="excavation_date" value="${cb.excavation_date }"/>
-											</div>
-										</div>
-										<div id="excavationPlaceDiv" class="control-group">
-											<label class="control-label">出土地点</label>
-											<div class="controls">										
-												<input id="excavation_place" type="text" class="span6 m-wrap" name="excavation_place" value="${cb.excavation_place }" />
-											</div>
-										</div>
-										<div id="currentLocationDiv" class="control-group">
-											<label class="control-label">现藏地点</label>
-											<div class="controls">										
-												<input id="current_location" type="text" class="span6 m-wrap" name="current_location" value="${cb.current_location }"  />
-											</div>
-										</div>
-										<div id="exhibitonHistoryDiv" class="control-group">
-											<label class="control-label">展览历史</label>
-											<div class="controls">										
-												<input id="exhibition_history" type="text" class="span6 m-wrap" name="exhibition_history" value="${cb.exhibition_history }"/>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div id="modelDiv" class="portlet box blue">
-									<div class="portlet-title">
-										<div class="caption"><i class="icon-cogs"></i>造型要素</div>
-									</div>
-									<div class="portlet-body">
 										<div id="shapeDiv" class="control-group">
 											<label class="control-label">器形</label>
 											<div class="controls">										
-												<textarea class="span6 m-wrap" rows="3" name="shape">${cb.shape}</textarea>
+												<select id="shape" class="span6 chosen shape-select" data-placeholder="请选择器形" multiple="multiple" tabindex="6" name="shape">
+													<c:forEach  items="${shapeList}"  var="item"  varStatus="status">
+														<option value="${item.cname}">${item.cname}</option>
+													</c:forEach>
+												</select>
 											</div>
 										</div>
 										<div id="patternDiv" class="control-group">
 											<label class="control-label">纹饰</label>
 											<div class="controls">										
-												<textarea class="span6 m-wrap" rows="3" name="pattern">${cb.pattern}</textarea>
+												<select id="pattern" class="span6 chosen pattern-select" data-placeholder="请选择纹饰" multiple="multiple" tabindex="6" name="pattern">
+													<c:forEach  items="${patternList}"  var="item"  varStatus="status">
+														<option value="${item.cname}">${item.cname}</option>
+													</c:forEach>
+												</select>
 											</div>
 										</div>
 										<div id="structureDiv" class="control-group">
 											<label class="control-label">结构</label>
 											<div class="controls">										
-												<textarea class="span6 m-wrap" rows="3" name="structure">${cb.structure}</textarea>
+												<select id="structure" class="span6 chosen structure-select" data-placeholder="请选择结构" multiple="multiple" tabindex="6" name="structure">
+													<c:forEach  items="${structureList}"  var="item"  varStatus="status">
+														<option value="${item.cname}">${item.cname}</option>
+													</c:forEach>
+												</select>
 											</div>
 										</div>
-										<div id="decorationDiv" class="control-group">
-											<label class="control-label">装饰</label>
-											<div class="controls">										
-												<textarea class="span6 m-wrap" rows="3" name="decoration">${cb.decoration}</textarea>
-											</div>
-										</div>
-										<div class="control-group">
+										<div id="colorDiv" class="control-group">
 											<label class="control-label">色彩</label>
 											<div class="controls">										
-												<textarea class="span6 m-wrap" rows="3" name="color">${cb.color}</textarea>
+												<select id="color" class="span6 chosen color-select" data-placeholder="请选择色彩" multiple="multiple" tabindex="6" name="color">
+													<c:forEach  items="${colorList}"  var="item"  varStatus="status">
+														<option value="${item.cname}">${item.cname}</option>
+													</c:forEach>
+												</select>
 											</div>
 										</div>
-									</div>
-								</div>
-								<div id="functionDiv" class="portlet box blue">
-									<div class="portlet-title">
-										<div class="caption"><i class="icon-cogs"></i>功能要素</div>
-									</div>
-									<div class="portlet-body">
 										<div id="sceneDiv" class="control-group">
 											<label class="control-label">使用情境</label>
 											<div class="controls">										
-												<input id="scene" type="text" class="span6 m-wrap" name="scene" value="${cb.scene }" />
+												<select id="scene" class="span6 chosen scene-select" data-placeholder="请选择使用情境" multiple="multiple" tabindex="6" name="scene">
+													<c:forEach  items="${sceneList}"  var="item"  varStatus="status">
+														<option value="${item.cname}">${item.cname}</option>
+													</c:forEach>
+												</select>
 											</div>
 										</div>
-										<div id="c_usageDiv" class="control-group">
-											<label class="control-label">使用方式</label>
-											<div class="controls">										
-												<input id="c_usage" type="text" class="span6 m-wrap" name="c_usage" value="${cb.c_usage }" />
-											</div>
-										</div>
-										<div class="control-group">
+										<div id="meaningDiv" class="control-group">
 											<label class="control-label">象征意义</label>
 											<div class="controls">										
-												<textarea class="span6 m-wrap" rows="3" name="symbolic_meaning">${cb.symbolic_meaning}</textarea>
+												<select id="meaning" class="span6 chosen meaning-select" data-placeholder="请选择象征意义" multiple="multiple" tabindex="6" name="symbolic_meaning">
+													<c:forEach  items="${meaningList}"  var="item"  varStatus="status">
+														<option value="${item.cname}">${item.cname}</option>
+													</c:forEach>
+												</select>
 											</div>
 										</div>
-										<div class="control-group">
+										<div id="aestheticDiv" class="control-group">
 											<label class="control-label">审美</label>
 											<div class="controls">										
-												<textarea class="span6 m-wrap" rows="3" name="aesthetic_desc">${cb.aesthetic_desc}</textarea>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div id="techonologyDiv" class="portlet box blue">
-									<div class="portlet-title">
-										<div class="caption"><i class="icon-cogs"></i>技术要素</div>
-									</div>
-									<div class="portlet-body">
-										<div class="control-group">
-											<label class="control-label">材质</label>
-											<div class="controls">										
-												<input id="scene" type="text" class="span6 m-wrap" name="material" value="${cb.material}" />
-											</div>
-										</div>
-										<div class="control-group">
-											<label class="control-label">工艺</label>
-											<div class="controls">										
-												<textarea class="span6 m-wrap" rows="3" name="technique">${technique}</textarea>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div id="cultureDiv" class="portlet box blue">
-									<div class="portlet-title">
-										<div class="caption"><i class="icon-cogs"></i>文化要素</div>
-									</div>
-									<div class="portlet-body">
-										<div id="historyInfoDiv" class="control-group">
-											<label class="control-label">历史信息</label>
-											<div class="controls">										
-												<input id="scene" type="text" class="span6 m-wrap" name="history_info" value="${cb.history_info }"/>
-											</div>
-										</div>
-										<div id="folkloreDiv" class="control-group">
-											<label class="control-label">民间典故</label>
-											<div class="controls">										
-												<textarea class="span6 m-wrap" rows="3" name="folklore">${cb.folklore}</textarea>
-											</div>
-										</div>
-										<div id="socialHistoryInfoDiv" class="control-group">
-											<label class="control-label">社会历史信息</label>
-											<div class="controls">	
-												<textarea class="span6 m-wrap" rows="3" name="social_history_info">${cb.social_history_info }</textarea>									
-											</div>
-										</div>
-									</div>
-								</div>
- 								<div class="portlet box blue">
-									<div class="portlet-title">
-										<div class="caption"><i class="icon-cogs"></i>其他要素</div>
-									</div>
-									<div class="portlet-body">
-										<div class="control-group">
-											<label class="control-label">关联</label>
-											<div class="controls">										
-												<input id="relation" type="text" class="span6 m-wrap" name="relation" value="${cb.relation }"/>
-											</div>
-										</div>
-										<div class="control-group">
-											<label class="control-label">资料来源</label>
-											<div class="controls">										
-												<textarea class="span6 m-wrap" rows="3" name="source">${cb.source}</textarea>
-											</div>
-										</div>
-										<div class="control-group">
-											<label class="control-label">作品授权</label>
-											<div class="controls">										
-												<select id="rights" class="span6 chosen classification-select" data-placeholder="请选择授权" tabindex="1" name="rights">
-													<option value="禁止商用">禁止商用</option>
-													<option value="禁止匿名转载">禁止匿名转载</option>
-													<option value="仅限个人使用">仅限个人使用</option>
-													<option value="禁止截图">禁止截图</option>
-													<option value="禁止右键另存为">禁止右键另存为</option>
+												<select id="aesthetic" class="span6 chosen aesthetic-select" data-placeholder="请选择审美" multiple="multiple" tabindex="6" name="aesthetic_desc">
+													<c:forEach  items="${aestheticList}"  var="item"  varStatus="status">
+														<option value="${item.cname}">${item.cname}</option>
+													</c:forEach>
 												</select>
 											</div>
 										</div>
@@ -372,6 +221,7 @@
 	<!-- END CORE PLUGINS -->
 	<!-- BEGIN PAGE LEVEL PLUGINS -->
 	<script type="text/javascript" src="/culture/media/js/bootstrap-fileupload.js"></script>
+	<script type="text/javascript" src="/culture/media/js/chosen.jquery.min.js"></script>
 	<script type="text/javascript" src="/culture/media/js/jsonRespUtils.js"></script>
 	<script type="text/javascript" src="/culture/media/js/jquery.validate.min.js"></script>
 	<!-- END PAGE LEVEL PLUGINS -->
@@ -384,61 +234,66 @@
 		   // initiate layout and plugins
 		   App.init();
 		   var rule={type:{required:true},classification:{required:true}};
-		   $("#c_level option[value='${cb.c_level}']").attr("selected",true);
-		   $("#creation_date option[value='${cb.creation_date}']").attr("selected",true);
-		   $("#rights option[value='${cb.rights}']").attr("selected",true);
 		   FormValidation.init($('#instanceForm'),rule,creatSubmitForm('instanceForm'),failedForm);
 		   init();
+		   setValues();
 		});
 		
 		function init(){
 			var type = $("#type").val();
 			if(type=='器物'){
-				//基本信息
-				$("#locationDiv").hide();
-				//造型要素
 				$("#structureDiv").hide();
-				$("#decorationDiv").hide();
-				//文化要素
-				$("#socialHistoryInfoDiv").hide();
+				$("#aestheticDiv").hide();
 			}else if(type=='织物'){
-				//基本要素
-				$("#locationDiv").hide();
-				//造型要素
-				$("#shapeDiv").hide();
 				$("#structureDiv").hide();
-				$("#decorationDiv").hide();
-				//功能要素
-				$("#c_usageDiv").hide();
-				//文化要素
-				$("#socialHistoryInfoDiv").hide();
-			}else if(type='建筑'){
-				//基本信息
-				$("#excavationDateDiv").hide();
-				$("#excavationPlaceDiv").hide();
-				$("#currentLocationDiv").hide();
-				$("#exhibitonHistoryDiv").hide();
-				//造型要素
+				$("#shapeDiv").hide();
+				$("#aestheticDiv").hide();
+			}else if(type=='建筑'){
 				$("#shapeDiv").hide();
 				$("#patternDiv").hide();
-				//功能要素
-				$("#functionDiv").hide();
-				//文化要素
-				$("#historyInfoDiv").hide();
-				$("#folkloreDiv").hide();
-			}else if(type=='壁画'){
-				//基本信息
-				$("#locationDiv").hide();
-				//造型要素
-				$("#shapeDiv").hide();
-				$("#structureDiv").hide();
-				$("#decorationDiv").hide();
-				//功能要素
+				$("#colorDiv").hide();
+				$("#meaningDiv").hide();
 				$("#sceneDiv").hide();
-				$("#c_usageDiv").hide();
-				//文化要素
-				$("#socialHistoryInfoDiv").hide();
+			}else if(type=='壁画'){
+				$("#structureDiv").hide();
+				$("#shapeDiv").hide();
+				$("#aestheticDiv").hide();
+				$("#sceneDiv").hide();
 			}
+		}
+		
+		function setValues(){
+			//朝代数据
+		   $("#creation_date option[value='${cb.creation_date}']").attr("selected",true);
+		   $(".creation_date-select").trigger("liszt:updated");
+			//纹饰数据
+			var pattern = '${instance.pattern}';
+			$("#pattern").val(pattern.split(','));
+			$(".pattern-select").trigger("liszt:updated");
+			//器形数据
+			var shape = '${instance.shape}';
+			$("#shape").val(shape.split(','));
+			$(".shape-select").trigger("liszt:updated");
+			//结构数据
+			var structure = '${instance.structure}';
+			$("#structure").val(structure.split(','));
+			$(".structure-select").trigger("liszt:updated");
+			//色彩数据
+			var color = '${instance.color}';
+			$("#color").val(color.split(','));
+			$(".color-select").trigger("liszt:updated");
+			//使用情境数据
+			var scene = '${instance.scene}';
+			$("#scene").val(scene.split(','));
+			$(".scene-select").trigger("liszt:updated");
+			//审美数据
+			var aesthetic_desc = '${instance.aesthetic_desc}';
+			$("#aesthetic").val(aesthetic_desc.split(','));
+			$(".aesthetic-select").trigger("liszt:updated");
+			//象征意义数据
+			var symbolic_meaning = '${instance.symbolic_meaning}';
+			$("#meaning").val(symbolic_meaning.split(','));
+			$(".meaning-select").trigger("liszt:updated");
 		}
 		
 		function failedForm(){
@@ -464,8 +319,8 @@
 			    	 if (jresp.isSuccessfully()){
 			    		 var res = jresp.getMessage();
 			    		 alert("保存成功！");
+			    		 location.reload();
 			    	 }
-			    	 location.reload();
 			    },
 			     error: function(transport) 
 			     {

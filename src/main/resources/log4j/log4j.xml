@@ -12,7 +12,7 @@
         </filter>
     </appender>
     <appender name="ERROR-APPENDER" class="org.apache.log4j.DailyRollingFileAppender">
-    	<param name="File" value="F:/logs/culture/common-error.log" /> 
+    	<param name="File" value="D:/logs/culture/common-error.log" /> 
         <layout class="org.apache.log4j.PatternLayout">
             <param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss:SSS} %l %m%n" />
         </layout>

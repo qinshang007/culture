@@ -1,15 +1,24 @@
 package com.culture.service;
 
-import javax.servlet.http.HttpServletRequest;
+import java.util.Map;
 
-import com.culture.model.CulturalBean;
+import com.culture.model.Instance;
 
 public interface InstanceService {
 	
-	public void addInstance(HttpServletRequest request,CulturalBean cb);
+	/*保存实例*/
+	public boolean addInstance(Map<String,String> valueMap,Instance cb);
 	
+	/*删除实例*/
 	public void delInstance(String title);
 	
-	public void editInstance(HttpServletRequest request,CulturalBean cb,String oldTitle);
+	/*编辑实例*/
+	public boolean editInstance(Map<String,String> valueMap,Instance cb);
+	
+	/*根据标识符查找实例*/
+	public Instance getInstanceById(String identifier);
+	
+	/*更新本体实例*/
+	public boolean updateInstance(Instance instance);
 	
 }

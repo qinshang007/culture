@@ -44,7 +44,7 @@ public class ClassController extends BaseController{
 	private static final Logger logger = Logger.getLogger(ClassController.class);  
 	
 	/**
-	 * ±£´æ¸ÅÄî
+	 * ä¿å­˜æ¦‚å¿µ
 	 * @param request
 	 * @param response
 	 * @throws Exception
@@ -53,22 +53,22 @@ public class ClassController extends BaseController{
 	public void saveClass(HttpServletRequest request, HttpServletResponse response) throws Exception{
 		try{
 			OntModel model = omodelFactory.getModel();
-			//»ñÈ¡¸ÅÄîÃû×Ö
+			//è·å–æ¦‚å¿µåå­—
 			String cname = request.getParameter("cname");
-			//»ñÈ¡¸¸¸ÅÄîÃû×Ö
+			//è·å–çˆ¶æ¦‚å¿µåå­—
 			String cfname = request.getParameter("cfname");
-			//»ñÈ¡¸¸¸ÅÄîid
+			//è·å–çˆ¶æ¦‚å¿µid
 			String cfid = request.getParameter("cfid");
 			
 			OntClass children = model.createClass(OModelFactory.NSC+cname);
 			
-			//¸¸¸ÅÄî²»Îª¿ÕÇÒ²»µÈÓÚÎŞ
-			if(!StringUtils.isEmpty(cfname)&&!cfname.equals("ÎŞ")){
-				OntClass parent = model.getOntClass(OModelFactory.NSC+cfname);//È¡³ö¸¸¸ÅÄî
+			//å¦‚æœçˆ¶æ¦‚å¿µåå­—ä¸ä¸ºç©ºä¸”ä¸ä¸ºæ— 
+			if(!StringUtils.isEmpty(cfname)&&!cfname.equals("æ— ")){
+				OntClass parent = model.getOntClass(OModelFactory.NSC+cfname);//å–å¾—çˆ¶æ¦‚å¿µ
 				parent.addSubClass(children);//
 			}
 			
-			//Ğ´µ½owlÎÄ¼ş
+			//å†™å…¥owlæ–‡ä»¶
 			File file = new File(omodelFactory.getOwlFile());
 			try{
 				OutputStream out = new FileOutputStream(file);
@@ -76,7 +76,7 @@ public class ClassController extends BaseController{
 			}catch(Exception e){
 				e.printStackTrace();
 			}
-			//±£´æµ½Êı¾İ¿â
+			//ä¿å­˜åˆ°æ•°æ®åº“
 			OClass c = new OClass();
 			c.setCname(cname);
 			c.setCfid(Integer.valueOf(cfid));
@@ -85,13 +85,13 @@ public class ClassController extends BaseController{
 			outputJsonResponse(response, true, "uploadSuccess");
 			                                                                                                                                                   
 		}catch (RuntimeException e) {
-			logger.error("±£´æ¸ÅÄî³ö´í£¡" +  ",errMsg=" + e.getMessage());
+			logger.error("ä¿å­˜æ¦‚å¿µå‡ºé”™ï¼š" +  ",errMsg=" + e.getMessage());
 			outputJsonResponse(response, false, e.getMessage());
 		}
 	}
 
 	/**
-	 * ±£´æ¸ÅÄî
+	 * æ›´æ–°æ¦‚å¿µ
 	 * @param request
 	 * @param response
 	 * @throws Exception
@@ -100,30 +100,30 @@ public class ClassController extends BaseController{
 	public void updateClass(HttpServletRequest request, HttpServletResponse response) throws Exception{
 		try{
 			OntModel model = omodelFactory.getModel();
-			//»ñÈ¡¸ÅÄîid
+			//è·å–æ¦‚å¿µid
 			String cid = request.getParameter("cid");
-			//»ñÈ¡¸ÅÄîÃû×Ö
+			//è·å–æ¦‚å¿µåå­—
 			String cname = request.getParameter("cname");
-			//»ñÈ¡¸¸¸ÅÄîÃû×Ö
+			//è·å–çˆ¶æ¦‚å¿µåå­—
 			String cfname = request.getParameter("cfname");
-			//»ñÈ¡¸¸¸ÅÄîid
+			//è·å–çˆ¶æ¦‚å¿µid
 			String cfid = request.getParameter("cfid");
 			
-			//¸ü¸Ä¸ÅÄîlabel
+			//è·å–è¯¥æ¦‚å¿µçš„å­æ¦‚å¿µ
 			OntClass children = model.getOntClass(OModelFactory.NSC+cname);
 			
-			//¸¸¸ÅÄî²»Îª¿ÕÇÒ²»µÈÓÚÎŞ
-			if(!StringUtils.isEmpty(cfname)&&!cfname.equals("ÎŞ")){
-				//È¡³öÒÔÇ°µÄ¸¸¸ÅÄî£¬È»ºó´ÓÆä×Ó¸ÅÄîÖĞÉ¾µô
+			//å¦‚æœæ¦‚å¿µåå­—ä¸ä¸ºç©ºä¸”ä¸ä¸ºæ— 
+			if(!StringUtils.isEmpty(cfname)&&!cfname.equals("æ— ")){
+				//è·å–åŸæ¥çš„çˆ¶æ¦‚å¿µ
 				OntClass old_parent = children.getSuperClass();
 				if(old_parent!=null)
 					old_parent.removeSubClass(children);
-				//È¡µÃĞÂµÄ¸¸¸ÅÄî
+				//è·å–æ–°çš„çˆ¶æ¦‚å¿µ
 				OntClass parent = model.getOntClass(OModelFactory.NSC+cfname);
 				parent.addSubClass(children);//
 			}
 			
-			//Ğ´µ½owlÎÄ¼ş
+			//å†™å…¥åˆ°owlæ–‡ä»¶
 			File file = new File(omodelFactory.getOwlFile());
 			try{
 				OutputStream out = new FileOutputStream(file);
@@ -131,7 +131,7 @@ public class ClassController extends BaseController{
 			}catch(Exception e){
 				e.printStackTrace();
 			}
-			//¸üĞÂµ½Êı¾İ¿â
+			//ä¿å­˜åˆ°æ•°æ®åº“
 			OClass c = new OClass();
 			c.setCname(cname);
 			c.setCid(Integer.valueOf(cid));
@@ -141,14 +141,14 @@ public class ClassController extends BaseController{
 			outputJsonResponse(response, true, "updateSuccess");
 			                                                                                                                                                   
 		}catch (RuntimeException e) {
-			logger.error("¸üĞÂ¸ÅÄî³ö´í£¡" +  ",errMsg=" + e.getMessage());
+			logger.error("æ›´æ–°æ¦‚å¿µå‡ºé”™ï¼š" +  ",errMsg=" + e.getMessage());
 			outputJsonResponse(response, false, e.getMessage());
 		}
 	}
 
 	
 	/**
-	 * Ìí¼Ó¸ÅÄî½çÃæ
+	 * æ·»åŠ æ¦‚å¿µç•Œé¢
 	 * @param request
 	 * @param response
 	 * @return
@@ -157,13 +157,13 @@ public class ClassController extends BaseController{
 	@RequestMapping("/addClass.do")
 	public ModelAndView addClass(HttpServletRequest request, HttpServletResponse response) throws Exception{
 		try{
-			//»ñÈ¡¸¸¸ÅÄîid
+			//å¦‚æœçˆ¶æ¦‚å¿µidä¸ä¸ºç©º
 			int cfid = 0;
 			if(request.getParameter("cfid")!=null)
 				cfid = Integer.parseInt(request.getParameter("cfid"));
-			//»ñÈ¡¸¸¸ÅÄîÃû×Ö
+			//è·å–çˆ¶æ¦‚å¿µåå­—
 			String cfname = request.getParameter("cfname");
-			//»ñÈ¡¸ÅÄîÁĞ±í
+			//è·å–æ¦‚å¿µåˆ—è¡¨
 			OClass oclass = new OClass();
 			oclass.setDel(0);
 			List<OClass> oclist = ocService.getClassList(oclass);
@@ -181,14 +181,14 @@ public class ClassController extends BaseController{
 			ModelAndView view = new ModelAndView("class/addClass").addAllObjects(map);
 			return view;
 		}catch (RuntimeException e) {
-			logger.error("Ìí¼Ó¸ÅÄîÒ³Ãæ³ö´í£¡" +  ",errMsg=" + e.getMessage());
+			logger.error("æ·»åŠ æ¦‚å¿µç•Œé¢å‡ºé”™ï¼š" +  ",errMsg=" + e.getMessage());
 			outputJsonResponse(response, false, e.getMessage());
 			return null;
 		}
 	}
 	
 	/**
-	 * ¸ÅÄîÁĞ±í½çÃæ
+	 * è·å–æ¦‚å¿µåˆ—è¡¨
 	 * @param request
 	 * @param response
 	 * @return
@@ -197,7 +197,7 @@ public class ClassController extends BaseController{
 	@RequestMapping("/classList.do")
 	public ModelAndView getClassList(HttpServletRequest request, HttpServletResponse response) throws Exception{
 		try{
-			//»ñÈ¡¸ÅÄîÁĞ±í
+			//è·å–æ¦‚å¿µåˆ—è¡¨
 			OClass oclass = new OClass();
 			oclass.setDel(0);
 			List<OClass> oclist = ocService.getClassList(oclass);
@@ -206,14 +206,14 @@ public class ClassController extends BaseController{
 			ModelAndView view = new ModelAndView("class/classList").addAllObjects(map);
 			return view;
 		}catch (RuntimeException e) {
-			logger.error("·µ»Ø¸ÅÄîÁĞ±í³ö´í£¡" +  ",errMsg=" + e.getMessage());
+			logger.error("è·å–æ¦‚å¿µåˆ—è¡¨å‡ºé”™ï¼š" +  ",errMsg=" + e.getMessage());
 			outputJsonResponse(response, false, e.getMessage());
 			return null;
 		}
 	}
 
 	/**
-	 * ¸ü¸Ä¸ÅÄî½çÃæ
+	 * æŸ¥çœ‹æ¦‚å¿µè¯¦æƒ…
 	 * @param request
 	 * @param response
 	 * @return
@@ -223,15 +223,15 @@ public class ClassController extends BaseController{
 	public ModelAndView viewClass(HttpServletRequest request, HttpServletResponse response) throws Exception{
 		try{
 			String cid = request.getParameter("cid");
-			//»ñÈ¡¸ÅÄî
+			//æ ¹æ®æ¦‚å¿µidè·å–æ¦‚å¿µ
 			OClass oc = ocService.getClassById(cid);
-			//»ñÈ¡¸ÅÄîÁĞ±í
+			//è·å–æ¦‚å¿µåˆ—è¡¨
 			OClass oclass = new OClass();
 			oclass.setDel(0);
 			List<OClass> oclist = ocService.getClassList(oclass);
-			//»ñÈ¡¸¸¸ÅÄî
+			//è·å–æ¦‚å¿µåˆ—è¡¨
 			int cfid = oc.getCfid();
-			String cfname = "ÎŞ";
+			String cfname = "æ— ";
 			for(int i=0;i<oclist.size();i++){
 				if(oclist.get(i).getCid() == cfid){
 					cfname = oclist.get(i).getCname();
@@ -247,17 +247,54 @@ public class ClassController extends BaseController{
 			ModelAndView view = new ModelAndView("class/viewClass").addAllObjects(map);
 			return view;
 		}catch (RuntimeException e) {
-			logger.error("¸ü¸Ä¸ÅÄî½çÃæ³ö´í£¡" +  ",errMsg=" + e.getMessage());
+			logger.error("æŸ¥çœ‹æ¦‚å¿µè¯¦æƒ…å‡ºé”™ï¼š" +  ",errMsg=" + e.getMessage());
 			outputJsonResponse(response, false, e.getMessage());
 			return null;
 		}
 	}
 	
-	
-	@RequestMapping("/testlog.do")
-	public void testlog(HttpServletRequest request, HttpServletResponse response) throws Exception{
-		log.info("info¼¶±ğ²âÊÔ");
-		log.error("²âÊÔlog4jÈÕÖ¾ÅäÖÃ£¡");
+
+	/**
+	 * åˆ é™¤å±æ€§
+	 * @param request
+	 * @param response
+	 * @throws Exception
+	 */
+	@RequestMapping("/delClass.do")
+	public void delClass(HttpServletRequest request, HttpServletResponse response) throws Exception{
+		try{
+			String cid = request.getParameter("cid");
+			String cname = request.getParameter("cname");
+			boolean result = ocService.delClass(cid, cname);
+			if(result)
+				outputJsonResponse(response, true, "åˆ é™¤æˆåŠŸï¼");
+			else
+				outputJsonResponse(response, false, "åˆ é™¤å¤±è´¥ï¼");
+		}catch (Exception e) {
+			logger.error("åˆ é™¤æ¦‚å¿µå‡ºé”™ï¼š" +  ",errMsg=" + e.getMessage());
+			outputJsonResponse(response, false, e.getMessage());
+		}
 	}
-	
+
+	/**
+	 * éªŒè¯æ¦‚å¿µåå­—æ˜¯å¦å­˜åœ¨
+	 * @param request
+	 * @param response
+	 * @throws Exception
+	 */
+	@RequestMapping("/isCnameExist.do")
+	public void isCnameExist(HttpServletRequest request, HttpServletResponse response) throws Exception{
+		try{
+			String cname = request.getParameter("cname");
+			boolean result = ocService.isClassExist(cname);
+			if(result)
+				outputJsonResponse(response, true, "æ¦‚å¿µåå­—å­˜åœ¨ï¼");
+			else
+				outputJsonResponse(response, false, "æ¦‚å¿µåå­—ä¸å­˜åœ¨ï¼");
+		}catch (Exception e) {
+			logger.error("éªŒè¯æ¦‚å¿µåå­—æ˜¯å¦å­˜åœ¨å‡ºé”™ï¼š" +  ",errMsg=" + e.getMessage());
+			outputJsonResponse(response, false, e.getMessage());
+		}
+	}
+
 }

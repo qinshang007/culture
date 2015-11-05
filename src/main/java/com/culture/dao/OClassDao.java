@@ -6,22 +6,26 @@ import com.culture.model.OClass;
 
 public interface OClassDao {
 	
-	/*返回概念列表*/
+	/*杩斿洖姒傚康鍒楄〃*/
 	public List<OClass> getClassList(OClass oclass);		
 	
-	/*根据id返回某个概念*/
+	/*鏍规嵁id杩斿洖鏌愪釜姒傚康*/
 	public OClass getClassById(String id);		
 	
-	/*根据name返回某个概念*/
+	/*鏍规嵁name杩斿洖鏌愪釜姒傚康*/
 	public OClass getClassByName(String cname);			
 	
-	/*添加概念*/
+	/*娣诲姞姒傚康*/
 	public boolean addClass(OClass oclass);
 	
-	/*删除概念*/
-	public boolean delClass(String id);
+	/*鍒犻櫎姒傚康*/
+	public boolean delClass(int id);
 	
-	/*更新概念*/
+	/*鍗囩骇姒傚康*/
+	public boolean upgradeClass(int cid);
+	
+	/*鏇存柊姒傚康*/
 	public boolean updateClass(OClass oclass);
+
 	
 }

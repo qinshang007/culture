@@ -7,16 +7,18 @@ import com.culture.model.CulturalBean;
 
 public interface CulturalService {
 
-	//添加文物
+	//娣诲姞鏂囩墿
 	public boolean addCultural(CulturalBean cb);
-	//更新文物
+	//鏇存柊鏂囩墿
 	public boolean updateCultural(CulturalBean cb);
-	//返回文物列表
+	//杩斿洖鏂囩墿鍒楄〃
 	public List<CulturalBean> getCulturalList();
-	//删除文物
+	//鍒犻櫎鏂囩墿
 	public boolean delCultural(String cbid);
-	//返回文物详情
+	//杩斿洖鏂囩墿璇︽儏
 	public CulturalBean getCulturalById(String culId);
+	/*鍒ゆ柇鏂囩墿鍚嶅瓧鏄惁瀛樺湪*/
+	public boolean isTitleExist(String title);
 
 	
 }

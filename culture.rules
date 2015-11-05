@@ -1,0 +1,3 @@
+[(?a NSP:hasPattern NSC:lotus) -> (?a NSP:hasMeaning NSC:elegance)]
+[(?a NSP:hasPattern NSC:peony) -> (?a NSP:hasMeaning NSC:rich)]
+[(?a NSP:shape '直口') -> (?a NSP:scene '摆件')]

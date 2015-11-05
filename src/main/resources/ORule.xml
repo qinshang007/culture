@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap>
+	<typeAlias alias="orule" type="com.culture.model.ORule" />
+
+	<!-- 根据id获取规则-->
+	<select id="getRuleById" parameterClass="int"
+		resultClass="orule">
+		select * from orule where rid = #rid# 
+	</select>
+
+	<!-- 根据规则列表 -->
+	<select id="getORuleList" parameterClass="orule"
+		resultClass="orule">
+		select * from orule where del = #del# order by time desc
+	</select>
+	
+	<!-- 添加规则 -->
+	<insert id="addRule" parameterClass="orule">
+		insert into orule (rname ,rcontent,rule,type,opBodyName1,opBodyValue1,opBodyName2,opBodyValue2,opHeadName,opHeadValue,time) values(#rname# ,#rcontent#,#rule#,#type#,#opBodyName1#,#opBodyValue1#,#opBodyName2#,#opBodyValue2#,#opHeadName#,#opHeadValue#,#time#)
+		<selectKey resultClass="int" keyProperty="rid">  
+  		 	 SELECT @@IDENTITY as id  
+ 		 </selectKey> 
+	</insert>
+
+	<!--删除规则 -->
+	<update id="delRule" parameterClass="int">
+		update orule set del=1 where rid=#rid#
+	</update>
+	
+	<!--更新规则 -->
+	<update id="updateRule" parameterClass="orule">
+		update orule set rname=#rname#,rcontent=#rcontent#,rule=#rule#,opBodyName1=#opBodyName1#,opBodyValue1=#opBodyValue1#,opBodyName2=#opBodyName2#,opBodyValue2=#opBodyValue2#,opHeadName=#opHeadName#,opHeadValue=#opHeadValue# where rid=#rid#
+	</update>
+	
+
+</sqlMap>  

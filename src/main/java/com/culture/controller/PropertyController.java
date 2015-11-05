@@ -3,6 +3,7 @@ package com.culture.controller;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.OutputStream;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -10,30 +11,25 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.culture.dao.impl.OClassDaoImpl;
 import com.culture.model.OClass;
 import com.culture.model.OModelFactory;
 import com.culture.model.OProperty;
 import com.culture.service.OClassService;
 import com.culture.service.OPropertyService;
-import com.culture.util.CodeGenerator;
+import com.culture.util.DateUtils;
 import com.culture.util.StringUtils;
-import com.hp.hpl.jena.ontology.DatatypeProperty;
-import com.hp.hpl.jena.ontology.ObjectProperty;
 import com.hp.hpl.jena.ontology.OntClass;
 import com.hp.hpl.jena.ontology.OntModel;
 import com.hp.hpl.jena.ontology.OntProperty;
 import com.hp.hpl.jena.ontology.OntResource;
-import com.hp.hpl.jena.rdf.model.ModelFactory;
 import com.hp.hpl.jena.rdf.model.Resource;
 import com.hp.hpl.jena.util.iterator.ExtendedIterator;
 import com.hp.hpl.jena.vocabulary.XSD;
@@ -56,217 +52,76 @@ public class PropertyController extends BaseController{
 	private static final Logger logger = Logger.getLogger(PropertyController.class);  
 	
 	/**
-	 * ±£´æÊôĞÔ
+	 * ä¿å­˜å±æ€§
 	 * @param request
 	 * @param response
 	 * @throws Exception
 	 */
 	@RequestMapping("/save.do")
-	public void saveProperty(HttpServletRequest request, HttpServletResponse response) throws Exception{
+	public void saveProperty(HttpServletRequest request, HttpServletResponse response,OProperty op) throws Exception{
 		try{
-			OntModel model = omodelFactory.getModel();
-			//ÊôĞÔÀà±ğ,1Îª¶ÔÏóÊôĞÔ£¬2ÎªÊı¾İÊôĞÔ
-			int ptype = Integer.valueOf(request.getParameter("ptype"));
-			//»ñÈ¡ÊôĞÔÃû×Ö
-			String pname = request.getParameter("pname");
-			//»ñÈ¡¸¸ÊôĞÔÃû×Ö
-			String pfname = request.getParameter("pfname");
-			//»ñÈ¡¸¸ÊôĞÔid
-			int pfid = Integer.parseInt(request.getParameter("pfid"));
-			//»ñÈ¡¶¨ÒåÓò
-			String domain = request.getParameter("domain");
-			//»ñÈ¡ÖµÓò
-			String range = request.getParameter("range");
-			//ÊÇ·ñÍ¨ÓÃÊôĞÔ
-			int isgeneral = Integer.valueOf(request.getParameter("isgeneral"));
-			
-			OntProperty children = null;
-			//ÎªÊôĞÔÌí¼ÓÖµÓò
-			if(ptype==1){
-				 children = model.createObjectProperty(OModelFactory.NSP+pname);
-				 
-				//½«ÖµÓòÖµ×ª»¯ÎªÊı×é
-				String[] rangeArray = range.split(",");
-				
-				//ÎªÊôĞÔÌí¼ÓÖµÓò
-				for(int i=0;i<rangeArray.length;i++){
-					OntClass oclass = model.getOntClass(OModelFactory.NSC+rangeArray[i]);
-					children.addRange(oclass);
-				}
-				 
-			}else if(ptype==2){
-				 children = model.createDatatypeProperty(OModelFactory.NSP+pname);
-				 
-				 //Ìí¼ÓÖµÓò
-				 int index = Integer.valueOf(range);
-				 //»ñÈ¡Êı¾İÀàĞÍ
-				 Resource s = resource[index];
-				 children.addRange(s);
-			}
-			
-			//¸¸ÊôĞÔ²»Îª¿ÕÇÒ²»µÈÓÚÎŞ
-			if(!StringUtils.isEmpty(pfname)&&!pfname.equals("ÎŞ")){
-				OntProperty parent = model.getOntProperty(OModelFactory.NSP+pfname);//È¡³ö¸¸¸ÅÄî
-				parent.addSubProperty(children);
-			}
-			
-			//½«¶¨ÒåÓòÖµ×ª»¯ÎªÊı×é
-			String[] domainArray = domain.split(",");
-			
-			//ÎªÊôĞÔÌí¼Ó¶¨ÒåÓò
-			for(int i=0;i<domainArray.length;i++){
-				OntClass oclass = model.getOntClass(OModelFactory.NSC+domainArray[i]);
-				children.addDomain(oclass);
-			}
-
-			
-			//write XML FILE
-			File file = new File(omodelFactory.getOwlFile());
-			try{
-				OutputStream out = new FileOutputStream(file);
-				model.write(out);
-			}catch(Exception e){
-				e.printStackTrace();
-			}
-			//±£´æµ½Êı¾İ¿â
-			OProperty op = new OProperty();
-			op.setPname(pname);
-			op.setPtype(ptype);
-			op.setPfid(pfid);
-			op.setIsgeneral(isgeneral);
-			opService.addProperty(op);
-			
-			outputJsonResponse(response, true, "uploadSuccess");
-			                                                                                                                                                   
+			String username = getUserName(request,response);
+			op.setUsername(username);
+			boolean flag = opService.addProperty(op);
+			if(flag)
+				outputJsonResponse(response, true, "ä¿å­˜æˆåŠŸ");
+			else
+				outputJsonResponse(response, false, "ä¿å­˜å¤±è´¥");                                                                                                                                             
 		}catch (RuntimeException e) {
-			logger.error("±£´æÊôĞÔ³ö´í£¡" +  ",errMsg=" + e.getMessage());
+			logger.error("ä¿å­˜å±æ€§å‡ºé”™ï¼š" +  ",errMsg=" + e.getMessage());
 			outputJsonResponse(response, false, e.getMessage());
 		}
 	}
 	
 	/**
-	 * ĞŞ¸ÄÊôĞÔ
+	 * æ›´æ–°å±æ€§
 	 * @param request
 	 * @param response
 	 * @throws Exception
 	 */
 	@RequestMapping("/update.do")
-	public void updateProperty(HttpServletRequest request, HttpServletResponse response) throws Exception{
+	public void updateProperty(HttpServletRequest request, HttpServletResponse response,OProperty op) throws Exception{
 		try{
-			OntModel model = omodelFactory.getModel();
-			//ÊôĞÔÀà±ğ,1Îª¶ÔÏóÊôĞÔ£¬2ÎªÊı¾İÊôĞÔ
-			int ptype = Integer.valueOf(request.getParameter("ptype"));
-			//»ñÈ¡ÊôĞÔÃû×Ö
-			String pname = request.getParameter("pname");
-			//Éú³ÉÊôĞÔid
-			int pid = Integer.parseInt(request.getParameter("pid"));
-			//»ñÈ¡¸¸ÊôĞÔÃû×Ö
-			String pfname = request.getParameter("pfname");
-			//»ñÈ¡¸¸ÊôĞÔid
-			int pfid = Integer.parseInt(request.getParameter("pfid"));
-			//»ñÈ¡¶¨ÒåÓò
-			String domain = request.getParameter("domain");
-			//»ñÈ¡ÖµÓò
-			String range = request.getParameter("range");
-			
-			OntProperty children = null;
-			
-			if(ptype==1){
-				
-				 children = model.getObjectProperty(OModelFactory.NSP+pid);
-				 
-				//»ñÈ¡ÊôĞÔÖ®Ç°µÄÖµÓò£¬²¢½«ÕâĞ©ÖµÓòÇå³şµô
-				ExtendedIterator<OntResource> rangeiter = (ExtendedIterator<OntResource>)children.listRange();
-				List<OntResource> rangelist = new ArrayList<OntResource>();
-				while(rangeiter.hasNext()){
-					OntResource rs = rangeiter.next();
-					rangelist.add(rs);
-				}
-				for(int i=0;i<rangelist.size();i++){
-					children.removeRange(rangelist.get(i));
-				}
-				
-				//½«ÖµÓòÖµ×ª»¯ÎªÊı×é
-				String[] rangeArray = range.split(",");
-				
-				//ÎªÊôĞÔÌí¼ÓÖµÓò
-				for(int i=0;i<rangeArray.length;i++){
-					OntClass oclass = model.getOntClass(OModelFactory.NSC+rangeArray[i]);
-					children.addRange(oclass);
-				}
-
-				
-			}else if(ptype==2){
-				
-				 children = model.getDatatypeProperty(OModelFactory.NSP+pid);
-				 
-				//»ñµÃÊôĞÔÖ®Ç°µÄÖµÓò£¬²¢½«ËüÇå³şµô
-				OntResource or = children.getRange();
-				children.removeRange(or);
-				
-				 //Ìí¼ÓÖµÓò
-				 int index = Integer.valueOf(range);
-				 //»ñÈ¡Êı¾İÀàĞÍ
-				 Resource s = resource[index];
-				 children.addRange(s);
-			}
-			
-			//»ñÈ¡ÊôĞÔÖ®Ç°µÄ¶¨ÒåÓò£¬²¢½«ÕâĞ©¶¨ÒåÓòÇå³şµô
-			ExtendedIterator<OntResource> domainiter = (ExtendedIterator<OntResource>)children.listDomain();
-			List<OntResource> domainlist = new ArrayList<OntResource>();
-			while(domainiter.hasNext()){
-				OntResource rs = domainiter.next();
-				domainlist.add(rs);
-			}
-			for(int i=0;i<domainlist.size();i++)
-				children.removeDomain(domainlist.get(i));
-			
-			//½«¶¨ÒåÓòÖµ×ª»¯ÎªÊı×é
-			String[] domainArray = domain.split(",");
-			
-			//ÎªÊôĞÔÌí¼Ó¶¨ÒåÓò
-			for(int i=0;i<domainArray.length;i++){
-				OntClass oclass = model.getOntClass(OModelFactory.NSC+domainArray[i]);
-				children.addDomain(oclass);
-			}
-			
-			//¸¸¸ÅÄî²»Îª¿ÕÇÒ²»µÈÓÚÎŞ
-			if(!StringUtils.isEmpty(pfname)&&!pfname.equals("ÎŞ")){
-				//È¡³öÒÔÇ°µÄ¸¸¸ÅÄî£¬È»ºó´ÓÆä×Ó¸ÅÄîÖĞÉ¾µô
-				OntProperty old_parent = children.getSuperProperty();
-				if(old_parent!=null)
-					old_parent.removeSubProperty(children);
-				//È¡µÃĞÂµÄ¸¸¸ÅÄî
-				OntProperty parent = model.getOntProperty(OModelFactory.NSP+pfname);
-				parent.addSubProperty(children);//
-			}
-
-			//write XML FILE
-			File file = new File(omodelFactory.getOwlFile());
-			try{
-				OutputStream out = new FileOutputStream(file);
-				model.write(out);
-			}catch(Exception e){
-				e.printStackTrace();
-			}
-			//±£´æµ½Êı¾İ¿â
-			OProperty op = new OProperty();
-			op.setPid(pid);
-			op.setPname(pname);
-			op.setPtype(ptype);
-			op.setPfid(pfid);
-			opService.updateProperty(op);
-			
-			outputJsonResponse(response, true, "updateSuccess");
+			String username = getUserName(request,response);
+			op.setUsername(username);
+			//å±æ€§æ—§çš„åå­—
+			String oldPname = request.getParameter("oldPname");
+			boolean result = opService.updateProperty(op, oldPname);
+			if(result)
+				outputJsonResponse(response, true, "æ›´æ–°æˆåŠŸï¼");
+			else
+				outputJsonResponse(response, false, "æ›´æ–°å¤±è´¥ï¼");
 
 		}catch (Exception e) {
-			logger.error("ĞŞ¸ÄÊôĞÔ³ö´í£¡" +  ",errMsg=" + e.getMessage());
+			logger.error("æ›´æ–°å±æ€§å‡ºé”™ï¼š" +  ",errMsg=" + e.getMessage());
 			outputJsonResponse(response, false, e.getMessage());
 		}
 	}
 
 	/**
-	 * Ìí¼Ó¶ÔÏóÊôĞÔ½çÃæ
+	 * åˆ é™¤å±æ€§
+	 * @param request
+	 * @param response
+	 * @throws Exception
+	 */
+	@RequestMapping("/delProperty.do")
+	public void delProperty(HttpServletRequest request, HttpServletResponse response,OProperty op) throws Exception{
+		try{
+			String pid = request.getParameter("pid");
+			String pname = request.getParameter("pname");
+			boolean result = opService.delProperty(pid, pname);
+			if(result)
+				outputJsonResponse(response, true, "åˆ é™¤æˆåŠŸï¼");
+			else
+				outputJsonResponse(response, false, "åˆ é™¤å¤±è´¥ï¼");
+		}catch (Exception e) {
+			logger.error("åˆ é™¤å±æ€§å‡ºé”™ï¼š" +  ",errMsg=" + e.getMessage());
+			outputJsonResponse(response, false, e.getMessage());
+		}
+	}
+	
+	/**
+	 * æ·»åŠ å¯¹è±¡å±æ€§
 	 * @param request
 	 * @param response
 	 * @return
@@ -275,15 +130,15 @@ public class PropertyController extends BaseController{
 	@RequestMapping("/addObjectProperty.do")
 	public ModelAndView addObjectProperty(HttpServletRequest request, HttpServletResponse response) throws Exception{
 		try{
-			//»ñÈ¡¸¸¸ÅÄîid
+			//è·å–çˆ¶å±æ€§id
 			String pfid = request.getParameter("pfid");
-			//»ñÈ¡¸¸¸ÅÄîÃû×Ö
+			//è·å–çˆ¶å±æ€§åå­—
 			String pfname = request.getParameter("pfname");
-			//»ñÈ¡¸ÅÄîÁĞ±í
+			//è·å–æ¦‚å¿µåˆ—è¡¨
 			OClass oclass = new OClass();
 			oclass.setDel(0);
 			List<OClass> oclist = ocService.getClassList(oclass);
-			//»ñÈ¡ÊôĞÔÁĞ±í
+			//è·å–å±æ€§åˆ—è¡¨
 			List<OProperty> oplist = opService.getPropertyList();
 			Map map = new HashMap();
 			map.put("pfid",pfid);
@@ -293,14 +148,14 @@ public class PropertyController extends BaseController{
 			ModelAndView view = new ModelAndView("property/addObjectProperty").addAllObjects(map);
 			return view;
 		}catch (RuntimeException e) {
-			logger.error("Ìí¼Ó¶ÔÏóÊôĞÔ½çÃæ³ö´í£¡" +  ",errMsg=" + e.getMessage());
+			logger.error("æ·»åŠ å¯¹è±¡å±æ€§å‡ºé”™ï¼š" +  ",errMsg=" + e.getMessage());
 			outputJsonResponse(response, false, e.getMessage());
 			return null;
 		}
 	}
 
 	/**
-	 * Ìí¼ÓÊı¾İÊôĞÔ½çÃæ
+	 * æ·»åŠ æ•°æ®å±æ€§é¡µé¢
 	 * @param request
 	 * @param response
 	 * @return
@@ -309,15 +164,15 @@ public class PropertyController extends BaseController{
 	@RequestMapping("/addDataProperty.do")
 	public ModelAndView addDataProperty(HttpServletRequest request, HttpServletResponse response) throws Exception{
 		try{
-			//»ñÈ¡¸¸¸ÅÄîid
+			//è·å–çˆ¶å±æ€§id
 			String pfid = request.getParameter("pfid");
-			//»ñÈ¡¸¸¸ÅÄîÃû×Ö
+			//è·å–çˆ¶å±æ€§åå­—
 			String pfname = request.getParameter("pfname");
-			//»ñÈ¡¸ÅÄîÁĞ±í
+			//è·å–æ¦‚å¿µåˆ—è¡¨
 			OClass oclass = new OClass();
 			oclass.setDel(0);
 			List<OClass> oclist = ocService.getClassList(oclass);
-			//»ñÈ¡ÊôĞÔÁĞ±í
+			//è·å–å±æ€§åˆ—è¡¨
 			List<OProperty> oplist = opService.getPropertyList();
 			Map map = new HashMap();
 			map.put("pfid",pfid);
@@ -327,14 +182,14 @@ public class PropertyController extends BaseController{
 			ModelAndView view = new ModelAndView("property/addDataProperty").addAllObjects(map);
 			return view;
 		}catch (RuntimeException e) {
-			logger.error("Ìí¼ÓÊı¾İÊôĞÔ½çÃæ³ö´í£¡" +  ",errMsg=" + e.getMessage());
+			logger.error("æ·»åŠ æ•°æ®å±æ€§é¡µé¢å‡ºé”™ï¼š" +  ",errMsg=" + e.getMessage());
 			outputJsonResponse(response, false, e.getMessage());
 			return null;
 		}
 	}
 
 	/**
-	 * ÊôĞÔÁĞ±í½çÃæ
+	 * è·å–å±æ€§åˆ—è¡¨
 	 * @param request
 	 * @param response
 	 * @return
@@ -343,21 +198,21 @@ public class PropertyController extends BaseController{
 	@RequestMapping("/propertyList.do")
 	public ModelAndView getPropertyList(HttpServletRequest request, HttpServletResponse response) throws Exception{
 		try{
-			//»ñÈ¡ÊôĞÔÁĞ±í
+			//è·å–å±æ€§åˆ—è¡¨
 			List<OProperty> oplist = opService.getPropertyList();
 			Map map = new HashMap();
 			map.put("oplist", oplist);
 			ModelAndView view = new ModelAndView("property/propertyList").addAllObjects(map);
 			return view;
 		}catch (RuntimeException e) {
-			logger.error("·µ»Ø¸ÅÄîÁĞ±í³ö´í£¡" +  ",errMsg=" + e.getMessage());
+			logger.error("è·å–å±æ€§åˆ—è¡¨ç•Œé¢å‡ºé”™ï¼š" +  ",errMsg=" + e.getMessage());
 			outputJsonResponse(response, false, e.getMessage());
 			return null;
 		}
 	}
 
 	/**
-	 * ÊôĞÔÏêÇé½çÃæ
+	 * æŸ¥çœ‹å±æ€§è¯¦æƒ…
 	 * @param request
 	 * @param response
 	 * @return
@@ -366,92 +221,67 @@ public class PropertyController extends BaseController{
 	@RequestMapping("/viewProperty.do")
 	public ModelAndView viewProperty(HttpServletRequest request, HttpServletResponse response) throws Exception{
 		try{
-			OntModel model = omodelFactory.getModel();
 			String pid = request.getParameter("pid");
-			//»ñÈ¡ÊôĞÔ
-			OProperty op = opService.getPropertyById(pid);
-			//»ñÈ¡¸ÅÄîÁĞ±í
+			//æ ¹æ®å±æ€§idè·å–å±æ€§
+			OProperty op = opService.getPropertyById(Integer.valueOf(pid));
+			//è·å–æ¦‚å¿µåˆ—è¡¨
 			OClass oclass = new OClass();
 			oclass.setDel(0);
-			List<OClass> domainList = ocService.getClassList(oclass);
-			List<OClass> rangeList = ocService.getClassList(oclass);
-			//»ñÈ¡ÊôĞÔÁĞ±í
+			List<OClass> oclist = ocService.getClassList(oclass);
+			//è·å–å±æ€§åˆ—è¡¨
 			List<OProperty> oplist = opService.getPropertyList();
-			//»ñÈ¡¸¸ÊôĞÔid
-			int pfid = op.getPfid();
-			//»ñÈ¡¸¸ÊôĞÔÃû×Ö
-			String pfname = "ÎŞ";
-			for(int i=0;i<oplist.size();i++){
-				if(oplist.get(i).getPid() == pfid){
-					pfname = oplist.get(i).getPname();
-					oplist.remove(i);
-					break;
-				}
-			}
-			//È¡µÃÊôĞÔµÄÓ³Éä
-			Map<Integer,Integer> dmap = new HashMap<Integer,Integer>();
-			Map<Integer,Integer> rmap = new HashMap<Integer,Integer>();
-			for(int i=0; i<domainList.size();i++){
-				dmap.put(domainList.get(i).getCid(), i);
-				rmap.put(rangeList.get(i).getCid(), i);
-			}
 
-			if(op.getPtype()==1){	//Èç¹ûÊÇ¶ÔÏóÊôĞÔ
-				op.setPtype(1);
-				ObjectProperty ontop = model.getObjectProperty(OModelFactory.NSP+op.getPid());
-				//»ñÈ¡ÊôĞÔµÄ¶¨ÒåÓò
-				ExtendedIterator<OntResource> domainiter = (ExtendedIterator<OntResource>)ontop.listDomain();
-				while(domainiter.hasNext()){
-					OntResource rs = domainiter.next();
-					String uri = rs.toString();
-					//ÕâÀïÕâÑù×öµÄÄ¿µÄÊÇÒòÎªÈç¹ûcidÊÇÒÔÊı×Ö¿ªÍ·µÄ»°£¬»á±»Ä¬ÈÏ½Ø¶ÌÒ»Î»
-					String cid = uri.substring(uri.indexOf('#')+1);
-					int index = dmap.get(cid);
-					domainList.get(index).setSelected(1);
-				}
-				op.setDomainList(domainList);
-				//»ñÈ¡ÊôĞÔµÄÖµÓò
-				ExtendedIterator<OntResource> rangeiter = (ExtendedIterator<OntResource>)ontop.listRange();
-				while(rangeiter.hasNext()){
-					OntResource rs = rangeiter.next();
-					String uri = rs.toString();
-					String cid = uri.substring(uri.indexOf('#')+1);
-					int index = rmap.get(cid);
-					rangeList.get(index).setSelected(1);
-				}
-				op.setRangeList(rangeList);
-			}else if(op.getPtype()==2){ //Èç¹ûÊÇÊı¾İÊôĞÔ
-				op.setPtype(2);
-				DatatypeProperty dp = model.getDatatypeProperty(OModelFactory.NSP+op.getPid());
-				//»ñÈ¡ÊôĞÔµÄ¶¨ÒåÓò
-				ExtendedIterator<OntResource> domainiter = (ExtendedIterator<OntResource>)dp.listDomain();
-				while(domainiter.hasNext()){
-					OntResource rs = domainiter.next();
-					String namespace = rs.toString();
-					String cid = namespace.substring(namespace.indexOf('#')+1);
-					int index = dmap.get(cid);
-					domainList.get(index).setSelected(1);
-				}
-				op.setDomainList(domainList);
-				//»ñµÃÊôĞÔµÄÖµÓò
-				OntResource or = dp.getRange();
-				for(int i=0;i<resource.length;i++){
-					if(or.equals(resource[i]))
-						op.setRange(""+i);
-				}
-			}
 			Map map = new HashMap();
 			map.put("op", op);
 			map.put("oplist", oplist);
-			map.put("pfid", pfid);
-			map.put("pfname", pfname);
+			map.put("oclist", oclist);
 			return new ModelAndView("property/viewProperty").addAllObjects(map);
 		}catch (RuntimeException e) {
-			logger.error("²é¿´¸ÅÄîÏêÇé³ö´í£¡" +  ",errMsg=" + e.getMessage());
+			logger.error("æŸ¥çœ‹å±æ€§è¯¦æƒ…å‡ºé”™ï¼š" +  ",errMsg=" + e.getMessage());
 			outputJsonResponse(response, false, e.getMessage());
 			return null;
 		}
 	}
 	
+	/**
+	 * æ ¹æ®å±æ€§åå­—è·å–å±æ€§ä¿¡æ¯
+	 * @param request
+	 * @param response
+	 * @throws Exception
+	 */
+	@RequestMapping("/getPropertyByName.do")
+	public void getPropertyByName(HttpServletRequest request, HttpServletResponse response) throws Exception{
+		try{
+			String pname = request.getParameter("pname");			
+			//è·å–æ–‡ç‰©æ¦‚å¿µçš„å­æ¦‚å¿µ
+			OProperty op = opService.getPropertyByName(pname);
+			outputJsonResponse(response, op);
+		}catch (RuntimeException e) {
+			logger.error("è¿”å›äºŒçº§æ¦‚å¿µæ•°æ®å‡ºé”™ï¼" +  ",errMsg=" + e.getMessage());
+			outputJsonResponse(response, false, e.getMessage());
+		}
+	}
+	
+	/**
+	 * éªŒè¯å±æ€§åå­—æ˜¯å¦å­˜åœ¨
+	 * @param request
+	 * @param response
+	 * @throws Exception
+	 */
+	@RequestMapping("/isPnameExist.do")
+	public void isPnameExist(HttpServletRequest request, HttpServletResponse response) throws Exception{
+		try{
+			String pname = request.getParameter("pname");
+			boolean result = opService.isPropertyExist(pname);
+			if(result)
+				outputJsonResponse(response, true, "å±æ€§åå­—å­˜åœ¨ï¼");
+			else
+				outputJsonResponse(response, false, "å±æ€§åå­—ä¸å­˜åœ¨ï¼");
+		}catch (Exception e) {
+			logger.error("éªŒè¯å±æ€§åå­—æ˜¯å¦å­˜åœ¨å‡ºé”™ï¼š" +  ",errMsg=" + e.getMessage());
+			outputJsonResponse(response, false, e.getMessage());
+		}
+	}
+
 	
 }

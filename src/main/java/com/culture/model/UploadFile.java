@@ -4,13 +4,13 @@ import java.io.Serializable;
 
 public class UploadFile implements Serializable{
 	
-	private String identifier;		//ËùÊôÎÄÎïµÄ±êÊ¶·û
-	private String fileId;			//ÎÄ¼şid
-	private String fileName;		//ÎÄ¼şÃû×Ö
-	private String fileType;		//ÎÄ¼şÀàĞÍ
-	private long fileSize;			//ÎÄ¼ş´óĞ¡
-	private String fileSrc;			//ÎÄ¼şÂ·¾¢
-	private String fileDesc;		//ÎÄ¼şÃèÊö
+	private String identifier;		//æ‰€å±æ–‡ç‰©çš„æ ‡è¯†ç¬¦
+	private String fileId;			//æ–‡ä»¶id
+	private String fileName;		//æ–‡ä»¶åå­—
+	private String fileType;		//æ–‡ä»¶ç±»å‹
+	private long fileSize;			//æ–‡ä»¶å¤§å°
+	private String fileSrc;			//æ–‡ä»¶è·¯åŠ²
+	private String fileDesc;		//æ–‡ä»¶æè¿°
 	
 	
 	public String getIdentifier() {

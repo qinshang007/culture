@@ -77,7 +77,7 @@
 							</div>
 						<div class="portlet-body form">
 							<!-- BEGIN FORM-->
-							<form id="classForm" action="/culture/instance/addInstance.do" class="form-horizontal" method="post" enctype="multipart/form-data">
+							<form id="classForm" action="/culture/instance/addCultural.do" class="form-horizontal" method="post" enctype="multipart/form-data">
 								<div class="control-group">
 									<label class="control-label">概念（一级）</label>
 									<div class="controls">

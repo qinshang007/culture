@@ -73,13 +73,11 @@
 						<!-- BEGIN SAMPLE FORM PORTLET-->   
 						<div class="portlet box blue">
 							<div class="portlet-title">
-								<div class="caption"><i class="icon-reorder"></i>Sample Form</div>
+								<div class="caption"><i class="icon-reorder"></i></div>
 							</div>
 						<div class="portlet-body form">
 							<!-- BEGIN FORM-->
 							<form id="dtForm" action="/culture/property/save.do" class="form-horizontal" method="post" enctype="multipart/form-data" target="hidden_frame">
-								<input id="pid" type="hidden" name="pid" value="${op.pid}">
-								<input id="ptype" type="hidden" name="ptype" value="${op.ptype}">
 								<div class="control-group">
 									<label class="control-label">名称</label>
 									<div class="controls">
@@ -90,48 +88,28 @@
 								<div class="control-group">
 									<label class="control-label">父属性</label>
 									<div class="controls">
-										<select id="pfid" class="span6 chosen" data-placeholder="选择父属性" tabindex="1" name="pfid">
-											<option value="${pfid}">${pfname}</option>
-											<c:forEach  items="${oplist}"  var="item"  varStatus="status">
-												<option value="${item.pid}">${item.pname}</option>
-											</c:forEach>
-										</select>
+										<c:if test="${op.pfid == 0}">
+											<input id=pfid type="text" class="span6 m-wrap" name="pfid" value="无"/>
+										</c:if>
+										<c:if test="${op.pfid != 0}">
+											<input id=pfid type="text" class="span6 m-wrap" name="pfid" value="${op.pfname }"/>
+										</c:if>
 										<span class="help-inline">必填</span>
 									</div>
 								</div>
 								<div class="control-group">
 									<label class="control-label">定义域</label>
 									<div class="controls">
-										<select id="domain" data-placeholder="请选择概念" class="chosen span6" multiple="multiple" tabindex="6">
-											<c:forEach  items="${op.domainList}"  var="item"  varStatus="status">
-												<c:choose>
-													<c:when test="${item.selected == 1 }">
-														<option value="${item.cid}" selected="selected">${item.cname}</option>
-													</c:when>
-													<c:otherwise>
-														<option value="${item.cid}" >${item.cname}</option>
-													</c:otherwise>
-												</c:choose>
-											</c:forEach>
-										</select>
+										<input id="domain" type="text" class="span6 m-wrap" name="pdomain" value="${op.pdomain}"/>
+										<span class="help-inline">概念</span>
 									</div>
 								</div>
 								<c:if test="${op.ptype == 1}">
 									<div class="control-group">
 										<label class="control-label">值域</label>
 										<div class="controls">
-											<select id="objectRange" data-placeholder="选择值域" class="chosen span6" multiple="multiple" tabindex="6">
-												<c:forEach  items="${op.rangeList}"  var="item"  varStatus="status">
-													<c:choose>
-														<c:when test="${item.selected == 1 }">
-															<option value="${item.cid}" selected="selected">${item.cname}</option>
-														</c:when>
-														<c:otherwise>
-															<option value="${item.cid}" >${item.cname}</option>
-														</c:otherwise>
-													</c:choose>
-												</c:forEach>
-											</select>
+											<input id="range" type="text" class="span6 m-wrap" name="prange" value="${op.prange}"/>
+											<span class="help-inline">概念</span>
 										</div>
 									</div>
 								</c:if>
@@ -139,13 +117,7 @@
 									<div class="control-group">
 										<label class="control-label">值域</label>
 										<div class="controls">
-											<select id="dataRange" class="span6 chosen" data-placeholder="选择值域" tabindex="1" name="range">
-												<option value="0">文本</option>
-												<option value="1">整数</option>
-												<option value="2">浮点数</option>
-												<option value="3">日期</option>
-											</select>
-											<span class="help-inline">必填</span>
+											<input id="range" type="text" class="span6 m-wrap" name="prange" value="${op.prange}"/>
 										</div>
 									</div>
 								</c:if>
@@ -160,10 +132,12 @@
 									</div>
 								</div>
 							</form>
+							<!--  
 							<div class="form-actions">
 								<button type="submit" class="btn blue" onclick="submit();">提交</button>
 								<button type="reset" class="btn">重置</button>                            
 							</div>
+							-->
 						</div>
 						</div>
 						<!-- END EXTRAS PORTLET-->
@@ -210,46 +184,9 @@
 		jQuery(document).ready(function() {       
 		   // initiate layout and plugins
 		   App.init();
-		   var ptype = '${op.ptype}';
-		   if(ptype == 2){
-			   $("#dataRange option[value='${op.range}']").attr("selected",true);
-		   }
+		   //初始化是都通用
 		   $("#isgeneral option[value='${op.isgeneral}']").attr("selected",true);
 		});
-		
-		function submit(){
-			var URL = "/culture/property/update.do";
-			var ptype = $("#ptype").val();	//数据属性
-			var pname = $("#pname").val();	//属性名字
-			var pid = $("#pid").val();
-			var pfid = $("#pfid").val();	//父属性id
-			var pfname = $("#pfid option:selected").text();
-			var domain = $("#domain").val();	//定义域
-			var range = "";
-			if(ptype==1)
-			 	range = $("#objectRange").val();		//对象属性值域
-			else if(ptype==2)
-			 	range = $("#dataRange").val();			//数据属性值域
-		    $.ajax({
-	        url: URL,
-	    type: 'POST',
-	        data:"pid="+pid+"&ptype="+ptype+"&pname="+pname+"&pfid="+pfid+"&pfname="+pfname+"&domain="+domain+"&range="+range,
-		    success: function(transport)
-		    {
-		    	 var jresp = new JsonRespUtils(transport);
-		    	 if (jresp.isSuccessfully()){
-		    		 var res = jresp.getMessage();
-		    		 alert("保存成功！");
-		    	 }
-		    	 location.href="/culture/property/viewProperty.do?pid="+pid;
-		    },
-		     error: function(transport)
-		     {
-		    	alert("保存失败！");
-		     }        
-		    });
-
-		}
 		
 	</script>
 	<script type="text/javascript">  var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-37564768-1']);  _gaq.push(['_setDomainName', 'keenthemes.com']);  _gaq.push(['_setAllowLinker', true]);  _gaq.push(['_trackPageview']);  (function() {    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;    ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);  })();</script></body>

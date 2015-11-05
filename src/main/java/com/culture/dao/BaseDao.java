@@ -9,7 +9,7 @@ import com.ibatis.sqlmap.client.SqlMapClient;
 
 
 /**
- * BaseDao,所有Dao需继承此Dao
+ * BaseDao,鎵�鏈塂ao闇�缁ф壙姝ao
  */
 public class BaseDao extends SqlMapClientDaoSupport {
 	@Resource(name="sqlMapClient")

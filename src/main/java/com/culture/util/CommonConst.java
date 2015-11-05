@@ -2,14 +2,14 @@ package com.culture.util;
 
 public class CommonConst {
 
-	public static final String UPLOAD_ROOT_PATH = "E:/apache-tomcat-7.0.55/webapps/crelicBase/upload";//上传附件的根路径
+	public static final String UPLOAD_ROOT_PATH = "E:/apache-tomcat-7.0.55/webapps/crelicBase/upload";//涓婁紶闄勪欢鐨勬牴璺緞
 	
-	public static final String WEBSITE = "http://210.32.133.25:8080";	//服务器的ip地址
+	public static final String WEBSITE = "http://210.32.133.25:8080";	//鏈嶅姟鍣ㄧ殑ip鍦板潃
 	
-	public static final String EW_FILE_PATH = "/ewPic";//二维图片附件路径
+	public static final String EW_FILE_PATH = "/ewPic";//浜岀淮鍥剧墖闄勪欢璺緞
 	
-	public static final String SW_FILE_PATH = "/swPic";//三维图片附件路径
+	public static final String SW_FILE_PATH = "/swPic";//涓夌淮鍥剧墖闄勪欢璺緞
 	
-	public static final String VIDEO_FILE_PATH = "/video";//视频附件路径
+	public static final String VIDEO_FILE_PATH = "/video";//瑙嗛闄勪欢璺緞
 	
 }

@@ -19,7 +19,7 @@ public class PropertyUtils {
 	static String NSI = "http://jena.zju.edu.cn/instance#";
 	
 	/**
-	 * ´´½¨ÊôĞÔ
+	 * åˆ›å»ºå±æ€§
 	 */
 	public  void createProperty(){
 		//create model
@@ -52,7 +52,7 @@ public class PropertyUtils {
 	}
 	
 	/**
-	 * ±éÀúÄ³Ò»¸öÀàµÄËùÓĞÊôĞÔ
+	 * éå†æŸä¸€ä¸ªç±»çš„æ‰€æœ‰å±æ€§
 	 */
 	public void traverseProperty(){
 		//create model
@@ -80,33 +80,33 @@ public class PropertyUtils {
 		ExtendedIterator<OntProperty> iter = oc.listDeclaredProperties(true);
 		while(iter.hasNext()){
 			OntProperty op = iter.next();
-			System.out.println("ocÊôĞÔ: "+op.toString());
+			System.out.println("ocå±æ€§: "+op.toString());
 		}
 		//traverse suboc property
 		ExtendedIterator<OntProperty> subiter = suboc.listDeclaredProperties();
 		while(subiter.hasNext()){
 			OntProperty op = subiter.next();
-			System.out.println("subocÊôĞÔ: "+op.toString());
+			System.out.println("subocå±æ€§: "+op.toString());
 		}
 
 	}
 	
 	/**
-	 * »ñÈ¡Ò»¸öÊôĞÔµÄÖµÓò
+	 * è·å–ä¸€ä¸ªå±æ€§çš„å€¼åŸŸ
 	 */
 	public void getRange(){
 		//create model
 		OntModel model = ModelFactory.createOntologyModel();
 		//create class
 		OntClass oc = model.createClass(NSC+"oc");
-		oc.setLabel("¸ÅÄîoc", "zh");
+		oc.setLabel("æ¦‚å¿µoc", "zh");
 		OntClass od = model.createClass(NSC+"od");
-		od.setLabel("¸ÅÄîod", "zh");
+		od.setLabel("æ¦‚å¿µod", "zh");
 		OntClass oe = model.createClass(NSC+"oe");
-		oe.setLabel("¸ÅÄîoe", "zh");
+		oe.setLabel("æ¦‚å¿µoe", "zh");
 		//create subclass
 		OntClass suboc = model.createClass(NSC+"suboc");
-		suboc.setLabel("¸ÅÄîsuboc", "zh");
+		suboc.setLabel("æ¦‚å¿µsuboc", "zh");
 		oc.addSubClass(suboc);
 		//create property
 		DatatypeProperty dp1 = model.createDatatypeProperty(NSP+"dp1");
@@ -129,8 +129,44 @@ public class PropertyUtils {
 		}
 	}
 	
+	/**
+	 * åˆ é™¤å±æ€§
+	 */
+	public  void deleteProperty(){
+		//create model
+		OntModel model = ModelFactory.createOntologyModel();
+		//create human class
+		OntClass professor = model.createClass(NSC+"Professor");
+		OntClass facultyMember = model .createClass(NSC+"FacultyMember");
+		OntClass person = model.createClass(NSC+"Person");
+		facultyMember.addSubClass(professor);
+		person.addSubClass(facultyMember);
+		//create organization class
+		OntClass organisation = model.createClass(NSC+"Organisation");
+		OntClass university = model.createClass(NSC+"University");
+		OntClass college = model.createClass(NSC+"College");
+		organisation.addSubClass(university);
+		university.addSubClass(college);
+		//create ObjectProperty
+		ObjectProperty hasAffiliation = model.createObjectProperty(NSP+"hasAffiliation");
+		hasAffiliation.addDomain(person);
+		hasAffiliation.addRange(organisation);
+		//create DataProperty
+		DatatypeProperty collegeName = model.createDatatypeProperty(NSP+"collegeName");
+		collegeName.addDomain(person);
+		collegeName.addRange(XSD.xstring);
+		//set namespace prefix
+		model.setNsPrefix("NSC", NSC);
+		model.setNsPrefix("NSP", NSP);
+		//delete collegeName property
+		collegeName.remove();
+		//write XML
+		model.write(System.out);
+	}
+
+	
 	public static void main(String[] args){
 		PropertyUtils cp = new PropertyUtils();
-		cp.traverseProperty();
+		cp.deleteProperty();
 	}
 }

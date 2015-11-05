@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap>
+	<typeAlias alias="user" type="com.culture.model.UserBean" />
+
+	<!-- 根据id获得用户-->
+	<select id="getUserById" parameterClass="String"
+		resultClass="user">
+		select * from user where userId=#userId#
+	</select>
+
+	<!-- 根据用户姓名获取用户-->
+	<select id="getUserByName" parameterClass="String"
+		resultClass="user">
+		select * from user where userName = #userName# 
+	</select>
+	
+	<!-- 根据用户是否存在-->
+	<select id="checkUser" parameterClass="user"
+		resultClass="Integer">
+		select count(*) from user where userName = #userName# and password = #password# limit 1 
+	</select>
+	
+</sqlMap>  
