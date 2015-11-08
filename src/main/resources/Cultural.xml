@@ -16,9 +16,17 @@
 	</select>
 
 	<!-- 返回文物列表 -->
-	<select id="getCulturalList" 
+	<select id="getCulturalList" parameterClass="java.util.Map"
 		resultClass="culturalBean">
-		select identifier,title,shape,mainpic from culture order by crtime desc
+		select identifier,title,shape,mainpic from culture 
+		<dynamic prepend="WHERE">
+			<isEqual property="level" compareValue="0" prepend="and">
+				manager=#manager#
+			</isEqual>
+		</dynamic>
+		<dynamic>
+			order by crtime desc
+		</dynamic>
 	</select>
 	
 	<!-- 添加文物 -->

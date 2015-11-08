@@ -38,7 +38,22 @@ public class OClassServiceImpl extends BaseService implements OClassService{
 
 	public boolean addClass(OClass oclass) {
 		// TODO Auto-generated method stub
-		return getOClassDao().addClass(oclass);
+		boolean flag = true;
+		flag =  getOClassDao().addClass(oclass);
+		if(flag){	//更新path
+			int cfid = oclass.getCfid();
+			String path = "";
+			if(cfid == 0)
+				path = "0";
+			else{
+				OClass pa = getClassById(String.valueOf(cfid));
+				path = pa.getPath();
+			}
+			path = path+","+oclass.getCid();
+			oclass.setPath(path);
+			flag = updatePath(oclass);
+		}
+		return flag;
 	}
 
 	/**
@@ -140,6 +155,32 @@ public class OClassServiceImpl extends BaseService implements OClassService{
 			logger.error("验证概念名字是否存在出错："+e.getMessage());
 		}
 		return flag;
+	}
+
+	/**
+	 * 更新路径
+	 */
+	public boolean updatePath(OClass oclass) {
+		// TODO Auto-generated method stub
+		return getOClassDao().updatePath(oclass);
+	}
+
+	public List<OClass> getChildClass(int cid) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/**
+	 * 查询数据库返回某一概念的子概念
+	 */
+	public List<OClass> getChildClass(String cname) {
+		// TODO Auto-generated method stub
+		OClass oc = getOClassDao().getClassByName(cname);
+		if(oc != null){
+			int cid = oc.getCid();
+			return getOClassDao().getChildClass(cid);
+		}
+		return null;
 	}
 
 }

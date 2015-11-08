@@ -1,14 +1,14 @@
 package com.culture.dao;
 
 import java.util.List;
+import java.util.Map;
 
-import com.culture.model.OClass;
 import com.culture.model.OProperty;
 
 public interface OPropertyDao {
 	
 	/*返回属性列表*/
-	public List<OProperty> getPropertyList();		
+	public List<OProperty> getPropertyList(Map map);		
 	
 	/*根据id返回某个属性*/
 	public OProperty getPropertyById(int id);		

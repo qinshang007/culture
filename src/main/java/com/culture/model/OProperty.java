@@ -29,7 +29,7 @@ public class OProperty {
 	
 	private int del;					//属性是否被删除，0：正常，1：删除
 	
-	private String username;			//录入人员
+	private String manager;				//录入人员
 
 	public int getPid() {
 		return pid;
@@ -127,13 +127,12 @@ public class OProperty {
 		this.isgeneral = isgeneral;
 	}
 
-	public String getUsername() {
-		return username;
+	public String getManager() {
+		return manager;
 	}
 
-	public void setUsername(String username) {
-		this.username = username;
+	public void setManager(String manager) {
+		this.manager = manager;
 	}
-	
 
 }

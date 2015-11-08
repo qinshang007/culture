@@ -45,11 +45,11 @@ public class CulturalDaoImpl extends BaseDao implements CulturalDao{
 
 	}
 
-	public List<CulturalBean> getCulturalList() {
+	public List<CulturalBean> getCulturalList(Map map) {
 		// TODO Auto-generated method stub
 		List<CulturalBean> cblist = null;
 		try{
-			cblist = getSqlMapClientTemplate().queryForList("getCulturalList");
+			cblist = getSqlMapClientTemplate().queryForList("getCulturalList",map);
 		}catch (Exception e) {
 			logger.error("获取文物列表出错！" +  ",errMsg=" + e.getMessage());
 		}

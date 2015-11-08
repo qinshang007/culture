@@ -18,4 +18,12 @@ public class UserServiceImpl extends BaseService implements UserService{
 		return flag;
 	}
 
+	/**
+	 * 根据用户名获取用户名称
+	 */
+	public UserBean getUserByName(String userName) {
+		// TODO Auto-generated method stub
+		return getUserDao().getUserByName(userName);
+	}
+
 }

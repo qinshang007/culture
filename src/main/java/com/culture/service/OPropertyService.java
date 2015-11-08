@@ -3,18 +3,19 @@ package com.culture.service;
 import java.util.List;
 
 import com.culture.model.OProperty;
+import com.hp.hpl.jena.ontology.OntModel;
 import com.hp.hpl.jena.ontology.OntProperty;
 
 public interface OPropertyService {
 	
 	/*返回属性列表*/
-	public List<OProperty> getPropertyList();		
+	public List<OProperty> getPropertyList(String userName);		
 	
 	/*根据id返回某个属性*/
 	public OProperty getPropertyById(int id);	
 	
-	/*根据属性名字返回属性*/
-	public OProperty getPropertyByName(String pname);
+	/*根据属性名字返回属性,是否需要返回属性的值域*/
+	public OProperty getPropertyByName(String pname,boolean needRange);
 	
 	/*添加属性*/
 	public boolean addProperty(OProperty OProperty);

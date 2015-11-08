@@ -26,18 +26,31 @@ public class ClassDaoTest {
 		
 	}
 	
-	public static void main(String args[]){
+	public static void main(String args[]) throws InterruptedException{
 		ApplicationContext context = new ClassPathXmlApplicationContext("classpath:/applicationContext.xml");
 		OClassDao ocDao = (OClassDao)context.getBean("ocDao");
-		OClass oc = new OClass();
-		oc.setCfid(0);
-		oc.setCname("织物");
-		oc.setTime(Timestamp.valueOf(DateUtils.getCurrDateTimeStr()));
-		oc.setDel(0);
-		if(ocDao.addClass(oc))
-			System.out.println("添加成功！");
-		else
-			System.out.println("添加失败！");
+		int cid = 685;
+		for(int i=705;i<=2481;i++){
+			cid = i;
+			OClass oc = ocDao.getClassById(String.valueOf(cid));
+			if(oc != null){
+				int cfid = oc.getCfid();
+				String path = "";
+				if(cfid == 0)
+					path = "0";
+				else{
+					OClass pa = ocDao.getClassById(String.valueOf(cfid));
+					path = pa.getPath();
+				}
+				path = path+","+cid;
+				oc.setPath(path);
+				if(ocDao.updatePath(oc))
+					System.out.println("鏇存柊鎴愬姛:-------->"+cid);
+				else
+					System.out.println("鏇存柊澶辫触:-------->"+cid);
+				Thread.sleep(1000);
+			}
+		}
 	}
 	
 }

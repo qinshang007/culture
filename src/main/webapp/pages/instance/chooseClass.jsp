@@ -156,6 +156,8 @@
 	    function getData()  
 	    {  
 	        var type = $("#type").val();  
+	        if(type == '建筑')
+	        	type = '建筑物';
 	        $.ajax({          
 	             url:"/culture/instance/getData.do",  
 	             data:{type : type},  

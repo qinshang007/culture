@@ -12,4 +12,11 @@ public interface UserService {
 	 */
 	public boolean login(UserBean user);
 	
+	/**
+	 * 根据用户名称获取用户
+	 * @param userName
+	 * @return
+	 */
+	public UserBean getUserByName(String userName);
+	
 }

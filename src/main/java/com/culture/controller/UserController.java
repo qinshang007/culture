@@ -11,6 +11,7 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.culture.model.UserBean;
 import com.culture.service.UserService;
@@ -57,5 +58,24 @@ public class UserController extends BaseController{
 		}
 	}
 
-
+	/**
+	 * 用户注销
+	 * @param request
+	 * @param response
+	 * @param user
+	 * @throws ServletException
+	 * @throws IOException
+	 */
+	@RequestMapping("/logout.do")
+	public ModelAndView logOut(HttpServletRequest request, HttpServletResponse response, UserBean user) throws ServletException, IOException{
+		try{
+			HttpSession hs = request.getSession();
+			hs.setAttribute("userName", null);
+			return new ModelAndView("redirect:/login.jsp");
+		}catch (RuntimeException e) {
+			logger.error(e.getMessage());
+			outputJsonResponse(response, false, e.getMessage());
+			return null;
+		}
+	}
 }

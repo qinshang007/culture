@@ -1,19 +1,25 @@
 package com.culture.service.impl;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.culture.model.CulturalBean;
-import com.culture.model.OClass;
+import com.culture.model.UserBean;
 import com.culture.service.CulturalService;
+import com.culture.service.UserService;
 
 @Service
 public class CulturalServiceImpl extends BaseService implements CulturalService{
 	
 	private static final Logger logger = Logger.getLogger(CulturalServiceImpl.class);
+	
+	@Autowired
+	private UserService userService;
 
 	public boolean addCultural(CulturalBean cb) {
 		// TODO Auto-generated method stub
@@ -25,9 +31,15 @@ public class CulturalServiceImpl extends BaseService implements CulturalService{
 		return getCulturalDao().updateCultural(cb);
 	}
 
-	public List<CulturalBean> getCulturalList() {
+	public List<CulturalBean> getCulturalList(String userName) {
 		// TODO Auto-generated method stub
-		return getCulturalDao().getCulturalList();
+		//获取user
+		UserBean user = userService.getUserByName(userName);
+		int level = user.getLevel();
+		Map map = new HashMap();
+		map.put("level", level);
+		map.put("manager", userName);
+		return getCulturalDao().getCulturalList(map);
 	}
 
 	public boolean delCultural(String cbid) {

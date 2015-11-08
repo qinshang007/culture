@@ -16,14 +16,25 @@
 	</select>
 
 	<!-- 根据属性列表 -->
-	<select id="getPropertyList" parameterClass="int"
+	<select id="getPropertyList" parameterClass="java.util.Map"
 		resultClass="oproperty">
-		select * from oproperty where del = #del# order by time desc
+		select * from oproperty 
+		<dynamic prepend="WHERE">
+			<isEqual property="level" compareValue="0" prepend="and">
+				manager=#manager#
+			</isEqual>
+			<isNotNull property="del" prepend="and">
+				del = #del#
+			</isNotNull>
+		</dynamic>
+		<dynamic>
+			order by time desc
+		</dynamic>
 	</select>
 	
 	<!-- 添加属性 -->
 	<insert id="addProperty" parameterClass="oproperty">
-		insert into oproperty (pfid,pname,ptype,isgeneral,pdomain,prange,username) values (#pfid#,#pname#,#ptype#,#isgeneral#,#pdomain#,#prange#,#username#)
+		insert into oproperty (pfid,pname,ptype,isgeneral,pdomain,prange,manager) values (#pfid#,#pname#,#ptype#,#isgeneral#,#pdomain#,#prange#,#manager#)
 		<selectKey resultClass="int" keyProperty="pid">  
   		 	 SELECT @@IDENTITY as id  
  		 </selectKey> 

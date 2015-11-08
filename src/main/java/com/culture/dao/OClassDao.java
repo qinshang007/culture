@@ -26,6 +26,12 @@ public interface OClassDao {
 	
 	/*更新概念*/
 	public boolean updateClass(OClass oclass);
+	
+	/*更新路径*/
+	public boolean updatePath(OClass oclass);
+	
+	/*返回所有的子概念*/
+	public List<OClass> getChildClass(int cid);
 
 	
 }

@@ -14,6 +14,8 @@ public class OClass {
 	
 	private int selected;				//是否被选择
 	
+	private String path;				//路径
+	
 	private int del;					//删除标志，1表示删除，0表示正常
 
 	public int getCid() {
@@ -64,4 +66,12 @@ public class OClass {
 		this.selected = selected;
 	}
 
+	public String getPath() {
+		return path;
+	}
+
+	public void setPath(String path) {
+		this.path = path;
+	}
+	
 }

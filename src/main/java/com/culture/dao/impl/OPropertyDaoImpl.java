@@ -1,13 +1,14 @@
 package com.culture.dao.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Repository;
 
+import com.culture.dao.BaseDao;
 import com.culture.dao.OPropertyDao;
 import com.culture.model.OProperty;
-import com.culture.dao.BaseDao;
 
 @Repository
 public class OPropertyDaoImpl extends BaseDao implements OPropertyDao{
@@ -15,11 +16,11 @@ public class OPropertyDaoImpl extends BaseDao implements OPropertyDao{
 	private static final Logger logger = Logger.getLogger(OPropertyDaoImpl.class);  
 	
 	@SuppressWarnings("unchecked")
-	public List<OProperty> getPropertyList() {
+	public List<OProperty> getPropertyList(Map map) {
 		// TODO Auto-generated method stub
 		List<OProperty> oclist = null;
 		try{
-			oclist = getSqlMapClientTemplate().queryForList("getPropertyList",0);
+			oclist = getSqlMapClientTemplate().queryForList("getPropertyList",map);
 		}catch (Exception e) {
 			logger.error("获取属性列表信息出错！" +  ",errMsg=" + e.getMessage());
 		}

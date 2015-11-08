@@ -118,11 +118,9 @@
 											<label class="control-label">级别</label>
 											<div class="controls">										
 												<select id="c_level" class="span6 chosen classification-select" data-placeholder="请选择级别" tabindex="1" name="c_level">
-													<option value="一级文物">一级文物</option>
-													<option value="二级文物">二级文物</option>
-													<option value="三级文物">三级文物</option>
-													<option value="一般文物">一般文物</option>
-													<option value="未定级文物">未定级文物</option>
+													<c:forEach  items="${levelList}"  var="item"  varStatus="status">
+														<option value="${item}">${item}</option>
+													</c:forEach>
 												</select>
 											</div>
 										</div>
@@ -414,6 +412,7 @@
 				$("#socialHistoryInfoDiv").hide();
 			}else if(type='建筑'){
 				//基本信息
+				$("#placeOfOriginDiv").hide();
 				$("#excavationDateDiv").hide();
 				$("#excavationPlaceDiv").hide();
 				$("#currentLocationDiv").hide();

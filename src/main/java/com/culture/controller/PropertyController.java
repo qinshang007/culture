@@ -61,7 +61,7 @@ public class PropertyController extends BaseController{
 	public void saveProperty(HttpServletRequest request, HttpServletResponse response,OProperty op) throws Exception{
 		try{
 			String username = getUserName(request,response);
-			op.setUsername(username);
+			op.setManager(username);
 			boolean flag = opService.addProperty(op);
 			if(flag)
 				outputJsonResponse(response, true, "保存成功");
@@ -83,7 +83,7 @@ public class PropertyController extends BaseController{
 	public void updateProperty(HttpServletRequest request, HttpServletResponse response,OProperty op) throws Exception{
 		try{
 			String username = getUserName(request,response);
-			op.setUsername(username);
+			op.setManager(username);
 			//属性旧的名字
 			String oldPname = request.getParameter("oldPname");
 			boolean result = opService.updateProperty(op, oldPname);
@@ -139,7 +139,7 @@ public class PropertyController extends BaseController{
 			oclass.setDel(0);
 			List<OClass> oclist = ocService.getClassList(oclass);
 			//获取属性列表
-			List<OProperty> oplist = opService.getPropertyList();
+			List<OProperty> oplist = opService.getPropertyList("");
 			Map map = new HashMap();
 			map.put("pfid",pfid);
 			map.put("pfname", pfname);
@@ -173,7 +173,7 @@ public class PropertyController extends BaseController{
 			oclass.setDel(0);
 			List<OClass> oclist = ocService.getClassList(oclass);
 			//获取属性列表
-			List<OProperty> oplist = opService.getPropertyList();
+			List<OProperty> oplist = opService.getPropertyList("");
 			Map map = new HashMap();
 			map.put("pfid",pfid);
 			map.put("pfname", pfname);
@@ -198,8 +198,9 @@ public class PropertyController extends BaseController{
 	@RequestMapping("/propertyList.do")
 	public ModelAndView getPropertyList(HttpServletRequest request, HttpServletResponse response) throws Exception{
 		try{
+			String userName = getUserName(request, response);
 			//获取属性列表
-			List<OProperty> oplist = opService.getPropertyList();
+			List<OProperty> oplist = opService.getPropertyList(userName);
 			Map map = new HashMap();
 			map.put("oplist", oplist);
 			ModelAndView view = new ModelAndView("property/propertyList").addAllObjects(map);
@@ -229,7 +230,7 @@ public class PropertyController extends BaseController{
 			oclass.setDel(0);
 			List<OClass> oclist = ocService.getClassList(oclass);
 			//获取属性列表
-			List<OProperty> oplist = opService.getPropertyList();
+			List<OProperty> oplist = opService.getPropertyList("");
 
 			Map map = new HashMap();
 			map.put("op", op);
@@ -254,7 +255,7 @@ public class PropertyController extends BaseController{
 		try{
 			String pname = request.getParameter("pname");			
 			//获取文物概念的子概念
-			OProperty op = opService.getPropertyByName(pname);
+			OProperty op = opService.getPropertyByName(pname,true);
 			outputJsonResponse(response, op);
 		}catch (RuntimeException e) {
 			logger.error("返回二级概念数据出错！" +  ",errMsg=" + e.getMessage());

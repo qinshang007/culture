@@ -51,6 +51,16 @@
 		update oclass set cname=#cname#,cfid=#cfid# where cid=#cid#
 	</update>
 	
+	<!--更新路径 -->
+	<update id="updatePath" parameterClass="oclass">
+		update oclass set path=#path# where cid=#cid#
+	</update>
+	
+	<!-- 返回所有子概念 -->
+	<select id="getChildClass" parameterClass="String"
+		resultClass="oclass">
+		select * from oclass where path like '%$cid$%' and del = 0
+	</select>
 	
 
 </sqlMap>  

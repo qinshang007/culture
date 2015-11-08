@@ -2,7 +2,7 @@ package com.culture.model;
 
 public class UserBean 
 {
-	private int userId;				//用户id
+	private String userId;				//用户id
 	
 	private String userName;		//用户名
 	
@@ -16,11 +16,11 @@ public class UserBean
 	
 	private String regTime;			//注册时间
 
-	public int getUserId() {
+	public String getUserId() {
 		return userId;
 	}
 
-	public void setUserId(int userId) {
+	public void setUserId(String userId) {
 		this.userId = userId;
 	}
 

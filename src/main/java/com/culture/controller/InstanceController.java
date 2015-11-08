@@ -46,6 +46,10 @@ public class InstanceController extends BaseController{
 
 	private static final Logger logger = Logger.getLogger(InstanceController.class);  
 	
+	//文物等级
+	List<String> levelList1 = new ArrayList<String>(){{add("一级文物");add("二级文物");add("三级文物");add("一般文物");add("未定级文物");}};
+	List<String> levelList2 = new ArrayList<String>(){{add("全国重点文物保护单位");add("省级文物保护单位");add("市，县文物保护单位");add("世界文化遗产");}};
+	
 	/**
 	 * 保存实例到数据库
 	 * @param request
@@ -55,6 +59,7 @@ public class InstanceController extends BaseController{
 	@RequestMapping("/saveCultural.do")
 	public void saveCultural(HttpServletRequest request, HttpServletResponse response,CulturalBean cb) throws Exception{
 		try{
+			String username = getUserName(request,response);
 			//获取主图
 			String path = CommonConst.EW_FILE_PATH;
 			List<UploadFile> list = upload(request,response, path);
@@ -70,7 +75,7 @@ public class InstanceController extends BaseController{
 			cb.setIdentifier(identifier);
 			//保存文物
 			cb.setIsCheck(0);
-			cb.setManager("lyp"); 
+			cb.setManager(username); 
 			//将实例保存到数据库
 			boolean result = clService.addCultural(cb);
 			if(result)
@@ -97,9 +102,9 @@ public class InstanceController extends BaseController{
 			valueMap.put("其他名称", cb.getUsed_title());
 			valueMap.put("创作朝代", cb.getCreation_date());
 			valueMap.put("创作者", cb.getCreator());
-			valueMap.put("器形", cb.getShape());
+			valueMap.put("器型", cb.getShape());
 			valueMap.put("纹饰", cb.getPattern());
-			valueMap.put("色彩", cb.getColor());
+			valueMap.put("颜色", cb.getColor());
 			valueMap.put("结构", cb.getStructure());
 			valueMap.put("使用情境", cb.getScene());
 			valueMap.put("象征意义", cb.getSymbolic_meaning());
@@ -126,6 +131,7 @@ public class InstanceController extends BaseController{
 	@RequestMapping("/updateCultural.do")
 	public void updateCultural(HttpServletRequest request, HttpServletResponse response,CulturalBean cb) throws Exception{
 		try{
+			String username = getUserName(request,response);
 			//获取主图
 			String path = CommonConst.EW_FILE_PATH;
 			List<UploadFile> list = upload(request,response, path);
@@ -135,7 +141,7 @@ public class InstanceController extends BaseController{
 			}
 			//保存文物
 			cb.setIsCheck(0);
-			cb.setManager("lyp");
+			cb.setManager(username);
 			//将实例保存到数据库
 			boolean result = clService.updateCultural(cb);
 			if(result){
@@ -164,9 +170,9 @@ public class InstanceController extends BaseController{
 			valueMap.put("其他名称", cb.getUsed_title());
 			valueMap.put("创作朝代", cb.getCreation_date());
 			valueMap.put("创作者", cb.getCreator());
-			valueMap.put("器形", cb.getShape());
+			valueMap.put("器型", cb.getShape());
 			valueMap.put("纹饰", cb.getPattern());
-			valueMap.put("色彩", cb.getColor());
+			valueMap.put("颜色", cb.getColor());
 			valueMap.put("结构", cb.getStructure());
 			valueMap.put("使用情境", cb.getScene());
 			valueMap.put("象征意义", cb.getSymbolic_meaning());
@@ -261,11 +267,17 @@ public class InstanceController extends BaseController{
 			//获取创作朝代列表
 			OClass oclass = ocService.getClassByName("朝代");
 			List<OClass> creationDateList = ocService.getClassList(oclass);
+			List<String> levelList = null;
+			if(type.equals("建筑"))
+				levelList = levelList2;
+			else
+				levelList = levelList1;
 			//将参数存到map里头
 			Map map = new HashMap();
 			map.put("type", type);
 			map.put("classification", classification);
 			map.put("creationDateList", creationDateList);
+			map.put("levelList", levelList);
 			return new ModelAndView("instance/addCultural").addAllObjects(map);
 		}catch (RuntimeException e) {
 			logger.error("返回属性出错！" +  ",errMsg=" + e.getMessage());
@@ -291,14 +303,16 @@ public class InstanceController extends BaseController{
 			OClass ptClass = ocService.getClassByName("纹饰");
 			List<OClass> patternList = ocService.getClassList(ptClass);
 			//获取器形列表
-			OClass spClass = ocService.getClassByName("器形");
+			OClass spClass = ocService.getClassByName("器型");
 			List<OClass> shapeList = ocService.getClassList(spClass);
 			//获取色彩列表
-			OClass clClass = ocService.getClassByName("色彩");
+			OClass clClass = ocService.getClassByName("颜色");
 			List<OClass> colorList = ocService.getClassList(clClass);
 			//获取使用情境列表
 			OClass seClass = ocService.getClassByName("使用情境");
-			List<OClass> sceneList = ocService.getClassList(seClass);
+			List<OClass> sceneList = null;
+			if(seClass != null)
+				sceneList = ocService.getClassList(seClass);
 			//获取象征意义列表
 			OClass meClass = ocService.getClassByName("象征意义");
 			List<OClass> meaningList = ocService.getClassList(meClass);
@@ -367,7 +381,8 @@ public class InstanceController extends BaseController{
 	@RequestMapping("/instanceList.do")
 	public ModelAndView getInstanceList(HttpServletRequest request, HttpServletResponse response) throws Exception{
 		try{
-			List<CulturalBean> cbList = clService.getCulturalList();
+			String username = getUserName(request,response);
+			List<CulturalBean> cbList = clService.getCulturalList(username);
 			return new ModelAndView("instance/instanceList").addObject("cbList",cbList);
 		}catch (RuntimeException e) {
 			logger.error("返回实例列表出错！" +  ",errMsg=" + e.getMessage());
@@ -393,11 +408,18 @@ public class InstanceController extends BaseController{
 			//获取创作朝代列表
 			OClass oclass = ocService.getClassByName("朝代");
 			List<OClass> creationDateList = ocService.getClassList(oclass);
+			//文物级别
+			List<String> levelList = null;
+			if(type.equals("建筑"))
+				levelList = levelList2;
+			else
+				levelList = levelList1;
 			Map map = new HashMap();
 			map.put("cb", cb);
 			map.put("type", type);
 			map.put("classification", classification);
 			map.put("creationDateList", creationDateList);
+			map.put("levelList", levelList);
 			return new ModelAndView("instance/editCultural").addAllObjects(map);
 		}catch (RuntimeException e) {
 			logger.error("修改实例出错！" +  ",errMsg=" + e.getMessage());
@@ -426,14 +448,16 @@ public class InstanceController extends BaseController{
 			OClass ptClass = ocService.getClassByName("纹饰");
 			List<OClass> patternList = ocService.getClassList(ptClass);
 			//获取器形列表
-			OClass spClass = ocService.getClassByName("器形");
+			OClass spClass = ocService.getClassByName("器型");
 			List<OClass> shapeList = ocService.getClassList(spClass);
 			//获取色彩列表
-			OClass clClass = ocService.getClassByName("色彩");
+			OClass clClass = ocService.getClassByName("颜色");
 			List<OClass> colorList = ocService.getClassList(clClass);
 			//获取使用情境列表
 			OClass seClass = ocService.getClassByName("使用情境");
-			List<OClass> sceneList = ocService.getClassList(seClass);
+			List<OClass> sceneList = null;
+			if(seClass != null)
+				sceneList = ocService.getClassList(seClass);
 			//获取象征意义列表
 			OClass meClass = ocService.getClassByName("象征意义");
 			List<OClass> meaningList = ocService.getClassList(meClass);

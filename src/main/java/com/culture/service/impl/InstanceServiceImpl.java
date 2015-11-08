@@ -49,9 +49,9 @@ public class InstanceServiceImpl extends BaseService implements InstanceService{
 //		put("现藏地点", "current_location");
 //		put("展览历史", "exhibition_history");
 //		put("地域环境", "location");
-		put("器形", "shape");
+		put("器型", "shape");
 		put("纹饰", "pattern");
-		put("色彩", "color");
+		put("颜色", "color");
 		put("结构", "structure");
 //		put("装饰", "decoration");
 		put("使用情境", "scene");
@@ -69,7 +69,7 @@ public class InstanceServiceImpl extends BaseService implements InstanceService{
 //		put("作品授权", "rights");
 	}};
 	
-	public String[] propertys = {"名称","其他名称","创作朝代","创作者","器形","纹饰","色彩","结构","使用情境","象征意义","审美"};
+	public String[] propertys = {"名称","其他名称","创作朝代","创作者","器型","纹饰","颜色","结构","使用情境","象征意义","审美"};
 
 	/**
 	 * 将文物实例写入到本体文件中
@@ -119,7 +119,7 @@ public class InstanceServiceImpl extends BaseService implements InstanceService{
 				//为文物概念的每个属性赋值
 				for(int i=0;i<propertys.length;i++){
 					String property = propertys[i];
-					OProperty op = opService.getPropertyByName(property);
+					OProperty op = opService.getPropertyByName(property,false);
 					//如果是对象属性
 					if(op.getPtype()==1){
 						String opname = op.getPname();
@@ -203,7 +203,7 @@ public class InstanceServiceImpl extends BaseService implements InstanceService{
 		//为文物概念的每个属性赋值
 		for(int i=0;i<propertys.length;i++){
 			String property = propertys[i];
-			OProperty op = opService.getPropertyByName(property);
+			OProperty op = opService.getPropertyByName(property,false);
 			//如果是对象属性
 			if(op.getPtype()==1){
 				String opname = op.getPname();

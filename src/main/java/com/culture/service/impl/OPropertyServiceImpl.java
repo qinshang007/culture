@@ -3,9 +3,10 @@ package com.culture.service.impl;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.OutputStream;
-import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,8 +15,10 @@ import org.springframework.stereotype.Service;
 import com.culture.model.OClass;
 import com.culture.model.OModelFactory;
 import com.culture.model.OProperty;
+import com.culture.model.UserBean;
+import com.culture.service.OClassService;
 import com.culture.service.OPropertyService;
-import com.culture.util.DateUtils;
+import com.culture.service.UserService;
 import com.culture.util.StringUtils;
 import com.hp.hpl.jena.ontology.OntClass;
 import com.hp.hpl.jena.ontology.OntModel;
@@ -29,12 +32,25 @@ public class OPropertyServiceImpl extends BaseService implements OPropertyServic
 
 	@Autowired
 	private OModelFactory omodelFactory;
+	
+	@Autowired
+	private UserService userService;
+	@Autowired
+	private OClassService ocService;
 
 	private static final Logger logger = Logger.getLogger(OPropertyServiceImpl.class);
 	
-	public List<OProperty> getPropertyList() {
+	public List<OProperty> getPropertyList(String userName) {
 		// TODO Auto-generated method stub
-		return getOPropertyDao().getPropertyList();
+		//获取用户权限
+		UserBean user = userService.getUserByName(userName);
+		Map map = new HashMap();
+		if(user != null){
+			map.put("manager", user.getUserName());
+			map.put("level", user.getLevel());
+		}
+		map.put("del", 0);
+		return getOPropertyDao().getPropertyList(map);
 	}
 
 	public OProperty getPropertyById(int id) {
@@ -45,15 +61,31 @@ public class OPropertyServiceImpl extends BaseService implements OPropertyServic
 	/**
 	 * 根据属性名字返回属性
 	 */
-	public OProperty getPropertyByName(String pname) {
+	public OProperty getPropertyByName(String pname,boolean needRange) {
 		// TODO Auto-generated method stub
 		OProperty op = new OProperty();
 		try{
-			OntModel model = omodelFactory.getModel();
-			//获取属性
-			OntProperty ontp = model.getOntProperty(OModelFactory.NSP+pname);
-			//将ontproperty转化为oproperty
-			op = transfer(ontp);
+//			OntModel model = omodelFactory.getModel();
+//			//获取属性
+//			OntProperty ontp = model.getOntProperty(OModelFactory.NSP+pname);
+//			//将ontproperty转化为oproperty
+//			op = transfer(ontp);
+			op = getOPropertyDao().getPropertyByName(pname);
+			if(!needRange)
+				return op;
+			if(op != null){
+				List<OClass> rangeList = new ArrayList<OClass>();
+				String range = op.getPrange();
+				if(range != null){
+					String ranges[] = range.split(",");
+					for(int i=0;i<ranges.length;i++){
+						List<OClass> temp = ocService.getChildClass(ranges[i]);
+						if(temp != null)
+							rangeList.addAll(temp);
+					}
+					op.setRangeList(rangeList);
+				}
+			}
 		}catch(Exception e){
 			logger.error("根据属性名字返回属性出错："+e.getMessage());
 		}
@@ -245,25 +277,27 @@ public class OPropertyServiceImpl extends BaseService implements OPropertyServic
 		// TODO Auto-generated method stub
 		List<OProperty> propertyList = new ArrayList<OProperty>();
 		try{
-			OntModel model = omodelFactory.getModel();
-			OntProperty opattern = model.getOntProperty(OModelFactory.NSP+"纹饰");
-			OntProperty oscene = model.getOntProperty(OModelFactory.NSP+"使用情境");
-			OntProperty oshape = model.getOntProperty(OModelFactory.NSP+"器形");
-			OntProperty osymbolic_meaning = model.getOntProperty(OModelFactory.NSP+"象征意义");
-			OntProperty ocolor = model.getOntProperty(OModelFactory.NSP+"色彩");
-			OntProperty ocreation_date = model.getOntProperty(OModelFactory.NSP+"创作朝代");
-			OProperty pattern = transfer(opattern);
-			OProperty scene = transfer(oscene);
-			OProperty shape = transfer(oshape);
-			OProperty symbolic_meaning = transfer(osymbolic_meaning);
-			OProperty color = transfer(ocolor);
-			OProperty creation_date = transfer(ocreation_date);
+//			OntModel model = omodelFactory.getModel();
+//			OntProperty opattern = model.getOntProperty(OModelFactory.NSP+"纹饰");
+//			OntProperty oscene = model.getOntProperty(OModelFactory.NSP+"使用情境");
+//			OntProperty oshape = model.getOntProperty(OModelFactory.NSP+"器型");
+//			OntProperty osymbolic_meaning = model.getOntProperty(OModelFactory.NSP+"象征意义");
+//			OntProperty ocolor = model.getOntProperty(OModelFactory.NSP+"颜色");
+//			OProperty pattern = transfer(opattern);
+//			OProperty scene = transfer(oscene);
+//			OProperty shape = transfer(oshape);
+//			OProperty symbolic_meaning = transfer(osymbolic_meaning);
+//			OProperty color = transfer(ocolor);
+			OProperty pattern = getPropertyByName("纹饰",true);
+			OProperty scene = getPropertyByName("使用情境",true);
+			OProperty shape = getPropertyByName("器型",true);
+			OProperty symbolic_meaning = getPropertyByName("象征意义",true);
+			OProperty color = getPropertyByName("颜色",true);
 			propertyList.add(pattern);
 			propertyList.add(scene);
 			propertyList.add(shape);
 			propertyList.add(symbolic_meaning);
 			propertyList.add(color);
-			propertyList.add(creation_date);
 		}catch(Exception e){
 			logger.error("返回规则页面需要的属性出错："+e.getMessage());
 		}		
@@ -271,40 +305,38 @@ public class OPropertyServiceImpl extends BaseService implements OPropertyServic
 	}
 
 	/**
-	 * 遍历属性的定义域
+	 * 遍历属性的值域
 	 */
 	public OProperty transfer(OntProperty ontp) {
-		// TODO Auto-generated method stub
-		String ontp_name = ontp.getLocalName();
 		OProperty op = new OProperty();
-		List<OClass> rangeList = new ArrayList<OClass>();
-		op.setPname(ontp_name);
+		// TODO Auto-generated method stub
+//		op.setPname(ontp_name);
 		//如果该属性是对象属性
-		if(ontp.isObjectProperty()){
-			op.setPtype(1);
-			//获取该属性的值域
-			ExtendedIterator<OntResource> rsiter = (ExtendedIterator<OntResource>) ontp.listRange();
-			while(rsiter.hasNext()){
-				OntResource rs = rsiter.next();
-				if(rs.isClass()){
-					OntClass rsc = rs.asClass();
-					//如果该概念有子概念的话，遍历出它的所有子概念
-					ExtendedIterator<OntClass> ontciter = rsc.listSubClasses(false);
-					while(ontciter.hasNext()){
-						OntClass suboc = ontciter.next();	//取出这个子概念
-						String ocname = suboc.getLocalName();
-						OClass oc = new OClass();
-						oc.setCname(ocname);
-						rangeList.add(oc);
-					}
-				}
-			}
-			op.setRangeList(rangeList);
-		}else if(ontp.isDatatypeProperty()){//如果该属性是数据属性
-			op.setPtype(2);
-			OntResource rs = ontp.getRange();
-			op.setPrange(rs.getLocalName());
-		}
+//		if(ontp.isObjectProperty()){
+//			op.setPtype(1);
+//			//获取该属性的值域
+//			ExtendedIterator<OntResource> rsiter = (ExtendedIterator<OntResource>) ontp.listRange();
+//			while(rsiter.hasNext()){
+//				OntResource rs = rsiter.next();
+//				if(rs.isClass()){
+//					OntClass rsc = rs.asClass();
+//					//如果该概念有子概念的话，遍历出它的所有子概念
+//					ExtendedIterator<OntClass> ontciter = rsc.listSubClasses(false);
+//					while(ontciter.hasNext()){
+//						OntClass suboc = ontciter.next();	//取出这个子概念
+//						String ocname = suboc.getLocalName();
+//						OClass oc = new OClass();
+//						oc.setCname(ocname);
+//						rangeList.add(oc);
+//					}
+//				}
+//			}
+//			op.setRangeList(rangeList);
+//		}else if(ontp.isDatatypeProperty()){//如果该属性是数据属性
+//			op.setPtype(2);
+//			OntResource rs = ontp.getRange();
+//			op.setPrange(rs.getLocalName());
+//		}
 		return op;
 	}
 

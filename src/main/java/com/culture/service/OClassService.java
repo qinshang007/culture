@@ -24,8 +24,14 @@ public interface OClassService {
 	/*更新概念*/
 	public boolean updateClass(OClass oclass);
 	
+	/*更新路径*/
+	public boolean updatePath(OClass oclass);
+	
 	/*根据概念id，当direct为true时返回它的直系子概念，当direct为False时，返回它的所有后代概念*/
 	public List<OClass> getSubClasses(String cname,boolean direct);
+	
+	/*查询数据库，返回某一感念的所有子概念*/
+	public List<OClass> getChildClass(String cname);
 	
 	/*根据概念id返回概念的名字*/
 	public String getNameById(String id);

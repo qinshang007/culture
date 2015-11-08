@@ -12,7 +12,7 @@ public interface CulturalDao {
 	//更新文物
 	public boolean updateCultural(CulturalBean cb);
 	//返回文物列表
-	public List<CulturalBean> getCulturalList();
+	public List<CulturalBean> getCulturalList(Map map);
 	//删除文物
 	public boolean delCultural(String cbid);
 	//返回文物详情

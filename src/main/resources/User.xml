@@ -12,7 +12,7 @@
 	<!-- 根据用户姓名获取用户-->
 	<select id="getUserByName" parameterClass="String"
 		resultClass="user">
-		select * from user where userName = #userName# 
+		select * from user where userName=#userName# 
 	</select>
 	
 	<!-- 根据用户是否存在-->

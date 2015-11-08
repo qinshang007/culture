@@ -114,4 +114,36 @@ public class OClassDaoImpl extends BaseDao implements OClassDao{
 		return flag;
 	}
 
+	/**
+	 * 更新路径
+	 */
+	public boolean updatePath(OClass oclass) {
+		// TODO Auto-generated method stub
+		Object object = null;
+		boolean flag = false;
+		try {
+			object =(Integer) getSqlMapClientTemplate().update("updatePath",oclass);
+		}catch (Exception e) {
+			logger.error("更新概念路径信息出错！" +  ",errMsg=" + e.getMessage());
+		}
+		if (object != null) {
+			flag = true;
+		}
+		return flag;
+	}
+
+	/**
+	 * 返回某一概念的所有子概念
+	 */
+	public List<OClass> getChildClass(int cid) {
+		// TODO Auto-generated method stub
+		List<OClass> oclist = null;
+		try{
+			oclist = getSqlMapClientTemplate().queryForList("getChildClass",String.valueOf(cid));
+		}catch (Exception e) {
+			logger.error("获取子概念信息出错！" +  ",errMsg=" + e.getMessage());
+		}
+		return oclist;
+	}
+
 }
