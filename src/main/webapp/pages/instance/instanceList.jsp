@@ -92,9 +92,10 @@
 									<tr class="">
 										<td>${status.index+1 }</td>
 										<td>${item.title}</td>
-										<td><a  href="<%=url %>/crelic/home/display.do?culId=${item.identifier}" target="_blank">View</a></td>
+<!-- 									<td><a  href="<%=url %>/crelic/home/display.do?culId=${item.identifier}" target="_blank">View</a></td>  -->	
+										<td><a  href="/culture/instance/viewCultural.do?culId=${item.identifier}" target="_blank">查看</a></td>
 										<td><a  href="/culture/instance/editCultural.do?culId=${item.identifier}" target="_blank">修改</a></td>
-										<td><a  href="javascript:deleteInstance('${item.identifier}','${item.title}')">Delete</a></td>
+										<td><a  href="javascript:deleteInstance('${item.identifier}','${item.title}')">删除</a></td>
 									</tr>
 								</c:forEach>
 								</tbody>

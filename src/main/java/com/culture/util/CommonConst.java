@@ -2,7 +2,7 @@ package com.culture.util;
 
 public class CommonConst {
 
-	public static final String UPLOAD_ROOT_PATH = "D:/apache-tomcat-8080/webapps/crelicBase/upload";//上传附件的根路径
+	public static final String UPLOAD_ROOT_PATH = "E:/apache-tomcat-8080/webapps/crelicBase/upload";//上传附件的根路径
 	
 	public static final String WEBSITE = "http://210.32.133.25:8080";	//服务器的ip地址
 	

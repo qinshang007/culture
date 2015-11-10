@@ -487,6 +487,44 @@ public class InstanceController extends BaseController{
 			return null;
 		}
 	}
+
+	/**
+	 * 查看实例
+	 * @param request
+	 * @param response
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping("/viewCultural.do")
+	public ModelAndView viewCultural(HttpServletRequest request, HttpServletResponse response) throws Exception{
+		try{
+			String culId = request.getParameter("culId");
+			CulturalBean cb = clService.getCulturalById(culId);
+			String type = cb.getType();
+			String classification = cb.getClassification();
+			//获取创作朝代列表
+			OClass oclass = ocService.getClassByName("朝代");
+			List<OClass> creationDateList = ocService.getClassList(oclass);
+			//文物级别
+			List<String> levelList = null;
+			if(type.equals("建筑"))
+				levelList = levelList2;
+			else
+				levelList = levelList1;
+			Map map = new HashMap();
+			map.put("cb", cb);
+			map.put("type", type);
+			map.put("classification", classification);
+			map.put("creationDateList", creationDateList);
+			map.put("levelList", levelList);
+			return new ModelAndView("instance/viewCultural").addAllObjects(map);
+		}catch (RuntimeException e) {
+			logger.error("查看实例出错！" +  ",errMsg=" + e.getMessage());
+			outputJsonResponse(response, false, e.getMessage());
+			return null;
+		}
+	}
+
 	
 	/**
 	 * 验证文物名字是否存在

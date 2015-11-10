@@ -333,10 +333,6 @@
 										</div>
 									</div>
 								</div>
-								<div class="form-actions">
-									<button type="submit" class="btn blue">下一步</button>
-									<button type="reset" class="btn">重置</button>                            
-								</div>
 							</form>
 						</div>
 						</div>
@@ -439,48 +435,6 @@
 				$("#socialHistoryInfoDiv").hide();
 			}
 		}
-		
-		function failedForm(){
-			console.log("failedForm");
-		}
-		
-		function creatSubmitForm(formId){
-			return function submitForm(){
-				var formObj = $("#"+formId);
-			    var formURL = formObj.attr("action");
-			    var formData = new FormData(formObj[0]);
-			    $.ajax({
-			        url: formURL,
-			    type: 'POST',
-			        data:  formData,
-			    mimeType:"multipart/form-data",
-			    contentType: false,
-			    cache: false,
-			    processData:false,
-			    success: function(transport)
-			    {
-			    	 var jresp = new JsonRespUtils(transport);
-			    	 if (jresp.isSuccessfully()){
-			    		 var res = jresp.getMessage();
-			    		 var identifier = $("#identifier").val();
-			    		 var creation_date = $("#creation_date").val();
-				    	 var type = $("#type").val();
-				    	 var classification = $("#classification").val();
-				    	 var title = $("#title").val();
-				    	 var used_title = $("#used_title").val();
-				    	 var creator = $("#creator").val();
-				    	 var oldTitle = $("#oldTitle").val();
-				    	 location.href="/culture/instance/editInstance.do?type="+type+"&classification="+classification+"&title="+title+"&used_title="+used_title+"&creator="+creator+"&identifier="+identifier+"&creation_date="+creation_date+"&oldTitle="+oldTitle;
-			    	 }
-			    },
-			     error: function(transport) 
-			     {
-			    	alert("保存失败！");
-			     }          
-			    });
-			}
-		}
-
 		
 	</script>
 	<script type="text/javascript">  var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-37564768-1']);  _gaq.push(['_setDomainName', 'keenthemes.com']);  _gaq.push(['_setAllowLinker', true]);  _gaq.push(['_trackPageview']);  (function() {    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;    ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);  })();</script></body>
