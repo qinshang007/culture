@@ -243,13 +243,13 @@
 												<input id="c_usage" type="text" class="span6 m-wrap" name="c_usage" />
 											</div>
 										</div>
-										<div class="control-group">
+										<div id="symbolicDiv" class="control-group">
 											<label class="control-label">象征意义</label>
 											<div class="controls">										
 												<textarea class="span6 m-wrap" rows="3" name="symbolic_meaning"></textarea>
 											</div>
 										</div>
-										<div class="control-group">
+										<div id="aestheticDiv" class="control-group">
 											<label class="control-label">审美</label>
 											<div class="controls">										
 												<textarea class="span6 m-wrap" rows="3" name="aesthetic_desc"></textarea>
@@ -420,7 +420,9 @@
 				$("#shapeDiv").hide();
 				$("#patternDiv").hide();
 				//功能要素
-				$("#functionDiv").hide();
+				$("#sceneDiv").hide();
+				$("#c_usageDiv").hide();
+				$("#symbolicDiv").hide();
 				//文化要素
 				$("#historyInfoDiv").hide();
 				$("#folkloreDiv").hide();

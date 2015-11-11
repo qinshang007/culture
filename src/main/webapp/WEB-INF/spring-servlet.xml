@@ -28,9 +28,9 @@
  </bean>
  
  <bean id="oModelFactory" class="com.culture.model.OModelFactory">
-	 <property name="owlFile" value="E:/apache-tomcat-8080/webapps/owl/culture.owl" />
-	 <property name="instanceFile" value="E:/apache-tomcat-8080/webapps/owl/instance.owl" />
-	 <property name="ruleFile" value="E:/apache-tomcat-8080/webapps/owl/crelic.rules" />
+	 <property name="owlFile" value="D:/apache-tomcat-8080/webapps/owl/culture.owl" />
+	 <property name="instanceFile" value="D:/apache-tomcat-8080/webapps/owl/instance.owl" />
+	 <property name="ruleFile" value="D:/apache-tomcat-8080/webapps/owl/crelic.rules" />
  </bean>
 
 </beans>
