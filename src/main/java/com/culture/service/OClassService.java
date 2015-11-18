@@ -38,5 +38,7 @@ public interface OClassService {
 	
 	/*验证概念名字是否存在*/
 	public boolean isClassExist(String cname);
-
+	
+	/*判断一个概念是否是叶子概念*/
+	public boolean isLeafClass(String cid);
 }

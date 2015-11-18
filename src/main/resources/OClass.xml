@@ -62,5 +62,13 @@
 		select * from oclass where path like '%$cid$%' and del = 0
 	</select>
 	
-
+	<!-- 批量更改概念路径 -->
+	<update id="batchUpdatePath" parameterClass="java.util.List">
+	       begin
+	      <iterate conjunction="">
+	        update oclass set path=#ocList[].path# where cid = #ocList[].cid#;
+	      </iterate>
+	      end;    
+	  </update>
+	
 </sqlMap>  

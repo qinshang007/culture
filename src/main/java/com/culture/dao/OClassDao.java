@@ -33,5 +33,11 @@ public interface OClassDao {
 	/*返回所有的子概念*/
 	public List<OClass> getChildClass(int cid);
 
+	/**
+	 * 批量修改概念路径
+	 * @param ocList
+	 * @return
+	 */
+	public boolean batchUpdatePath(List<OClass> ocList);
 	
 }

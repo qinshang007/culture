@@ -146,4 +146,22 @@ public class OClassDaoImpl extends BaseDao implements OClassDao{
 		return oclist;
 	}
 
+	/**
+	 * 批量修改概念路径
+	 */
+	public boolean batchUpdatePath(List<OClass> ocList) {
+		// TODO Auto-generated method stub
+		Object object = null;
+		boolean flag = false;
+		try {
+			object =(Integer) getSqlMapClientTemplate().update("batchUpdatePath",ocList);
+		}catch (Exception e) {
+			logger.error("批量更新概念路径信息出错！" +  ",errMsg=" + e.getMessage());
+		}
+		if (object != null) {
+			flag = true;
+		}
+		return flag;
+	}
+
 }

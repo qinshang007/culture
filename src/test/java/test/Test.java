@@ -5,19 +5,13 @@ import java.util.Map;
 
 public class Test {
 	
-	private Map<String,String> propertyMap = new HashMap<String,String>(){{
-		put("名称", "title");
-		put("其他名称", "used_title");
-		put("级别", "c_level");
-	}};
-	
-	public void hh(){
-		System.out.println(propertyMap.get("名称"));
-	}
-
-	public static void main(String[]args){
-		Test t = new Test();
-		t.hh();
+	public static void main(String[] args){
+		String cid = "123";
+		String str = "0,123";
+		int index = str.indexOf(cid);
+		System.out.println(index);
+		String tail = str.substring(index+cid.length());
+		System.out.println("0"+tail);
 	}
 	
 }

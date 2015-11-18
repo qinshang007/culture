@@ -62,39 +62,68 @@ public class OClassServiceImpl extends BaseService implements OClassService{
 	public boolean delClass(String cid,String cname) {
 		// TODO Auto-generated method stub
 		boolean flag = true;
-		//删除数据库
-		flag =  getOClassDao().delClass(Integer.valueOf(cid));
-		//更新数据库
-		flag = getOClassDao().upgradeClass(Integer.valueOf(cid));
-		//删除本体文件
-		if(flag){
-			 OntModel model = omodelFactory.getModel();
-			 OntClass oldClass = model.getOntClass(OModelFactory.NSC+cname);
-			 //如果概念有父概念的话
-//			 if(oldClass.hasSuperClass()){
-//				 OntClass parent = oldClass.getSuperClass();
-//				 parent.removeSubClass(oldClass);
-//			 }else if(oldClass.hasSubClass()){
-//				 OntClass child = oldClass.getSubClass();
-//				 oldClass.removeSubClass(child);
-//			 }
-			 oldClass.remove();
-			 //write XML FILE
-			 File file = new File(omodelFactory.getOwlFile());
-			 try{
-				 OutputStream out = new FileOutputStream(file);
-				 model.write(out);
-			 }catch(Exception e){
-				 e.printStackTrace();
-				 flag = false;
-			 }
+		List<OClass> ocList = getChildClass(Integer.valueOf(cid)); 
+		if(ocList.size() == 1){	//该概念是叶子概念
+			flag =  getOClassDao().delClass(Integer.valueOf(cid));
+		}else{	//该概念是非叶子概念
+			//将其子概念的cfid置为0
+			flag = getOClassDao().upgradeClass(Integer.valueOf(cid));
+			//更改其子概念路径
+			for(int i=0;i<ocList.size();i++){
+				OClass oclass = ocList.get(i);
+				String path = oclass.getPath();
+				int index = path.indexOf(cid);
+				String newPath = "0"+path.substring(index+cid.length());
+				oclass.setPath(newPath);
+				getOClassDao().updatePath(oclass);
+			}
+			//删除该概念
+			flag =  getOClassDao().delClass(Integer.valueOf(cid));
 		}
+		//删除本体文件
+//		if(flag){
+//			 OntModel model = omodelFactory.getModel();
+//			 OntClass oldClass = model.getOntClass(OModelFactory.NSC+cname);
+//			 //如果概念有父概念的话
+////			 if(oldClass.hasSuperClass()){
+////				 OntClass parent = oldClass.getSuperClass();
+////				 parent.removeSubClass(oldClass);
+////			 }else if(oldClass.hasSubClass()){
+////				 OntClass child = oldClass.getSubClass();
+////				 oldClass.removeSubClass(child);
+////			 }
+//			 oldClass.remove();
+//			 //write XML FILE
+//			 File file = new File(omodelFactory.getOwlFile());
+//			 try{
+//				 OutputStream out = new FileOutputStream(file);
+//				 model.write(out);
+//			 }catch(Exception e){
+//				 e.printStackTrace();
+//				 flag = false;
+//			 }
+//		}
 		return flag;
 	}
 
 	public boolean updateClass(OClass oclass) {
 		// TODO Auto-generated method stub
-		return getOClassDao().updateClass(oclass);
+		boolean flag = true;
+		flag =  getOClassDao().updateClass(oclass);
+		if(flag){	//更新path
+			int cfid = oclass.getCfid();
+			String path = "";
+			if(cfid == 0)
+				path = "0";
+			else{
+				OClass pa = getClassById(String.valueOf(cfid));
+				path = pa.getPath();
+			}
+			path = path+","+oclass.getCid();
+			oclass.setPath(path);
+			flag = updatePath(oclass);
+		}
+		return flag;
 	}
 
 	public OClass getClassByName(String cname) {
@@ -167,7 +196,7 @@ public class OClassServiceImpl extends BaseService implements OClassService{
 
 	public List<OClass> getChildClass(int cid) {
 		// TODO Auto-generated method stub
-		return null;
+		return getOClassDao().getChildClass(cid);
 	}
 
 	/**
@@ -181,6 +210,19 @@ public class OClassServiceImpl extends BaseService implements OClassService{
 			return getOClassDao().getChildClass(cid);
 		}
 		return null;
+	}
+
+	/**
+	 * 判断一个概念是否是叶子概念
+	 */
+	public boolean isLeafClass(String cid) {
+		// TODO Auto-generated method stub
+		List<OClass> ocList = getOClassDao().getChildClass(Integer.valueOf(cid));
+		if(ocList != null){
+			if(ocList.size() > 1)
+				return false;
+		}
+		return true;
 	}
 
 }

@@ -52,7 +52,7 @@ public class ClassController extends BaseController{
 	@RequestMapping("/save.do")
 	public void saveClass(HttpServletRequest request, HttpServletResponse response) throws Exception{
 		try{
-			OntModel model = omodelFactory.getModel();
+//			OntModel model = omodelFactory.getModel();
 			//获取概念名字
 			String cname = request.getParameter("cname");
 			//获取父概念名字
@@ -60,22 +60,22 @@ public class ClassController extends BaseController{
 			//获取父概念id
 			String cfid = request.getParameter("cfid");
 			
-			OntClass children = model.createClass(OModelFactory.NSC+cname);
+//			OntClass children = model.createClass(OModelFactory.NSC+cname);
 			
 			//如果父概念名字不为空且不为无
-			if(!StringUtils.isEmpty(cfname)&&!cfname.equals("无")){
-				OntClass parent = model.getOntClass(OModelFactory.NSC+cfname);//取得父概念
-				parent.addSubClass(children);//
-			}
+//			if(!StringUtils.isEmpty(cfname)&&!cfname.equals("无")){
+//				OntClass parent = model.getOntClass(OModelFactory.NSC+cfname);//取得父概念
+//				parent.addSubClass(children);//
+//			}
 			
 			//写入owl文件
-			File file = new File(omodelFactory.getOwlFile());
-			try{
-				OutputStream out = new FileOutputStream(file);
-				model.write(out);
-			}catch(Exception e){
-				e.printStackTrace();
-			}
+//			File file = new File(omodelFactory.getOwlFile());
+//			try{
+//				OutputStream out = new FileOutputStream(file);
+//				model.write(out);
+//			}catch(Exception e){
+//				e.printStackTrace();
+//			}
 			//保存到数据库
 			OClass c = new OClass();
 			c.setCname(cname);
@@ -99,7 +99,7 @@ public class ClassController extends BaseController{
 	@RequestMapping("/update.do")
 	public void updateClass(HttpServletRequest request, HttpServletResponse response) throws Exception{
 		try{
-			OntModel model = omodelFactory.getModel();
+//			OntModel model = omodelFactory.getModel();
 			//获取概念id
 			String cid = request.getParameter("cid");
 			//获取概念名字
@@ -110,27 +110,27 @@ public class ClassController extends BaseController{
 			String cfid = request.getParameter("cfid");
 			
 			//获取该概念的子概念
-			OntClass children = model.getOntClass(OModelFactory.NSC+cname);
+//			OntClass children = model.getOntClass(OModelFactory.NSC+cname);
 			
 			//如果概念名字不为空且不为无
-			if(!StringUtils.isEmpty(cfname)&&!cfname.equals("无")){
-				//获取原来的父概念
-				OntClass old_parent = children.getSuperClass();
-				if(old_parent!=null)
-					old_parent.removeSubClass(children);
-				//获取新的父概念
-				OntClass parent = model.getOntClass(OModelFactory.NSC+cfname);
-				parent.addSubClass(children);//
-			}
+//			if(!StringUtils.isEmpty(cfname)&&!cfname.equals("无")){
+//				//获取原来的父概念
+//				OntClass old_parent = children.getSuperClass();
+//				if(old_parent!=null)
+//					old_parent.removeSubClass(children);
+//				//获取新的父概念
+//				OntClass parent = model.getOntClass(OModelFactory.NSC+cfname);
+//				parent.addSubClass(children);//
+//			}
 			
 			//写入到owl文件
-			File file = new File(omodelFactory.getOwlFile());
-			try{
-				OutputStream out = new FileOutputStream(file);
-				model.write(out);
-			}catch(Exception e){
-				e.printStackTrace();
-			}
+//			File file = new File(omodelFactory.getOwlFile());
+//			try{
+//				OutputStream out = new FileOutputStream(file);
+//				model.write(out);
+//			}catch(Exception e){
+//				e.printStackTrace();
+//			}
 			//保存到数据库
 			OClass c = new OClass();
 			c.setCname(cname);
