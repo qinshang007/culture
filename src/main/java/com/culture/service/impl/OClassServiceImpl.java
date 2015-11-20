@@ -1,10 +1,9 @@
 package com.culture.service.impl;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.OutputStream;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -62,8 +61,8 @@ public class OClassServiceImpl extends BaseService implements OClassService{
 	public boolean delClass(String cid,String cname) {
 		// TODO Auto-generated method stub
 		boolean flag = true;
-		List<OClass> ocList = getChildClass(Integer.valueOf(cid)); 
-		if(ocList.size() == 1){	//该概念是叶子概念
+		List<OClass> ocList = getChildClass(Integer.valueOf(cid),0); 
+		if(ocList.size() == 0){	//该概念是叶子概念
 			flag =  getOClassDao().delClass(Integer.valueOf(cid));
 		}else{	//该概念是非叶子概念
 			//将其子概念的cfid置为0
@@ -194,35 +193,43 @@ public class OClassServiceImpl extends BaseService implements OClassService{
 		return getOClassDao().updatePath(oclass);
 	}
 
-	public List<OClass> getChildClass(int cid) {
+	/**
+	 * 根据概念id查询数据库，返回某一概念的所有子概念
+	 * 如果direct为1，则返回概念的直系子概念
+	 * 如果direct为0,则返回概念的所有子概念
+	 * @param cid
+	 * @return
+	 */
+	public List<OClass> getChildClass(int cid,int direct) {
 		// TODO Auto-generated method stub
-		return getOClassDao().getChildClass(cid);
+		List<OClass> ocList = null;
+		String query = ","+cid+",";
+		Map map = new HashMap();
+		map.put("cid", query);
+		map.put("direct", direct);
+		ocList =  getOClassDao().getChildClass(map);
+		return ocList;
 	}
 
 	/**
-	 * 查询数据库返回某一概念的子概念
+	 * 根据概念名称查询数据库，返回某一概念的所有子概念
+	 * 如果direct为1，则返回概念的直系子概念
+	 * 如果direct为0,则返回概念的所有子概念
 	 */
-	public List<OClass> getChildClass(String cname) {
+	public List<OClass> getChildClass(String cname,int direct) {
 		// TODO Auto-generated method stub
 		OClass oc = getOClassDao().getClassByName(cname);
+		List<OClass> ocList = null;
 		if(oc != null){
 			int cid = oc.getCid();
-			return getOClassDao().getChildClass(cid);
+			String query = ","+cid+",";
+			Map map = new HashMap();
+			map.put("cid", query);
+			map.put("direct", direct);
+			ocList = getOClassDao().getChildClass(map);
+			return ocList;
 		}
 		return null;
-	}
-
-	/**
-	 * 判断一个概念是否是叶子概念
-	 */
-	public boolean isLeafClass(String cid) {
-		// TODO Auto-generated method stub
-		List<OClass> ocList = getOClassDao().getChildClass(Integer.valueOf(cid));
-		if(ocList != null){
-			if(ocList.size() > 1)
-				return false;
-		}
-		return true;
 	}
 
 }

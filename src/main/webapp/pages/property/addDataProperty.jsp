@@ -118,10 +118,10 @@
 									<label class="control-label">值域</label>
 									<div class="controls">
 										<select id="range" class="span6 chosen" data-placeholder="选择值域" tabindex="1" name="range">
-											<option value="0">文本</option>
-											<option value="1">整数</option>
-											<option value="2">浮点数</option>
-											<option value="3">日期</option>
+											<option value="文本">文本</option>
+											<option value="整数">整数</option>
+											<option value="浮点数">浮点数</option>
+											<option value="日期">日期</option>
 										</select>
 										<span class="help-inline">必填</span>
 									</div>

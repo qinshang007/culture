@@ -5,7 +5,7 @@
 <!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
 <!-- BEGIN HEAD -->
 <head>
-	<title>知识库后台管理系统</title>
+	<title>本体知识库管理系统</title>
 	<meta content="width=device-width, initial-scale=1.0" name="viewport" />
 	<meta content="" name="description" />
 	<meta content="" name="author" />
@@ -36,7 +36,7 @@
 	<div class="content">
 		<!-- BEGIN LOGIN FORM -->
 		<form class="form-vertical login-form" action="user/login.do">
-			<h3 class="form-title">知识库后台登录</h3>
+			<h3 class="form-title">本体知识库管理系统</h3>
 			<div class="alert alert-error hide">
 				<button class="close" data-dismiss="alert"></button>
 				<span>输入用户名和密码.</span>

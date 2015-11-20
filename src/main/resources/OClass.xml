@@ -57,18 +57,14 @@
 	</update>
 	
 	<!-- 返回所有子概念 -->
-	<select id="getChildClass" parameterClass="String"
+	<select id="getChildClass" parameterClass="java.util.Map"
 		resultClass="oclass">
-		select * from oclass where path like '%$cid$%' and del = 0
+		select * from oclass where path like '%$cid$%' and del = 0 
+		<dynamic>
+			<isEqual property="direct" compareValue="1">
+				and path not like '%$cid$%,%' 
+			</isEqual>
+		</dynamic>
 	</select>
-	
-	<!-- 批量更改概念路径 -->
-	<update id="batchUpdatePath" parameterClass="java.util.List">
-	       begin
-	      <iterate conjunction="">
-	        update oclass set path=#ocList[].path# where cid = #ocList[].cid#;
-	      </iterate>
-	      end;    
-	  </update>
 	
 </sqlMap>  

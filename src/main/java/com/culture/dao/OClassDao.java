@@ -1,6 +1,7 @@
 package com.culture.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import com.culture.model.OClass;
 
@@ -31,13 +32,6 @@ public interface OClassDao {
 	public boolean updatePath(OClass oclass);
 	
 	/*返回所有的子概念*/
-	public List<OClass> getChildClass(int cid);
+	public List<OClass> getChildClass(Map map);
 
-	/**
-	 * 批量修改概念路径
-	 * @param ocList
-	 * @return
-	 */
-	public boolean batchUpdatePath(List<OClass> ocList);
-	
 }

@@ -4,7 +4,7 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<title>修改实例</title>
+	<title>查看实例</title>
 	<meta content="width=device-width, initial-scale=1.0" name="viewport" />
 	<meta content="" name="description" />
 	<meta content="" name="author" />
@@ -64,7 +64,7 @@
 								<a href="#">本体管理</a>
 								<span class="icon-angle-right"></span>
 							</li>
-							<li><a href="/culture/doctor/dtAdd.do">修改实例</a></li>
+							<li><a href="/culture/doctor/dtAdd.do">查看实例</a></li>
 						</ul>
 					</div>
 				</div>

@@ -65,13 +65,8 @@ public class OPropertyServiceImpl extends BaseService implements OPropertyServic
 		// TODO Auto-generated method stub
 		OProperty op = new OProperty();
 		try{
-//			OntModel model = omodelFactory.getModel();
-//			//获取属性
-//			OntProperty ontp = model.getOntProperty(OModelFactory.NSP+pname);
-//			//将ontproperty转化为oproperty
-//			op = transfer(ontp);
 			op = getOPropertyDao().getPropertyByName(pname);
-			if(!needRange)
+			if(!needRange)	//是否需要属性的值域
 				return op;
 			if(op != null){
 				List<OClass> rangeList = new ArrayList<OClass>();
@@ -79,7 +74,7 @@ public class OPropertyServiceImpl extends BaseService implements OPropertyServic
 				if(range != null){
 					String ranges[] = range.split(",");
 					for(int i=0;i<ranges.length;i++){
-						List<OClass> temp = ocService.getChildClass(ranges[i]);
+						List<OClass> temp = ocService.getChildClass(ranges[i],0);
 						if(temp != null)
 							rangeList.addAll(temp);
 					}
@@ -101,10 +96,10 @@ public class OPropertyServiceImpl extends BaseService implements OPropertyServic
 		//保存到数据库
 		flag =  getOPropertyDao().addProperty(op);
 		//写入到owl文件
-		if(flag){
-			//更新到本体文件
-			flag = writePropertyToFile(op,null);
-		}
+//		if(flag){
+//			//更新到本体文件
+//			flag = writePropertyToFile(op,null);
+//		}
 		return flag;
 	}
 
@@ -116,10 +111,10 @@ public class OPropertyServiceImpl extends BaseService implements OPropertyServic
 		boolean flag = true;
 		//更新到数据库
 		flag =  getOPropertyDao().updateProperty(op);
-		//更新到本体文件
-		if(flag){
-			flag = writePropertyToFile(op,oldPname);
-		}
+//		//更新到本体文件
+//		if(flag){
+//			flag = writePropertyToFile(op,oldPname);
+//		}
 		return flag;
 	}
 	
@@ -201,18 +196,18 @@ public class OPropertyServiceImpl extends BaseService implements OPropertyServic
 		//更新数据库
 		flag = getOPropertyDao().upgradeProperty(Integer.valueOf(pid));
 		//删除本体文件
-		 OntModel model = omodelFactory.getModel();
-		 OntProperty oldProperty = model.getOntProperty(OModelFactory.NSP+pname);
-		 oldProperty.remove();
-		 //write XML FILE
-		 File file = new File(omodelFactory.getOwlFile());
-		 try{
-			 OutputStream out = new FileOutputStream(file);
-			 model.write(out);
-		 }catch(Exception e){
-			 e.printStackTrace();
-			 flag = false;
-		 }
+//		 OntModel model = omodelFactory.getModel();
+//		 OntProperty oldProperty = model.getOntProperty(OModelFactory.NSP+pname);
+//		 oldProperty.remove();
+//		 //write XML FILE
+//		 File file = new File(omodelFactory.getOwlFile());
+//		 try{
+//			 OutputStream out = new FileOutputStream(file);
+//			 model.write(out);
+//		 }catch(Exception e){
+//			 e.printStackTrace();
+//			 flag = false;
+//		 }
 		return flag;
 	}
 

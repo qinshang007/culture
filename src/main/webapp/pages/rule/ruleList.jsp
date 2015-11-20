@@ -62,7 +62,7 @@
 								<a href="#">规则管理</a>
 								<span class="icon-angle-right"></span>
 							</li>
-							<li><a href="/culture/animal/amList.do?species=1">规则列表</a></li>
+							<li><a href="/culture/rule/ruleList.do">规则列表</a></li>
 						</ul>
 					</div>
 				</div>

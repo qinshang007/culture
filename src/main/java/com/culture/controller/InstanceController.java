@@ -203,8 +203,8 @@ public class InstanceController extends BaseController{
 			//更新数据库
 			clService.delCultural(culId);
 			//更新本体文件
-			instService.delInstance(title);
-			outputJsonResponse(response, true,"deleteSuccess");
+			instService.delInstance(culId,title);
+			outputJsonResponse(response, true,"删除实例成功！");
 		}catch (RuntimeException e) {
 			logger.error("删除实例出错！" +  ",errMsg=" + e.getMessage());
 			outputJsonResponse(response, false, e.getMessage());
@@ -222,7 +222,8 @@ public class InstanceController extends BaseController{
 		try{
 			String type = request.getParameter("type");
 			//获取文物概念的子概念
-			List<OClass> oclist = ocService.getSubClasses(type, true);
+//			List<OClass> oclist = ocService.getSubClasses(type, true);
+			List<OClass> oclist = ocService.getChildClass(type,1);
 			outputJsonResponse(response, oclist);
 		}catch (RuntimeException e) {
 			logger.error("返回二级概念数据出错！" +  ",errMsg=" + e.getMessage());
@@ -265,8 +266,8 @@ public class InstanceController extends BaseController{
 			//获取二级概念，也就是细的类别，如瓷器，陶器等
 			String classification = request.getParameter("classification");
 			//获取创作朝代列表
-			OClass oclass = ocService.getClassByName("朝代");
-			List<OClass> creationDateList = ocService.getClassList(oclass);
+			List<OClass> creationDateList = instService.getCreationDateList();
+			//获取文物级别列表
 			List<String> levelList = null;
 			if(type.equals("建筑"))
 				levelList = levelList2;
@@ -294,44 +295,8 @@ public class InstanceController extends BaseController{
 	 */
 	@RequestMapping("/addInstance.do")
 	public ModelAndView addInstance(HttpServletRequest request, HttpServletResponse response,CulturalBean cb) throws Exception{
-		
 		try{
-			//获取创作朝代列表
-			OClass oclass = ocService.getClassByName("朝代");
-			List<OClass> creationDateList = ocService.getClassList(oclass);
-			//获取纹饰列表
-			OClass ptClass = ocService.getClassByName("纹饰");
-			List<OClass> patternList = ocService.getClassList(ptClass);
-			//获取器形列表
-			OClass spClass = ocService.getClassByName("器型");
-			List<OClass> shapeList = ocService.getClassList(spClass);
-			//获取色彩列表
-			OClass clClass = ocService.getClassByName("颜色");
-			List<OClass> colorList = ocService.getClassList(clClass);
-			//获取使用情境列表
-			OClass seClass = ocService.getClassByName("使用情境");
-			List<OClass> sceneList = null;
-			if(seClass != null)
-				sceneList = ocService.getClassList(seClass);
-			//获取象征意义列表
-			OClass meClass = ocService.getClassByName("象征意义");
-			List<OClass> meaningList = ocService.getClassList(meClass);
-			//获取结构列表
-			OClass stClass = ocService.getClassByName("结构");
-			List<OClass> structureList = ocService.getClassList(stClass);
-			//获取审美列表
-			OClass atClass = ocService.getClassByName("审美");
-			List<OClass> aestheticList = ocService.getClassList(atClass);
-			//将参数存到map里头
-			Map map = new HashMap();
-			map.put("creationDateList", creationDateList);
-			map.put("patternList", patternList);
-			map.put("shapeList", shapeList);
-			map.put("colorList", colorList);
-			map.put("sceneList", sceneList);
-			map.put("meaningList", meaningList);
-			map.put("structureList", structureList);
-			map.put("aestheticList", aestheticList);
+			Map map = instService.getInstanceMap();
 			map.put("cb",  cb);
 			return new ModelAndView("instance/addInstance").addAllObjects(map);
 		}catch (RuntimeException e) {
@@ -352,19 +317,20 @@ public class InstanceController extends BaseController{
 	public ModelAndView chooseClass(HttpServletRequest request, HttpServletResponse response) throws Exception{
 		try{
 			//获取文物概念的子概念
-			List<OClass> oclist = ocService.getSubClasses("文物", true);
+//			List<OClass> oclist = ocService.getSubClasses("文物", true);
+			List<OClass> oclist = ocService.getChildClass("文物",1);
 			List<OClass> childlist = new ArrayList<OClass>();
 			if(oclist.size()!=0){
 				//取出第一个父节点
 				OClass parent = oclist.get(0);
 				String pcname = parent.getCname();
-				childlist = ocService.getSubClasses(pcname, true);
+//				childlist = ocService.getSubClasses(pcname, true);
+				childlist = ocService.getChildClass(pcname,1);
 			}
 			Map map = new HashMap();
 			map.put("oclist", oclist);
 			map.put("childlist", childlist);
 			return new ModelAndView("instance/chooseClass").addAllObjects(map);
-			
 		}catch (RuntimeException e) {
 			logger.error("返回属性出错！" +  ",errMsg=" + e.getMessage());
 			outputJsonResponse(response, false, e.getMessage());
@@ -406,8 +372,7 @@ public class InstanceController extends BaseController{
 			String type = cb.getType();
 			String classification = cb.getClassification();
 			//获取创作朝代列表
-			OClass oclass = ocService.getClassByName("朝代");
-			List<OClass> creationDateList = ocService.getClassList(oclass);
+			List<OClass> creationDateList = instService.getCreationDateList();
 			//文物级别
 			List<String> levelList = null;
 			if(type.equals("建筑"))
@@ -429,7 +394,7 @@ public class InstanceController extends BaseController{
 	}
 	
 	/**
-	 * 添加实例页面
+	 * 修改实例页面
 	 * @param request
 	 * @param response
 	 * @throws Exception
@@ -441,48 +406,13 @@ public class InstanceController extends BaseController{
 			Instance instacne = instService.getInstanceById(cb.getIdentifier());
 			//获取旧的名称
 			String oldTitle = request.getParameter("oldTitle");
-			//获取创作朝代列表
-			OClass oclass = ocService.getClassByName("朝代");
-			List<OClass> creationDateList = ocService.getClassList(oclass);
-			//获取纹饰列表
-			OClass ptClass = ocService.getClassByName("纹饰");
-			List<OClass> patternList = ocService.getClassList(ptClass);
-			//获取器形列表
-			OClass spClass = ocService.getClassByName("器型");
-			List<OClass> shapeList = ocService.getClassList(spClass);
-			//获取色彩列表
-			OClass clClass = ocService.getClassByName("颜色");
-			List<OClass> colorList = ocService.getClassList(clClass);
-			//获取使用情境列表
-			OClass seClass = ocService.getClassByName("使用情境");
-			List<OClass> sceneList = null;
-			if(seClass != null)
-				sceneList = ocService.getClassList(seClass);
-			//获取象征意义列表
-			OClass meClass = ocService.getClassByName("象征意义");
-			List<OClass> meaningList = ocService.getClassList(meClass);
-			//获取结构列表
-			OClass stClass = ocService.getClassByName("结构");
-			List<OClass> structureList = ocService.getClassList(stClass);
-			//获取审美列表
-			OClass atClass = ocService.getClassByName("审美");
-			List<OClass> aestheticList = ocService.getClassList(atClass);
-			//将参数存到map里头
-			Map map = new HashMap();
-			map.put("creationDateList", creationDateList);
-			map.put("patternList", patternList);
-			map.put("shapeList", shapeList);
-			map.put("colorList", colorList);
-			map.put("sceneList", sceneList);
-			map.put("meaningList", meaningList);
-			map.put("structureList", structureList);
-			map.put("aestheticList", aestheticList);
+			Map map = instService.getInstanceMap();
 			map.put("cb",  cb);
 			map.put("oldTitle", oldTitle);
 			map.put("instance", instacne);
 			return new ModelAndView("instance/editInstance").addAllObjects(map);
 		}catch (RuntimeException e) {
-			logger.error("返回属性出错！" +  ",errMsg=" + e.getMessage());
+			logger.error("修改实例页面出错！" +  ",errMsg=" + e.getMessage());
 			outputJsonResponse(response, false, e.getMessage());
 			return null;
 		}

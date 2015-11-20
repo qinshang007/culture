@@ -31,7 +31,7 @@ public interface OClassService {
 	public List<OClass> getSubClasses(String cname,boolean direct);
 	
 	/*查询数据库，返回某一感念的所有子概念*/
-	public List<OClass> getChildClass(String cname);
+	public List<OClass> getChildClass(String cname,int direct);
 	
 	/*根据概念id返回概念的名字*/
 	public String getNameById(String id);
@@ -39,6 +39,4 @@ public interface OClassService {
 	/*验证概念名字是否存在*/
 	public boolean isClassExist(String cname);
 	
-	/*判断一个概念是否是叶子概念*/
-	public boolean isLeafClass(String cid);
 }

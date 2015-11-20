@@ -1,13 +1,14 @@
 package com.culture.dao.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Repository;
 
+import com.culture.dao.BaseDao;
 import com.culture.dao.OClassDao;
 import com.culture.model.OClass;
-import com.culture.dao.BaseDao;
 
 @Repository
 public class OClassDaoImpl extends BaseDao implements OClassDao{
@@ -135,33 +136,15 @@ public class OClassDaoImpl extends BaseDao implements OClassDao{
 	/**
 	 * 返回某一概念的所有子概念
 	 */
-	public List<OClass> getChildClass(int cid) {
+	public List<OClass> getChildClass(Map map) {
 		// TODO Auto-generated method stub
 		List<OClass> oclist = null;
 		try{
-			oclist = getSqlMapClientTemplate().queryForList("getChildClass",String.valueOf(cid));
+			oclist = getSqlMapClientTemplate().queryForList("getChildClass",map);
 		}catch (Exception e) {
 			logger.error("获取子概念信息出错！" +  ",errMsg=" + e.getMessage());
 		}
 		return oclist;
-	}
-
-	/**
-	 * 批量修改概念路径
-	 */
-	public boolean batchUpdatePath(List<OClass> ocList) {
-		// TODO Auto-generated method stub
-		Object object = null;
-		boolean flag = false;
-		try {
-			object =(Integer) getSqlMapClientTemplate().update("batchUpdatePath",ocList);
-		}catch (Exception e) {
-			logger.error("批量更新概念路径信息出错！" +  ",errMsg=" + e.getMessage());
-		}
-		if (object != null) {
-			flag = true;
-		}
-		return flag;
 	}
 
 }

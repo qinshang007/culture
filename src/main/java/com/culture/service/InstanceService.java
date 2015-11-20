@@ -1,8 +1,10 @@
 package com.culture.service;
 
+import java.util.List;
 import java.util.Map;
 
 import com.culture.model.Instance;
+import com.culture.model.OClass;
 
 public interface InstanceService {
 	
@@ -10,7 +12,7 @@ public interface InstanceService {
 	public boolean addInstance(Map<String,String> valueMap,Instance cb);
 	
 	/*删除实例*/
-	public void delInstance(String title);
+	public boolean delInstance(String culId,String title);
 	
 	/*编辑实例*/
 	public boolean editInstance(Map<String,String> valueMap,Instance cb);
@@ -20,5 +22,11 @@ public interface InstanceService {
 	
 	/*更新本体实例*/
 	public boolean updateInstance(Instance instance);
+	
+	/*获取朝代列表*/
+	public List<OClass> getCreationDateList();
+	
+	/*获取文物实例页面属性map*/
+	public Map getInstanceMap();
 	
 }

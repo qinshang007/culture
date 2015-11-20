@@ -64,7 +64,7 @@
 								<a href="#">本体管理</a>
 								<span class="icon-angle-right"></span>
 							</li>
-							<li><a href="/culture/doctor/dtAdd.do">添加类</a></li>
+							<li><a href="/culture/doctor/dtAdd.do">添加概念</a></li>
 						</ul>
 					</div>
 				</div>

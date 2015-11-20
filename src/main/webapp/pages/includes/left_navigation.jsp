@@ -11,7 +11,7 @@
 				</li>
 				<li class="">
 					<a href="javascript:;">
-					<i class="icon-plus-sign"></i> 
+					<i class="icon-globe"></i> 
 					<span class="title">概念管理</span>
 					<span class="arrow "></span>
 					</a>
@@ -26,7 +26,7 @@
 				</li>
 				<li class="">
 					<a href="javascript:;">
-					<i class="icon-money"></i> 
+					<i class="icon-globe"></i> 
 					<span class="title">属性管理</span>
 					<span class="arrow "></span>
 					</a>
