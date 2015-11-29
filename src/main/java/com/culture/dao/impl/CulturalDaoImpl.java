@@ -98,4 +98,22 @@ public class CulturalDaoImpl extends BaseDao implements CulturalDao{
 
 	}
 
+	/**
+	 * 判断文物名字是否存在
+	 */
+	public boolean isTitleExist(String title) {
+		// TODO Auto-generated method stub
+		int object = 0;
+		boolean flag = false;
+		try {
+			object =(Integer) getSqlMapClientTemplate().queryForObject("isTitleExist",title);
+		}catch (Exception e) {
+			logger.error("判断文物名字是否存在出错！" +  ",errMsg=" + e.getMessage());
+		}
+		if (object != 0 ) {
+			flag = true;
+		}
+		return flag;
+	}
+
 }

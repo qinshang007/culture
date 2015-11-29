@@ -57,16 +57,7 @@ public class CulturalServiceImpl extends BaseService implements CulturalService{
 	 */
 	public boolean isTitleExist(String title) {
 		// TODO Auto-generated method stub
-		boolean flag = false;
-		try{
-			CulturalBean cb = getCulturalDao().getCulturalByName(title);
-			if(cb != null)
-				flag = true;
-		}catch(Exception e){
-			logger.error("验证文物名字是否存在出错："+e.getMessage());
-		}
-		return flag;
-
+		return getCulturalDao().isTitleExist(title);
 	}
 
 }

@@ -410,7 +410,7 @@
 				$("#c_usageDiv").hide();
 				//文化要素
 				$("#socialHistoryInfoDiv").hide();
-			}else if(type='建筑'){
+			}else if(type=='建筑'){
 				//基本信息
 				$("#placeOfOriginDiv").hide();
 				$("#excavationDateDiv").hide();

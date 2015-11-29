@@ -19,5 +19,7 @@ public interface CulturalDao {
 	public CulturalBean getCulturalById(String culId);
 	/*根据文物名字返回文物*/
 	public CulturalBean getCulturalByName(String title);
+	/*判断文物名字是否存在*/
+	public boolean isTitleExist(String title);
 	
 }

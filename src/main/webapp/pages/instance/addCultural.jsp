@@ -378,7 +378,7 @@
 	<!-- END PAGE LEVEL SCRIPTS -->
 	<script>
 	
-		var check = true;	//验证文物名字是否重复
+		var isTitleCheck = false;	//验证文物名字是否重复
 		
 		jQuery(document).ready(function() {       
 		   // initiate layout and plugins
@@ -452,26 +452,57 @@
             titleInput.blur(function(){//function为匿名函数
                 var url="/culture/instance/isTitleExist.do";
                 var title = $("#title").val();
-                $.post(url,{title:title},function(data){
-                    var jresp = new JsonRespUtils(data);
-                    if (jresp.isSuccessfully()){
-                    	$("#titleSpan").html('文物名字已存在！');
-                    	$("#titleSpan").css({"color":"red"});
-                    	titleInput.focus();
-                 		check = false;
-                    }else{
-                    	$("#titleSpan").html('必填');
-                    	check = true;
-                    }
-                });
+                if(title.replace(/(^s*)|(s*$)/g, "").length !=0){	//title不为空时判断
+	                $.post(url,{title:title},function(data){
+	                    var jresp = new JsonRespUtils(data);
+	                    if (jresp.isSuccessfully()){
+	                    	$("#titleSpan").html('文物名字已存在！');
+	                    	$("#titleSpan").css({"color":"red"});
+	                    	titleInput.focus();
+	                    	isTitleCheck = false;
+	                    }else{
+	                    	$("#titleSpan").html('必填');
+	                    	isTitleCheck = true;
+	                    }
+	                });
+                }else{
+                	$("#titleSpan").html('必填');
+                }
            });
  		});
+		
+		function check(){
+			var title = $("#title").val();
+			if(title.replace(/(^s*)|(s*$)/g, "").length ==0 ){
+				alert('名称不能为空！');
+				return false;
+			}else{
+				if(!isTitleCheck){	//名称没检查
+					var url="/culture/instance/isTitleExist.do";
+	                $.post(url,{title:title},function(data){
+	                    var jresp = new JsonRespUtils(data);
+	                    if (jresp.isSuccessfully()){
+	                    	$("#titleSpan").html('文物名字已存在！');
+	                    	$("#titleSpan").css({"color":"red"});
+	                    	titleInput.focus();
+	                    	isTitleCheck = false;
+	                    	return false;
+	                    }else{
+	                    	$("#titleSpan").html('必填');
+	                    	isTitleCheck = true;
+	                    	return true;
+	                    }
+	                });
+				}else{
+					return true;
+				}
+			}
+		}
 
 		
 		function creatSubmitForm(formId){
 			return function submitForm(){
-				if(!check){
-					alert("文物名字已存在！");
+				if(!check()){
 					return;
 				}
 				var formObj = $("#"+formId);
