@@ -230,7 +230,7 @@ public class InstanceController extends BaseController{
 			outputJsonResponse(response, false, e.getMessage());
 		}
 	}
-
+	
 	/**
 	 * 获取朝代概念数据
 	 * @param request

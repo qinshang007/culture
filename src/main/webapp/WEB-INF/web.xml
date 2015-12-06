@@ -20,6 +20,11 @@ http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
 		<servlet-name>spring</servlet-name>
 		<url-pattern>*.do</url-pattern>
 	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>spring</servlet-name>
+		<url-pattern>*.asmx</url-pattern>
+	</servlet-mapping>
+	
 
      <!-- 解决中文乱码 -->
      <filter>

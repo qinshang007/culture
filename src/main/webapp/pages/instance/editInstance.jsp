@@ -86,30 +86,26 @@
 		 								<div class="control-group">
 											<label class="control-label">名称</label>
 											<div class="controls">
-												<input id="title" type="text" class="span6 m-wrap" name="title" value="${cb.title}"/>
+												<input id="title" type="text" class="span6 m-wrap" name="title" value="${cb.title}" readonly/>
 												<span class="help-inline">必填</span>
 											</div>
 										</div>
 		 								<div class="control-group">
 											<label class="control-label">其他名称</label>
 											<div class="controls">
-												<input id="used_title" type="text" class="span6 m-wrap" name="used_title" value="${cb.used_title}" />
+												<input id="used_title" type="text" class="span6 m-wrap" name="used_title" value="${cb.used_title}" readonly />
 											</div>
 										</div>
 										<div class="control-group">
 											<label class="control-label">创作朝代</label>
 											<div class="controls">										
-												<select id="creation_date" class="span6 chosen creation_date-select" data-placeholder="请选择朝代" tabindex="1" name="creation_date">
-													<c:forEach  items="${creationDateList}"  var="item"  varStatus="status">
-														<option value="${item.cname}">${item.cname}</option>
-													</c:forEach>
-												</select>
+												<input id="creation_date" type="text" class="span6 m-wrap" name="creation_date" value="${cb.creation_date }" readonly />
 											</div>
 										</div>
 										<div class="control-group">
 											<label class="control-label">创作者</label>
 											<div class="controls">										
-												<input id="creator" type="text" class="span6 m-wrap" name="creator" value="${cb.creator}"/>
+												<input id="creator" type="text" class="span6 m-wrap" name="creator" value="${cb.creator}" readonly />
 											</div>
 										</div>
 										<div id="shapeDiv" class="control-group">
@@ -220,7 +216,6 @@
 	<script src="/culture/media/js/jsonRespUtils.js" type="text/javascript" ></script>
 	<!-- END CORE PLUGINS -->
 	<!-- BEGIN PAGE LEVEL PLUGINS -->
-	<script type="text/javascript" src="/culture/media/js/bootstrap-fileupload.js"></script>
 	<script type="text/javascript" src="/culture/media/js/chosen.jquery.min.js"></script>
 	<script type="text/javascript" src="/culture/media/js/jsonRespUtils.js"></script>
 	<script type="text/javascript" src="/culture/media/js/jquery.validate.min.js"></script>
@@ -263,9 +258,6 @@
 		}
 		
 		function setValues(){
-			//朝代数据
-		   $("#creation_date option[value='${cb.creation_date}']").attr("selected",true);
-		   $(".creation_date-select").trigger("liszt:updated");
 			//纹饰数据
 			var pattern = '${instance.pattern}';
 			$("#pattern").val(pattern.split(','));
