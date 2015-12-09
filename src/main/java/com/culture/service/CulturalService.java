@@ -12,7 +12,7 @@ public interface CulturalService {
 	//更新文物
 	public boolean updateCultural(CulturalBean cb);
 	//返回文物列表
-	public List<CulturalBean> getCulturalList(String userName);
+	public List<CulturalBean> getCulturalList(String userName,String type,String classification);
 	//删除文物
 	public boolean delCultural(String cbid);
 	//返回文物详情

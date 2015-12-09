@@ -23,6 +23,12 @@
 			<isEqual property="level" compareValue="0" prepend="and">
 				manager=#manager#
 			</isEqual>
+			<isNotNull property="type"  prepend="and">
+				type=#type#
+			</isNotNull>
+			<isNotNull property="classification"  prepend="and">
+				classification=#classification#
+			</isNotNull>
 		</dynamic>
 		<dynamic>
 			order by crtime desc

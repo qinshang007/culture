@@ -31,7 +31,7 @@ public class CulturalServiceImpl extends BaseService implements CulturalService{
 		return getCulturalDao().updateCultural(cb);
 	}
 
-	public List<CulturalBean> getCulturalList(String userName) {
+	public List<CulturalBean> getCulturalList(String userName,String type,String classification) {
 		// TODO Auto-generated method stub
 		//获取user
 		UserBean user = userService.getUserByName(userName);
@@ -39,6 +39,8 @@ public class CulturalServiceImpl extends BaseService implements CulturalService{
 		Map map = new HashMap();
 		map.put("level", level);
 		map.put("manager", userName);
+		map.put("type", type);
+		map.put("classification", classification);
 		return getCulturalDao().getCulturalList(map);
 	}
 
