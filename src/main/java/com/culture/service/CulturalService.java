@@ -11,8 +11,10 @@ public interface CulturalService {
 	public boolean addCultural(CulturalBean cb);
 	//更新文物
 	public boolean updateCultural(CulturalBean cb);
+	//返回文物列表数量
+	public int getListCount(String type,String classification,String creation_date);
 	//返回文物列表
-	public List<CulturalBean> getCulturalList(String userName,String type,String classification);
+	public List<CulturalBean> getCulturalList(String userName,String type,String classification,String creation_date,int pageStat,int pageSize);
 	//删除文物
 	public boolean delCultural(String cbid);
 	//返回文物详情

@@ -44,6 +44,18 @@ public class CulturalDaoImpl extends BaseDao implements CulturalDao{
 		return flag;
 
 	}
+	
+	public int getListCount(Map map) {
+		// TODO Auto-generated method stub
+		int object = 0;
+		try{
+			object = (Integer)getSqlMapClientTemplate().queryForObject("getListCount",map);
+		}catch (Exception e) {
+			logger.error("获取文物列表数量出错！" +  ",errMsg=" + e.getMessage());
+		}
+		return object;
+	}
+
 
 	public List<CulturalBean> getCulturalList(Map map) {
 		// TODO Auto-generated method stub

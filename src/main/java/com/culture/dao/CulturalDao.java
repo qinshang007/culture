@@ -11,6 +11,8 @@ public interface CulturalDao {
 	public boolean addCultural(CulturalBean cb);
 	//更新文物
 	public boolean updateCultural(CulturalBean cb);
+	//返回文物列表数量
+	public int getListCount(Map map);
 	//返回文物列表
 	public List<CulturalBean> getCulturalList(Map map);
 	//删除文物

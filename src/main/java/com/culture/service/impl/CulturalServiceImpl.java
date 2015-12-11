@@ -31,7 +31,20 @@ public class CulturalServiceImpl extends BaseService implements CulturalService{
 		return getCulturalDao().updateCultural(cb);
 	}
 
-	public List<CulturalBean> getCulturalList(String userName,String type,String classification) {
+	/**
+	 * 返回文物列表数量
+	 */
+	@Override
+	public int getListCount(String type, String classification, String creation_date) {
+		// TODO Auto-generated method stub
+		Map map = new HashMap();
+		map.put("type", type);
+		map.put("classification", classification);
+		map.put("creation_date", creation_date);
+		return getCulturalDao().getListCount(map);
+	}
+	
+	public List<CulturalBean> getCulturalList(String userName,String type,String classification,String creation_date,int pageStart,int pageSize) {
 		// TODO Auto-generated method stub
 		//获取user
 		UserBean user = userService.getUserByName(userName);
@@ -41,6 +54,9 @@ public class CulturalServiceImpl extends BaseService implements CulturalService{
 		map.put("manager", userName);
 		map.put("type", type);
 		map.put("classification", classification);
+		map.put("creation_date", creation_date);
+		map.put("_start", pageStart);
+		map.put("_size", pageSize);
 		return getCulturalDao().getCulturalList(map);
 	}
 
@@ -61,5 +77,6 @@ public class CulturalServiceImpl extends BaseService implements CulturalService{
 		// TODO Auto-generated method stub
 		return getCulturalDao().isTitleExist(title);
 	}
+
 
 }

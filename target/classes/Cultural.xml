@@ -29,11 +29,37 @@
 			<isNotNull property="classification"  prepend="and">
 				classification=#classification#
 			</isNotNull>
+			<isNotNull property="creation_date"  prepend="and">
+				creation_date=#creation_date#
+			</isNotNull>
 		</dynamic>
 		<dynamic>
 			order by crtime desc
+			<isNotNull property="_start"> 
+                <isNotNull property="_size"> 
+                       limit #_start#, #_size# 
+                </isNotNull> 
+           </isNotNull> 
 		</dynamic>
 	</select>
+
+	<!-- 返回文物列表数量 -->
+	<select id="getListCount" parameterClass="java.util.Map"
+		resultClass="Integer">
+		select count(*) from culture 
+		<dynamic prepend="WHERE">
+			<isNotNull property="type"  prepend="and">
+				type=#type#
+			</isNotNull>
+			<isNotNull property="classification"  prepend="and">
+				classification=#classification#
+			</isNotNull>
+			<isNotNull property="creation_date"  prepend="and">
+				creation_date=#creation_date#
+			</isNotNull>
+		</dynamic>
+	</select>
+
 	
 	<!-- 添加文物 -->
 	<insert id="addCultural" parameterClass="culturalBean">

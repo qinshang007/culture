@@ -348,7 +348,7 @@ public class InstanceController extends BaseController{
 	public ModelAndView getInstanceList(HttpServletRequest request, HttpServletResponse response) throws Exception{
 		try{
 			String username = getUserName(request,response);
-			List<CulturalBean> cbList = clService.getCulturalList(username,null,null);
+			List<CulturalBean> cbList = clService.getCulturalList(username,null,null,null,0,10000);
 			return new ModelAndView("instance/instanceList").addObject("cbList",cbList);
 		}catch (RuntimeException e) {
 			logger.error("返回实例列表出错！" +  ",errMsg=" + e.getMessage());

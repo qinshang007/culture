@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.culture.model.CulturalBean;
 import com.culture.model.OClass;
 import com.culture.service.CulturalService;
+import com.culture.service.InstanceService;
 import com.culture.service.OClassService;
 
 /**
@@ -28,7 +29,10 @@ public class InterfaceController extends BaseController{
 	private OClassService ocService;
 	@Autowired
 	private CulturalService clService;
+	@Autowired
+	private InstanceService instService;
 	
+	private int pageSize = 12;
 	
 	private static final Logger logger = Logger.getLogger(InterfaceController.class);
 	
@@ -50,6 +54,29 @@ public class InterfaceController extends BaseController{
 			outputJsonResponse(response, false, e.getMessage());
 		}
 	}
+
+	/**
+	 * 获取文物列表数量
+	 * @param request
+	 * @param response
+	 * @throws Exception
+	 */
+	@RequestMapping("/getListCount.asmx")
+	public void getListCount(HttpServletRequest request, HttpServletResponse response) throws Exception{
+		try{
+			//获取文物大类，器物，织物，建筑，壁画
+			String type = request.getParameter("type");
+			//获取文物详细分类
+			String classification = request.getParameter("classification");
+			//获取朝代
+			String creation_date = request.getParameter("creation_date");
+			int count = clService.getListCount(type,classification,creation_date);
+			outputJsonResponse(response, true,String.valueOf(count));
+		}catch (RuntimeException e) {
+			logger.error("获取文物列表数量请求出错！" +  ",errMsg=" + e.getMessage());
+			outputJsonResponse(response, false, e.getMessage());
+		}
+	}
 	
 	/**
 	 * 获取文物列表
@@ -65,7 +92,12 @@ public class InterfaceController extends BaseController{
 			String type = request.getParameter("type");
 			//获取文物详细分类
 			String classification = request.getParameter("classification");
-			List<CulturalBean> cbList = clService.getCulturalList(username,type,classification);
+			//获取朝代
+			String creation_date = request.getParameter("creation_date");
+			//获取页码
+			String pageStart = request.getParameter("pageStart");
+			int start = (Integer.parseInt(pageStart)-1)*pageSize;
+			List<CulturalBean> cbList = clService.getCulturalList(username,type,classification,creation_date,start,pageSize);
 			outputJsonResponse(response, cbList);
 		}catch (RuntimeException e) {
 			logger.error("获取文物列表请求出错！" +  ",errMsg=" + e.getMessage());
@@ -89,6 +121,24 @@ public class InterfaceController extends BaseController{
 			outputJsonResponse(response,cb);
 		}catch (RuntimeException e) {
 			logger.error("获取文物详情请求出错！" +  ",errMsg=" + e.getMessage());
+			outputJsonResponse(response, false, e.getMessage());
+		}
+	}
+
+	/**
+	 * 获取朝代列表
+	 * @param request
+	 * @param response
+	 * @throws Exception
+	 */
+	@RequestMapping("/getDynastyList.asmx")
+	public void getDynastyList(HttpServletRequest request, HttpServletResponse response) throws Exception{
+		try{
+			//获取朝代列表
+			List<OClass> dynastylist = instService.getCreationDateList();
+			outputJsonResponse(response, dynastylist);
+		}catch (RuntimeException e) {
+			logger.error("获取朝代列表请求据出错！" +  ",errMsg=" + e.getMessage());
 			outputJsonResponse(response, false, e.getMessage());
 		}
 	}
