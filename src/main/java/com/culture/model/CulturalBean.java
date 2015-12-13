@@ -51,6 +51,7 @@ public class CulturalBean
 	private Timestamp crtime;				//文物添加时间yyyy-mm-dd hh:mm:ss
 	private int sernum;						//检索次数
 	private String mainpic;					//主图
+	private String keywords;				//标签
 	
 	private List<UploadFile> ewPicture;		//二维图片信息
 	private List<UploadFile> swPicture;		//三维图片信息
@@ -289,6 +290,12 @@ public class CulturalBean
 	}
 	public void setMainpic(String mainpic) {
 		this.mainpic = mainpic;
+	}
+	public String getKeywords() {
+		return keywords;
+	}
+	public void setKeywords(String keywords) {
+		this.keywords = keywords;
 	}
 	public List<UploadFile> getEwPicture() {
 		return ewPicture;

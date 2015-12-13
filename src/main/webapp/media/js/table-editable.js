@@ -53,7 +53,7 @@ var TableEditable = function () {
                     [5, 15, 20, "All"] // change per page values here
                 ],
                 // set the initial value
-                "iDisplayLength": 100,
+                "iDisplayLength": 15,
                 "sDom": "<'row-fluid'<'span6'l><'span6'f>r>t<'row-fluid'<'span6'i><'span6'p>>",
                 "sPaginationType": "bootstrap",
                 "oLanguage": {

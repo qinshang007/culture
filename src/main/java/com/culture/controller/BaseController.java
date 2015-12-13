@@ -88,6 +88,7 @@ public class BaseController {
 	protected void flushResponse(HttpServletResponse response, String responseContent) {
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html");
+		response.addHeader("Access-Control-Allow-Origin","*");
 		try {
 			PrintWriter out = response.getWriter();
 			out.write(responseContent);

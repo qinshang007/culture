@@ -43,6 +43,8 @@ public class InstanceController extends BaseController{
 	private InstanceService instService;
 	@Autowired
 	private OModelFactory omodelFactory;
+	
+	private int pageSize = 5;
 
 	private static final Logger logger = Logger.getLogger(InstanceController.class);  
 	
@@ -348,15 +350,27 @@ public class InstanceController extends BaseController{
 	public ModelAndView getInstanceList(HttpServletRequest request, HttpServletResponse response) throws Exception{
 		try{
 			String username = getUserName(request,response);
-			List<CulturalBean> cbList = clService.getCulturalList(username,null,null,null,0,10000);
-			return new ModelAndView("instance/instanceList").addObject("cbList",cbList);
+			//获取名称
+			String title = request.getParameter("title");
+			//获取页码
+			String pageStart = request.getParameter("pageStart");
+			int start = (Integer.parseInt(pageStart)-1)*pageSize;
+			int count = clService.getListCount(username,title,null,null,null);
+			List<CulturalBean> cbList = clService.getCulturalList(username,title,null,null,null,start,pageSize);
+			String url = "/culture/instance/instanceList.do?pageStart=";
+			Map map = new HashMap();
+			map.put("cbList", cbList);
+			map.put("count", count);
+			map.put("now", pageStart);
+			map.put("url", url);
+			return new ModelAndView("instance/instanceList").addAllObjects(map);
 		}catch (RuntimeException e) {
 			logger.error("返回实例列表出错！" +  ",errMsg=" + e.getMessage());
 			outputJsonResponse(response, false, e.getMessage());
 			return null;
 		}
 	}
-	
+
 	/**
 	 * 修改实例
 	 * @param request

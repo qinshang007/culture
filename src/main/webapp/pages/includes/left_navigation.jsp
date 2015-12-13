@@ -71,7 +71,7 @@
 							<a href="/culture/instance/chooseClass.do">添加实例</a>
 						</li>
 						<li >
-							<a href="/culture/instance/instanceList.do">实例列表</a>
+							<a href="/culture/instance/instanceList.do?pageStart=1">实例列表</a>
 						</li>
 					</ul>
 				</li>

@@ -23,5 +23,10 @@ public interface CulturalDao {
 	public CulturalBean getCulturalByName(String title);
 	/*判断文物名字是否存在*/
 	public boolean isTitleExist(String title);
+	//返回推荐文物列表
+	public List<CulturalBean> getRecommendList(Map map);
+	//更新文物点击量
+	public boolean updateSernum(String culId);
+
 	
 }

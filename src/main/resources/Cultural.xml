@@ -18,7 +18,7 @@
 	<!-- 返回文物列表 -->
 	<select id="getCulturalList" parameterClass="java.util.Map"
 		resultClass="culturalBean">
-		select identifier,title,shape,mainpic from culture 
+		select identifier,title,shape,mainpic,type,keywords from culture 
 		<dynamic prepend="WHERE">
 			<isEqual property="level" compareValue="0" prepend="and">
 				manager=#manager#
@@ -31,6 +31,9 @@
 			</isNotNull>
 			<isNotNull property="creation_date"  prepend="and">
 				creation_date=#creation_date#
+			</isNotNull>
+			<isNotNull property="title"  prepend="and">
+				title like '%$title$%'
 			</isNotNull>
 		</dynamic>
 		<dynamic>
@@ -48,6 +51,9 @@
 		resultClass="Integer">
 		select count(*) from culture 
 		<dynamic prepend="WHERE">
+			<isEqual property="level" compareValue="0" prepend="and">
+				manager=#manager#
+			</isEqual>
 			<isNotNull property="type"  prepend="and">
 				type=#type#
 			</isNotNull>
@@ -57,14 +63,17 @@
 			<isNotNull property="creation_date"  prepend="and">
 				creation_date=#creation_date#
 			</isNotNull>
+			<isNotNull property="title"  prepend="and">
+				title like '%$title$%'
+			</isNotNull>
 		</dynamic>
 	</select>
 
 	
 	<!-- 添加文物 -->
 	<insert id="addCultural" parameterClass="culturalBean">
-		insert into culture (classification,title,used_title,c_level,creation_date,creation_time,place_of_origin,creator,measurement,excavation_date,excavation_place,current_location,exhibition_history,location,shape,pattern,color,structure,decoration,scene,c_usage,symbolic_meaning,aesthetic_desc,social_history_info,material,technique,history_info,folklore,relation,identifier,source,rights,isCheck,manager,type,crtime,mainpic) 
-		values(#classification#,#title#,#used_title#,#c_level#,#creation_date#,#creation_time#,#place_of_origin#,#creator#,#measurement#,#excavation_date#,#excavation_place#,#current_location#,#exhibition_history#,#location#,#shape#,#pattern#,#color#,#structure#,#decoration#,#scene#,#c_usage#,#symbolic_meaning#,#aesthetic_desc#,#social_history_info#,#material#,#technique#,#history_info#,#folklore#,#relation#,#identifier#,#source#,#rights#,#isCheck#,#manager#,#type#,#crtime#,#mainpic#) 
+		insert into culture (classification,title,used_title,c_level,creation_date,creation_time,place_of_origin,creator,measurement,excavation_date,excavation_place,current_location,exhibition_history,location,shape,pattern,color,structure,decoration,scene,c_usage,symbolic_meaning,aesthetic_desc,social_history_info,material,technique,history_info,folklore,relation,identifier,source,rights,isCheck,manager,type,crtime,mainpic,keywords) 
+		values(#classification#,#title#,#used_title#,#c_level#,#creation_date#,#creation_time#,#place_of_origin#,#creator#,#measurement#,#excavation_date#,#excavation_place#,#current_location#,#exhibition_history#,#location#,#shape#,#pattern#,#color#,#structure#,#decoration#,#scene#,#c_usage#,#symbolic_meaning#,#aesthetic_desc#,#social_history_info#,#material#,#technique#,#history_info#,#folklore#,#relation#,#identifier#,#source#,#rights#,#isCheck#,#manager#,#type#,#crtime#,#mainpic#,#keywords#) 
 		<selectKey resultClass="int" keyProperty="id">  
   		 	 SELECT @@IDENTITY as id  
  		 </selectKey> 
@@ -77,7 +86,7 @@
 	
 	<!--更新文物 -->
 	<update id="updateCultural" parameterClass="culturalBean">
-		update culture set classification=#classification#,title=#title#,used_title=#used_title#,c_level=#c_level#,creation_date=#creation_date#,creation_time=#creation_time#,place_of_origin=#place_of_origin#,creator=#creator#,measurement=#measurement#,excavation_date=#excavation_date#,excavation_place=#excavation_place#,current_location=#current_location#,exhibition_history=#exhibition_history#,location=#location#,shape=#shape#,pattern=#pattern#,color=#color#,structure=#structure#,decoration=#decoration#,scene=#scene#,c_usage=#c_usage#,symbolic_meaning=#symbolic_meaning#,aesthetic_desc=#aesthetic_desc#,social_history_info=#social_history_info#,material=#material#,technique=#technique#,history_info=#history_info#,folklore=#folklore#,relation=#relation#,source=#source#,rights=#rights#,isCheck=#isCheck#,manager=#manager#,type=#type#,mainpic=#mainpic# where identifier=#identifier#
+		update culture set classification=#classification#,title=#title#,used_title=#used_title#,c_level=#c_level#,creation_date=#creation_date#,creation_time=#creation_time#,place_of_origin=#place_of_origin#,creator=#creator#,measurement=#measurement#,excavation_date=#excavation_date#,excavation_place=#excavation_place#,current_location=#current_location#,exhibition_history=#exhibition_history#,location=#location#,shape=#shape#,pattern=#pattern#,color=#color#,structure=#structure#,decoration=#decoration#,scene=#scene#,c_usage=#c_usage#,symbolic_meaning=#symbolic_meaning#,aesthetic_desc=#aesthetic_desc#,social_history_info=#social_history_info#,material=#material#,technique=#technique#,history_info=#history_info#,folklore=#folklore#,relation=#relation#,source=#source#,rights=#rights#,isCheck=#isCheck#,manager=#manager#,type=#type#,mainpic=#mainpic#,keywords=#keywords# where identifier=#identifier#
 	</update>
 	
 	<!--判断文物名字是否存在 -->
@@ -86,6 +95,23 @@
 		select count(*) from culture where title = #title#
 	</select>
 	
-	
+	<!-- 返回知识推荐列表 -->
+	<select id="getRecommendList" parameterClass="java.util.Map"
+		resultClass="culturalBean">
+		select title,mainpic,history_info,identifier,crtime from culture
+		<dynamic prepend="WHERE">
+			<isEqual property="type" compareValue="1" prepend="and">
+				order by crtime desc limit 4
+			</isEqual>
+			<isEqual property="type" compareValue="2" prepend="and">
+				order by sernum desc limit 4
+			</isEqual>
+		</dynamic>
+	</select>
+
+	<!--更新文物点击量 -->
+	<update id="updateSernum" parameterClass="String">
+		update culture set sernum=sernum+1 where identifier=#identifier#
+	</update>
 
 </sqlMap>  

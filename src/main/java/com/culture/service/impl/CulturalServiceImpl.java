@@ -35,16 +35,21 @@ public class CulturalServiceImpl extends BaseService implements CulturalService{
 	 * 返回文物列表数量
 	 */
 	@Override
-	public int getListCount(String type, String classification, String creation_date) {
+	public int getListCount(String userName,String title,String type, String classification, String creation_date) {
 		// TODO Auto-generated method stub
+		UserBean user = userService.getUserByName(userName);
+		int level = user.getLevel();
 		Map map = new HashMap();
+		map.put("level", level);
+		map.put("manager", userName);
 		map.put("type", type);
 		map.put("classification", classification);
 		map.put("creation_date", creation_date);
+		map.put("title", title);
 		return getCulturalDao().getListCount(map);
 	}
 	
-	public List<CulturalBean> getCulturalList(String userName,String type,String classification,String creation_date,int pageStart,int pageSize) {
+	public List<CulturalBean> getCulturalList(String userName,String title,String type,String classification,String creation_date,int pageStart,int pageSize) {
 		// TODO Auto-generated method stub
 		//获取user
 		UserBean user = userService.getUserByName(userName);
@@ -55,6 +60,7 @@ public class CulturalServiceImpl extends BaseService implements CulturalService{
 		map.put("type", type);
 		map.put("classification", classification);
 		map.put("creation_date", creation_date);
+		map.put("title", title);
 		map.put("_start", pageStart);
 		map.put("_size", pageSize);
 		return getCulturalDao().getCulturalList(map);
@@ -76,6 +82,26 @@ public class CulturalServiceImpl extends BaseService implements CulturalService{
 	public boolean isTitleExist(String title) {
 		// TODO Auto-generated method stub
 		return getCulturalDao().isTitleExist(title);
+	}
+
+	/**
+	 * 返回知识推荐列表
+	 */
+	@Override
+	public List<CulturalBean> getRecommendList(String type) {
+		// TODO Auto-generated method stub
+		Map map = new HashMap();
+		map.put("type", type);
+		return getCulturalDao().getRecommendList(map);
+	}
+
+	/**
+	 * 更新文物点击量
+	 */
+	@Override
+	public boolean updateSernum(String culId) {
+		// TODO Auto-generated method stub
+		return getCulturalDao().updateSernum(culId);
 	}
 
 

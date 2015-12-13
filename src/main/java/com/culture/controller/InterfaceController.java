@@ -1,5 +1,6 @@
 package com.culture.controller;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -12,9 +13,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.culture.model.CulturalBean;
 import com.culture.model.OClass;
+import com.culture.model.UploadFile;
 import com.culture.service.CulturalService;
 import com.culture.service.InstanceService;
 import com.culture.service.OClassService;
+import com.culture.util.CodeGenerator;
+import com.culture.util.CommonConst;
+import com.culture.util.DateUtils;
 
 /**
  * 接口服务
@@ -64,13 +69,14 @@ public class InterfaceController extends BaseController{
 	@RequestMapping("/getListCount.asmx")
 	public void getListCount(HttpServletRequest request, HttpServletResponse response) throws Exception{
 		try{
+			String username = "admin";
 			//获取文物大类，器物，织物，建筑，壁画
 			String type = request.getParameter("type");
 			//获取文物详细分类
 			String classification = request.getParameter("classification");
 			//获取朝代
 			String creation_date = request.getParameter("creation_date");
-			int count = clService.getListCount(type,classification,creation_date);
+			int count = clService.getListCount(username,null,type,classification,creation_date);
 			outputJsonResponse(response, true,String.valueOf(count));
 		}catch (RuntimeException e) {
 			logger.error("获取文物列表数量请求出错！" +  ",errMsg=" + e.getMessage());
@@ -97,7 +103,7 @@ public class InterfaceController extends BaseController{
 			//获取页码
 			String pageStart = request.getParameter("pageStart");
 			int start = (Integer.parseInt(pageStart)-1)*pageSize;
-			List<CulturalBean> cbList = clService.getCulturalList(username,type,classification,creation_date,start,pageSize);
+			List<CulturalBean> cbList = clService.getCulturalList(username,null,type,classification,creation_date,start,pageSize);
 			outputJsonResponse(response, cbList);
 		}catch (RuntimeException e) {
 			logger.error("获取文物列表请求出错！" +  ",errMsg=" + e.getMessage());
@@ -139,6 +145,136 @@ public class InterfaceController extends BaseController{
 			outputJsonResponse(response, dynastylist);
 		}catch (RuntimeException e) {
 			logger.error("获取朝代列表请求据出错！" +  ",errMsg=" + e.getMessage());
+			outputJsonResponse(response, false, e.getMessage());
+		}
+	}
+
+	/**
+	 * 获取知识推荐列表
+	 * @param request
+	 * @param response
+	 * @throws Exception
+	 */
+	@RequestMapping("/getRecommendList.asmx")
+	public void getRecommendList(HttpServletRequest request, HttpServletResponse response) throws Exception{
+		try{
+			String type = request.getParameter("type");
+			//获取知识推荐列表
+			List<CulturalBean> cblist = clService.getRecommendList(type);
+			outputJsonResponse(response, cblist);
+		}catch (RuntimeException e) {
+			logger.error("获取知识推荐列表请求据出错！" +  ",errMsg=" + e.getMessage());
+			outputJsonResponse(response, false, e.getMessage());
+		}
+	}
+
+	/**
+	 * 添加 文物
+	 * @param request
+	 * @param response
+	 * @throws Exception
+	 */
+	@RequestMapping("/saveCultural.asmx")
+	public void saveCultural(HttpServletRequest request, HttpServletResponse response,CulturalBean cb) throws Exception{
+		try{
+			String username = getUserName(request,response);
+			//获取主图
+			String path = CommonConst.EW_FILE_PATH;
+			List<UploadFile> list = upload(request,response, path);
+			if(list.size()!=0){
+				String mainpic = list.get(0).getFileSrc();
+				cb.setMainpic(mainpic);
+			}
+			//设置创建时间
+			Timestamp crtime = Timestamp.valueOf(DateUtils.getCurrDateTimeStr());
+			cb.setCrtime(crtime);
+			//创建文物id
+			String identifier = CodeGenerator.createUUID();
+			cb.setIdentifier(identifier);
+			//保存文物
+			cb.setIsCheck(0);
+			cb.setManager(username); 
+			//将实例保存到数据库
+			boolean result = clService.addCultural(cb);
+			if(result)
+				outputJsonResponse(response, true,"添加成功！");
+			else
+				outputJsonResponse(response, false,"添加失败！");
+		}catch (RuntimeException e) {
+			logger.error("添加文物请求出错！" +  ",errMsg=" + e.getMessage());
+			outputJsonResponse(response, false, e.getMessage());
+		}
+	}
+
+	/**
+	 * 修改文物
+	 * @param request
+	 * @param response
+	 * @throws Exception
+	 */
+	@RequestMapping("/updateCultural.asmx")
+	public void updateCultural(HttpServletRequest request, HttpServletResponse response,CulturalBean cb) throws Exception{
+		try{
+			String username = getUserName(request,response);
+			//获取主图
+			String path = CommonConst.EW_FILE_PATH;
+			List<UploadFile> list = upload(request,response, path);
+			if(list.size()!=0){
+				String mainpic = list.get(0).getFileSrc();
+				cb.setMainpic(mainpic);
+			}
+			//保存文物
+			cb.setIsCheck(0);
+			cb.setManager(username);
+			//将实例保存到数据库
+			boolean result = clService.updateCultural(cb);
+			if(result){
+				outputJsonResponse(response, true,"更改成功！");
+			}else{
+				outputJsonResponse(response, false,"更改失败！");
+			}
+		}catch (RuntimeException e) {
+			logger.error("修改文物请求出错！" +  ",errMsg=" + e.getMessage());
+			outputJsonResponse(response, false, e.getMessage());
+		}
+	}
+
+	/**
+	 * 删除文物
+	 * @param request
+	 * @param response
+	 * @throws Exception
+	 */
+	@RequestMapping("/delete.asmx")
+	public void delInstance(HttpServletRequest request, HttpServletResponse response) throws Exception{
+		try{
+			String culId = request.getParameter("culId");
+			//更新数据库
+			clService.delCultural(culId);
+			//更新本体文件
+			outputJsonResponse(response, true,"删除文物成功！");
+		}catch (RuntimeException e) {
+			logger.error("删除文物请求失败！" +  ",errMsg=" + e.getMessage());
+			outputJsonResponse(response, false, e.getMessage());
+		}
+	}
+
+	/**
+	 * 更新文物点击量
+	 * @param request
+	 * @param response
+	 * @throws Exception
+	 */
+	@RequestMapping("/updateSernum.asmx")
+	public void updateSernum(HttpServletRequest request, HttpServletResponse response) throws Exception{
+		try{
+			String culId = request.getParameter("culId");
+			//更新数据库
+			clService.updateSernum(culId);
+			//更新本体文件
+			outputJsonResponse(response, true,"更新文物点击量成功！");
+		}catch (RuntimeException e) {
+			logger.error("更新文物点击量请求失败！" +  ",errMsg=" + e.getMessage());
 			outputJsonResponse(response, false, e.getMessage());
 		}
 	}

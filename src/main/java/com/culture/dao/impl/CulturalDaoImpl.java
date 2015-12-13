@@ -127,5 +127,36 @@ public class CulturalDaoImpl extends BaseDao implements CulturalDao{
 		}
 		return flag;
 	}
+	
+	/**
+	 * 返回知识推荐列表
+	 */
+	public List<CulturalBean> getRecommendList(Map map) {
+		// TODO Auto-generated method stub
+		List<CulturalBean> cblist = null;
+		try{
+			cblist = getSqlMapClientTemplate().queryForList("getRecommendList",map);
+		}catch (Exception e) {
+			logger.error("获取知识推荐列表出错！" +  ",errMsg=" + e.getMessage());
+		}
+		return cblist;
+	}
+
+	@Override
+	public boolean updateSernum(String culId) {
+		// TODO Auto-generated method stub
+		Object object = null;
+		boolean flag = false;
+		try {
+			object =(Integer) getSqlMapClientTemplate().update("updateSernum",culId);
+		}catch (Exception e) {
+			logger.error("更新文物点击量出错！" +  ",errMsg=" + e.getMessage());
+		}
+		if (object != null) {
+			flag = true;
+		}
+		return flag;
+	}
+
 
 }
