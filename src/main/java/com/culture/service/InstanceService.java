@@ -29,4 +29,9 @@ public interface InstanceService {
 	/*获取文物实例页面属性map*/
 	public Map getInstanceMap();
 	
+	/*获取文物本体实例列表*/
+	public List<Instance> getInstanceList(String title,int pageStart,int pageSize);
+	
+	/*获取本体实例列表数量*/
+	public int getInstanceCount(String title);
 }

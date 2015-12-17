@@ -18,7 +18,7 @@
 	<!-- 返回文物列表 -->
 	<select id="getCulturalList" parameterClass="java.util.Map"
 		resultClass="culturalBean">
-		select identifier,title,shape,mainpic,type,keywords from culture 
+		select identifier,title,shape,mainpic,type,keywords,classification from culture 
 		<dynamic prepend="WHERE">
 			<isEqual property="level" compareValue="0" prepend="and">
 				manager=#manager#
@@ -98,20 +98,22 @@
 	<!-- 返回知识推荐列表 -->
 	<select id="getRecommendList" parameterClass="java.util.Map"
 		resultClass="culturalBean">
-		select title,mainpic,history_info,identifier,crtime from culture
+		select title,mainpic,history_info,identifier,crtime from culture order by crtime desc limit 4
+<!-- 
 		<dynamic prepend="WHERE">
 			<isEqual property="type" compareValue="1" prepend="and">
-				order by crtime desc limit 4
+				 order by crtime desc limit 4
 			</isEqual>
 			<isEqual property="type" compareValue="2" prepend="and">
-				order by sernum desc limit 4
+				 order by sernum desc limit 4
 			</isEqual>
 		</dynamic>
+ -->
 	</select>
 
 	<!--更新文物点击量 -->
 	<update id="updateSernum" parameterClass="String">
 		update culture set sernum=sernum+1 where identifier=#identifier#
 	</update>
-
+	
 </sqlMap>  

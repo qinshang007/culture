@@ -52,6 +52,8 @@ public class InterfaceController extends BaseController{
 		try{
 			String type = request.getParameter("type");
 			//获取文物类别概念的子概念
+			if(type.equals("建筑"))
+				type = "建筑物";
 			List<OClass> oclist = ocService.getChildClass(type,1);
 			outputJsonResponse(response, oclist);
 		}catch (RuntimeException e) {
@@ -70,13 +72,15 @@ public class InterfaceController extends BaseController{
 	public void getListCount(HttpServletRequest request, HttpServletResponse response) throws Exception{
 		try{
 			String username = "admin";
+			//获取文物标题
+			String title = request.getParameter("title");
 			//获取文物大类，器物，织物，建筑，壁画
 			String type = request.getParameter("type");
 			//获取文物详细分类
 			String classification = request.getParameter("classification");
 			//获取朝代
 			String creation_date = request.getParameter("creation_date");
-			int count = clService.getListCount(username,null,type,classification,creation_date);
+			int count = clService.getListCount(username,title,type,classification,creation_date);
 			outputJsonResponse(response, true,String.valueOf(count));
 		}catch (RuntimeException e) {
 			logger.error("获取文物列表数量请求出错！" +  ",errMsg=" + e.getMessage());
@@ -94,6 +98,8 @@ public class InterfaceController extends BaseController{
 	public void getCultureList(HttpServletRequest request, HttpServletResponse response) throws Exception{
 		try{
 			String username = "admin";
+			//获取文物名字
+			String title = request.getParameter("title");
 			//获取文物大类，器物，织物，建筑，壁画
 			String type = request.getParameter("type");
 			//获取文物详细分类
@@ -103,7 +109,7 @@ public class InterfaceController extends BaseController{
 			//获取页码
 			String pageStart = request.getParameter("pageStart");
 			int start = (Integer.parseInt(pageStart)-1)*pageSize;
-			List<CulturalBean> cbList = clService.getCulturalList(username,null,type,classification,creation_date,start,pageSize);
+			List<CulturalBean> cbList = clService.getCulturalList(username,title,type,classification,creation_date,start,pageSize);
 			outputJsonResponse(response, cbList);
 		}catch (RuntimeException e) {
 			logger.error("获取文物列表请求出错！" +  ",errMsg=" + e.getMessage());
@@ -125,6 +131,8 @@ public class InterfaceController extends BaseController{
 			String culId = request.getParameter("culId");
 			CulturalBean cb = clService.getCulturalById(culId);
 			outputJsonResponse(response,cb);
+			//更新文物的点击量
+			clService.updateSernum(culId);
 		}catch (RuntimeException e) {
 			logger.error("获取文物详情请求出错！" +  ",errMsg=" + e.getMessage());
 			outputJsonResponse(response, false, e.getMessage());

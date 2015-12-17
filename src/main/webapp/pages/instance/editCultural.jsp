@@ -334,7 +334,7 @@
 									</div>
 								</div>
 								<div class="form-actions">
-									<button type="submit" class="btn blue">下一步</button>
+									<button type="submit" class="btn blue">提交</button>
 									<button type="reset" class="btn">重置</button>                            
 								</div>
 							</form>
@@ -463,16 +463,17 @@
 			    {
 			    	 var jresp = new JsonRespUtils(transport);
 			    	 if (jresp.isSuccessfully()){
-			    		 var res = jresp.getMessage();
-			    		 var identifier = $("#identifier").val();
-			    		 var creation_date = $("#creation_date").val();
-				    	 var type = $("#type").val();
-				    	 var classification = $("#classification").val();
-				    	 var title = $("#title").val();
-				    	 var used_title = $("#used_title").val();
-				    	 var creator = $("#creator").val();
-				    	 var oldTitle = $("#oldTitle").val();
-				    	 location.href="/culture/instance/editInstance.do?type="+type+"&classification="+classification+"&title="+title+"&used_title="+used_title+"&creator="+creator+"&identifier="+identifier+"&creation_date="+creation_date+"&oldTitle="+oldTitle;
+//			    		 var res = jresp.getMessage();
+//			    		 var identifier = $("#identifier").val();
+//			    		 var creation_date = $("#creation_date").val();
+//				    	 var type = $("#type").val();
+//				    	 var classification = $("#classification").val();
+//				    	 var title = $("#title").val();
+//				    	 var used_title = $("#used_title").val();
+//				    	 var creator = $("#creator").val();
+//				    	 var oldTitle = $("#oldTitle").val();
+//				    	 location.href="/culture/instance/editInstance.do?type="+type+"&classification="+classification+"&title="+title+"&used_title="+used_title+"&creator="+creator+"&identifier="+identifier+"&creation_date="+creation_date+"&oldTitle="+oldTitle;
+						alert("修改成功！");
 			    	 }
 			    },
 			     error: function(transport) 

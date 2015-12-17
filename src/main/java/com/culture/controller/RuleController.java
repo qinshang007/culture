@@ -1,9 +1,13 @@
 package com.culture.controller;
 
+import java.io.PrintWriter;
 import java.sql.Timestamp;
+import java.text.DecimalFormat;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -19,7 +23,6 @@ import com.culture.model.ORule;
 import com.culture.service.OPropertyService;
 import com.culture.service.ORuleService;
 import com.culture.util.DateUtils;
-import com.hp.hpl.jena.reasoner.rulesys.Rule;
 
 @Controller
 @RequestMapping(value="/rule")
@@ -134,6 +137,45 @@ public class RuleController extends BaseController{
 			logger.error("返回规则列表出错！" +  ",errMsg=" + e.getMessage());
 			outputJsonResponse(response, false, e.getMessage());
 			return null;
+		}
+	}
+
+	/**
+	 * 生成本体属性文件
+	 * @param request
+	 * @param response
+	 * @throws Exception
+	 */
+	@RequestMapping("/genRule.do")
+	public void genRule(HttpServletRequest request, HttpServletResponse response) throws Exception{
+		try{
+			Map<String,Integer> result = orService.genRules();
+	        DecimalFormat    df   = new DecimalFormat("######0.00");   
+	        Iterator iter = result.entrySet().iterator();
+	        String str = "";
+	        while(iter.hasNext()){
+	        	Entry entry = (Entry)iter.next();
+	        	String key = (String)entry.getKey();
+	        	int val = (Integer)entry.getValue();
+	        	String[] keys = key.split(",");
+	        	if(keys.length == 2){
+	        		String start = keys[0];	
+	        		int startValue = result.get(start);
+	        		double confidence = (double)val/startValue;
+	        		confidence *= 100;
+	        		str = str + "{"+keys[0]+"}-->{"+keys[1]+"},"+df.format(confidence)+"%"+"</br>";
+	        	}
+	        }
+	        System.out.println(str);
+	        response.setCharacterEncoding("UTF-8");
+			response.setContentType("text/html");
+	        PrintWriter out = response.getWriter();
+			out.write(str);
+			out.flush();
+			out.close();
+		}catch (Exception e) {
+			logger.error("生成频繁项集出错：" +  ",errMsg=" + e.getMessage());
+			outputJsonResponse(response, false, e.getMessage());
 		}
 	}
 

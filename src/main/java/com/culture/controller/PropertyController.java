@@ -284,5 +284,23 @@ public class PropertyController extends BaseController{
 		}
 	}
 
-	
+	/**
+	 * 生成本体属性文件
+	 * @param request
+	 * @param response
+	 * @throws Exception
+	 */
+	@RequestMapping("/genPropertyOwl.do")
+	public void genOClassOntology(HttpServletRequest request, HttpServletResponse response) throws Exception{
+		try{
+			boolean result = opService.genPropertyOwl();
+			if(result)
+				outputJsonResponse(response, true, "生成成功！");
+			else
+				outputJsonResponse(response, false, "生成失败！");
+		}catch (Exception e) {
+			logger.error("生成属性本体出错：" +  ",errMsg=" + e.getMessage());
+			outputJsonResponse(response, false, e.getMessage());
+		}
+	}
 }

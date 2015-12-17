@@ -1,5 +1,7 @@
 package com.culture.dao.impl;
 
+import java.util.List;
+
 import org.apache.log4j.Logger;
 
 import com.culture.dao.BaseDao;
@@ -54,6 +56,78 @@ public class UserDaoImpl extends BaseDao implements UserDao{
 		}
 		return user;
 
+	}
+
+	/**
+	 * 添加用户
+	 */
+	@Override
+	public boolean addUser(UserBean ub) {
+		// TODO Auto-generated method stub
+		int object = -1;
+		boolean flag = false;
+		try {
+			object =(Integer) getSqlMapClientTemplate().insert("addUser",ub);
+		}catch (Exception e) {
+			logger.error("添加用户出错！" +  ",errMsg=" + e.getMessage());
+		}
+		if (object != -1) {
+			flag = true;
+		}
+		return flag;
+
+	}
+
+	@Override
+	public List<UserBean> getUserList() {
+		// TODO Auto-generated method stub
+		List<UserBean> userList = null;
+		try{
+			userList = getSqlMapClientTemplate().queryForList("getUserList");
+		}catch (Exception e) {
+			logger.error("获取用户列表信息出错！" +  ",errMsg=" + e.getMessage());
+		}
+		return userList;
+
+	}
+
+	/**
+	 * 更新用户信息
+	 */
+	@Override
+	public boolean updateUser(UserBean ub) {
+		// TODO Auto-generated method stub
+		int object = 0;
+		boolean flag = false;
+		try {
+			object =(Integer) getSqlMapClientTemplate().update("updateUser",ub);
+		}catch (Exception e) {
+			logger.error("更新用户出错！" +  ",errMsg=" + e.getMessage());
+		}
+		if (object != 0) {
+			flag = true;
+		}
+		return flag;
+
+	}
+
+	/**
+	 * 删除用户
+	 */
+	@Override
+	public boolean deleteUser(String userId) {
+		// TODO Auto-generated method stub
+		int object = 0;
+		boolean flag = false;
+		try {
+			object =(Integer) getSqlMapClientTemplate().update("deleteUser",userId);
+		}catch (Exception e) {
+			logger.error("删除用户出错！" +  ",errMsg=" + e.getMessage());
+		}
+		if (object != 0) {
+			flag = true;
+		}
+		return flag;
 	}
 
 }

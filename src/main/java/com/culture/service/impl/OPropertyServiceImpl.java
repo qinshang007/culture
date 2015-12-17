@@ -288,11 +288,15 @@ public class OPropertyServiceImpl extends BaseService implements OPropertyServic
 			OProperty shape = getPropertyByName("器型",true);
 			OProperty symbolic_meaning = getPropertyByName("象征意义",true);
 			OProperty color = getPropertyByName("颜色",true);
+			OProperty nianhao = getPropertyByName("年号", true);
+			OProperty creation_date = getPropertyByName("创作朝代", true);
 			propertyList.add(pattern);
 			propertyList.add(scene);
 			propertyList.add(shape);
 			propertyList.add(symbolic_meaning);
 			propertyList.add(color);
+			propertyList.add(nianhao);
+			propertyList.add(creation_date);
 		}catch(Exception e){
 			logger.error("返回规则页面需要的属性出错："+e.getMessage());
 		}		
@@ -349,6 +353,97 @@ public class OPropertyServiceImpl extends BaseService implements OPropertyServic
 			logger.error("验证属性名字是否存在出错："+e.getMessage());
 		}
 		return flag;
+	}
+
+	/**
+	 * 生成属性的本体文件
+	 */
+	@Override
+	public boolean genPropertyOwl() {
+		// TODO Auto-generated method stub
+		OntModel model = omodelFactory.getModel();
+		//获取属性列表
+		List<OProperty> oplist = getPropertyList("admin");
+		try{
+			for(int i=0;i<oplist.size();i++){
+				OProperty op = oplist.get(i);
+				System.out.println(i+" "+op.getPname());
+				 //创建新的属性
+				 OntProperty children = null;
+				//对象属性
+				if(op.getPtype()==1){
+					
+					 children = model.getObjectProperty(OModelFactory.NSP+op.getPname());
+					 
+					 if(children == null)
+						 children = model.createObjectProperty(OModelFactory.NSP+op.getPname());
+					 
+					//获取值域数组
+					String[] rangeArray = op.getPrange().split(",");
+					
+					//给该属性添加值域
+					for(int j=0;j<rangeArray.length;j++){
+						OntClass oclass = model.getOntClass(OModelFactory.NSC+rangeArray[j]);
+						children.addRange(oclass);
+					}
+					 
+				}else if(op.getPtype()==2){ //数据属性
+					
+					children = model.getDatatypeProperty(OModelFactory.NSP+op.getPname());
+					
+					if(children == null)
+						children = model.createDatatypeProperty(OModelFactory.NSP+op.getPname());
+					 
+					 //获取数据属性的类型
+					 int index = 0;//Integer.valueOf(op.getPrange());
+					 Resource s = OModelFactory.resource[index];
+					 children.addRange(s);
+				}
+				String pfname = null;
+				int pfid = op.getPfid();
+				int pftype = 0;
+				if(pfid != 0){
+					OProperty ofp = getOPropertyDao().getPropertyById(pfid);
+					pfname = ofp.getPname();
+					pftype = ofp.getPtype();
+				}
+				//如果父属性不为空
+				if(StringUtils.isNotEmpty(pfname)&&!pfname.equals("无")){
+					//从本体文件中查询该父属性
+					OntProperty parent = model.getOntProperty(OModelFactory.NSP+op.getPfname());//获取父属性
+					if(parent == null){
+						if(pftype == 1){
+							parent = model.createObjectProperty(OModelFactory.NSP+pfname);
+						}else if(pftype == 2){
+							parent = model.createDatatypeProperty(OModelFactory.NSP+pfname);
+						}
+					}
+					parent.addSubProperty(children);
+				}
+				
+				//获取定义域列表
+				String[] domainArray = op.getPdomain().split(",");
+				
+				//遍历定义域数组
+				for(int j=0;j<domainArray.length;j++){
+					OntClass oclass = model.getOntClass(OModelFactory.NSC+domainArray[j]);
+					children.addDomain(oclass);
+				}
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+			return false;
+		}
+		//写入owl文件
+		File file = new File(omodelFactory.getOwlFile());
+		try{
+			OutputStream out = new FileOutputStream(file);
+			model.write(out);
+		}catch(Exception e){
+			e.printStackTrace();
+			return false;
+		}
+		return true;
 	}
 
 }

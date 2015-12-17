@@ -1,6 +1,7 @@
 package com.culture.service;
 
 import java.util.List;
+import java.util.Map;
 
 import com.culture.model.ORule;
 
@@ -20,5 +21,9 @@ public interface ORuleService {
 	
 	/*删除规则*/
 	public boolean delRule(int rid);
+	
+	/*自动生成规则*/
+	public Map<String,Integer> genRules();
+
 	
 }

@@ -4,7 +4,7 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<title>本体实例列表</title>
+	<title>用户详情</title>
 	<meta content="width=device-width, initial-scale=1.0" name="viewport" />
 	<meta content="" name="description" />
 	<meta content="" name="author" />
@@ -19,9 +19,8 @@
 	<link href="/culture/media/css/uniform.default.css" rel="stylesheet" type="text/css"/>
 	<!-- END GLOBAL MANDATORY STYLES -->
 	<!-- BEGIN PAGE LEVEL STYLES -->
-	<link rel="stylesheet" type="text/css" href="/culture/media/css/select2_metro.css" />
-	<link rel="stylesheet" href="/culture/media/css/DT_bootstrap.css" />
-	<link rel="stylesheet" href="/culture/media/css/search.css"  type="text/css"/>
+	<link rel="stylesheet" type="text/css" href="/culture/media/css/bootstrap-fileupload.css" />
+	<link href="/culture/media/css/bootstrap-modal.css" rel="stylesheet" type="text/css"/>
 	<!-- END PAGE LEVEL STYLES -->
 	<link rel="shortcut icon" href="/culture/media/image/favicon.ico" />	
 	
@@ -51,7 +50,7 @@
 				<div class="row-fluid">
 					<div class="span12">
 						<h3 class="page-title">
-							本体实例列表
+							用户详情
 						</h3>
 						<ul class="breadcrumb">
 							<li>
@@ -60,50 +59,66 @@
 								<span class="icon-angle-right"></span>
 							</li>
 							<li>
-								<a href="#">实例管理</a>
+								<a href="#">用户管理</a>
 								<span class="icon-angle-right"></span>
 							</li>
-							<li><a href="/culture/instance/instanceList.do?pageStart=1">本体实例列表</a></li>
+							<li><a href="/culture/user/getUserList.do">用户列表</a></li>
 						</ul>
 					</div>
 				</div>
 				<div class="row-fluid">
-					<div id="tab_1_5" class="tab-pane">
-						<!-- BEGIN SAMPLE FORM PORTLET--> 
-						<div class="row-fluid search-forms search-default">
-							<form class="form-search" action="#">
-								<div class="chat-form">
-									<div class="input-cont">   
-										<input id="title" type="text" placeholder="请输入文物名称..." class="m-wrap" name="title"/>
+					<div class="span12">
+						<!-- BEGIN SAMPLE FORM PORTLET-->   
+						<div class="portlet box blue">
+							<div class="portlet-title">
+								<div class="caption"><i class="icon-reorder"></i>用户详情</div>
+							</div>
+							<div class="portlet-body form">
+								<!-- BEGIN FORM-->
+								<form id="userForm" action="/culture/user/update.do" class="form-horizontal" method="post" enctype="multipart/form-data" target="hidden_frame">
+									<input type="hidden" name="userId" value="${user.userId}"  />
+									<div class="control-group">
+										<label class="control-label">昵称</label>
+										<div class="controls">
+											<input id="userName" type="text" class="span6 m-wrap" name="userName" value="${user.userName}" />
+										</div>
 									</div>
-									<button id="search" type="button" class="btn green">检索 &nbsp; <i class="m-icon-swapright m-icon-white"></i></button>
+									<div class="control-group">
+										<label class="control-label">密码</label>
+										<div class="controls">
+											<input id="password" type="text" class="span6 m-wrap" name="password" value="${user.password }" />
+										</div>
+									</div>
+									<div class="control-group">
+										<label class="control-label">权限</label>
+										<div class="controls">
+											<select id="level" class="span6 chosen"  tabindex="1" name="level">
+												<option value="0">普通用户</option>
+												<option value="1">管理员</option>
+											</select>
+										</div>
+									</div>
+									<div class="control-group">
+										<label class="control-label">手机号</label>
+										<div class="controls">
+											<input id="phone" type="text" class="span6 m-wrap" name="phone" value="${user.phone }" />
+										</div>
+									</div>
+									<div class="control-group">
+										<label class="control-label">邮箱</label>
+										<div class="controls">
+											<input id="email" type="text" class="span6 m-wrap" name="email" value="${user.email }" />
+										</div>
+									</div>
+								</form>
+								<div class="form-actions">
+									<button type="submit" class="btn blue" onclick="save();">更改并提交</button>
+									<button type="button" class="btn">取消</button>                            
 								</div>
-							</form>
+							</div>
 						</div>
-						<div class="portlet-body">
-							<table class="table table-striped table-hover">
-								<thead>
-									<tr>
-										<th>标题</th>
-										<th>查看</th>
-										<th>修改</th>
-									</tr>
-								</thead>
-								<tbody>
-									<c:forEach  items="${instList}"  var="item"  varStatus="status">
-										<tr class="">
-											<td>${item.title}</td>
-											<td><a  href="/culture/instance/viewInstance.do?culId=${item.identifier}" target="_blank">查看</a></td>
-											<td><a  href="/culture/instance/editInstance.do?culId=${item.identifier}" target="_blank">修改</a></td>
-										</tr>
-									</c:forEach>
-								</tbody>
-							</table>
-						</div>
-						<div class="space5"></div>
-						<p id="dynamic_pager_demo2" class="pagination pagination-right"></p>
+						<!-- END EXTRAS PORTLET-->
 					</div>
-					<!-- END EXTRAS PORTLET-->
 				</div>
 			</div>
 		</div>
@@ -129,52 +144,61 @@
 	<!-- IMPORTANT! Load jquery-ui-1.10.1.custom.min.js before bootstrap.min.js to fix bootstrap tooltip conflict with jquery ui tooltip -->
 	<script src="/culture/media/js/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>      
 	<script src="/culture/media/js/bootstrap.min.js" type="text/javascript"></script>
-	<script src="/culture/media/js/jquery.slimscroll.min.js" type="text/javascript"></script>
-	<script src="/culture/media/js/jquery.blockui.min.js" type="text/javascript"></script>  
-	<script src="/culture/media/js/jquery.cookie.min.js" type="text/javascript"></script>
-	<script src="/culture/media/js/jquery.uniform.min.js" type="text/javascript" ></script>
 	<!-- END CORE PLUGINS -->
 	<!-- BEGIN PAGE LEVEL PLUGINS -->
-	<script type="text/javascript" src="/culture/media/js/select2.min.js"></script>
+	<script type="text/javascript" src="/culture/media/js/bootstrap-fileupload.js"></script>
 	<script type="text/javascript" src="/culture/media/js/jsonRespUtils.js"></script>
-	<script type="text/javascript" src="/culture/media/js/jquery.bootpag.min.js"></script>
+	<script type="text/javascript" src="/culture/media/js/validate.js"></script>
 	<!-- END PAGE LEVEL PLUGINS -->
 	<!-- BEGIN PAGE LEVEL SCRIPTS -->
 	<script src="/culture/media/js/app.js"></script>
-	<script src="/culture/media/js/ui-general.js"></script>  
 	<!-- END PAGE LEVEL SCRIPTS -->
 	<script>
 		jQuery(document).ready(function() {       
 		   // initiate layout and plugins
 		   App.init();
-		   var total = '${count}';
-		   var now = '${now}';
-		   var url = '${url}';
-		   UIGeneral.init(total,now,url);
+		   $("#level option[value='${user.level}']").attr("selected",true);
 		});
 		
-		$("#search").click(function () {
-			var title = $("#title").val();
-			var url="/culture/instance/instanceList.do?title="+title+"&pageStart=1";
-	      	location.href = url;
-		})
-		
-	  	function deleteInstance(culId,title){
-            if (!confirm("确信要删除吗？")) return;
-            var url="/culture/instance/del.do";
-            $.post(url,{culId:culId,title:title},function(data){
-            	postDelInstance(data);
-            });
-        }
+		function submitById(id){			
+			//Callback handler for form submit event
+			$("#"+id).submit(function(e)
+			{
+				  	e.preventDefault();
+				  	var formObj = $(this);
+				    var formURL = formObj.attr("action");
+				    var formData = new FormData(this);
+				    $.ajax({
+				        url: formURL,
+				    type: 'POST',
+				        data:  formData,
+				    mimeType:"multipart/form-data",
+				    contentType: false,
+				    cache: false,
+				    processData:false,
+				    success: function(transport)
+				    {
+				    	 var jresp = new JsonRespUtils(transport);
+				    	 if (jresp.isSuccessfully()){
+				    		 var res = jresp.getMessage();
+				    		alert("保存成功！");
+				    	 }
+				    	 location.reload();
+				    },
+				     error: function(transport) 
+				     {
+				    	alert("保存失败！");
+				     }          
+				    });
+				}); 
+				$("#"+id).submit();
+			}
 
-        function postDelInstance(transport){
-            var jresp = new JsonRespUtils(transport);
-            if (jresp.isSuccessfully()){
-         		location.reload();
-            }else{
-                alert(jresp.getMessage());
-            }
-        }
+		function save(){
+			submitById('userForm');
+		}
+
+		
 	</script>
 	<script type="text/javascript">  var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-37564768-1']);  _gaq.push(['_setDomainName', 'keenthemes.com']);  _gaq.push(['_setAllowLinker', true]);  _gaq.push(['_trackPageview']);  (function() {    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;    ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);  })();</script></body>
 	<!-- END BODY -->

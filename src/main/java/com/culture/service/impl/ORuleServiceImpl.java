@@ -1,15 +1,23 @@
 package com.culture.service.impl;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.culture.model.Instance;
 import com.culture.model.OModelFactory;
 import com.culture.model.ORule;
 import com.culture.service.ORuleService;
 import com.culture.util.FileUtils;
+import com.system.fpgrowth.FpTree;
 
 @Service
 public class ORuleServiceImpl extends BaseService implements ORuleService{
@@ -113,4 +121,39 @@ public class ORuleServiceImpl extends BaseService implements ORuleService{
 		return flag;
 	}
 
+	/**
+	 * 半自动生成规则
+	 */
+	@Override
+	public Map<String,Integer> genRules() {
+		// TODO Auto-generated method stub
+		Map<String,Integer> result = new HashMap<String,Integer>();
+		Map map = new HashMap();
+		List<Instance> instList = getInstanceDao().getInstanceList(map);
+		List<List<String>> transactions = new LinkedList<List<String>>();
+		for(int i=0;i<instList.size();i++){
+			Instance inst = instList.get(i);
+			String str = "";
+			if(StringUtils.isNotEmpty(inst.getPattern())){	//纹饰不为空
+				str+=inst.getPattern();
+			}
+			if(StringUtils.isNotEmpty(inst.getSymbolic_meaning())){	//象征意义不为空
+				str= str+','+inst.getSymbolic_meaning();
+			}
+			if(StringUtils.isNotEmpty(str)){
+                String[] subjects = str.split(",");
+                List<String> list = new ArrayList<String>(Arrays.asList(subjects));
+                transactions.add(list);
+			}
+		}
+		try {
+			FpTree.getResult(transactions,result);
+			return result;
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
 }

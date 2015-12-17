@@ -38,5 +38,7 @@ public interface OPropertyService {
 	/*验证属性名字是否存在*/
 	public boolean isPropertyExist(String pname);
 
+	/*生成概念的本体文件*/
+	public boolean genPropertyOwl();
 	
 }

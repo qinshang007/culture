@@ -39,4 +39,6 @@ public interface OClassService {
 	/*验证概念名字是否存在*/
 	public boolean isClassExist(String cname);
 	
+	/*生成概念的本体文件*/
+	public boolean genClassOwl();
 }

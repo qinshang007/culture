@@ -1,5 +1,7 @@
 package com.culture.model;
 
+import java.sql.Timestamp;
+
 public class Instance {
 	
 	private int id;			//实例id
@@ -7,6 +9,8 @@ public class Instance {
 	private String classification;	//实例类别
 	
 	private String title;	//实例名称
+	
+	private String type;	//大类，器物，织物，建筑，壁画
 	
 	private String used_title;	//曾用名
 	
@@ -30,6 +34,8 @@ public class Instance {
 	
 	private String identifier;	//标识符
 	
+	private Timestamp crtime;		//创建时间
+	
 	public int getId() {
 		return id;
 	}
@@ -38,6 +44,14 @@ public class Instance {
 		this.id = id;
 	}
 	
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
 	public String getClassification() {
 		return classification;
 	}
@@ -141,7 +155,13 @@ public class Instance {
 	public void setIdentifier(String identifier) {
 		this.identifier = identifier;
 	}
-	
-	
+
+	public Timestamp getCrtime() {
+		return crtime;
+	}
+
+	public void setCrtime(Timestamp crtime) {
+		this.crtime = crtime;
+	}
 	
 }

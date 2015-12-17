@@ -9,6 +9,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -35,8 +36,6 @@ public class InstanceController extends BaseController{
 	
 	@Autowired
 	private OClassService ocService;
-	@Autowired
-	private OPropertyService opService;
 	@Autowired
 	private CulturalService clService;
 	@Autowired
@@ -341,7 +340,41 @@ public class InstanceController extends BaseController{
 	}
 	
 	/**
-	 * 返回实例列表
+	 * 返回文物实例列表
+	 * @param request
+	 * @param response
+	 * @throws Exception
+	 */
+	@RequestMapping("/culturalList.do")
+	public ModelAndView getCulturalList(HttpServletRequest request, HttpServletResponse response) throws Exception{
+		try{
+			String username = getUserName(request,response);
+			//获取名称
+			String title = request.getParameter("title");
+			//获取页码
+			String pageStart = request.getParameter("pageStart");
+			int start = (Integer.parseInt(pageStart)-1)*pageSize;
+			int count = clService.getListCount(username,title,null,null,null);
+			List<CulturalBean> cbList = clService.getCulturalList(username,title,null,null,null,start,pageSize);
+			String url = "/culture/instance/culturalList.do?pageStart=";
+			if(StringUtils.isNotEmpty(title)){
+				url = "/culture/instance/culturalList.do?title="+title+"&pageStart=";
+			}
+			Map map = new HashMap();
+			map.put("cbList", cbList);
+			map.put("count", count);
+			map.put("now", pageStart);
+			map.put("url", url);
+			return new ModelAndView("instance/culturalList").addAllObjects(map);
+		}catch (RuntimeException e) {
+			logger.error("返回文物实例列表出错！" +  ",errMsg=" + e.getMessage());
+			outputJsonResponse(response, false, e.getMessage());
+			return null;
+		}
+	}
+	
+	/**
+	 * 返回本体实例列表
 	 * @param request
 	 * @param response
 	 * @throws Exception
@@ -355,21 +388,25 @@ public class InstanceController extends BaseController{
 			//获取页码
 			String pageStart = request.getParameter("pageStart");
 			int start = (Integer.parseInt(pageStart)-1)*pageSize;
-			int count = clService.getListCount(username,title,null,null,null);
-			List<CulturalBean> cbList = clService.getCulturalList(username,title,null,null,null,start,pageSize);
+			int count = instService.getInstanceCount(title);
+			List<Instance> instList = instService.getInstanceList(title, start, pageSize);
 			String url = "/culture/instance/instanceList.do?pageStart=";
+			if(StringUtils.isNotEmpty(title)){
+				url = "/culture/instance/instanceList.do?title="+title+"&pageStart=";
+			}
 			Map map = new HashMap();
-			map.put("cbList", cbList);
+			map.put("instList", instList);
 			map.put("count", count);
 			map.put("now", pageStart);
 			map.put("url", url);
 			return new ModelAndView("instance/instanceList").addAllObjects(map);
 		}catch (RuntimeException e) {
-			logger.error("返回实例列表出错！" +  ",errMsg=" + e.getMessage());
+			logger.error("返回本体实例列表出错！" +  ",errMsg=" + e.getMessage());
 			outputJsonResponse(response, false, e.getMessage());
 			return null;
 		}
 	}
+
 
 	/**
 	 * 修改实例
@@ -414,10 +451,14 @@ public class InstanceController extends BaseController{
 	 * @throws Exception
 	 */
 	@RequestMapping("/editInstance.do")
-	public ModelAndView editInstance(HttpServletRequest request, HttpServletResponse response,CulturalBean cb) throws Exception{
+	public ModelAndView editInstance(HttpServletRequest request, HttpServletResponse response) throws Exception{
 		try{
+			//获取本体Id
+			String culId = request.getParameter("culId");
+			//获取文物实例
+			CulturalBean cb = clService.getCulturalById(culId);
 			//获取instance
-			Instance instacne = instService.getInstanceById(cb.getIdentifier());
+			Instance instacne = instService.getInstanceById(culId);
 			//获取旧的名称
 			String oldTitle = request.getParameter("oldTitle");
 			Map map = instService.getInstanceMap();
@@ -433,7 +474,30 @@ public class InstanceController extends BaseController{
 	}
 
 	/**
-	 * 查看实例
+	 * 查看本体实例页面
+	 * @param request
+	 * @param response
+	 * @throws Exception
+	 */
+	@RequestMapping("/viewInstance.do")
+	public ModelAndView viewInstance(HttpServletRequest request, HttpServletResponse response) throws Exception{
+		try{
+			String culId = request.getParameter("culId");
+			//获取instance
+			Instance instacne = instService.getInstanceById(culId);
+			Map map = instService.getInstanceMap();
+			map.put("instance", instacne);
+			return new ModelAndView("instance/viewInstance").addAllObjects(map);
+		}catch (RuntimeException e) {
+			logger.error("查看实例页面出错！" +  ",errMsg=" + e.getMessage());
+			outputJsonResponse(response, false, e.getMessage());
+			return null;
+		}
+	}
+
+	
+	/**
+	 * 查看文物实例
 	 * @param request
 	 * @param response
 	 * @return

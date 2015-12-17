@@ -17,7 +17,7 @@
 
 	<!-- 添加实例 -->
 	<insert id="addInstance" parameterClass="instance">
-		insert into instance (identifier,title,used_title,creation_date,creator,shape,pattern,color,scene,structure,symbolic_meaning,aesthetic_desc) values(#identifier#,#title#,#used_title#,#creation_date#,#creator#,#shape#,#pattern#,#color#,#scene#,#structure#,#symbolic_meaning#,#aesthetic_desc#)
+		insert into instance (identifier,type,classification,title,used_title,creation_date,creator,shape,pattern,color,scene,structure,symbolic_meaning,aesthetic_desc) values(#identifier#,#type#,#classification#,#title#,#used_title#,#creation_date#,#creator#,#shape#,#pattern#,#color#,#scene#,#structure#,#symbolic_meaning#,#aesthetic_desc#)
 		<selectKey resultClass="int" keyProperty="id">  
   		 	 SELECT @@IDENTITY as id  
  		 </selectKey> 
@@ -30,8 +30,37 @@
 	
 	<!--更新实例 -->
 	<update id="updateInstance" parameterClass="instance">
-		update instance set title=#title#,used_title=#used_title#,creation_date=#creation_date#,creator=#creator#,shape=#shape#,pattern=#pattern#,color=#color#,scene=#scene#,structure=#structure#,symbolic_meaning=#symbolic_meaning#,aesthetic_desc=#aesthetic_desc# where identifier=#identifier#
+		update instance set type=#type#,classification=#classification#,title=#title#,used_title=#used_title#,creation_date=#creation_date#,creator=#creator#,shape=#shape#,pattern=#pattern#,color=#color#,scene=#scene#,structure=#structure#,symbolic_meaning=#symbolic_meaning#,aesthetic_desc=#aesthetic_desc# where identifier=#identifier#
 	</update>
 	
+	<!-- 返回本体实例列表数量 -->
+	<select id="getInstanceCount" parameterClass="java.util.Map"
+		resultClass="Integer">
+		select count(*) from instance 
+		<dynamic prepend="WHERE">
+			<isNotNull property="title"  prepend="and">
+				title like '%$title$%'
+			</isNotNull>
+		</dynamic>
+	</select>
+	
+	<!-- 获取实例列表 -->
+	<select id="getInstanceList" parameterClass="java.util.Map"
+		resultClass="instance">
+		select * from instance 
+		<dynamic prepend="WHERE">
+			<isNotNull property="title"  prepend="and">
+				title like '%$title$%'
+			</isNotNull>
+		</dynamic>
+		<dynamic>
+			order by crtime desc
+			<isNotNull property="_start"> 
+                <isNotNull property="_size"> 
+                       limit #_start#, #_size# 
+                </isNotNull> 
+           </isNotNull> 
+		</dynamic>
+	</select>
 
 </sqlMap>  

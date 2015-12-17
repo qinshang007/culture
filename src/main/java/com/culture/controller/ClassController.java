@@ -296,5 +296,26 @@ public class ClassController extends BaseController{
 			outputJsonResponse(response, false, e.getMessage());
 		}
 	}
+	
+	/**
+	 * 生成本体概念文件
+	 * @param request
+	 * @param response
+	 * @throws Exception
+	 */
+	@RequestMapping("/genClassOwl.do")
+	public void genOClassOntology(HttpServletRequest request, HttpServletResponse response) throws Exception{
+		try{
+			boolean result = ocService.genClassOwl();
+			if(result)
+				outputJsonResponse(response, true, "生成成功！");
+			else
+				outputJsonResponse(response, false, "生成失败！");
+		}catch (Exception e) {
+			logger.error("生成概念本体出错出错：" +  ",errMsg=" + e.getMessage());
+			outputJsonResponse(response, false, e.getMessage());
+		}
+	}
+
 
 }

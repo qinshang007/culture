@@ -1,5 +1,8 @@
 package com.culture.service.impl;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -12,6 +15,7 @@ import org.springframework.stereotype.Service;
 import com.culture.model.OClass;
 import com.culture.model.OModelFactory;
 import com.culture.service.OClassService;
+import com.culture.util.StringUtils;
 import com.hp.hpl.jena.ontology.OntClass;
 import com.hp.hpl.jena.ontology.OntModel;
 import com.hp.hpl.jena.util.iterator.ExtendedIterator;
@@ -230,6 +234,52 @@ public class OClassServiceImpl extends BaseService implements OClassService{
 			return ocList;
 		}
 		return null;
+	}
+
+	/**
+	 * 生成概念的本体文件
+	 */
+	@Override
+	public boolean genClassOwl() {
+		// TODO Auto-generated method stub
+		OntModel model = omodelFactory.getModel();
+		OClass oclass = new OClass();
+		oclass.setDel(0);
+		List<OClass> ocList = getOClassDao().getClassList(oclass);
+		for(int i=0;i<ocList.size();i++){
+			OClass oc = ocList.get(i);
+			//获取概念名字
+			String cname = oc.getCname();
+			System.out.println(cname);
+			//获取父概念名字
+			String cfname = "";
+			int cfid = oc.getCfid();
+			//获取父概念id
+			if(cfid != 0 ){
+				OClass ofc = getClassById(String.valueOf(cfid));
+				cfname = ofc.getCname();
+			}
+			OntClass children = model.getOntClass(OModelFactory.NSC+cname);
+			if(children == null)
+				children = model.createClass(OModelFactory.NSC+cname);
+			if(!StringUtils.isEmpty(cfname)&&!cfname.equals("无")){
+				OntClass parent = model.getOntClass(OModelFactory.NSC+cfname);//取得父概念
+				if(parent == null){
+					parent = model.createClass(OModelFactory.NSC+cfname);
+				}
+				parent.addSubClass(children);
+			}
+		}
+		//写入owl文件
+		File file = new File(omodelFactory.getOwlFile());
+		try{
+			OutputStream out = new FileOutputStream(file);
+			model.write(out);
+		}catch(Exception e){
+			e.printStackTrace();
+			return false;
+		}
+		return true;
 	}
 
 }

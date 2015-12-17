@@ -1,5 +1,8 @@
 package com.culture.dao.impl;
 
+import java.util.List;
+import java.util.Map;
+
 import org.apache.log4j.Logger;
 
 import com.culture.dao.BaseDao;
@@ -49,6 +52,7 @@ public class InstanceDaoImpl extends BaseDao implements InstanceDao{
 		try{
 			object =(Integer) getSqlMapClientTemplate().insert("addInstance",instance);
 		}catch (Exception e) {
+			e.printStackTrace();
 			logger.error("添加实例信息出错！" +  ",errMsg=" + e.getMessage());
 		}
 		if (object != 0) {
@@ -93,6 +97,37 @@ public class InstanceDaoImpl extends BaseDao implements InstanceDao{
 		}
 		return flag;
 
+	}
+
+	/**
+	 * 返回本体实例列表
+	 */
+	@Override
+	public List<Instance> getInstanceList(Map map) {
+		// TODO Auto-generated method stub
+		List<Instance> instlist = null;
+		try{
+			instlist = getSqlMapClientTemplate().queryForList("getInstanceList",map);
+		}catch (Exception e) {
+			logger.error("获取本体实例列表出错！" +  ",errMsg=" + e.getMessage());
+		}
+		return instlist;
+
+	}
+
+	/**
+	 * 返回实例列表数量
+	 */
+	@Override
+	public int getInstanceCount(Map map) {
+		// TODO Auto-generated method stub
+		int object = 0;
+		try{
+			object = (Integer)getSqlMapClientTemplate().queryForObject("getInstanceCount",map);
+		}catch (Exception e) {
+			logger.error("获取本体实例列表数量出错！" +  ",errMsg=" + e.getMessage());
+		}
+		return object;
 	}
 
 }

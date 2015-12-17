@@ -4,7 +4,7 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<title>本体实例列表</title>
+	<title>文物实例列表</title>
 	<meta content="width=device-width, initial-scale=1.0" name="viewport" />
 	<meta content="" name="description" />
 	<meta content="" name="author" />
@@ -51,7 +51,7 @@
 				<div class="row-fluid">
 					<div class="span12">
 						<h3 class="page-title">
-							本体实例列表
+							文物实例列表
 						</h3>
 						<ul class="breadcrumb">
 							<li>
@@ -63,7 +63,7 @@
 								<a href="#">实例管理</a>
 								<span class="icon-angle-right"></span>
 							</li>
-							<li><a href="/culture/instance/instanceList.do?pageStart=1">本体实例列表</a></li>
+							<li><a href="/culture/instance/culturalList.do?pageStart=1">文物实例列表</a></li>
 						</ul>
 					</div>
 				</div>
@@ -84,17 +84,21 @@
 							<table class="table table-striped table-hover">
 								<thead>
 									<tr>
+										<th>图片</th>
 										<th>标题</th>
 										<th>查看</th>
 										<th>修改</th>
+										<th>删除</th>
 									</tr>
 								</thead>
 								<tbody>
-									<c:forEach  items="${instList}"  var="item"  varStatus="status">
+									<c:forEach  items="${cbList}"  var="item"  varStatus="status">
 										<tr class="">
+											<td><img src="/crelicBase/upload/${item.mainpic }" alt="" style="height:45px;width:45px" /></td>
 											<td>${item.title}</td>
-											<td><a  href="/culture/instance/viewInstance.do?culId=${item.identifier}" target="_blank">查看</a></td>
-											<td><a  href="/culture/instance/editInstance.do?culId=${item.identifier}" target="_blank">修改</a></td>
+											<td><a  href="/culture/instance/viewCultural.do?culId=${item.identifier}" target="_blank">查看</a></td>
+											<td><a  href="/culture/instance/editCultural.do?culId=${item.identifier}" target="_blank">修改</a></td>
+											<td><a  href="javascript:deleteInstance('${item.identifier}','${item.title}')">删除</a></td>
 										</tr>
 									</c:forEach>
 								</tbody>
@@ -155,7 +159,7 @@
 		
 		$("#search").click(function () {
 			var title = $("#title").val();
-			var url="/culture/instance/instanceList.do?title="+title+"&pageStart=1";
+			var url="/culture/instance/culturalList.do?title="+title+"&pageStart=1";
 	      	location.href = url;
 		})
 		

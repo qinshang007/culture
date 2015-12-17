@@ -316,4 +316,29 @@ public class InstanceServiceImpl extends BaseService implements InstanceService{
 		map.put("aestheticList", aestheticList);
 		return map;
 	}
+
+	/**
+	 * 获取本体实例列表
+	 */
+	@Override
+	public List<Instance> getInstanceList(String title,int pageStart,int pageSize) {
+		// TODO Auto-generated method stub
+		Map map = new HashMap();
+		map.put("title", title);
+		map.put("_start", pageStart);
+		map.put("_size", pageSize);
+		return getInstanceDao().getInstanceList(map);
+	}
+
+	/**
+	 * 获取实例列表数量
+	 */
+	@Override
+	public int getInstanceCount(String title) {
+		// TODO Auto-generated method stub
+		Map map = new HashMap();
+		map.put("title", title);
+		return getInstanceDao().getInstanceCount(map);
+	}
+
 }

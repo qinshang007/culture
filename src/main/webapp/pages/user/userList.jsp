@@ -4,7 +4,7 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<title>本体实例列表</title>
+	<title>用户列表</title>
 	<meta content="width=device-width, initial-scale=1.0" name="viewport" />
 	<meta content="" name="description" />
 	<meta content="" name="author" />
@@ -21,7 +21,6 @@
 	<!-- BEGIN PAGE LEVEL STYLES -->
 	<link rel="stylesheet" type="text/css" href="/culture/media/css/select2_metro.css" />
 	<link rel="stylesheet" href="/culture/media/css/DT_bootstrap.css" />
-	<link rel="stylesheet" href="/culture/media/css/search.css"  type="text/css"/>
 	<!-- END PAGE LEVEL STYLES -->
 	<link rel="shortcut icon" href="/culture/media/image/favicon.ico" />	
 	
@@ -51,7 +50,7 @@
 				<div class="row-fluid">
 					<div class="span12">
 						<h3 class="page-title">
-							本体实例列表
+							用户列表
 						</h3>
 						<ul class="breadcrumb">
 							<li>
@@ -60,50 +59,45 @@
 								<span class="icon-angle-right"></span>
 							</li>
 							<li>
-								<a href="#">实例管理</a>
+								<a href="#">用户管理</a>
 								<span class="icon-angle-right"></span>
 							</li>
-							<li><a href="/culture/instance/instanceList.do?pageStart=1">本体实例列表</a></li>
+							<li><a href="/culture/user/userList.do">用户列表</a></li>
 						</ul>
 					</div>
 				</div>
 				<div class="row-fluid">
-					<div id="tab_1_5" class="tab-pane">
-						<!-- BEGIN SAMPLE FORM PORTLET--> 
-						<div class="row-fluid search-forms search-default">
-							<form class="form-search" action="#">
-								<div class="chat-form">
-									<div class="input-cont">   
-										<input id="title" type="text" placeholder="请输入文物名称..." class="m-wrap" name="title"/>
-									</div>
-									<button id="search" type="button" class="btn green">检索 &nbsp; <i class="m-icon-swapright m-icon-white"></i></button>
-								</div>
-							</form>
-						</div>
+					<div class="span12">
+						<!-- BEGIN SAMPLE FORM PORTLET-->   
+						<div class="portlet box blue">
+							<div class="portlet-title">
+								<div class="caption"><i class="icon-reorder"></i></div>
+							</div>
 						<div class="portlet-body">
-							<table class="table table-striped table-hover">
+							<table class="table table-striped table-hover table-bordered" id="sample_editable_1">
 								<thead>
 									<tr>
-										<th>标题</th>
-										<th>查看</th>
-										<th>修改</th>
+										<th>编号</th>
+										<th>用户昵称</th>
+										<th>详情</th>
+										<th>删除</th>
 									</tr>
 								</thead>
 								<tbody>
-									<c:forEach  items="${instList}"  var="item"  varStatus="status">
+									<c:forEach  items="${userList}"  var="item"  varStatus="status">
 										<tr class="">
-											<td>${item.title}</td>
-											<td><a  href="/culture/instance/viewInstance.do?culId=${item.identifier}" target="_blank">查看</a></td>
-											<td><a  href="/culture/instance/editInstance.do?culId=${item.identifier}" target="_blank">修改</a></td>
+											<td>${status.index+1 }</td>
+											<td>${item.userName}</td>
+											<td><a  href="/culture/user/viewUser.do?userId=${item.userId}">详情</a></td>
+											<td><a  href="javascript:deleteUser('${item.userId}')">删除</a></td>
 										</tr>
 									</c:forEach>
 								</tbody>
 							</table>
 						</div>
-						<div class="space5"></div>
-						<p id="dynamic_pager_demo2" class="pagination pagination-right"></p>
+						</div>
+						<!-- END EXTRAS PORTLET-->
 					</div>
-					<!-- END EXTRAS PORTLET-->
 				</div>
 			</div>
 		</div>
@@ -136,38 +130,31 @@
 	<!-- END CORE PLUGINS -->
 	<!-- BEGIN PAGE LEVEL PLUGINS -->
 	<script type="text/javascript" src="/culture/media/js/select2.min.js"></script>
+	<script type="text/javascript" src="/culture/media/js/jquery.dataTables.js"></script>
+	<script type="text/javascript" src="/culture/media/js/DT_bootstrap.js"></script>
 	<script type="text/javascript" src="/culture/media/js/jsonRespUtils.js"></script>
-	<script type="text/javascript" src="/culture/media/js/jquery.bootpag.min.js"></script>
+	<script type="text/javascript" src="/culture/media/js/validate.js"></script>
 	<!-- END PAGE LEVEL PLUGINS -->
 	<!-- BEGIN PAGE LEVEL SCRIPTS -->
 	<script src="/culture/media/js/app.js"></script>
-	<script src="/culture/media/js/ui-general.js"></script>  
+	<script src="/culture/media/js/table-editable.js"></script>    
 	<!-- END PAGE LEVEL SCRIPTS -->
 	<script>
 		jQuery(document).ready(function() {       
 		   // initiate layout and plugins
 		   App.init();
-		   var total = '${count}';
-		   var now = '${now}';
-		   var url = '${url}';
-		   UIGeneral.init(total,now,url);
+		   TableEditable.init();
 		});
 		
-		$("#search").click(function () {
-			var title = $("#title").val();
-			var url="/culture/instance/instanceList.do?title="+title+"&pageStart=1";
-	      	location.href = url;
-		})
-		
-	  	function deleteInstance(culId,title){
+	  	function deleteUser(id){
             if (!confirm("确信要删除吗？")) return;
-            var url="/culture/instance/del.do";
-            $.post(url,{culId:culId,title:title},function(data){
-            	postDelInstance(data);
+            var url="/culture/user/deleteUser.do";
+            $.post(url,{userId:id},function(data){
+            	postDelUser(data);
             });
         }
 
-        function postDelInstance(transport){
+        function postDelUser(transport){
             var jresp = new JsonRespUtils(transport);
             if (jresp.isSuccessfully()){
          		location.reload();
@@ -175,6 +162,8 @@
                 alert(jresp.getMessage());
             }
         }
+
+		
 	</script>
 	<script type="text/javascript">  var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-37564768-1']);  _gaq.push(['_setDomainName', 'keenthemes.com']);  _gaq.push(['_setAllowLinker', true]);  _gaq.push(['_trackPageview']);  (function() {    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;    ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);  })();</script></body>
 	<!-- END BODY -->

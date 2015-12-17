@@ -29,13 +29,14 @@ public class WriteXml {
 		person.addSubClass(facultyMember);
 		//write XML
 		model.write(System.out);
+//		System.out.println(model.toString());
 		//write XML FILE
-		File file = new File("test.owl");
-		try{
-			OutputStream out = new FileOutputStream(file);
-			model.write(out);
-		}catch(Exception e){
-			e.printStackTrace();
-		}
+//		File file = new File("test.owl");
+//		try{
+//			OutputStream out = new FileOutputStream(file);
+//			model.write(out);
+//		}catch(Exception e){
+//			e.printStackTrace();
+//		}
 	}
 }

@@ -1,5 +1,5 @@
 <%@ page pageEncoding="utf-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 		<!-- BEGIN SIDEBAR -->
 		<div class="page-sidebar nav-collapse collapse">
 		<!-- BEGIN SIDEBAR MENU -->        
@@ -56,6 +56,9 @@
 							<a href="/culture/rule/addRule.do?type=2">添加二元规则</a>
 						</li>
 						<li >
+							<a href="/culture/rule/genRule.do" target="_blank">半自动规则生成</a>
+						</li>
+						<li >
 							<a href="/culture/rule/ruleList.do">规则列表</a>
 						</li>
 					</ul>
@@ -71,10 +74,49 @@
 							<a href="/culture/instance/chooseClass.do">添加实例</a>
 						</li>
 						<li >
-							<a href="/culture/instance/instanceList.do?pageStart=1">实例列表</a>
+							<a href="/culture/instance/culturalList.do?pageStart=1">文物实例列表</a>
+						</li>
+						<!-- 
+						<li >
+							<a href="/culture/instance/instanceList.do?pageStart=1">本体实例列表</a>
+						</li>
+						 -->
+					</ul>
+				</li>
+				<!-- 
+				<li class="">
+					<a href="javascript:;">
+					<i class="icon-globe"></i> 
+					<span class="title">知识推理</span>
+					<span class="arrow "></span>
+					</a>
+					<ul class="sub-menu">
+						<li >
+							<a href="/culture/knowledge/recommend.do">知识推荐</a>
+						</li>
+						<li >
+							<a href="/culture/knowledge/expansion.do">知识扩充</a>
 						</li>
 					</ul>
 				</li>
+				 -->
+				<c:if test="${sessionScope.permission == 1}">
+					<li class="">
+						<a href="javascript:;">
+						<i class="icon-globe"></i> 
+						<span class="title">用户管理</span>
+						<span class="arrow "></span>
+						</a>
+						<ul class="sub-menu">
+							<li >
+								<a href="/culture/user/addUser.do">添加用户</a>
+							</li>
+							<li >
+								<a href="/culture/user/getUserList.do">用户列表</a>
+							</li>
+						</ul>
+					</li>
+				</c:if>
 			</ul>
 		<!-- END SIDEBAR MENU -->
 		</div>

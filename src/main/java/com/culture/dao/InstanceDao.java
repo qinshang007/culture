@@ -1,5 +1,8 @@
 package com.culture.dao;
 
+import java.util.List;
+import java.util.Map;
+
 import com.culture.model.Instance;
 
 public interface InstanceDao {
@@ -18,5 +21,12 @@ public interface InstanceDao {
 	
 	/*更新实例*/
 	public boolean updateInstance(Instance instance);
+	
+	/*获取本体列表*/
+	public List<Instance> getInstanceList(Map map);
+	
+	//返回文物列表数量
+	public int getInstanceCount(Map map);
+
 	
 }
