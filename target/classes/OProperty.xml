@@ -26,9 +26,31 @@
 			<isNotNull property="del" prepend="and">
 				del = #del#
 			</isNotNull>
+			<isNotNull property="pname"  prepend="and">
+				pname like '%$pname$%'
+			</isNotNull>
 		</dynamic>
 		<dynamic>
 			order by time desc
+			<isNotNull property="_start"> 
+                <isNotNull property="_size"> 
+                       limit #_start#, #_size# 
+                </isNotNull> 
+           </isNotNull> 
+		</dynamic>
+	</select>
+	
+	<!-- 返回属性列表数量 -->
+	<select id="getPropertyCount" parameterClass="java.util.Map"
+		resultClass="Integer">
+		select count(*) from oproperty 
+		<dynamic prepend="WHERE">
+			<isEqual property="level" compareValue="0" prepend="and">
+				manager=#manager#
+			</isEqual>
+			<isNotNull property="pname"  prepend="and">
+				pname like '%$pname$%'
+			</isNotNull>
 		</dynamic>
 	</select>
 	

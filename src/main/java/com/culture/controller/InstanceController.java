@@ -243,7 +243,7 @@ public class InstanceController extends BaseController{
 		try{
 			//获取创作朝代列表
 			OClass oclass = ocService.getClassByName("朝代");
-			List<OClass> creationDateList = ocService.getClassList(oclass);
+			List<OClass> creationDateList = ocService.getClassList(oclass.getCid(),null,0,20000);
 			outputJsonResponse(response, creationDateList);
 		}catch (RuntimeException e) {
 			logger.error("返回朝代概念数据出错！" +  ",errMsg=" + e.getMessage());
@@ -512,7 +512,7 @@ public class InstanceController extends BaseController{
 			String classification = cb.getClassification();
 			//获取创作朝代列表
 			OClass oclass = ocService.getClassByName("朝代");
-			List<OClass> creationDateList = ocService.getClassList(oclass);
+			List<OClass> creationDateList = ocService.getClassList(oclass.getCid(),null,0,20000);
 			//文物级别
 			List<String> levelList = null;
 			if(type.equals("建筑"))

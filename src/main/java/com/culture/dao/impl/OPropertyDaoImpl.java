@@ -26,6 +26,19 @@ public class OPropertyDaoImpl extends BaseDao implements OPropertyDao{
 		}
 		return oclist;
 	}
+	
+	@Override
+	public int getListCount(Map map) {
+		// TODO Auto-generated method stub
+		int object = 0;
+		try{
+			object = (Integer)getSqlMapClientTemplate().queryForObject("getPropertyCount",map);
+		}catch (Exception e) {
+			logger.error("获取属性列表数量出错！" +  ",errMsg=" + e.getMessage());
+		}
+		return object;
+
+	}
 
 	public OProperty getPropertyById(int id) {
 		// TODO Auto-generated method stub
@@ -118,6 +131,5 @@ public class OPropertyDaoImpl extends BaseDao implements OPropertyDao{
 		return flag;
 
 	}
-
 
 }

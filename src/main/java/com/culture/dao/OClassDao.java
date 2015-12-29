@@ -8,7 +8,10 @@ import com.culture.model.OClass;
 public interface OClassDao {
 	
 	/*返回概念列表*/
-	public List<OClass> getClassList(OClass oclass);		
+	public List<OClass> getClassList(Map map);
+	
+	//返回属性列表数量
+	public int getListCount(Map map);
 	
 	/*根据id返回某个概念*/
 	public OClass getClassById(String id);		

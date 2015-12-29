@@ -16,15 +16,27 @@ public class OClassDaoImpl extends BaseDao implements OClassDao{
 	private static final Logger logger = Logger.getLogger(OClassDaoImpl.class);  
 	
 	@SuppressWarnings("unchecked")
-	public List<OClass> getClassList(OClass oclass) {
+	public List<OClass> getClassList(Map map) {
 		// TODO Auto-generated method stub
 		List<OClass> oclist = null;
 		try{
-			oclist = getSqlMapClientTemplate().queryForList("getOclassList",oclass);
+			oclist = getSqlMapClientTemplate().queryForList("getOclassList",map);
 		}catch (Exception e) {
 			logger.error("获取概念列表信息出错！" +  ",errMsg=" + e.getMessage());
 		}
 		return oclist;
+	}
+	
+	@Override
+	public int getListCount(Map map) {
+		// TODO Auto-generated method stub
+		int object = 0;
+		try{
+			object = (Integer)getSqlMapClientTemplate().queryForObject("getClassCount",map);
+		}catch (Exception e) {
+			logger.error("获取概念列表数量出错！" +  ",errMsg=" + e.getMessage());
+		}
+		return object;
 	}
 
 	public OClass getClassById(String id) {
@@ -146,5 +158,6 @@ public class OClassDaoImpl extends BaseDao implements OClassDao{
 		}
 		return oclist;
 	}
+
 
 }

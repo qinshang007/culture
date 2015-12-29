@@ -17,15 +17,36 @@
 
 
 	<!-- 根据概念列表 -->
-	<select id="getOclassList" parameterClass="oclass"
+	<select id="getOclassList" parameterClass="java.util.Map"
 		resultClass="oclass">
 		select * from oclass where del = #del# 
 		<dynamic prepend=""> 
 			 <isNotEqual property="cid"  compareValue="0" prepend="and">
 			 	cfid = #cid# 
 			 </isNotEqual>
+			<isNotNull property="cname"  prepend="and">
+				cname like '%$cname$%'
+			</isNotNull>
 		</dynamic>
-		order by time desc
+		<dynamic>
+			order by time desc
+		   <isNotNull property="_start"> 
+                <isNotNull property="_size"> 
+                       limit #_start#, #_size# 
+                </isNotNull> 
+           </isNotNull> 
+		</dynamic>
+	</select>
+	
+	<!-- 返回概念列表数量 -->
+	<select id="getClassCount" parameterClass="java.util.Map"
+		resultClass="Integer">
+		select count(*) from oclass 
+		<dynamic prepend="WHERE">
+			<isNotNull property="cname"  prepend="and">
+				cname like '%$cname$%'
+			</isNotNull>
+		</dynamic>
 	</select>
 	
 	<!-- 添加概念 -->

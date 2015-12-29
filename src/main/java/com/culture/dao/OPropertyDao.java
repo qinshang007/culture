@@ -8,7 +8,10 @@ import com.culture.model.OProperty;
 public interface OPropertyDao {
 	
 	/*返回属性列表*/
-	public List<OProperty> getPropertyList(Map map);		
+	public List<OProperty> getPropertyList(Map map);	
+	
+	//返回属性列表数量
+	public int getListCount(Map map);
 	
 	/*根据id返回某个属性*/
 	public OProperty getPropertyById(int id);		

@@ -271,7 +271,7 @@ public class InstanceServiceImpl extends BaseService implements InstanceService{
 	public List<OClass> getCreationDateList() {
 		// TODO Auto-generated method stub
 		OClass oclass = getOClassDao().getClassByName("朝代");
-		List<OClass> dynasityList = getOClassDao().getClassList(oclass);
+		List<OClass> dynasityList = ocService.getClassList(oclass.getCid(),null,0,20000);
 		List<OClass> creationDateList = new ArrayList<OClass>();
 		OClass oc1 = new OClass();
 		oc1.setCname("旧石器时代（距今约300万年-距今约1万年）");

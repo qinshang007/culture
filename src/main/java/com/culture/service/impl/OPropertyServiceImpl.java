@@ -40,7 +40,8 @@ public class OPropertyServiceImpl extends BaseService implements OPropertyServic
 
 	private static final Logger logger = Logger.getLogger(OPropertyServiceImpl.class);
 	
-	public List<OProperty> getPropertyList(String userName) {
+	/*返回属性列表*/
+	public List<OProperty> getPropertyList(String userName,String pname,int pageStart,int pageSize) {
 		// TODO Auto-generated method stub
 		//获取用户权限
 		UserBean user = userService.getUserByName(userName);
@@ -48,10 +49,29 @@ public class OPropertyServiceImpl extends BaseService implements OPropertyServic
 		if(user != null){
 			map.put("manager", user.getUserName());
 			map.put("level", user.getLevel());
+			map.put("pname", pname);
+			map.put("_start", pageStart);
+			map.put("_size", pageSize);
+
 		}
 		map.put("del", 0);
 		return getOPropertyDao().getPropertyList(map);
 	}
+	
+	/*返回属性列表数量*/
+	@Override
+	public int getListCount(String userName, String pname) {
+		// TODO Auto-generated method stub
+		UserBean user = userService.getUserByName(userName);
+		Map map = new HashMap();
+		if(user != null){
+			map.put("manager", user.getUserName());
+			map.put("level", user.getLevel());
+			map.put("pname", pname);
+		}
+		return getOPropertyDao().getListCount(map);
+	}
+
 
 	public OProperty getPropertyById(int id) {
 		// TODO Auto-generated method stub
@@ -363,7 +383,7 @@ public class OPropertyServiceImpl extends BaseService implements OPropertyServic
 		// TODO Auto-generated method stub
 		OntModel model = omodelFactory.getModel();
 		//获取属性列表
-		List<OProperty> oplist = getPropertyList("admin");
+		List<OProperty> oplist = getPropertyList("admin",null,0,20000);
 		try{
 			for(int i=0;i<oplist.size();i++){
 				OProperty op = oplist.get(i);

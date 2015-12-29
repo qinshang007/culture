@@ -40,6 +40,8 @@ public class ClassController extends BaseController{
 	private OClassService ocService;
 	@Autowired
 	private OModelFactory omodelFactory;
+	
+	private int pageSize = 5;
 
 	private static final Logger logger = Logger.getLogger(ClassController.class);  
 	
@@ -164,9 +166,7 @@ public class ClassController extends BaseController{
 			//获取父概念名字
 			String cfname = request.getParameter("cfname");
 			//获取概念列表
-			OClass oclass = new OClass();
-			oclass.setDel(0);
-			List<OClass> oclist = ocService.getClassList(oclass);
+			List<OClass> oclist = ocService.getClassList(0,null,0,20000);
 			for(int i=0;i<oclist.size();i++){
 				if(oclist.get(i).getCid() == cfid){
 					cfname = oclist.get(i).getCname();
@@ -197,12 +197,23 @@ public class ClassController extends BaseController{
 	@RequestMapping("/classList.do")
 	public ModelAndView getClassList(HttpServletRequest request, HttpServletResponse response) throws Exception{
 		try{
+			//获取名称
+			String cname = request.getParameter("cname");
+			//获取页码
+			String pageStart = request.getParameter("pageStart");
+			int start = (Integer.parseInt(pageStart)-1)*pageSize;
+			int count = ocService.getListCount(cname);
 			//获取概念列表
-			OClass oclass = new OClass();
-			oclass.setDel(0);
-			List<OClass> oclist = ocService.getClassList(oclass);
+			List<OClass> oclist = ocService.getClassList(0,cname,start,pageSize);
+			String url = "/culture/class/classList.do?pageStart=";
+			if(StringUtils.isNotEmpty(cname)){
+				url = "/culture/class/classList.do?cname="+cname+"&pageStart=";
+			}
 			Map map = new HashMap();
 			map.put("oclist", oclist);
+			map.put("count", count);
+			map.put("now", pageStart);
+			map.put("url", url);
 			ModelAndView view = new ModelAndView("class/classList").addAllObjects(map);
 			return view;
 		}catch (RuntimeException e) {
@@ -226,9 +237,7 @@ public class ClassController extends BaseController{
 			//根据概念id获取概念
 			OClass oc = ocService.getClassById(cid);
 			//获取概念列表
-			OClass oclass = new OClass();
-			oclass.setDel(0);
-			List<OClass> oclist = ocService.getClassList(oclass);
+			List<OClass> oclist = ocService.getClassList(0,null,0,20000);
 			//获取概念列表
 			int cfid = oc.getCfid();
 			String cfname = "无";

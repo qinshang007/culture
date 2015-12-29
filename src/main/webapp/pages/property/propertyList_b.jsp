@@ -21,7 +21,6 @@
 	<!-- BEGIN PAGE LEVEL STYLES -->
 	<link rel="stylesheet" type="text/css" href="/culture/media/css/select2_metro.css" />
 	<link rel="stylesheet" href="/culture/media/css/DT_bootstrap.css" />
-	<link rel="stylesheet" href="/culture/media/css/search.css"  type="text/css"/>
 	<!-- END PAGE LEVEL STYLES -->
 	<link rel="shortcut icon" href="/culture/media/image/favicon.ico" />	
 	
@@ -63,25 +62,19 @@
 								<a href="#">属性管理</a>
 								<span class="icon-angle-right"></span>
 							</li>
-							<li><a href="/culture/property/propertyList.do?pageStart=1">属性列表</a></li>
+							<li><a href="/culture/animal/amList.do?species=1">属性列表</a></li>
 						</ul>
 					</div>
 				</div>
 				<div class="row-fluid">
-					<div id="tab_1_5" class="tab-pane">
-						<!-- BEGIN SAMPLE FORM PORTLET--> 
-						<div class="row-fluid search-forms search-default">
-							<form class="form-search" action="#">
-								<div class="chat-form">
-									<div class="input-cont">   
-										<input id="title" type="text" placeholder="请输入属性名称..." class="m-wrap" name="title"/>
-									</div>
-									<button id="search" type="button" class="btn green">检索 &nbsp; <i class="m-icon-swapright m-icon-white"></i></button>
-								</div>
-							</form>
-						</div>
+					<div class="span12">
+						<!-- BEGIN SAMPLE FORM PORTLET-->   
+						<div class="portlet box blue">
+							<div class="portlet-title">
+								<div class="caption"><i class="icon-reorder"></i>属性表</div>
+							</div>
 						<div class="portlet-body">
-							<table class="table table-striped table-hover">
+							<table class="table table-striped table-hover table-bordered" id="sample_editable_1">
 								<thead>
 									<tr>
 										<th>编号</th>
@@ -95,17 +88,16 @@
 										<tr class="">
 											<td>${status.index+1 }</td>
 											<td>${item.pname}</td>
-											<td><a  href="/culture/property/viewProperty.do?pid=${item.pid}" target="_blank">查看</a></td>
-											<td><a  href="javascript:deleteProperty('${item.pid}','${item.pname}')">删除</a></td>
+											<td><a  href="/culture/property/viewProperty.do?pid=${item.pid}" target="_blank">View</a></td>
+											<td><a  href="javascript:deleteProperty('${item.pid}','${item.pname}')">Delete</a></td>
 										</tr>
 									</c:forEach>
 								</tbody>
 							</table>
 						</div>
-						<div class="space5"></div>
-						<p id="dynamic_pager_demo2" class="pagination pagination-right"></p>
+						</div>
+						<!-- END EXTRAS PORTLET-->
 					</div>
-					<!-- END EXTRAS PORTLET-->
 				</div>
 			</div>
 		</div>
@@ -138,28 +130,21 @@
 	<!-- END CORE PLUGINS -->
 	<!-- BEGIN PAGE LEVEL PLUGINS -->
 	<script type="text/javascript" src="/culture/media/js/select2.min.js"></script>
+	<script type="text/javascript" src="/culture/media/js/jquery.dataTables.js"></script>
+	<script type="text/javascript" src="/culture/media/js/DT_bootstrap.js"></script>
 	<script type="text/javascript" src="/culture/media/js/jsonRespUtils.js"></script>
-	<script type="text/javascript" src="/culture/media/js/jquery.bootpag.min.js"></script>
+	<script type="text/javascript" src="/culture/media/js/validate.js"></script>
 	<!-- END PAGE LEVEL PLUGINS -->
 	<!-- BEGIN PAGE LEVEL SCRIPTS -->
 	<script src="/culture/media/js/app.js"></script>
-	<script src="/culture/media/js/ui-general.js"></script>  
+	<script src="/culture/media/js/table-editable.js"></script>    
 	<!-- END PAGE LEVEL SCRIPTS -->
 	<script>
 		jQuery(document).ready(function() {       
 		   // initiate layout and plugins
 		   App.init();
-		   var total = '${count}';
-		   var now = '${now}';
-		   var url = '${url}';
-		   UIGeneral.init(total,now,url);
+		   TableEditable.init();
 		});
-		
-		$("#search").click(function () {
-			var title = $("#title").val();
-			var url="/culture/property/propertyList.do?pname="+title+"&pageStart=1";
-	      	location.href = url;
-		})
 		
 	  	function deleteProperty(id,name){
             if (!confirm("确信要删除吗？")) return;

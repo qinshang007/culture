@@ -20,7 +20,7 @@
 							<a href="/culture/class/addClass.do">添加概念</a>
 						</li>
 						<li >
-							<a href="/culture/class/classList.do">概念列表</a>
+							<a href="/culture/class/classList.do?pageStart=1">概念列表</a>
 						</li>
 					</ul>
 				</li>
@@ -38,7 +38,7 @@
 							<a href="/culture/property/addObjectProperty.do">添加对象属性</a>
 						</li>
 						<li >
-							<a href="/culture/property/propertyList.do">属性列表</a>
+							<a href="/culture/property/propertyList.do?pageStart=1">属性列表</a>
 						</li>
 					</ul>
 				</li>

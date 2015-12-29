@@ -1,25 +1,24 @@
 package test;
 
-import java.sql.Timestamp;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.culture.dao.OClassDao;
 import com.culture.model.OClass;
-import com.culture.model.OClass;
-import com.culture.util.DateUtils;
 
 public class ClassDaoTest {
 	
 	public void getClassList(){
 		ApplicationContext context = new ClassPathXmlApplicationContext("classpath:/applicationContext.xml");
 		OClassDao ocDao = (OClassDao)context.getBean("ocDao");
-		OClass oc = new OClass();
-		oc.setCid(1);
-		oc.setDel(0);
-		List<OClass> ocList = ocDao.getClassList(oc);
+		Map map = new HashMap();
+		map.put("cid", 1);
+		map.put("del", 0);
+		List<OClass> ocList = ocDao.getClassList(map);
 		for(int i=0;i<ocList.size();i++){
 			System.out.println(ocList.get(i).getCname());
 		}

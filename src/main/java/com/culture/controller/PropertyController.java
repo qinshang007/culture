@@ -46,6 +46,8 @@ public class PropertyController extends BaseController{
 	
 	@Autowired
 	private OModelFactory omodelFactory;
+	
+	private int pageSize = 5;
 
 	Resource[] resource = new Resource[]{XSD.xstring,XSD.xint,XSD.xfloat,XSD.date};
 	
@@ -135,11 +137,9 @@ public class PropertyController extends BaseController{
 			//获取父属性名字
 			String pfname = request.getParameter("pfname");
 			//获取概念列表
-			OClass oclass = new OClass();
-			oclass.setDel(0);
-			List<OClass> oclist = ocService.getClassList(oclass);
+			List<OClass> oclist = ocService.getClassList(0,null,0,20000);
 			//获取属性列表
-			List<OProperty> oplist = opService.getPropertyList("");
+			List<OProperty> oplist = opService.getPropertyList("",null,0,20000);
 			Map map = new HashMap();
 			map.put("pfid",pfid);
 			map.put("pfname", pfname);
@@ -169,11 +169,9 @@ public class PropertyController extends BaseController{
 			//获取父属性名字
 			String pfname = request.getParameter("pfname");
 			//获取概念列表
-			OClass oclass = new OClass();
-			oclass.setDel(0);
-			List<OClass> oclist = ocService.getClassList(oclass);
+			List<OClass> oclist = ocService.getClassList(0,null,0,20000);
 			//获取属性列表
-			List<OProperty> oplist = opService.getPropertyList("");
+			List<OProperty> oplist = opService.getPropertyList("",null,0,20000);
 			Map map = new HashMap();
 			map.put("pfid",pfid);
 			map.put("pfname", pfname);
@@ -199,10 +197,23 @@ public class PropertyController extends BaseController{
 	public ModelAndView getPropertyList(HttpServletRequest request, HttpServletResponse response) throws Exception{
 		try{
 			String userName = getUserName(request, response);
+			//获取名称
+			String pname = request.getParameter("pname");
+			//获取页码
+			String pageStart = request.getParameter("pageStart");
+			int start = (Integer.parseInt(pageStart)-1)*pageSize;
+			int count = opService.getListCount(userName, pname);
 			//获取属性列表
-			List<OProperty> oplist = opService.getPropertyList(userName);
+			List<OProperty> oplist = opService.getPropertyList(userName,pname,start,pageSize);
+			String url = "/culture/property/propertyList.do?pageStart=";
+			if(StringUtils.isNotEmpty(pname)){
+				url = "/culture/property/propertyList.do?pname="+pname+"&pageStart=";
+			}
 			Map map = new HashMap();
 			map.put("oplist", oplist);
+			map.put("count", count);
+			map.put("now", pageStart);
+			map.put("url", url);
 			ModelAndView view = new ModelAndView("property/propertyList").addAllObjects(map);
 			return view;
 		}catch (RuntimeException e) {
@@ -226,11 +237,9 @@ public class PropertyController extends BaseController{
 			//根据属性id获取属性
 			OProperty op = opService.getPropertyById(Integer.valueOf(pid));
 			//获取概念列表
-			OClass oclass = new OClass();
-			oclass.setDel(0);
-			List<OClass> oclist = ocService.getClassList(oclass);
+			List<OClass> oclist = ocService.getClassList(0,null,0,20000);
 			//获取属性列表
-			List<OProperty> oplist = opService.getPropertyList("");
+			List<OProperty> oplist = opService.getPropertyList("",null,0,20000);
 
 			Map map = new HashMap();
 			map.put("op", op);

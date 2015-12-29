@@ -9,7 +9,10 @@ import com.hp.hpl.jena.ontology.OntProperty;
 public interface OPropertyService {
 	
 	/*返回属性列表*/
-	public List<OProperty> getPropertyList(String userName);		
+	public List<OProperty> getPropertyList(String userName,String pname,int pageStart,int pageSize);		
+	
+	/*返回属性列表数量*/
+	public int getListCount(String userName,String pname);
 	
 	/*根据id返回某个属性*/
 	public OProperty getPropertyById(int id);	

@@ -7,7 +7,10 @@ import com.culture.model.OClass;
 public interface OClassService {
 	
 	/*返回概念列表*/
-	public List<OClass> getClassList(OClass oclass);		
+	public List<OClass> getClassList(int cid,String cname,int pageStart,int pageSize);	
+	
+	/*返回概念列表数量*/
+	public int getListCount(String cname);
 	
 	/*根据id返回某个概念*/
 	public OClass getClassById(String id);	

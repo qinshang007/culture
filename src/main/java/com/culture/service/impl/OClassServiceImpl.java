@@ -29,10 +29,25 @@ public class OClassServiceImpl extends BaseService implements OClassService{
 	private OModelFactory omodelFactory;
 
 	
-	public List<OClass> getClassList(OClass oclass) {
+	public List<OClass> getClassList(int cid,String cname,int pageStart,int pageSize) {
 		// TODO Auto-generated method stub
-		return getOClassDao().getClassList(oclass);
+		Map map = new HashMap();
+		map.put("cid", cid);
+		map.put("cname", cname);
+		map.put("del", 0);
+		map.put("_start", pageStart);
+		map.put("_size", pageSize);
+		return getOClassDao().getClassList(map);
 	}
+	
+	@Override
+	public int getListCount(String cname) {
+		// TODO Auto-generated method stub
+		Map map = new HashMap();
+		map.put("cname", cname);
+		return getOClassDao().getListCount(map);
+	}
+
 
 	public OClass getClassById(String id) {
 		// TODO Auto-generated method stub
@@ -243,9 +258,7 @@ public class OClassServiceImpl extends BaseService implements OClassService{
 	public boolean genClassOwl() {
 		// TODO Auto-generated method stub
 		OntModel model = omodelFactory.getModel();
-		OClass oclass = new OClass();
-		oclass.setDel(0);
-		List<OClass> ocList = getOClassDao().getClassList(oclass);
+		List<OClass> ocList = getClassList(0,null,0,20000);
 		for(int i=0;i<ocList.size();i++){
 			OClass oc = ocList.get(i);
 			//获取概念名字
