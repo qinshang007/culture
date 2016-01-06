@@ -22,7 +22,7 @@ public interface CulturalService {
 	/*判断文物名字是否存在*/
 	public boolean isTitleExist(String title);
 	//返回推荐文物列表
-	public List<CulturalBean> getRecommendList(String type);
+	public List<CulturalBean> getRecommendList(String type,String culId);
 	//更新文物点击量
 	public boolean updateSernum(String culId);
 

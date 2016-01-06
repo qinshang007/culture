@@ -81,7 +81,7 @@ public class FpTree {
             LinkedList<String> nextFrequences = new LinkedList<String>(frequences);
             nextFrequences.add(subject);
             if(nextFrequences.size() == 1 || nextFrequences.size() == 2){
-                System.out.println(StringUtils.join(nextFrequences,",")+"\t"+sortedMap.get(subject));
+//                System.out.println(StringUtils.join(nextFrequences,",")+"\t"+sortedMap.get(subject));
                 result.put(StringUtils.join(nextFrequences,","), sortedMap.get(subject));
             }
              

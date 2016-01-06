@@ -2,7 +2,8 @@ var UIGeneral = function () {
 	
     var handleDynamicPagination = function(total,now,url) {
         $('#dynamic_pager_demo2').bootpag({
-            total: total/5,
+        	all:total,
+            total: total%5==0?total/5:total/5+1,
             page: now,
             maxVisible: 10,
             firstLastUse: true,

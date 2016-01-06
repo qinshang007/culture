@@ -166,9 +166,12 @@ public class InterfaceController extends BaseController{
 	@RequestMapping("/getRecommendList.asmx")
 	public void getRecommendList(HttpServletRequest request, HttpServletResponse response) throws Exception{
 		try{
+			//获取文物的类别
 			String type = request.getParameter("type");
+			//获取文物的ID
+			String culId = request.getParameter("culId");
 			//获取知识推荐列表
-			List<CulturalBean> cblist = clService.getRecommendList(type);
+			List<CulturalBean> cblist = clService.getRecommendList(type,culId);
 			outputJsonResponse(response, cblist);
 		}catch (RuntimeException e) {
 			logger.error("获取知识推荐列表请求据出错！" +  ",errMsg=" + e.getMessage());

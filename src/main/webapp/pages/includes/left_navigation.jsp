@@ -76,11 +76,9 @@
 						<li >
 							<a href="/culture/instance/culturalList.do?pageStart=1">文物实例列表</a>
 						</li>
-						<!-- 
 						<li >
 							<a href="/culture/instance/instanceList.do?pageStart=1">本体实例列表</a>
 						</li>
-						 -->
 					</ul>
 				</li>
 				<!-- 

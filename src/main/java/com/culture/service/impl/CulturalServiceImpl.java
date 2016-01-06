@@ -88,11 +88,15 @@ public class CulturalServiceImpl extends BaseService implements CulturalService{
 	 * 返回知识推荐列表
 	 */
 	@Override
-	public List<CulturalBean> getRecommendList(String type) {
+	public List<CulturalBean> getRecommendList(String type,String culId) {
 		// TODO Auto-generated method stub
+		List<CulturalBean> cblist = null;
 		Map map = new HashMap();
 		map.put("type", type);
-		return getCulturalDao().getRecommendList(map);
+		cblist =  getCulturalDao().getRecommendList(map);
+		if(culId != null && cblist != null){
+		}
+		return cblist;
 	}
 
 	/**

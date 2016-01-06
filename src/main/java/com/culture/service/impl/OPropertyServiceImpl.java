@@ -310,6 +310,9 @@ public class OPropertyServiceImpl extends BaseService implements OPropertyServic
 			OProperty color = getPropertyByName("颜色",true);
 			OProperty nianhao = getPropertyByName("年号", true);
 			OProperty creation_date = getPropertyByName("创作朝代", true);
+			OProperty place_of_origin = getPropertyByName("产地", true);
+			OProperty material = getPropertyByName("材质", true);
+			OProperty archaeological = getPropertyByName("考古学年代（石器时期）", true);
 			propertyList.add(pattern);
 			propertyList.add(scene);
 			propertyList.add(shape);
@@ -317,6 +320,9 @@ public class OPropertyServiceImpl extends BaseService implements OPropertyServic
 			propertyList.add(color);
 			propertyList.add(nianhao);
 			propertyList.add(creation_date);
+			propertyList.add(place_of_origin);
+			propertyList.add(material);
+			propertyList.add(archaeological);
 		}catch(Exception e){
 			logger.error("返回规则页面需要的属性出错："+e.getMessage());
 		}		

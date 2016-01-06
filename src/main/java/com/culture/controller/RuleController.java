@@ -166,7 +166,7 @@ public class RuleController extends BaseController{
 	        		str = str + "{"+keys[0]+"}-->{"+keys[1]+"},"+df.format(confidence)+"%"+"</br>";
 	        	}
 	        }
-	        System.out.println(str);
+//	        System.out.println(str);
 	        response.setCharacterEncoding("UTF-8");
 			response.setContentType("text/html");
 	        PrintWriter out = response.getWriter();
