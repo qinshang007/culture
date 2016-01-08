@@ -519,12 +519,15 @@ public class InstanceController extends BaseController{
 				levelList = levelList2;
 			else
 				levelList = levelList1;
+			//获取推荐列表
+			List<CulturalBean> recommendList = clService.getRecommendList(type, classification, culId);
 			Map map = new HashMap();
 			map.put("cb", cb);
 			map.put("type", type);
 			map.put("classification", classification);
 			map.put("creationDateList", creationDateList);
 			map.put("levelList", levelList);
+			map.put("recommendList", recommendList);
 			return new ModelAndView("instance/viewCultural").addAllObjects(map);
 		}catch (RuntimeException e) {
 			logger.error("查看实例出错！" +  ",errMsg=" + e.getMessage());

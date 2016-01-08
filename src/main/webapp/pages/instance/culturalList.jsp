@@ -94,7 +94,7 @@
 								<tbody>
 									<c:forEach  items="${cbList}"  var="item"  varStatus="status">
 										<tr class="">
-											<td><img src="/crelicBase/upload/${item.mainpic }" alt="" style="height:45px;width:45px" /></td>
+											<td><img src="/crelicBase/upload/${item.mainpic}" alt="" style="height:45px;width:45px" /></td>
 											<td>${item.title}</td>
 											<td><a  href="/culture/instance/viewCultural.do?culId=${item.identifier}" target="_blank">查看</a></td>
 											<td><a  href="/culture/instance/editCultural.do?culId=${item.identifier}" target="_blank">修改</a></td>

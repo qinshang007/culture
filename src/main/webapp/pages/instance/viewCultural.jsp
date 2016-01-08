@@ -52,7 +52,7 @@
 				<div class="row-fluid">
 					<div class="span12">
 						<h3 class="page-title">
-							修改实例
+							查看实例
 						</h3>
 						<ul class="breadcrumb">
 							<li>
@@ -337,6 +337,32 @@
 						</div>
 						</div>
 						<!-- END EXTRAS PORTLET-->
+					</div>
+					<div class="row-fluid">
+						<div class="span12">
+							<!-- BEGIN GALLERY MANAGER PORTLET-->
+							<div class="portlet box purple">
+								<div class="portlet-title">
+									<div class="caption"><i class="icon-reorder"></i>相关推荐</div>
+								</div>
+								<div class="portlet-body">
+									<div class="row-fluid">
+										<c:forEach  items="${recommendList}"  var="item"  varStatus="status">
+											<div class="span3">
+												<div class="item">
+													<a class="fancybox-button" data-rel="fancybox-button" title="${item.title}" href="/culture/instance/viewCultural.do?culId=${item.identifier}">
+														<div class="zoom">
+															<img src="/crelicBase/upload/${item.mainpic}" alt="${item.title}" style="height:200px;width:200px"/>                    
+															<div class="zoom-icon"></div>
+														</div>
+													</a>
+												</div>
+											 </div>
+										 </c:forEach>
+									  </div>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>

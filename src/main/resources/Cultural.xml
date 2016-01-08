@@ -98,17 +98,18 @@
 	<!-- 返回知识推荐列表 -->
 	<select id="getRecommendList" parameterClass="java.util.Map"
 		resultClass="culturalBean">
-		select title,mainpic,history_info,identifier,crtime from culture order by crtime desc limit 4
-<!-- 
-		<dynamic prepend="WHERE">
-			<isEqual property="type" compareValue="1" prepend="and">
-				 order by crtime desc limit 4
-			</isEqual>
-			<isEqual property="type" compareValue="2" prepend="and">
-				 order by sernum desc limit 4
-			</isEqual>
+		select title,mainpic,history_info,identifier,crtime from culture where mainpic is not null
+		<dynamic>
+			<isNotNull property="type"  prepend="and">
+				type=#type#
+			</isNotNull>
+			<isNotNull property="classification"  prepend="and">
+				classification=#classification#
+			</isNotNull>
 		</dynamic>
- -->
+		<dynamic>
+			 order by rand() limit 4 
+		</dynamic>
 	</select>
 
 	<!--更新文物点击量 -->

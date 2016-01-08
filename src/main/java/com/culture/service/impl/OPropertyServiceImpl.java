@@ -313,6 +313,8 @@ public class OPropertyServiceImpl extends BaseService implements OPropertyServic
 			OProperty place_of_origin = getPropertyByName("产地", true);
 			OProperty material = getPropertyByName("材质", true);
 			OProperty archaeological = getPropertyByName("考古学年代（石器时期）", true);
+			OProperty technology = getPropertyByName("工艺", true);
+			OProperty aesthetic = getPropertyByName("审美", true);
 			propertyList.add(pattern);
 			propertyList.add(scene);
 			propertyList.add(shape);
@@ -323,6 +325,8 @@ public class OPropertyServiceImpl extends BaseService implements OPropertyServic
 			propertyList.add(place_of_origin);
 			propertyList.add(material);
 			propertyList.add(archaeological);
+			propertyList.add(technology);
+			propertyList.add(aesthetic);
 		}catch(Exception e){
 			logger.error("返回规则页面需要的属性出错："+e.getMessage());
 		}		
