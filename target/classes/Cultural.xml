@@ -23,18 +23,18 @@
 			<isEqual property="level" compareValue="0" prepend="and">
 				manager=#manager#
 			</isEqual>
-			<isNotNull property="type"  prepend="and">
+			<isNotEmpty property="type"  prepend="and">
 				type=#type#
-			</isNotNull>
-			<isNotNull property="classification"  prepend="and">
+			</isNotEmpty>
+			<isNotEmpty property="classification"  prepend="and">
 				classification=#classification#
-			</isNotNull>
-			<isNotNull property="creation_date"  prepend="and">
+			</isNotEmpty>
+			<isNotEmpty property="creation_date"  prepend="and">
 				creation_date=#creation_date#
-			</isNotNull>
-			<isNotNull property="title"  prepend="and">
+			</isNotEmpty>
+			<isNotEmpty property="title"  prepend="and">
 				title like '%$title$%'
-			</isNotNull>
+			</isNotEmpty>
 		</dynamic>
 		<dynamic>
 			order by crtime desc
@@ -54,18 +54,18 @@
 			<isEqual property="level" compareValue="0" prepend="and">
 				manager=#manager#
 			</isEqual>
-			<isNotNull property="type"  prepend="and">
+			<isNotEmpty property="type"  prepend="and">
 				type=#type#
-			</isNotNull>
-			<isNotNull property="classification"  prepend="and">
+			</isNotEmpty>
+			<isNotEmpty property="classification"  prepend="and">
 				classification=#classification#
-			</isNotNull>
-			<isNotNull property="creation_date"  prepend="and">
+			</isNotEmpty>
+			<isNotEmpty property="creation_date"  prepend="and">
 				creation_date=#creation_date#
-			</isNotNull>
-			<isNotNull property="title"  prepend="and">
+			</isNotEmpty>
+			<isNotEmpty property="title"  prepend="and">
 				title like '%$title$%'
-			</isNotNull>
+			</isNotEmpty>
 		</dynamic>
 	</select>
 

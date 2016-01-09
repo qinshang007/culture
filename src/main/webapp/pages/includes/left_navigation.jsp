@@ -79,6 +79,9 @@
 						<li >
 							<a href="/culture/instance/instanceList.do?pageStart=1">本体实例列表</a>
 						</li>
+						<li >
+							<a href="/culture/instance/search.do">分类检索</a>
+						</li>
 					</ul>
 				</li>
 				<!-- 

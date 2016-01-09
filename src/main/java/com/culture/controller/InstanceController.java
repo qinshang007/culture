@@ -318,14 +318,12 @@ public class InstanceController extends BaseController{
 	public ModelAndView chooseClass(HttpServletRequest request, HttpServletResponse response) throws Exception{
 		try{
 			//获取文物概念的子概念
-//			List<OClass> oclist = ocService.getSubClasses("文物", true);
 			List<OClass> oclist = ocService.getChildClass("文物",1);
 			List<OClass> childlist = new ArrayList<OClass>();
 			if(oclist.size()!=0){
 				//取出第一个父节点
 				OClass parent = oclist.get(0);
 				String pcname = parent.getCname();
-//				childlist = ocService.getSubClasses(pcname, true);
 				childlist = ocService.getChildClass(pcname,1);
 			}
 			Map map = new HashMap();
@@ -338,6 +336,82 @@ public class InstanceController extends BaseController{
 			return null;
 		}
 	}
+	
+	/**
+	 * 分类检索界面
+	 * @param request
+	 * @param response
+	 * @throws Exception
+	 */
+	@RequestMapping("/search.do")
+	public ModelAndView search(HttpServletRequest request, HttpServletResponse response) throws Exception{
+		try{
+			//获取文物概念的子概念
+			List<OClass> oclist = ocService.getChildClass("文物",1);
+			//获取创作朝代列表
+			List<OClass> creationDateList = instService.getCreationDateList();
+			Map map = new HashMap();
+			map.put("oclist", oclist);
+			map.put("creationDateList", creationDateList);
+			return new ModelAndView("instance/search").addAllObjects(map);
+		}catch (RuntimeException e) {
+			logger.error("返回分类检索页面出错！" +  ",errMsg=" + e.getMessage());
+			outputJsonResponse(response, false, e.getMessage());
+			return null;
+		}
+	}
+	
+	/**
+	 * 返回分类检索结果列表
+	 * @param request
+	 * @param response
+	 * @throws Exception
+	 */
+	@RequestMapping("/searchList.do")
+	public ModelAndView searchList(HttpServletRequest request, HttpServletResponse response) throws Exception{
+		try{
+			String username = getUserName(request,response);
+			//获取名称
+			String title = request.getParameter("title");
+			//获取文物大类
+			String type = request.getParameter("type");
+			//获取文物的详细分类
+			String classification = request.getParameter("classification");
+			//获取文物的创作朝代
+			String creation_date = request.getParameter("creation_date");
+			//获取页码
+			String pageStart = request.getParameter("pageStart");
+			int start = (Integer.parseInt(pageStart)-1)*pageSize;
+			int count = clService.getListCount(username,title,type,classification,creation_date);
+			List<CulturalBean> cbList = clService.getCulturalList(username,title,type,classification,creation_date,start,pageSize);
+			String url = "/culture/instance/searchList.do?title="+title+"&type="+type+"&classification="+classification+"&creation_date="+creation_date+"&pageStart=";
+			//获取文物概念的子概念
+			List<OClass> oclist = ocService.getChildClass("文物",1);
+			//获取创作朝代列表
+			List<OClass> creationDateList = instService.getCreationDateList();
+			Map map = new HashMap();
+			map.put("cbList", cbList);
+			map.put("count", count);
+			map.put("now", pageStart);
+			map.put("url", url);
+			map.put("oclist", oclist);
+			map.put("creationDateList", creationDateList);
+			map.put("type", type);
+			map.put("title", title);
+			map.put("classification",classification);
+			map.put("creation_date", creation_date);
+			if(StringUtils.isNotEmpty(type)){	//如果类别不为空
+				List<OClass> childlist = ocService.getChildClass(type,1);
+				map.put("childlist", childlist);
+			}
+			return new ModelAndView("instance/searchList").addAllObjects(map);
+		}catch (RuntimeException e) {
+			logger.error("返回分类检索结果列表出错！" +  ",errMsg=" + e.getMessage());
+			outputJsonResponse(response, false, e.getMessage());
+			return null;
+		}
+	}
+
 	
 	/**
 	 * 返回文物实例列表
