@@ -3,6 +3,7 @@ package com.culture.service.impl;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.culture.dao.AnalyzeDao;
 import com.culture.dao.CulturalDao;
 import com.culture.dao.InstanceDao;
 import com.culture.dao.OClassDao;
@@ -27,6 +28,8 @@ public class BaseService {
 	
 	private InstanceDao instanceDao = (InstanceDao)context.getBean("instanceDao");
 	
+	private AnalyzeDao analyzeDao = (AnalyzeDao)context.getBean("analyzeDao");
+	
 	public  OClassDao getOClassDao(){
 		return ocDao;
 	}
@@ -49,5 +52,9 @@ public class BaseService {
 	
 	public InstanceDao getInstanceDao(){
 		return instanceDao;
+	}
+	
+	public AnalyzeDao getAnalyzeDao(){
+		return analyzeDao;
 	}
 }

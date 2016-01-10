@@ -1,17 +1,15 @@
 package test;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.text.DecimalFormat;
 
 public class Test {
 	
 	public static void main(String[] args){
-		String cid = "123";
-		String str = "0,123";
-		int index = str.indexOf(cid);
-		System.out.println(index);
-		String tail = str.substring(index+cid.length());
-		System.out.println("0"+tail);
+		DecimalFormat df = new DecimalFormat("0.00");//格式化小数   
+		int a = 5817;
+		int b = 6624;
+		float c = (b-a)/(float)b;
+		System.out.println(df.format(c));
 	}
 	
 }

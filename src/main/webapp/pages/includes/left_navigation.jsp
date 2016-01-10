@@ -84,23 +84,18 @@
 						</li>
 					</ul>
 				</li>
-				<!-- 
 				<li class="">
 					<a href="javascript:;">
 					<i class="icon-globe"></i> 
-					<span class="title">知识推理</span>
+					<span class="title">数据分析</span>
 					<span class="arrow "></span>
 					</a>
 					<ul class="sub-menu">
 						<li >
-							<a href="/culture/knowledge/recommend.do">知识推荐</a>
-						</li>
-						<li >
-							<a href="/culture/knowledge/expansion.do">知识扩充</a>
+							<a href="/culture/analyze/getIntegrity.do">属性完整度</a>
 						</li>
 					</ul>
 				</li>
-				 -->
 				<c:if test="${sessionScope.permission == 1}">
 					<li class="">
 						<a href="javascript:;">

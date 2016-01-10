@@ -67,6 +67,12 @@ http://www.springframework.org/schema/context/spring-context-2.5.xsd">
 			<ref bean="dataSource" />
 		</property>
 	</bean>
+
+	<bean id="analyzeDao" class="com.culture.dao.impl.AnalyzeDaoImpl">
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+	</bean>
 	
 
 

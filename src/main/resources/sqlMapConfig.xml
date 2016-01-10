@@ -9,4 +9,5 @@
   <sqlMap  resource ="ORule.xml" />
   <sqlMap  resource ="User.xml" />
   <sqlMap  resource ="Instance.xml" />
+  <sqlMap  resource ="Analyze.xml" />
 </sqlMapConfig>
