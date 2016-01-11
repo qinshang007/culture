@@ -17,4 +17,18 @@
 		</dynamic>
 	</select>
 	
+	<!-- 根据朝代统计某个类别的文物数量 -->
+	<select id="getNumByDynasty" parameterClass="java.util.Map"
+		resultClass="Integer">
+		select count(*) from culture where creation_date=#creation_date#
+		<dynamic>
+			<isNotEmpty property="type"  prepend="and">
+				type=#type#
+			</isNotEmpty>
+			<isNotEmpty property="classification"  prepend="and">
+				classification=#classification#
+			</isNotEmpty>
+		</dynamic>
+	</select>
+	
 </sqlMap>  

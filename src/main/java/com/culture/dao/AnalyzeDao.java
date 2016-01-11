@@ -11,4 +11,10 @@ public interface AnalyzeDao {
 	 */
 	public int getIntegrity(Map map);
 	
+	/**
+	 * 统计某个朝代文物数量
+	 * @param map
+	 * @return
+	 */
+	public int getNumByDynasty(Map map);
 }

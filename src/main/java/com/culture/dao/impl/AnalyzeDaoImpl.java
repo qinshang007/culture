@@ -26,4 +26,19 @@ public class AnalyzeDaoImpl extends BaseDao implements AnalyzeDao{
 		return object;
 	}
 
+	/**
+	 * 统计某个朝代的文物数量
+	 */
+	@Override
+	public int getNumByDynasty(Map map) {
+		// TODO Auto-generated method stub
+		int object = 0;
+		try {
+			object =(Integer) getSqlMapClientTemplate().queryForObject("getNumByDynasty", map);
+		}catch (Exception e) {
+			logger.error("统计某个朝代的文物数量出错！" +  ",errMsg=" + e.getMessage());
+		}
+		return object;
+	}
+
 }

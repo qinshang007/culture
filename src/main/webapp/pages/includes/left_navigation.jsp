@@ -94,6 +94,9 @@
 						<li >
 							<a href="/culture/analyze/getIntegrity.do">属性完整度</a>
 						</li>
+						<li >
+							<a href="/culture/analyze/dynastyAnalyze.do">朝代分析</a>
+						</li>
 					</ul>
 				</li>
 				<c:if test="${sessionScope.permission == 1}">

@@ -10,5 +10,14 @@ public interface AnalyzeService {
 	 * @return
 	 */
 	public Map<String,Object> getIntegrity(String type,String classification);
+	
+	/**
+	 * 统计某个朝代下文物的数量
+	 * @param creation_date
+	 * @param type
+	 * @param classification
+	 * @return
+	 */
+	public Map<String,Object> getNumByDynasty(String creation_date,String type,String classification);
 
 }

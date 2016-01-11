@@ -15,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.culture.model.OClass;
 import com.culture.service.AnalyzeService;
+import com.culture.service.InstanceService;
 import com.culture.service.OClassService;
 
 @Controller
@@ -26,6 +27,8 @@ public class AnalyzeController extends BaseController{
 	
 	@Autowired
 	private OClassService ocService;
+	@Autowired
+	private InstanceService instService;
 	
 	private static final Logger logger = Logger.getLogger(AnalyzeController.class);
 	
@@ -58,5 +61,30 @@ public class AnalyzeController extends BaseController{
 			return null;
 		}
 	}
+	
+	/**
+	 * 根据朝代统计某种类别的文物数量
+	 * @param request
+	 * @param response
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping("/dynastyAnalyze.do")
+	public ModelAndView dynastyAnalyze(HttpServletRequest request, HttpServletResponse response) throws Exception{
+		try{
+			String creation_date = request.getParameter("creation_date");
+			Map<String,Object> map = analyzeService.getNumByDynasty(creation_date, null, null);
+			//获取创作朝代列表
+			List<OClass> creationDateList = instService.getCreationDateList();
+			map.put("creationDateList", creationDateList);
+			map.put("creation_date", creation_date);
+			return new ModelAndView("analyze/dynastyAnalyze").addAllObjects(map);
+		}catch (RuntimeException e) {
+			logger.error("根据朝代统计某种类别的文物数量！" +  ",errMsg=" + e.getMessage());
+			outputJsonResponse(response, false, e.getMessage());
+			return null;
+		}
+	}
+
 
 }

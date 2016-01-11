@@ -105,17 +105,17 @@ public class ORuleServiceImpl extends BaseService implements ORuleService{
 	public boolean delRule(int rid) {
 		// TODO Auto-generated method stub
 		boolean flag = true;
-		ORule rule = getRuleById(Integer.valueOf(rid));
-		String fileName = modelFactory.getRuleFile();
-		String content = rule.getRule();
+//		ORule rule = getRuleById(Integer.valueOf(rid));
+//		String fileName = modelFactory.getRuleFile();
+//		String content = rule.getRule();
 		//从规则文件中删除规则
-		try {
-			FileUtils.deleteRow(fileName, content);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			return false;
-		}
+//		try {
+//			FileUtils.deleteRow(fileName, content);
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//			return false;
+//		}
 		//从数据库中删除
 		flag =  getORuleDao().delRule(rid);
 		return flag;
