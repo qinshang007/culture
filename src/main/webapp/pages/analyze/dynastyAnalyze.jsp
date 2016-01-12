@@ -22,6 +22,7 @@
 	<link rel="stylesheet" type="text/css" href="/culture/media/css/select2_metro.css" />
 	<link rel="stylesheet" href="/culture/media/css/DT_bootstrap.css" />
 	<link rel="stylesheet" href="/culture/media/css/search.css"  type="text/css"/>
+	<link rel="stylesheet" href="/culture/media/css/jquery.jqplot.min.css"  type="text/css"/>
 	<!-- END PAGE LEVEL STYLES -->
 	<link rel="shortcut icon" href="/culture/media/image/favicon.ico" />	
 	
@@ -75,7 +76,7 @@
 							</div>
 							<div class="portlet-body form">
 								<!-- BEGIN FORM-->
-								<form id="classForm" action="/culture/analyze/getIntegrity.do" class="horizontal-form" method="post" enctype="multipart/form-data">
+								<form id="classForm" action="/culture/analyze/dynastyAnalyze.do" class="horizontal-form" method="post" enctype="multipart/form-data">
 									<div class="row-fluid">
 										<div class="span12">
 											<div class="control-group">
@@ -104,7 +105,7 @@
 					<div class="span12">
 						<div class="portlet box yellow">
 							<div class="portlet-title">
-								<div class="caption"><i class="icon-reorder"></i>Stack Chart Controls</div>
+								<div class="caption"><i class="icon-reorder"></i>统计结果</div>
 								<div class="tools">
 									<a href="javascript:;" class="collapse"></a>
 									<a href="#portlet-config" data-toggle="modal" class="config"></a>
@@ -113,11 +114,12 @@
 								</div>
 							</div>
 							<div class="portlet-body">
-								<div id="chart_5" style="height:350px;"></div>
-								<div class="btn-toolbar">
-									<div class="btn-group stackControls">
-										<input type="button" class="btn blue" value="With stacking" />
-										<input type="button" class="btn red" value="Without stacking" />
+								<div class="row-fluid">
+									<div class="span6">
+										<div id="chart1" style="height:350px;"></div>
+									</div>
+									<div class="span6">
+										 <div id="pie1" style="height:350px;"></div>
 									</div>
 								</div>
 							</div>
@@ -161,39 +163,74 @@
 	<script type="text/javascript" src="/culture/media/js/jquery.flot.pie.js"></script>
 	<script type="text/javascript" src="/culture/media/js/jquery.flot.stack.js"></script>
 	<script type="text/javascript" src="/culture/media/js/jquery.flot.crosshair.js"></script>
-	
+	<script type="text/javascript" src="/culture/media/js/jquery.jqplot.min.js"></script>
+	<script type="text/javascript" src="/culture/media/js/jqplot.barRenderer.min.js"></script>
+	<script type="text/javascript" src="/culture/media/js/jqplot.pieRenderer.min.js"></script>
+	<script type="text/javascript" src="/culture/media/js/jqplot.categoryAxisRenderer.min.js"></script>
+	<script type="text/javascript" src="/culture/media/js/jqplot.pointLabels.min.js"></script>
 	<!-- END PAGE LEVEL PLUGINS -->
 	<!-- BEGIN PAGE LEVEL SCRIPTS -->
 	<script src="/culture/media/js/app.js"></script>
-	<script src="/culture/media/js/charts.js"></script> 
 	<!-- END PAGE LEVEL SCRIPTS -->
+	<script class="code" type="text/javascript">
+		$(document).ready(function(){
+	        $.jqplot.config.enablePlugins = true;
+	        var s1 = [parseInt('${qiwu}'), parseInt('${zhiwu}'), parseInt('${jianzhu}'), parseInt('${bihua}')];
+	        var ticks = ['器物', '织物', '建筑', '壁画'];
+	        
+	        plot1 = $.jqplot('chart1', [s1], {
+	            // Only animate if we're not using excanvas (not in IE 7 or IE 8)..
+	            animate: !$.jqplot.use_excanvas,
+	            seriesDefaults:{
+	                renderer:$.jqplot.BarRenderer,
+	                pointLabels: { show: true }
+	            },
+	            axes: {
+	                xaxis: {
+	                    renderer: $.jqplot.CategoryAxisRenderer,
+	                    ticks: ticks
+	                }
+	            },
+	            highlighter: { show: false }
+	        });
+	    
+	        $('#chart1').bind('jqplotDataClick', 
+	            function (ev, seriesIndex, pointIndex, data) {
+	                $('#info1').html('series: '+seriesIndex+', point: '+pointIndex+', data: '+data);
+	            }
+	        );
+	    });
+	</script>
+
+	<script class="code" type="text/javascript">
+		$(document).ready(function(){
+		    var plot1 = $.jqplot('pie1', [[['器物',parseInt('${qiwu}')],['织物',parseInt('${zhiwu}')],['建筑',parseInt('${jianzhu}')],['壁画',parseInt('${bihua}')]]], {
+		        gridPadding: {top:0, bottom:38, left:0, right:0},
+		        seriesDefaults:{
+		            renderer:$.jqplot.PieRenderer, 
+		            trendline:{ show:false }, 
+		            rendererOptions: { padding: 8, showDataLabels: true }
+		        },
+		        legend:{
+		            show:true, 
+		            placement: 'outside', 
+		            rendererOptions: {
+		                numberRows: 1
+		            }, 
+		            location:'s',
+		            marginTop: '15px'
+		        }       
+		    });
+		});
+	</script>
+
 	<script>
 		jQuery(document).ready(function() {       
 		   // initiate layout and plugins
 		   App.init();
 		   $("#creation_date option[value='${creation_date}']").attr("selected",true);
-		   Charts.init();
-		   Charts.initCharts();
-		   Charts.initPieCharts();
 		});
 		
-	  	function deleteInstance(culId,title){
-            if (!confirm("确信要删除吗？")) return;
-            var url="/culture/instance/del.do";
-            $.post(url,{culId:culId,title:title},function(data){
-            	postDelInstance(data);
-            });
-        }
-
-        function postDelInstance(transport){
-            var jresp = new JsonRespUtils(transport);
-            if (jresp.isSuccessfully()){
-         		location.reload();
-            }else{
-                alert(jresp.getMessage());
-            }
-        }
-        
 	</script>
 	<script type="text/javascript">  var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-37564768-1']);  _gaq.push(['_setDomainName', 'keenthemes.com']);  _gaq.push(['_setAllowLinker', true]);  _gaq.push(['_trackPageview']);  (function() {    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;    ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);  })();</script></body>
 	<!-- END BODY -->

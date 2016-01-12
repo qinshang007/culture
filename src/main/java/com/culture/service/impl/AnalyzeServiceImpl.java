@@ -15,6 +15,8 @@ public class AnalyzeServiceImpl extends BaseService implements AnalyzeService{
 
 	String[] types = new String[]{"器物","织物","建筑","壁画"};
 	
+	String[] typesE = new String[]{"qiwu","zhiwu","jianzhu","bihua"};
+	
 	DecimalFormat df = new DecimalFormat("0.00");//格式化小数   
 	
 	/**
@@ -50,10 +52,8 @@ public class AnalyzeServiceImpl extends BaseService implements AnalyzeService{
 		Map<String,Object> resMap = new HashMap<String,Object>();
 		for(int i=0;i<types.length;i++){
 			map.put("type", types[i]);
-			int count = getAnalyzeDao().getNumByDynasty(resMap);
-			int percent = (int)(((base-count)/(float)base)*100);
-			resMap.put(types[i]+"per", percent);
-			resMap.put(types[i], count);
+			int count = getAnalyzeDao().getNumByDynasty(map);
+			resMap.put(typesE[i], count);
 		}
 		return resMap;
 	}
