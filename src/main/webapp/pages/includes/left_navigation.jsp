@@ -99,6 +99,21 @@
 						</li>
 					</ul>
 				</li>
+				<li class="">
+					<a href="javascript:;">
+					<i class="icon-globe"></i> 
+					<span class="title">知识工具</span>
+					<span class="arrow "></span>
+					</a>
+					<ul class="sub-menu">
+						<li >
+							<a href="/culture/utils/obtainUtil.do">知识获取工具</a>
+						</li>
+						<li >
+							<a href="/culture/utils/analyze.do">知识分析工具</a>
+						</li>
+					</ul>
+				</li>
 				<c:if test="${sessionScope.permission == 1}">
 					<li class="">
 						<a href="javascript:;">
