@@ -56,9 +56,6 @@
 							<a href="/culture/rule/addRule.do?type=2">添加二元规则</a>
 						</li>
 						<li >
-							<a href="/culture/rule/genRule.do" target="_blank">半自动规则生成</a>
-						</li>
-						<li >
 							<a href="/culture/rule/ruleList.do">规则列表</a>
 						</li>
 					</ul>
@@ -96,6 +93,9 @@
 						</li>
 						<li >
 							<a href="/culture/analyze/dynastyAnalyze.do">朝代分析</a>
+						</li>
+						<li >
+							<a href="/culture/rule/genRule.do">关联规则挖掘</a>
 						</li>
 					</ul>
 				</li>

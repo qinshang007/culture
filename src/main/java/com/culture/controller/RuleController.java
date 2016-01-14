@@ -3,6 +3,7 @@ package com.culture.controller;
 import java.io.PrintWriter;
 import java.sql.Timestamp;
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -18,6 +19,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.culture.model.AsoRule;
 import com.culture.model.OProperty;
 import com.culture.model.ORule;
 import com.culture.service.OPropertyService;
@@ -147,8 +149,9 @@ public class RuleController extends BaseController{
 	 * @throws Exception
 	 */
 	@RequestMapping("/genRule.do")
-	public void genRule(HttpServletRequest request, HttpServletResponse response) throws Exception{
+	public ModelAndView genRule(HttpServletRequest request, HttpServletResponse response) throws Exception{
 		try{
+			List<AsoRule> arList = new ArrayList<AsoRule>();
 			Map<String,Integer> result = orService.genRules();
 	        DecimalFormat    df   = new DecimalFormat("######0.00");   
 	        Iterator iter = result.entrySet().iterator();
@@ -163,19 +166,20 @@ public class RuleController extends BaseController{
 	        		int startValue = result.get(start);
 	        		double confidence = (double)val/startValue;
 	        		confidence *= 100;
-	        		str = str + "{"+keys[0]+"}-->{"+keys[1]+"},"+df.format(confidence)+"%"+"</br>";
+	        		str = "{"+keys[0]+"}-->{"+keys[1]+"}";
+	        		AsoRule ar = new AsoRule();
+	        		ar.setCondition(keys[0]);
+	        		ar.setConclusion(keys[1]);
+	        		ar.setRule(str);
+	        		ar.setConfidence(df.format(confidence)+"%");
+	        		arList.add(ar);
 	        	}
 	        }
-//	        System.out.println(str);
-	        response.setCharacterEncoding("UTF-8");
-			response.setContentType("text/html");
-	        PrintWriter out = response.getWriter();
-			out.write(str);
-			out.flush();
-			out.close();
+	        return new ModelAndView("analyze/asoRuleList").addObject("arList", arList);
 		}catch (Exception e) {
 			logger.error("生成频繁项集出错：" +  ",errMsg=" + e.getMessage());
 			outputJsonResponse(response, false, e.getMessage());
+			return null;
 		}
 	}
 

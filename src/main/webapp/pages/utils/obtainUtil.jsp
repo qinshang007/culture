@@ -20,6 +20,7 @@
 	<!-- END GLOBAL MANDATORY STYLES -->
 	<!-- BEGIN PAGE LEVEL STYLES -->
 	<link rel="stylesheet" type="text/css" href="/culture/media/css/select2_metro.css" />
+	<link rel="stylesheet" type="text/css" href="/culture/media/css/bootstrap-fileupload.css" />
 	<link rel="stylesheet" href="/culture/media/css/DT_bootstrap.css" />
 	<link rel="stylesheet" href="/culture/media/css/search.css"  type="text/css"/>
 	<link rel="stylesheet" href="/culture/media/css/jquery.easy-pie-chart.css"  type="text/css" media="screen"/>
@@ -72,17 +73,17 @@
 						<!-- BEGIN SAMPLE FORM PORTLET-->   
 						<div class="portlet box blue">
 							<div class="portlet-title">
-								<div class="caption"><i class="icon-reorder"></i>统计分析</div>
+								<div class="caption"><i class="icon-reorder"></i>文件上传</div>
 							</div>
 							<div class="portlet-body form">
 								<!-- BEGIN FORM-->
 								<form id="classForm" action="/culture/analyze/getIntegrity.do" class="horizontal-form" method="post" enctype="multipart/form-data">
 									<div class="row-fluid">
-										<div class="span6">
+										<div class="span12">
 											<div class="control-group">
 												<label class="control-label">文物类别</label>
 												<div class="controls">
-													<select id="type" class="span12 chosen" data-placeholder="请选择类别" tabindex="1" name="type" onchange="getData()">
+													<select id="type" class="span12 chosen" data-placeholder="请选择类别" tabindex="1" name="type">
 														<option value=""></option>
 														<c:forEach  items="${oclist}"  var="item"  varStatus="status">
 															<option value="${item.cname}">${item.cname}</option>
@@ -91,43 +92,33 @@
 												</div>
 											</div>
 										</div>
-										<div class="span6">
-											<div class="control-group">
-												<label class="control-label">详细分类</label>
-												<div class="controls">
-													<select id="classification" class="span12 chosen classification-select" data-placeholder="请选择类别" tabindex="1" name="classification">
-														<option value=""></option>
-														<c:forEach  items="${childlist}"  var="item"  varStatus="status">
-															<option value="${item.cname}">${item.cname}</option>
-														</c:forEach>
-													</select>
-												</div>
-											</div>
-										</div>
-										<div class="span6">
+									</div>
+									<div class="row-fluid">
+										<div class="span12">
 											<div class="control-group">
 												<label class="control-label">数据文件</label>
 												<div class="controls">
-												<div class="fileupload fileupload-new" data-provides="fileupload">
-													<div class="input-append">
-														<div class="uneditable-input">
-															<i class="icon-file fileupload-exists"></i> 
-															<span class="fileupload-preview"></span>
+													<div class="fileupload fileupload-new" data-provides="fileupload">
+														<div class="input-append">
+															<div class="uneditable-input">
+																<i class="icon-file fileupload-exists"></i> 
+																<span class="fileupload-preview"></span>
+															</div>
+															<span class="btn btn-file">
+															<span class="fileupload-new">选择文件</span>
+															<span class="fileupload-exists">更改</span>
+															<input type="file" class="default" />
+															</span>
+															<a href="#" class="btn fileupload-exists" data-dismiss="fileupload">删除</a>
 														</div>
-														<span class="btn btn-file">
-														<span class="fileupload-new">选择文件</span>
-														<span class="fileupload-exists">更改</span>
-														<input type="file" class="default" />
-														</span>
-														<a href="#" class="btn fileupload-exists" data-dismiss="fileupload">删除</a>
 													</div>
 												</div>
 											</div>
 										</div>
 									</div>
-									<div class="form-actions">
-										<button type="submit" class="btn blue">查看</button>
-									</div>
+								<div class="form-actions">
+									<button type="submit" class="btn blue">提交</button>
+								</div>
 								</form>
 							</div>
 						</div>
@@ -193,19 +184,16 @@
 	<!-- BEGIN PAGE LEVEL PLUGINS -->
 	<script type="text/javascript" src="/culture/media/js/select2.min.js"></script>
 	<script type="text/javascript" src="/culture/media/js/jsonRespUtils.js"></script>
-	<script type="text/javascript" src="/culture/media/js/jquery.easy-pie-chart.js" ></script>
+	<script type="text/javascript" src="/culture/media/js/bootstrap-fileupload.js"></script>
 	<!-- END PAGE LEVEL PLUGINS -->
 	<!-- BEGIN PAGE LEVEL SCRIPTS -->
 	<script src="/culture/media/js/app.js"></script>
-	<script src="/culture/media/js/index.js" type="text/javascript"></script>     
 	<!-- END PAGE LEVEL SCRIPTS -->
 	<script>
 		jQuery(document).ready(function() {       
 		   // initiate layout and plugins
 		   App.init();
 		   $("#type option[value='${type}']").attr("selected",true);
-		   $("#classification option[value='${classification}']").attr("selected",true);
-		   Index.initMiniCharts();
 		});
 		
 	  	function deleteInstance(culId,title){
@@ -224,35 +212,6 @@
                 alert(jresp.getMessage());
             }
         }
-        
-	    function getData()  
-	    {  
-	        var type = $("#type").val();  
-	        if(type == '建筑')
-	        	type = '建筑物';
-	        $.ajax({          
-	             url:"/culture/instance/getData.do",  
-	             data:{type : type},  
-	             type : "post",    
-	             cache : false,    
-	             dataType : "json",   
-	             error:function(){  
-	                alert("error occured!!!");  
-	             },  
-	             success:function(data){             
-	                var classification = document.getElementById('classification');  
-	                //清空数组  
-	                classification.length = 0;  
-	                for(var i=0;i<data.length;i++){  
-	                     var xValue=data[i].cname;    
-	                     var xText=data[i].cname;    
-	                     var option=new Option(xText,xValue);    
-	                     classification.add(option);   
-	                }  
-	                $(".classification-select").trigger("liszt:updated");
-	           }  
-	       });  
-	    }  
         
 	</script>
 	<script type="text/javascript">  var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-37564768-1']);  _gaq.push(['_setDomainName', 'keenthemes.com']);  _gaq.push(['_setAllowLinker', true]);  _gaq.push(['_trackPageview']);  (function() {    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;    ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);  })();</script></body>

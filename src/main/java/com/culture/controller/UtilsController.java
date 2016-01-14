@@ -40,7 +40,7 @@ public class UtilsController extends BaseController{
 	 * @return
 	 * @throws Exception
 	 */
-	@RequestMapping("/obtains.do")
+	@RequestMapping("/obtainUtil.do")
 	public ModelAndView obtains(HttpServletRequest request, HttpServletResponse response) throws Exception{
 		try{
 			String type = request.getParameter("type");
@@ -51,13 +51,8 @@ public class UtilsController extends BaseController{
 			List<CulturalBean> instList = cbService.getRecommendList(type, classification, null);
 			map.put("oclist", oclist);
 			map.put("type", type);
-			map.put("classification", classification);
 			map.put("instList", instList);
-			if(StringUtils.isNotEmpty(type)){	//如果类别不为空
-				List<OClass> childlist = ocService.getChildClass(type,1);
-				map.put("childlist", childlist);
-			}
-			return new ModelAndView("utils/obtains").addAllObjects(map);
+			return new ModelAndView("utils/obtainUtil").addAllObjects(map);
 		}catch (RuntimeException e) {
 			logger.error("知识获取工具！" +  ",errMsg=" + e.getMessage());
 			outputJsonResponse(response, false, e.getMessage());
