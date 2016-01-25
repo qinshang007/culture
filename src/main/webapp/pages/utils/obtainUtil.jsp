@@ -77,7 +77,7 @@
 							</div>
 							<div class="portlet-body form">
 								<!-- BEGIN FORM-->
-								<form id="classForm" action="/culture/analyze/getIntegrity.do" class="horizontal-form" method="post" enctype="multipart/form-data">
+								<form id="classForm" action="/culture/utils/obtainUtil.do" class="horizontal-form" method="post" enctype="multipart/form-data">
 									<div class="row-fluid">
 										<div class="span12">
 											<div class="control-group">
@@ -98,6 +98,7 @@
 											<div class="control-group">
 												<label class="control-label">数据文件</label>
 												<div class="controls">
+												<!-- 
 													<div class="fileupload fileupload-new" data-provides="fileupload">
 														<div class="input-append">
 															<div class="uneditable-input">
@@ -112,6 +113,8 @@
 															<a href="#" class="btn fileupload-exists" data-dismiss="fileupload">删除</a>
 														</div>
 													</div>
+													 -->
+													 <input type="file" class="default" />
 												</div>
 											</div>
 										</div>
@@ -138,7 +141,7 @@
 									</tr>
 								</thead>
 								<tbody>
-									<c:forEach  items="${instList}"  var="item"  varStatus="status">
+									<c:forEach  items="${cbList}"  var="item"  varStatus="status">
 										<tr class="">
 											<td>${item.title}</td>
 											<td><a  href="/culture/instance/viewInstance.do?culId=${item.identifier}" target="_blank">查看</a></td>

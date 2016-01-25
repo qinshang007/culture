@@ -12,4 +12,6 @@ public class CommonConst {
 	
 	public static final String VIDEO_FILE_PATH = "/video";//视频附件路径
 	
+	public static final String DATA_FILE_PATH = "/file";//文物数据路劲
+	
 }

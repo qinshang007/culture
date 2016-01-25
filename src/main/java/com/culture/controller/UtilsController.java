@@ -16,9 +16,12 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.culture.model.CulturalBean;
 import com.culture.model.OClass;
+import com.culture.model.UploadFile;
 import com.culture.service.CulturalService;
 import com.culture.service.InstanceService;
 import com.culture.service.OClassService;
+import com.culture.util.CommonConst;
+import com.system.import_data.ReadExcel;
 
 @Controller
 @RequestMapping(value="/utils")
@@ -43,15 +46,21 @@ public class UtilsController extends BaseController{
 	@RequestMapping("/obtainUtil.do")
 	public ModelAndView obtains(HttpServletRequest request, HttpServletResponse response) throws Exception{
 		try{
+			//获取主图
+			String path = CommonConst.DATA_FILE_PATH;
+			String xmlPath = "";
+			List<UploadFile> list = upload(request,response, path);
+			if(list.size()!=0){
+				xmlPath = CommonConst.UPLOAD_ROOT_PATH+list.get(0).getFileSrc();
+			}
+			List<CulturalBean> cblist = new ReadExcel().readExcel(xmlPath);
 			String type = request.getParameter("type");
-			String classification = request.getParameter("classification");
 			Map<String,Object> map = new HashMap<String,Object>();
 			//获取文物概念的子概念
 			List<OClass> oclist = ocService.getChildClass("文物",1);
-			List<CulturalBean> instList = cbService.getRecommendList(type, classification, null);
 			map.put("oclist", oclist);
 			map.put("type", type);
-			map.put("instList", instList);
+			map.put("cblist", cblist);
 			return new ModelAndView("utils/obtainUtil").addAllObjects(map);
 		}catch (RuntimeException e) {
 			logger.error("知识获取工具！" +  ",errMsg=" + e.getMessage());
