@@ -158,5 +158,16 @@ public class CulturalDaoImpl extends BaseDao implements CulturalDao{
 		return flag;
 	}
 
+	public boolean addCulturalList(List<CulturalBean> cblist) {
+		// TODO Auto-generated method stub
+		try {
+			getSqlMapClientTemplate().insert("addCulturalList",cblist);
+		}catch (Exception e) {
+			logger.error("批量添加文物出错！" +  ",errMsg=" + e.getMessage());
+			return false;
+		}
+		return true;
+	}
+
 
 }

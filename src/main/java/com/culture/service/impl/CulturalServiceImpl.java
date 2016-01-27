@@ -1,5 +1,6 @@
 package com.culture.service.impl;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -12,6 +13,7 @@ import com.culture.model.CulturalBean;
 import com.culture.model.UserBean;
 import com.culture.service.CulturalService;
 import com.culture.service.UserService;
+import com.system.import_data.ReadExcel;
 
 @Service
 public class CulturalServiceImpl extends BaseService implements CulturalService{
@@ -107,6 +109,24 @@ public class CulturalServiceImpl extends BaseService implements CulturalService{
 	public boolean updateSernum(String culId) {
 		// TODO Auto-generated method stub
 		return getCulturalDao().updateSernum(culId);
+	}
+
+	/**
+	 * 批量导入文物数据
+	 */
+	@Override
+	public List<CulturalBean> addCultualList(String xmlPath, String type, String username) {
+		// TODO Auto-generated method stub
+		List<CulturalBean> cblist = null;
+		try {
+			cblist = new ReadExcel().readExcel(xmlPath,type,username);
+			if(cblist != null)
+				getCulturalDao().addCulturalList(cblist);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return cblist;
 	}
 
 

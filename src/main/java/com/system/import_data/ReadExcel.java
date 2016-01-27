@@ -35,7 +35,7 @@ public class ReadExcel {
      * @return
      * @throws IOException
      */
-    public List<CulturalBean> readExcel(String path) throws IOException {
+    public List<CulturalBean> readExcel(String path,String type,String userName) throws IOException {
         if (path == null || Common.EMPTY.equals(path)) {
             return null;
         } else {
@@ -44,7 +44,7 @@ public class ReadExcel {
                 if (Common.OFFICE_EXCEL_2003_POSTFIX.equals(postfix)) {
                     return readXls(path);
                 } else if (Common.OFFICE_EXCEL_2010_POSTFIX.equals(postfix)) {
-                    return readXlsx(path);
+                    return readXlsx(path,type,userName);
                 }
             } else {
                 System.out.println(path + Common.NOT_EXCEL_FILE);
@@ -59,7 +59,7 @@ public class ReadExcel {
      * @return
      * @throws IOException
      */
-    public List<CulturalBean> readXlsx(String path) throws IOException {
+    public List<CulturalBean> readXlsx(String path,String type,String userName) throws IOException {
         System.out.println(Common.PROCESSING + path);
         InputStream is = new FileInputStream(path);
         XSSFWorkbook xssfWorkbook = new XSSFWorkbook(is);
@@ -108,7 +108,7 @@ public class ReadExcel {
                     XSSFCell rights = xssfRow.getCell(29);
                     cultural.setId(Integer.valueOf(getValue(id)));
                     cultural.setMainpic(Common.PICPRE+getValue(mainpic));
-                    cultural.setType("器物");
+                    cultural.setType(type);
                     cultural.setClassification(getValue(classification));
                     cultural.setTitle(getValue(title));
                     cultural.setUsed_title(getValue(used_title));
@@ -137,7 +137,7 @@ public class ReadExcel {
                     cultural.setIdentifier(CodeGenerator.createUUID());
                     cultural.setSource(getValue(source));
                     cultural.setRights(getValue(rights));
-                    cultural.setManager("yibiaosuo");
+                    cultural.setManager(userName);
                     list.add(cultural);
                 }
             }

@@ -53,8 +53,9 @@ public class UtilsController extends BaseController{
 			if(list.size()!=0){
 				xmlPath = CommonConst.UPLOAD_ROOT_PATH+list.get(0).getFileSrc();
 			}
-			List<CulturalBean> cblist = new ReadExcel().readExcel(xmlPath);
 			String type = request.getParameter("type");
+			String username = getUserName(request,response);
+			List<CulturalBean> cblist = cbService.addCultualList(xmlPath, type, username);
 			Map<String,Object> map = new HashMap<String,Object>();
 			//获取文物概念的子概念
 			List<OClass> oclist = ocService.getChildClass("文物",1);

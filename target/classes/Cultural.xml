@@ -78,6 +78,18 @@
   		 	 SELECT @@IDENTITY as id  
  		 </selectKey> 
 	</insert>
+	
+	<!-- 批量文物  -->
+	<insert id="addCulturalList" parameterClass="java.util.List">  
+	    <![CDATA[ 
+	        insert into culture (classification,title,used_title,c_level,creation_date,creation_time,place_of_origin,creator,measurement,excavation_date,excavation_place,current_location,exhibition_history,location,shape,pattern,color,structure,decoration,scene,c_usage,symbolic_meaning,aesthetic_desc,social_history_info,material,technique,history_info,folklore,relation,identifier,source,rights,isCheck,manager,type,crtime,mainpic,keywords) values 
+	    ]]>  
+	    <iterate conjunction=",">  
+	        <![CDATA[ 
+	            (#cblist[].classification#, #cblist[].title#, #cblist[].used_title#,#cblist[].c_level#,#cblist[].creation_date#,#cblist[].creation_time#,#cblist[].place_of_origin#,#cblist[].creator#,#cblist[].measurement#,#cblist[].excavation_date#,#cblist[].excavation_place#,#cblist[].current_location#,#cblist[].exhibition_history#,#cblist[].location#,#cblist[].shape#,#cblist[].pattern#,#cblist[].color#,#cblist[].structure#,#cblist[].decoration#,#cblist[].scene#,#cblist[].c_usage#,#cblist[].symbolic_meaning#,#cblist[].aesthetic_desc#,#cblist[].social_history_info#,#cblist[].material#,#cblist[].technique#,#cblist[].history_info#,#cblist[].folklore#,#cblist[].relation#,#cblist[].identifier#,#cblist[].source#,#cblist[].rights#,#cblist[].isCheck#,#cblist[].manager#,#cblist[].type#,#cblist[].crtime#,#cblist[].mainpic#,#cblist[].keywords#) 
+	        ]]>  
+	    </iterate>  
+	</insert>  
 
 	<!--删除文物 -->
 	<update id="delCultural" parameterClass="String">

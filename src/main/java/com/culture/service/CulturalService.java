@@ -25,6 +25,8 @@ public interface CulturalService {
 	public List<CulturalBean> getRecommendList(String type,String classification,String culId);
 	//更新文物点击量
 	public boolean updateSernum(String culId);
+	//批量导入文物
+	public List<CulturalBean> addCultualList(String xmlPath,String type,String username);
 
 	
 }

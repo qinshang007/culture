@@ -27,6 +27,8 @@ public interface CulturalDao {
 	public List<CulturalBean> getRecommendList(Map map);
 	//更新文物点击量
 	public boolean updateSernum(String culId);
+	//批量添加文物
+	public boolean addCulturalList(List<CulturalBean> cblist);
 
 	
 }

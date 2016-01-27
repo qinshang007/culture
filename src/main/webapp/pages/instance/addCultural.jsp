@@ -333,7 +333,7 @@
 									</div>
 								</div>
 								<div class="form-actions">
-									<button type="submit" class="btn blue">下一步</button>
+									<button type="submit" class="btn blue">提交</button>
 									<button type="reset" class="btn">重置</button>                            
 								</div>
 							</form>

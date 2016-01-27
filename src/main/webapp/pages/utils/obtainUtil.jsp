@@ -98,7 +98,6 @@
 											<div class="control-group">
 												<label class="control-label">数据文件</label>
 												<div class="controls">
-												<!-- 
 													<div class="fileupload fileupload-new" data-provides="fileupload">
 														<div class="input-append">
 															<div class="uneditable-input">
@@ -108,13 +107,11 @@
 															<span class="btn btn-file">
 															<span class="fileupload-new">选择文件</span>
 															<span class="fileupload-exists">更改</span>
-															<input type="file" class="default" />
+															<input type="file" name="datafile" class="default" />
 															</span>
 															<a href="#" class="btn fileupload-exists" data-dismiss="fileupload">删除</a>
 														</div>
 													</div>
-													 -->
-													 <input type="file" class="default" />
 												</div>
 											</div>
 										</div>
@@ -138,14 +135,16 @@
 										<th>标题</th>
 										<th>查看</th>
 										<th>修改</th>
+										<th>删除</th>
 									</tr>
 								</thead>
 								<tbody>
-									<c:forEach  items="${cbList}"  var="item"  varStatus="status">
+									<c:forEach  items="${cblist}"  var="item"  varStatus="status">
 										<tr class="">
 											<td>${item.title}</td>
-											<td><a  href="/culture/instance/viewInstance.do?culId=${item.identifier}" target="_blank">查看</a></td>
-											<td><a  href="/culture/instance/editInstance.do?culId=${item.identifier}" target="_blank">修改</a></td>
+											<td><a  href="/culture/instance/viewCultural.do?culId=${item.identifier}" target="_blank">查看</a></td>
+											<td><a  href="/culture/instance/editCultural.do?culId=${item.identifier}" target="_blank">修改</a></td>
+											<td><a  href="javascript:deleteInstance('${item.identifier}','${item.title}')">删除</a></td>
 										</tr>
 									</c:forEach>
 								</tbody>

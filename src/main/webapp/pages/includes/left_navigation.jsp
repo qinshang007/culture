@@ -73,9 +73,11 @@
 						<li >
 							<a href="/culture/instance/culturalList.do?pageStart=1">文物实例列表</a>
 						</li>
+						<!-- 
 						<li >
 							<a href="/culture/instance/instanceList.do?pageStart=1">本体实例列表</a>
 						</li>
+						-->
 						<li >
 							<a href="/culture/instance/search.do">分类检索</a>
 						</li>
@@ -102,15 +104,12 @@
 				<li class="">
 					<a href="javascript:;">
 					<i class="icon-globe"></i> 
-					<span class="title">知识工具</span>
+					<span class="title">知识获取与分析工具</span>
 					<span class="arrow "></span>
 					</a>
 					<ul class="sub-menu">
 						<li >
-							<a href="/culture/utils/obtainUtil.do">知识获取工具</a>
-						</li>
-						<li >
-							<a href="/culture/utils/analyze.do">知识分析工具</a>
+							<a href="/culture/utils/obtainUtil.do">知识获取与分析工具</a>
 						</li>
 					</ul>
 				</li>
