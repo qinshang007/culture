@@ -10,9 +10,22 @@
 	</select>
 
 	<!-- 根据规则列表 -->
-	<select id="getORuleList" parameterClass="orule"
+	<select id="getORuleList" parameterClass="java.util.Map"
 		resultClass="orule">
 		select * from orule where del = #del# order by time desc
+		<dynamic>
+		   <isNotNull property="_start"> 
+                <isNotNull property="_size"> 
+                       limit #_start#, #_size# 
+                </isNotNull> 
+           </isNotNull> 
+		</dynamic>
+	</select>
+	
+	<!-- 返回规则数量 -->
+	<select id="getRuleCount" 
+		resultClass="Integer">
+		select count(*) from orule where del = 0
 	</select>
 	
 	<!-- 添加规则 -->

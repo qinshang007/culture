@@ -94,10 +94,24 @@ public class ORuleServiceImpl extends BaseService implements ORuleService{
 	/**
 	 * 返回规则列表
 	 */
-	public List<ORule> getRuleList(ORule orule) {
+	public List<ORule> getRuleList(int del,int pageStart,int pageSize) {
 		// TODO Auto-generated method stub
-		return getORuleDao().getRuleList(orule);
+		Map map = new HashMap();
+		map.put("del", del);
+		map.put("_start", pageStart);
+		map.put("_size", pageSize);
+		return getORuleDao().getRuleList(map);
 	}
+	
+	/**
+	 * 返回规则数量
+	 */
+	@Override
+	public int getListCount() {
+		// TODO Auto-generated method stub
+		return getORuleDao().getListCount();
+	}
+
 
 	/**
 	 * 删除规则
@@ -155,5 +169,6 @@ public class ORuleServiceImpl extends BaseService implements ORuleService{
 			return null;
 		}
 	}
+
 	
 }

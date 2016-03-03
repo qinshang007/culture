@@ -44,7 +44,7 @@ http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
 		 <url-pattern>/*</url-pattern>
 	</filter-mapping>
 	
-	<!-- 登录拦截 
+	<!-- 登录拦截 -->
 	<filter>  
 	    <filter-name>SecurityServlet</filter-name>  
 	    <filter-class>com.culture.util.SecurityServlet</filter-class>  
@@ -57,7 +57,6 @@ http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
 	    <filter-name>SecurityServlet</filter-name>  
 	    <url-pattern>*.do</url-pattern>  
 	</filter-mapping> 
-	-->
 	
 	
 	<!-- 日志配置文件路径 -->

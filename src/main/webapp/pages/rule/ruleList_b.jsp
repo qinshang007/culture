@@ -21,7 +21,6 @@
 	<!-- BEGIN PAGE LEVEL STYLES -->
 	<link rel="stylesheet" type="text/css" href="/culture/media/css/select2_metro.css" />
 	<link rel="stylesheet" href="/culture/media/css/DT_bootstrap.css" />
-	<link rel="stylesheet" href="/culture/media/css/search.css"  type="text/css"/>
 	<!-- END PAGE LEVEL STYLES -->
 	<link rel="shortcut icon" href="/culture/media/image/favicon.ico" />	
 	
@@ -63,37 +62,40 @@
 								<a href="#">规则管理</a>
 								<span class="icon-angle-right"></span>
 							</li>
-							<li><a href="/culture/rule/ruleList.do?pageStart=1">规则列表</a></li>
+							<li><a href="/culture/rule/ruleList.do">规则列表</a></li>
 						</ul>
 					</div>
 				</div>
 				<div class="row-fluid">
-					<div id="tab_1_5" class="tab-pane">
-						<!-- BEGIN SAMPLE FORM PORTLET--> 
+					<div class="span12">
+						<!-- BEGIN SAMPLE FORM PORTLET-->   
+						<div class="portlet box blue">
+							<div class="portlet-title">
+								<div class="caption"><i class="icon-reorder"></i>规则列表</div>
+							</div>
 						<div class="portlet-body">
-							<table class="table table-striped table-hover">
+							<table class="table table-striped table-hover table-bordered" id="sample_editable_1">
 								<thead>
 									<tr>
 										<th>编号</th>
-										<th>名称</th>
+										<th>内容</th>
 										<th>删除</th>
 									</tr>
 								</thead>
 								<tbody>
-									<c:forEach  items="${orList}"  var="item"  varStatus="status">
-										<tr class="">
-											<td>${status.index+1 }</td>
-											<td>${item.rcontent}</td>
-											<td><a  href="javascript:deleteRule('${item.rid}')">删除</a></td>
-										</tr>
-									</c:forEach>
+								<c:forEach  items="${orList}"  var="item"  varStatus="status">
+									<tr class="">
+										<td>${status.index+1 }</td>
+										<td>${item.rcontent}</td>
+										<td><a  href="javascript:deleteRule('${item.rid}')">Delete</a></td>
+									</tr>
+								</c:forEach>
 								</tbody>
 							</table>
 						</div>
-						<div class="space5"></div>
-						<p id="dynamic_pager_demo2" class="pagination pagination-right"></p>
+						</div>
+						<!-- END EXTRAS PORTLET-->
 					</div>
-					<!-- END EXTRAS PORTLET-->
 				</div>
 			</div>
 		</div>
@@ -126,21 +128,20 @@
 	<!-- END CORE PLUGINS -->
 	<!-- BEGIN PAGE LEVEL PLUGINS -->
 	<script type="text/javascript" src="/culture/media/js/select2.min.js"></script>
+	<script type="text/javascript" src="/culture/media/js/jquery.dataTables.js"></script>
+	<script type="text/javascript" src="/culture/media/js/DT_bootstrap.js"></script>
 	<script type="text/javascript" src="/culture/media/js/jsonRespUtils.js"></script>
-	<script type="text/javascript" src="/culture/media/js/jquery.bootpag.min.js"></script>
+	<script type="text/javascript" src="/culture/media/js/validate.js"></script>
 	<!-- END PAGE LEVEL PLUGINS -->
 	<!-- BEGIN PAGE LEVEL SCRIPTS -->
 	<script src="/culture/media/js/app.js"></script>
-	<script src="/culture/media/js/ui-general.js"></script>  
+	<script src="/culture/media/js/table-editable.js"></script>    
 	<!-- END PAGE LEVEL SCRIPTS -->
 	<script>
 		jQuery(document).ready(function() {       
 		   // initiate layout and plugins
 		   App.init();
-		   var total = '${count}';
-		   var now = '${now}';
-		   var url = '${url}';
-		   UIGeneral.init(total,now,url);
+		   TableEditable.init();
 		});
 		
 	  	function deleteRule(id){

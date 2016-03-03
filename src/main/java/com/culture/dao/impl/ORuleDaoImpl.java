@@ -1,10 +1,10 @@
 package com.culture.dao.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import com.culture.dao.BaseDao;
 import com.culture.dao.ORuleDao;
-import com.culture.model.OClass;
 import com.culture.model.ORule;
 
 public class ORuleDaoImpl extends BaseDao implements ORuleDao{
@@ -64,17 +64,33 @@ public class ORuleDaoImpl extends BaseDao implements ORuleDao{
 	/**
 	 * 返回规则列表
 	 */
-	public List<ORule> getRuleList(ORule orule) {
+	public List<ORule> getRuleList(Map map) {
 		// TODO Auto-generated method stub
 		List<ORule> orlist = null;
 		try{
-			orlist = getSqlMapClientTemplate().queryForList("getORuleList",orule);
+			orlist = getSqlMapClientTemplate().queryForList("getORuleList",map);
 		}catch (Exception e) {
 			logger.error("获取规则列表出错！" +  ",errMsg=" + e.getMessage());
 		}
 		return orlist;
 
 	}
+	
+	/**
+	 * 返回规则数量
+	 */
+	@Override
+	public int getListCount() {
+		// TODO Auto-generated method stub
+		int object = 0;
+		try{
+			object = (Integer)getSqlMapClientTemplate().queryForObject("getRuleCount");
+		}catch (Exception e) {
+			logger.error("获取规则列表数量出错！" +  ",errMsg=" + e.getMessage());
+		}
+		return object;
+	}
+
 
 	/**
 	 * 删除规则

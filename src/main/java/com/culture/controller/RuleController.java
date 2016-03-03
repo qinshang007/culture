@@ -38,6 +38,7 @@ public class RuleController extends BaseController{
 	private final String CONTENT_IF = "如果文物A的";
 	private final String CONTENT_THEN = "那么文物A的";
 	private final String CONTENT_IS = "是";
+	private int pageSize = 5;
 	private static final Logger logger = Logger.getLogger(RuleController.class);
 	
 	/**
@@ -131,10 +132,18 @@ public class RuleController extends BaseController{
 	@RequestMapping("/ruleList.do")
 	public ModelAndView getRuleList(HttpServletRequest request, HttpServletResponse response) throws Exception{
 		try{
-			ORule orule = new ORule();
-			orule.setDel(0);
-			List<ORule> orList = orService.getRuleList(orule);
-			return new ModelAndView("rule/ruleList").addObject("orList", orList);
+			//获取页码
+			String pageStart = request.getParameter("pageStart");
+			int start = (Integer.parseInt(pageStart)-1)*pageSize;
+			int count = orService.getListCount();
+			String url = "/culture/rule/ruleList.do?pageStart=";
+			List<ORule> orList = orService.getRuleList(0,start,pageSize);
+			Map map = new HashMap();
+			map.put("orList", orList);
+			map.put("count", count);
+			map.put("now", pageStart);
+			map.put("url", url);
+			return new ModelAndView("rule/ruleList").addAllObjects(map);
 		}catch (RuntimeException e) {
 			logger.error("返回规则列表出错！" +  ",errMsg=" + e.getMessage());
 			outputJsonResponse(response, false, e.getMessage());

@@ -17,7 +17,10 @@ public interface ORuleService {
 	public boolean updateRule(ORule rule);
 	
 	/*返回规则列表*/
-	public List<ORule> getRuleList(ORule orule);
+	public List<ORule> getRuleList(int del,int pageStart,int pageSize);
+	
+	/*返回规则数量*/
+	public int getListCount();
 	
 	/*删除规则*/
 	public boolean delRule(int rid);

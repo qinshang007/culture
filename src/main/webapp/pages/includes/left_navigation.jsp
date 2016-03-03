@@ -56,7 +56,7 @@
 							<a href="/culture/rule/addRule.do?type=2">添加二元规则</a>
 						</li>
 						<li >
-							<a href="/culture/rule/ruleList.do">规则列表</a>
+							<a href="/culture/rule/ruleList.do?pageStart=1">规则列表</a>
 						</li>
 					</ul>
 				</li>
