@@ -18,7 +18,7 @@
 	<!-- 返回文物列表 -->
 	<select id="getCulturalList" parameterClass="java.util.Map"
 		resultClass="culturalBean">
-		select identifier,title,shape,mainpic,type,keywords,classification from culture 
+		select identifier,title,shape,mainpic,manager,type,keywords,classification from culture 
 		<dynamic prepend="WHERE">
 			<isEqual property="level" compareValue="0" prepend="and">
 				manager=#manager#

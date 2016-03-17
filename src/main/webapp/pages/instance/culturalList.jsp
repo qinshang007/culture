@@ -86,6 +86,7 @@
 									<tr>
 										<th>图片</th>
 										<th>标题</th>
+										<th>录入者</th>
 										<th>查看</th>
 										<th>修改</th>
 										<th>删除</th>
@@ -96,6 +97,7 @@
 										<tr class="">
 											<td><img src="/crelicBase/upload/${item.mainpic}" alt="" style="height:45px;width:45px" /></td>
 											<td>${item.title}</td>
+											<td>${item.manager}</td>
 											<td><a  href="/culture/instance/viewCultural.do?culId=${item.identifier}" target="_blank">查看</a></td>
 											<td><a  href="/culture/instance/editCultural.do?culId=${item.identifier}" target="_blank">修改</a></td>
 											<td><a  href="javascript:deleteInstance('${item.identifier}','${item.title}')">删除</a></td>
