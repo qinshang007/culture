@@ -8,6 +8,7 @@ import org.apache.log4j.Logger;
 import com.culture.dao.BaseDao;
 import com.culture.dao.CulturalDao;
 import com.culture.model.CulturalBean;
+import com.culture.model.TopSimilar;
 
 public class CulturalDaoImpl extends BaseDao implements CulturalDao{
 
@@ -167,6 +168,18 @@ public class CulturalDaoImpl extends BaseDao implements CulturalDao{
 			return false;
 		}
 		return true;
+	}
+
+	@Override
+	public TopSimilar getTopSimilar(String identifier) {
+		// TODO Auto-generated method stub
+		TopSimilar top = null;
+		try{
+			top = (TopSimilar)getSqlMapClientTemplate().queryForObject("getTopSimilar", identifier);
+		}catch (Exception e) {
+			logger.error("根据文物id获取最相似的十件文物出错！" +  ",errMsg=" + e.getMessage());
+		}
+		return top;
 	}
 
 

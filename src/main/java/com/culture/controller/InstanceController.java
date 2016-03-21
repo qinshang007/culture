@@ -594,7 +594,7 @@ public class InstanceController extends BaseController{
 			else
 				levelList = levelList1;
 			//获取推荐列表
-			List<CulturalBean> recommendList = clService.getRecommendList(type, classification, culId);
+			List<CulturalBean> recommendList = clService.getTopSimilar(culId);//getRecommendList(type, classification, culId);
 			Map map = new HashMap();
 			map.put("cb", cb);
 			map.put("type", type);

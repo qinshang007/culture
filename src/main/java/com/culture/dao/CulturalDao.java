@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.culture.model.CulturalBean;
+import com.culture.model.TopSimilar;
 
 public interface CulturalDao {
 	
@@ -29,6 +30,7 @@ public interface CulturalDao {
 	public boolean updateSernum(String culId);
 	//批量添加文物
 	public boolean addCulturalList(List<CulturalBean> cblist);
-
+	//根据文物id获取最相似的十件文物
+	public TopSimilar getTopSimilar(String identifier);
 	
 }

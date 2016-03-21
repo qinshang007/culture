@@ -2,6 +2,7 @@
 <!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
 <sqlMap>
 	<typeAlias alias="culturalBean" type="com.culture.model.CulturalBean" />
+	<typeAlias alias="topSimilar" type="com.culture.model.TopSimilar" />
 	
 	<!-- 返回文物详情-->
 	<select id="getCulturalById" parameterClass="String" 
@@ -128,5 +129,12 @@
 	<update id="updateSernum" parameterClass="String">
 		update culture set sernum=sernum+1 where identifier=#identifier#
 	</update>
+	
+	<!-- 根据文物id获取最相似的十件文物-->
+	<select id="getTopSimilar" parameterClass="String" 
+		 resultClass="topSimilar">
+		select * from topsimilar where identifier = #identifier#
+	</select>
+	
 	
 </sqlMap>  

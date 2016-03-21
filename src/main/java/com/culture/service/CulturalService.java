@@ -27,6 +27,7 @@ public interface CulturalService {
 	public boolean updateSernum(String culId);
 	//批量导入文物
 	public List<CulturalBean> addCultualList(String xmlPath,String type,String username);
-
+	//根据文物id获取最相似的十件文物
+	public List<CulturalBean> getTopSimilar(String identifier);
 	
 }

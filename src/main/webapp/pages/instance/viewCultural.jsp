@@ -347,7 +347,7 @@
 								</div>
 								<div class="portlet-body">
 									<div class="row-fluid">
-										<c:forEach  items="${recommendList}"  var="item"  varStatus="status">
+										<c:forEach  items="${recommendList}"  var="item"  varStatus="status" end="3">
 											<div class="span3">
 												<div class="item">
 													<a class="fancybox-button" data-rel="fancybox-button" title="${item.title}" href="/culture/instance/viewCultural.do?culId=${item.identifier}">

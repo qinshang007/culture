@@ -1,6 +1,7 @@
 package com.culture.service.impl;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -10,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.culture.model.CulturalBean;
+import com.culture.model.TopSimilar;
 import com.culture.model.UserBean;
 import com.culture.service.CulturalService;
 import com.culture.service.UserService;
@@ -127,6 +129,31 @@ public class CulturalServiceImpl extends BaseService implements CulturalService{
 			e.printStackTrace();
 		}
 		return cblist;
+	}
+
+	/**
+	 * 根据文物id获取最相似的十件文物
+	 */
+	@Override
+	public List<CulturalBean> getTopSimilar(String identifier) {
+		// TODO Auto-generated method stub
+		List<CulturalBean> topSimilar = new ArrayList<CulturalBean>();
+		TopSimilar top = getCulturalDao().getTopSimilar(identifier);
+		if(top != null){
+			String topsimilar = top.getTopSimilar();
+			String[] tops = topsimilar.split(",");
+			HashMap<String,String> map = new HashMap<String,String>();
+			for(int i=0;i<tops.length;i++){
+				String id = tops[i];
+				CulturalBean cb = getCulturalDao().getCulturalById(id);
+				String title = cb.getTitle();
+				if(cb != null && map.get(title) == null){
+					map.put(title, "exist");
+					topSimilar.add(cb);
+				}
+			}
+		}
+		return topSimilar;
 	}
 
 
