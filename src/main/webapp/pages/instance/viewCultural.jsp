@@ -97,6 +97,13 @@
 												<input id="used_title" type="text" class="span6 m-wrap" name="used_title" value="${cb.used_title}"/>
 											</div>
 										</div>
+		 								<div class="control-group">
+											<label class="control-label">类别</label>
+											<div class="controls">
+												<input id="classification" type="text" class="span6 m-wrap" name="title" value="${cb.classification}"/>
+												<span class="help-inline">必填</span>
+											</div>
+										</div>
 										<div class="control-group">
 											<label class="control-label">主图</label>
 											<div class="controls">
