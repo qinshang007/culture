@@ -4,7 +4,7 @@
 		<div class="navbar-inner">
 			<div class="container-fluid">
 				<!-- BEGIN LOGO -->
-				<a class="brand" href="/pet/reservation/rsList.do">
+				<a class="brand" href="#">
 					<img src="/culture/media/image/logo.png" alt="logo" />
 				</a>
 				<!-- END LOGO -->
